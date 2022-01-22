@@ -1,0 +1,10 @@
+server: 
+  port: 4400
+
+ports: 
+  debug: 5858
+
+db: 
+  type: postgres
+  port: 5432
+  database: authentication

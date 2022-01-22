@@ -1,0 +1,84 @@
+[2022-01-22 14:28:45:2845] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-01-22 14:28:45:2845] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4400[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-01-22 14:30:47:3047] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-01-22 14:30:47:3047] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4400[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-01-22 14:45:21:4521] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-01-22 14:45:21:4521] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4400[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-01-22 14:49:29:4929] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-01-22 14:49:29:4929] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4400[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-01-22 14:49:37:4937] [35mhttp[39m: [35m::1 - POST /api/users HTTP/1.1 404 149 - 1.267 ms[39m
+[35m[39m 
+
+[2022-01-22 14:50:19:5019] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-01-22 14:50:19:5019] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4400[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-01-22 14:50:23:5023] [35mhttp[39m: [35m::1 - POST /api/users HTTP/1.1 404 149 - 1.862 ms[39m
+[35m[39m 
+
+[2022-01-22 14:54:01:541] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-01-22 14:54:01:541] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4400[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-01-22 14:54:23:5423] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-01-22 14:54:23:5423] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4400[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-01-22 14:54:27:5427] [35mhttp[39m: [35m::1 - POST /api/users HTTP/1.1 404 149 - 1.254 ms[39m
+[35m[39m 
+
+[2022-01-22 14:55:12:5512] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-01-22 14:55:13:5513] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4400[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-01-22 14:55:16:5516] [35mhttp[39m: [35m::1 - POST /api/users HTTP/1.1 200 76 - 28.043 ms[39m
+[35m[39m 
+
