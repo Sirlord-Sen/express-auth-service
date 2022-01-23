@@ -7,23 +7,11 @@ let UserController = class UserController {
     constructor() {
         this.userService = new user_service_1.UserService();
     }
-    getAll() {
-        return 'This action returns all users';
-    }
     post(user) {
         return __awaiter(this, void 0, void 0, function* () {
-            const savedUSer = yield this.userService.signup(user);
-            // console.log("tginsfasf")
-            return savedUSer;
         });
     }
 };
-__decorate([
-    (0, routing_controllers_1.Get)('/'),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], UserController.prototype, "getAll", null);
 __decorate([
     (0, routing_controllers_1.Post)('/'),
     __param(0, (0, routing_controllers_1.Body)()),

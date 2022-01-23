@@ -37,6 +37,7 @@ exports.Logger = winston.createLogger({
     transports
 });
 process.on('unhandledRejection', (reason, p) => {
+    console.log(reason);
     exports.Logger.warn('Possibly Unhandled Rejection at: Promise ', p, ' reason: ', reason);
 });
 //# sourceMappingURL=logger.util.js.map

@@ -1,6 +1,5 @@
 import * as winston from 'winston'
 import * as config from 'config'
-import {Application} from 'express'
 
 const levels = {
     error: 0,
@@ -49,5 +48,6 @@ export const Logger = winston.createLogger({
 })
 
 process.on('unhandledRejection', (reason, p) => {
+    console.log(reason)
     Logger.warn('Possibly Unhandled Rejection at: Promise ', p, ' reason: ', reason);
 });

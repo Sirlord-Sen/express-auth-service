@@ -14,7 +14,6 @@ export class Application {
 
     private async start(){
         const port = config.get('server.port')
-        const debugPort = config.get('ports.debug')
         this.express.app.listen(port, () => {
           Logger.info
           (`

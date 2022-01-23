@@ -1,6 +1,7 @@
 import { User } from '../entity/user.entity'
-import { Repository,getManager, getConnection } from 'typeorm'
+import { getConnection } from 'typeorm'
 import { UserRepository } from '../repository/user.repository'
+import { SignUpDto, UserPayloadDto } from '../dto/user.dto'
 
 export class UserService {
     public userRepository: UserRepository
@@ -9,15 +10,15 @@ export class UserService {
         this.userRepository = getConnection().getCustomRepository(UserRepository)
     }
 
-    async signup(user:any){
-        const post = user as User
-        const saved = await this.userRepository.save(post)
-        return ({
-            "message": "success",
-            "payload" : {
-                "name": saved.firstname,
-                "email": saved.email
-            }
-        })
+    async signup(user:SignUpDto): Promise<UserPayloadDto>{
+        try{
+            const post = user as User
+            const saved = await this.userRepository.save(post)
+            delete saved.password
+            return saved
+        }
+        catch(err){
+            throw err
+        }
     }
 }

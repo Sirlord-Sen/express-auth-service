@@ -11,4 +11,4 @@ const skip = () => {
 };
 const morganMiddleware = morgan('short', { stream, skip });
 exports.default = morganMiddleware;
-//# sourceMappingURL=morgan.middlewae.js.map
+//# sourceMappingURL=morgan.middleware.js.map

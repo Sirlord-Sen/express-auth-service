@@ -6,7 +6,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const routing_controllers_1 = require("routing-controllers");
-const morgan_middlewae_1 = require("./common/middlewares/morgan.middlewae");
+const morgan_middleware_1 = require("./common/middlewares/morgan.middleware");
 class ExpressConfig {
     constructor() {
         this.app = express();
@@ -17,7 +17,7 @@ class ExpressConfig {
         this.app.use(cors());
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({ extended: false }));
-        this.app.use(morgan_middlewae_1.default);
+        this.app.use(morgan_middleware_1.default);
     }
     setupControllers() {
         return __awaiter(this, void 0, void 0, function* () {

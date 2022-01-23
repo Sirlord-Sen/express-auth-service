@@ -7,15 +7,8 @@ export class UserController {
     constructor(){
         this.userService = new UserService()
     }
-    @Get('/')
-    getAll() {
-        return 'This action returns all users';
-      }
 
     @Post('/')
     async post(@Body() user: any){
-        const savedUSer = await this.userService.signup(user)
-        // console.log("tginsfasf")
-        return savedUSer
     }
 }

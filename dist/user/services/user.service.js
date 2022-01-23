@@ -10,15 +10,14 @@ class UserService {
     }
     signup(user) {
         return __awaiter(this, void 0, void 0, function* () {
-            const post = user;
-            const saved = yield this.userRepository.save(post);
-            return ({
-                "message": "success",
-                "payload": {
-                    "name": saved.firstname,
-                    "email": saved.email
-                }
-            });
+            try {
+                const post = user;
+                const saved = yield this.userRepository.save(post);
+                return saved;
+            }
+            catch (err) {
+                throw err;
+            }
         });
     }
 }
