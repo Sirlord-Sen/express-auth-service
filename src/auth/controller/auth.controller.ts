@@ -16,10 +16,10 @@ export class UserController {
     }
 
     @Post('/register')
-    async post(@Body() body: SignUpDto, @Res() res: Response): Promise<any>{
+    async post(@Body() body: SignUpDto, @Res() res: Response): Promise<AuthPayloadDto>{
         try{
             const savedUSer = await this.userService.signup(body)
-            return new SuccessResponse('success', {user: savedUSer}).send(res)
+            return new SuccessResponse('New User Created', {user: savedUSer}).send(res)
         }
         catch(err){
             res.json(await err)

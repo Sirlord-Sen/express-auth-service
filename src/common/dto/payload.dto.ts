@@ -1,4 +1,4 @@
-import { IsString, IsEmail, IsNumber} from 'class-validator'
+import { IsString } from 'class-validator'
 
 export class PayloadDto{
     @IsString()
@@ -15,9 +15,6 @@ export class PayloadDto{
 
     @IsString()
     status: string
-
-    @IsNumber()
-    code: number
 
     @IsString()
     message: string

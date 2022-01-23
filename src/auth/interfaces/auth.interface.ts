@@ -1,5 +1,9 @@
 import { UserPayloadDto } from "../../user/dto/user.dto";
 
-export class AuthPayloadInterface{
+class DataDto{
     user: UserPayloadDto
+}
+
+export class AuthPayloadInterface{
+    data: DataDto
 }
