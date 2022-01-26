@@ -1,9 +1,12 @@
 import { UserPayloadDto } from "../../user/dto/user.dto";
+import { Response } from 'express'
 
-class DataDto{
+export interface AuthPayloadInterface{
     user: UserPayloadDto
 }
 
-export class AuthPayloadInterface{
-    data: DataDto
-}
+export interface AddAuthToResInterface {
+    (res: Response, 
+    accessToken: string, 
+    refreshToken: string): void
+  }

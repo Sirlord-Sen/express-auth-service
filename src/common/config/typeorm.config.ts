@@ -1,5 +1,5 @@
 import { createConnection } from 'typeorm'
-import * as config from 'config'
+import config from 'config'
 import { Logger } from '../utils/logger.util'
 
 const { type, host, port, username, password, database, synchronize,} = config.get('db')

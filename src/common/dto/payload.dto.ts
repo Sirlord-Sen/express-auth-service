@@ -1,4 +1,6 @@
 import { IsString } from 'class-validator'
+import { AuthPayloadInterface } from '../../auth/interfaces/auth.interface'
+import { UserPayloadDto } from '../../user/dto/user.dto'
 
 export class PayloadDto{
     @IsString()
@@ -18,4 +20,6 @@ export class PayloadDto{
 
     @IsString()
     message: string
+
+    data: any
 }

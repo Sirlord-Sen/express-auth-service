@@ -1,6 +1,7 @@
 import { Response } from 'express';
-import { Timestamp } from 'typeorm';
+import { pick } from 'lodash';
 import { AuthPayloadDto } from '../../auth/dto/auth.dto';
+import { AuthPayloadInterface } from '../../auth/interfaces/auth.interface';
 import { PayloadDto } from '../dto/payload.dto';
 
 // Helper code for the API consumer to understand the error and handle is accordingly
@@ -18,12 +19,13 @@ enum StatusCode {
     INTERNAL_ERROR = 500,
 }
 
+
 abstract class ApiResponse {
     program: string
     version: string
     release: string
     datetime: Date
-    // protected timestamp: Timestamp
+    data: any
     constructor(
         public status: ResponseStatus,
         public code: StatusCode,
@@ -33,26 +35,34 @@ abstract class ApiResponse {
         this.version = 'v1'
         this.release = '1.2.1'
         this.datetime = new Date()
+        this.data = {user: null}
     }
+
 
     protected prepare<T extends ApiResponse>(res: Response, response: T): PayloadDto {
         res.status(this.code)
-        return (ApiResponse.sanitize(response));
+        return ApiResponse.sanitize(response)   
     }
 
-    public send(res: Response): PayloadDto{
+    public send(res: Response): PayloadDto {
         return this.prepare<ApiResponse>(res, this);
     }
 
     private static sanitize<T extends ApiResponse>(response: T): PayloadDto {
         const clone: T = {} as T;
         Object.assign(clone, response);
-        // @ts-ignore
-        delete clone.code;
-        for (const i in clone) 
-            if (typeof clone[i] === 'undefined') delete clone[i];
-        return clone;
+        
+        for (const i in clone) if (typeof clone[i] === 'undefined') delete clone[i];
+        const output = pick(clone, ["program", "version", "release", "datetime", "status", "message", "data"])
+        return output;
     }
+}
+
+export class SuccessResponse<T> extends ApiResponse{
+    constructor(message: string, public data: T) {
+        super(ResponseStatus.SUCCESS, StatusCode.SUCCESS, message);
+    }
+    send(res: Response): AuthPayloadDto { return super.prepare<SuccessResponse<T>>(res, this); }
 }
 
 export class AuthFailureResponse extends ApiResponse {
@@ -68,7 +78,7 @@ export class NotFoundResponse extends ApiResponse {
         super(ResponseStatus.FAILURE, StatusCode.NOT_FOUND, message);
     }
 
-    send(res: Response) {
+    send(res: Response): PayloadDto {
         this.url = res.req?.originalUrl;
         return super.prepare<NotFoundResponse>(res, this);
     }
@@ -104,10 +114,3 @@ export class FailureMsgResponse extends ApiResponse {
     }
 }
 
-export class SuccessResponse<T> extends ApiResponse {
-    constructor(message: string, public data: T) {
-        super(ResponseStatus.SUCCESS, StatusCode.SUCCESS, message);
-    }
-    
-    send(res: Response){ return super.prepare<SuccessResponse<T>>(res, this); }
-}

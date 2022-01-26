@@ -1,7 +1,7 @@
 import { PayloadDto } from '../../common/dto/payload.dto'
-import { UserPayloadDto } from '../../user/dto/user.dto'
+import { AuthPayloadInterface } from '../interfaces/auth.interface'
 
 
 export class AuthPayloadDto extends PayloadDto{
-    data: UserPayloadDto
+    data: AuthPayloadInterface
 }

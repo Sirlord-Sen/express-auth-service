@@ -1,12 +1,13 @@
 import { Response } from 'express'
-import { JsonController, Res, Body, Get, Post, Put, Delete, QueryParam } from 'routing-controllers';
+import { Controller, Res, Body, Get, Post, Put, Delete, QueryParam } from 'routing-controllers';
 import { SuccessResponse } from '../../common/middlewares/response.middleware';
-import { SignUpDto } from '../../user/dto/user.dto';
+import { SignUpDto, UserPayloadDto } from '../../user/dto/user.dto';
 import { UserService } from '../../user/services/user.service'
 import { AuthPayloadDto } from '../dto/auth.dto';
 import { AuthService } from '../services/auth.service';
+import { addAuthToRes } from '../utils/auth.util'
 
-@JsonController('/api/auth')
+@Controller('/api/auth')
 export class UserController {
     private readonly userService: UserService
     private readonly authService: AuthService
@@ -16,13 +17,14 @@ export class UserController {
     }
 
     @Post('/register')
-    async post(@Body() body: SignUpDto, @Res() res: Response): Promise<AuthPayloadDto>{
+    async Register(@Body() body:SignUpDto, @Res() res: Response): Promise<AuthPayloadDto>{
         try{
-            const savedUSer = await this.userService.signup(body)
-            return new SuccessResponse('New User Created', {user: savedUSer}).send(res)
+            const user = await this.userService.register(body)
+            const accessToken = await this.authService.generateAccessToken(user)
+            const refreshToken = await this.authService.generateRefreshToken(user)
+            if (accessToken && refreshToken) addAuthToRes(res, accessToken, refreshToken);
+            return new SuccessResponse('New User Created', {user: user}).send(res)
         }
-        catch(err){
-            res.json(await err)
-        }
+        catch(err: any){ return err }
     }
 }

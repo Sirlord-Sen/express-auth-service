@@ -1,32 +1,37 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SuccessResponse = exports.FailureMsgResponse = exports.SuccessMsgResponse = exports.InternalErrorResponse = exports.BadRequestResponse = exports.ForbiddenResponse = exports.NotFoundResponse = exports.AuthFailureResponse = void 0;
+exports.FailureMsgResponse = exports.SuccessMsgResponse = exports.InternalErrorResponse = exports.BadRequestResponse = exports.ForbiddenResponse = exports.NotFoundResponse = exports.AuthFailureResponse = exports.SuccessResponse = void 0;
 // Helper code for the API consumer to understand the error and handle is accordingly
-var StatusCode;
-(function (StatusCode) {
-    StatusCode["SUCCESS"] = "10000";
-    StatusCode["FAILURE"] = "10001";
-    StatusCode["RETRY"] = "10002";
-    StatusCode["INVALID_ACCESS_TOKEN"] = "10003";
-})(StatusCode || (StatusCode = {}));
 var ResponseStatus;
 (function (ResponseStatus) {
-    ResponseStatus[ResponseStatus["SUCCESS"] = 200] = "SUCCESS";
-    ResponseStatus[ResponseStatus["BAD_REQUEST"] = 400] = "BAD_REQUEST";
-    ResponseStatus[ResponseStatus["UNAUTHORIZED"] = 401] = "UNAUTHORIZED";
-    ResponseStatus[ResponseStatus["FORBIDDEN"] = 403] = "FORBIDDEN";
-    ResponseStatus[ResponseStatus["NOT_FOUND"] = 404] = "NOT_FOUND";
-    ResponseStatus[ResponseStatus["INTERNAL_ERROR"] = 500] = "INTERNAL_ERROR";
+    ResponseStatus["SUCCESS"] = "success";
+    ResponseStatus["FAILURE"] = "fail";
 })(ResponseStatus || (ResponseStatus = {}));
+var StatusCode;
+(function (StatusCode) {
+    StatusCode[StatusCode["SUCCESS"] = 200] = "SUCCESS";
+    StatusCode[StatusCode["BAD_REQUEST"] = 400] = "BAD_REQUEST";
+    StatusCode[StatusCode["UNAUTHORIZED"] = 401] = "UNAUTHORIZED";
+    StatusCode[StatusCode["FORBIDDEN"] = 403] = "FORBIDDEN";
+    StatusCode[StatusCode["NOT_FOUND"] = 404] = "NOT_FOUND";
+    StatusCode[StatusCode["INTERNAL_ERROR"] = 500] = "INTERNAL_ERROR";
+})(StatusCode || (StatusCode = {}));
 class ApiResponse {
-    constructor(statusCode, status, message) {
-        this.statusCode = statusCode;
+    // data: any
+    // protected timestamp: Timestamp
+    constructor(status, code, message) {
         this.status = status;
+        this.code = code;
         this.message = message;
+        this.program = 'stud-aid microservice';
+        this.version = 'v1';
+        this.release = '1.2.1';
+        this.datetime = new Date();
     }
     prepare(res, response) {
-        // console.log(response)
-        return res.status(this.status).json(ApiResponse.sanitize(response));
+        // console.log(response instanceof AuthPayloadDto)
+        res.status(this.code);
+        return (ApiResponse.sanitize(response));
     }
     send(res) {
         return this.prepare(res, this);
@@ -34,23 +39,40 @@ class ApiResponse {
     static sanitize(response) {
         const clone = {};
         Object.assign(clone, response);
-        // @ts-ignore
-        delete clone.status;
+        // const output: PayloadDto = {} as PayloadDto
+        // output.program = clone.program
+        // output.version = clone.version
+        // output.release = clone.release
+        // output.datetime = clone.datetime
+        // output.status = clone.status
+        // output.message = clone.message
+        // output.data = clone.data
+        // delete clone.code
         for (const i in clone)
             if (typeof clone[i] === 'undefined')
                 delete clone[i];
         return clone;
     }
 }
+class SuccessResponse extends ApiResponse {
+    constructor(message, data) {
+        super(ResponseStatus.SUCCESS, StatusCode.SUCCESS, message);
+        this.data = data;
+    }
+    send(res) {
+        return super.prepare(res, this);
+    }
+}
+exports.SuccessResponse = SuccessResponse;
 class AuthFailureResponse extends ApiResponse {
     constructor(message = 'Authentication Failure') {
-        super(StatusCode.FAILURE, ResponseStatus.UNAUTHORIZED, message);
+        super(ResponseStatus.FAILURE, StatusCode.UNAUTHORIZED, message);
     }
 }
 exports.AuthFailureResponse = AuthFailureResponse;
 class NotFoundResponse extends ApiResponse {
     constructor(message = 'Not Found') {
-        super(StatusCode.FAILURE, ResponseStatus.NOT_FOUND, message);
+        super(ResponseStatus.FAILURE, StatusCode.NOT_FOUND, message);
     }
     send(res) {
         var _a;
@@ -61,40 +83,32 @@ class NotFoundResponse extends ApiResponse {
 exports.NotFoundResponse = NotFoundResponse;
 class ForbiddenResponse extends ApiResponse {
     constructor(message = 'Forbidden') {
-        super(StatusCode.FAILURE, ResponseStatus.FORBIDDEN, message);
+        super(ResponseStatus.FAILURE, StatusCode.FORBIDDEN, message);
     }
 }
 exports.ForbiddenResponse = ForbiddenResponse;
 class BadRequestResponse extends ApiResponse {
     constructor(message = 'Bad Parameters') {
-        super(StatusCode.FAILURE, ResponseStatus.BAD_REQUEST, message);
+        super(ResponseStatus.FAILURE, StatusCode.BAD_REQUEST, message);
     }
 }
 exports.BadRequestResponse = BadRequestResponse;
 class InternalErrorResponse extends ApiResponse {
     constructor(message = 'Internal Error') {
-        super(StatusCode.FAILURE, ResponseStatus.INTERNAL_ERROR, message);
+        super(ResponseStatus.FAILURE, StatusCode.INTERNAL_ERROR, message);
     }
 }
 exports.InternalErrorResponse = InternalErrorResponse;
 class SuccessMsgResponse extends ApiResponse {
     constructor(message) {
-        super(StatusCode.SUCCESS, ResponseStatus.SUCCESS, message);
+        super(ResponseStatus.SUCCESS, StatusCode.SUCCESS, message);
     }
 }
 exports.SuccessMsgResponse = SuccessMsgResponse;
 class FailureMsgResponse extends ApiResponse {
     constructor(message) {
-        super(StatusCode.FAILURE, ResponseStatus.SUCCESS, message);
+        super(ResponseStatus.FAILURE, StatusCode.SUCCESS, message);
     }
 }
 exports.FailureMsgResponse = FailureMsgResponse;
-class SuccessResponse extends ApiResponse {
-    constructor(message, data) {
-        super(StatusCode.SUCCESS, ResponseStatus.SUCCESS, message);
-        this.data = data;
-    }
-    send(res) { return super.prepare(res, this); }
-}
-exports.SuccessResponse = SuccessResponse;
 //# sourceMappingURL=response.middleware.js.map

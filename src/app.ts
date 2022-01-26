@@ -1,5 +1,5 @@
 import * as dotenv from 'dotenv'
-import * as config from 'config';
+import config from 'config';
 import { ExpressConfig } from './server';
 import { Logger }  from './common/utils/logger.util';
 
