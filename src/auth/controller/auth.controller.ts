@@ -2,7 +2,7 @@ import { Response } from 'express'
 import { Controller, Res, Body, Get, Post, Put, Delete, QueryParam } from 'routing-controllers';
 import { SuccessResponse } from '../../common/middlewares/response.middleware';
 import { SignUpDto, UserPayloadDto } from '../../user/dto/user.dto';
-import { UserService } from '../../user/services/user.service'
+import UserService from '../../user/services/user.service'
 import { AuthPayloadDto } from '../dto/auth.dto';
 import { AuthService } from '../services/auth.service';
 import { addAuthToRes } from '../utils/auth.util'

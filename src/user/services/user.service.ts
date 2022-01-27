@@ -1,19 +1,17 @@
 import argon2 from 'argon2'
+import { IReturnUser, IUser } from '../interfaces/user.interface'
 import { pick } from 'lodash'
-import { getConnection } from 'typeorm'
+import { getCustomRepository } from 'typeorm'
 import { UserRepository } from '../repository/user.repository'
-import { SignUpDto, UserPayloadDto } from '../dto/user.dto'
 import { InternalError } from '../../common/middlewares/error.middleware'
-import {response} from 'express'
 
-export class UserService {
+export default class UserService {
     public userRepository: UserRepository
-    // public logger = new Logger()
     constructor(){
-        this.userRepository = getConnection().getCustomRepository(UserRepository)
+        this.userRepository = getCustomRepository(UserRepository)
     }
 
-    async register(data:SignUpDto): Promise<UserPayloadDto>{
+    async register(data: IUser): Promise<IReturnUser>{
         try{
             const { username, firstname, surname, email, password } = data
 
@@ -21,8 +19,8 @@ export class UserService {
             if (foundUser) throw new InternalError("User already exist").send()
             const hashedPassword = await argon2.hash(password)
 
-            const newUser = this.userRepository.create({username, firstname, surname, email, password: hashedPassword})
-            const savedUser = pick(await this.userRepository.save(newUser), ["id", "username", "email", "firstname", "surname"])
+            const newUser = await this.userRepository.createUser({username, firstname, surname, email, password: hashedPassword})
+            const savedUser = pick(newUser, ["id", "username", "email", "firstname", "surname"])
             return savedUser
         }
         catch(err){ throw err }
