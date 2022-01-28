@@ -4,8 +4,8 @@ import * as path from 'path'
 import * as bodyParser from 'body-parser'
 import cors from 'cors'
 import { useExpressServer } from 'routing-controllers'
-import morganMiddleware  from './common/middlewares/morgan.middleware';
-
+import morganMiddleware  from './middlewares/morgan.middleware';
+import { CustomErrorHandler } from './middlewares/error.middleware'
 
 export class ExpressConfig {
     public app: Application;
@@ -24,11 +24,13 @@ export class ExpressConfig {
     }
   
     async setupControllers() {
-        const authControllers = path.resolve(__dirname, "auth/controller/**/*.ts");
-        const userControllers = path.resolve(__dirname, "user/controller/**/*.ts");
+        const authControllers = path.resolve(__dirname, "modules/auth/controller/**/*.ts");
+        const userControllers = path.resolve(__dirname, "modules/user/controller/**/*.ts");
         useExpressServer(this.app, { 
             controllers: [ authControllers, userControllers ], 
+            middlewares: [ CustomErrorHandler ],
             classTransformer: true, 
+            defaultErrorHandler: false,
             validation: {
                 whitelist: true, 
                 forbidNonWhitelisted: true,

@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv'
 import config from 'config';
 import { ExpressConfig } from './server';
-import { Logger }  from './common/utils/logger.util';
+import { Logger }  from './utils/logger.util';
 
 export class Application {
     private express: ExpressConfig;

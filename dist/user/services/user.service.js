@@ -9,27 +9,40 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserService = void 0;
+const lodash_1 = require("lodash");
 const typeorm_1 = require("typeorm");
 const user_repository_1 = require("../repository/user.repository");
+const errorResponse_middleware_1 = require("../../common/middlewares/errorResponse.middleware");
 class UserService {
-    // public logger = new Logger()
     constructor() {
-        this.userRepository = (0, typeorm_1.getConnection)().getCustomRepository(user_repository_1.UserRepository);
+        this.userRepository = (0, typeorm_1.getCustomRepository)(user_repository_1.UserRepository);
     }
-    signup(user) {
+    register(data) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const post = user;
-                const saved = yield this.userRepository.save(post);
-                // delete saved.password
-                return saved;
+                let { username, firstname, surname, email, password } = data;
+                password = yield this.authService.hashPassword(password);
+                const hashedPassword = password;
+                console.log(data);
+                const newUser = yield this.userRepository.createUser({ username, firstname, surname, email, password: hashedPassword });
+                const savedUser = (0, lodash_1.pick)(newUser, ["id", "username", "email", "firstname", "surname"]);
+                return savedUser;
             }
             catch (err) {
                 throw err;
             }
         });
     }
+    findOne(query) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                return yield this.userRepository.findOneOrFail({ where: query });
+            }
+            catch (err) {
+                throw new errorResponse_middleware_1.NotFoundError("User not found").send();
+            }
+        });
+    }
 }
-exports.UserService = UserService;
+exports.default = UserService;
 //# sourceMappingURL=user.service.js.map

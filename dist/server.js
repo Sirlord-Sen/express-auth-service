@@ -38,6 +38,7 @@ const bodyParser = __importStar(require("body-parser"));
 const cors_1 = __importDefault(require("cors"));
 const routing_controllers_1 = require("routing-controllers");
 const morgan_middleware_1 = __importDefault(require("./common/middlewares/morgan.middleware"));
+const error_middleware_1 = require("./common/middlewares/error.middleware");
 class ExpressConfig {
     constructor() {
         this.app = (0, express_1.default)();
@@ -54,7 +55,17 @@ class ExpressConfig {
         return __awaiter(this, void 0, void 0, function* () {
             const authControllers = path.resolve(__dirname, "auth/controller/**/*.ts");
             const userControllers = path.resolve(__dirname, "user/controller/**/*.ts");
-            (0, routing_controllers_1.useExpressServer)(this.app, { controllers: [authControllers, userControllers], classTransformer: true, validation: true });
+            (0, routing_controllers_1.useExpressServer)(this.app, {
+                controllers: [authControllers, userControllers],
+                middlewares: [error_middleware_1.CustomErrorHandler],
+                classTransformer: true,
+                defaultErrorHandler: false,
+                validation: {
+                    whitelist: true,
+                    forbidNonWhitelisted: true,
+                    forbidUnknownValues: true
+                }
+            });
         });
     }
 }

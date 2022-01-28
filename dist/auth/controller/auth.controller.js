@@ -20,45 +20,46 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
-const class_validator_1 = require("class-validator");
 const routing_controllers_1 = require("routing-controllers");
-const user_dto_1 = require("../../user/dto/user.dto");
-const user_service_1 = require("../../user/services/user.service");
-const auth_service_1 = require("../services/auth.service");
+const auth_dto_1 = require("../dto/auth.dto");
+const user_service_1 = __importDefault(require("../../user/services/user.service"));
+const auth_service_1 = __importDefault(require("../services/auth.service"));
 let UserController = class UserController {
     constructor() {
-        this.userService = new user_service_1.UserService();
-        this.authService = new auth_service_1.AuthService();
+        this.userService = new user_service_1.default();
+        this.authService = new auth_service_1.default();
     }
-    Register(body, res) {
+    Login(body, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const error = yield (0, class_validator_1.validate)(body, { forbidNonWhitelisted: true, whitelist: true });
-                console.log(error);
-                yield (0, class_validator_1.validateOrReject)(body);
-                // // const savedUSer = await this.userService.signup(body)
-                // console.log(savedUSer)
+                const user = yield this.authService.login(body);
+                // const accessToken = await this.authService.generateAccessToken(user)
+                // const refreshToken = await this.authService.generateRefreshToken(user)
+                // if (accessToken && refreshToken) addAuthToRes(res, accessToken, refreshToken);
+                // return new SuccessResponse('New User Created', {user: user}).send(res)
                 return {
-                    "user": "hgdghjlk"
+                    user: "things"
                 };
-                // return new SuccessResponse<AuthPayloadInterface>('New User Created', {user: savedUSer}).send(res)
             }
             catch (err) {
-                res.json(yield err);
+                return err;
             }
         });
     }
 };
 __decorate([
-    (0, routing_controllers_1.Post)('/register'),
-    __param(0, (0, routing_controllers_1.Body)({ validate: true })),
+    (0, routing_controllers_1.Post)('/login'),
+    __param(0, (0, routing_controllers_1.Body)()),
     __param(1, (0, routing_controllers_1.Res)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [user_dto_1.UserPayloadDto, Object]),
+    __metadata("design:paramtypes", [auth_dto_1.LoginDto, Object]),
     __metadata("design:returntype", Promise)
-], UserController.prototype, "Register", null);
+], UserController.prototype, "Login", null);
 UserController = __decorate([
     (0, routing_controllers_1.Controller)('/api/auth'),
     __metadata("design:paramtypes", [])

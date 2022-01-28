@@ -1,1 +1,1 @@
-{"version":3,"file":"cookies.config.js","sourceRoot":"","sources":["../../../src/common/config/cookies.config.ts"],"names":[],"mappings":""}
+{"version":3,"file":"cookies.config.js","sourceRoot":"","sources":["../../../src/common/config/cookies.config.ts"],"names":[],"mappings":";;AAEA,MAAM,YAAY,GAAG,OAAO,CAAC,GAAG,CAAC,QAAQ,KAAK,YAAY,CAAC;AAE3D,MAAM,aAAa,GAAkB;IACnC,QAAQ,EAAE,IAAI;IACd,MAAM,EAAE,YAAY,CAAC,CAAC,CAAC,IAAI,CAAC,CAAC,CAAC,KAAK;IACnC,iCAAiC;CAClC,CAAC;AAEF,kBAAe,aAAa,CAAC"}

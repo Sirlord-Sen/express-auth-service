@@ -1,84 +1,40 @@
 "use strict";
-// import { Response } from 'express';
-// import {
-//   AuthFailureResponse,
-//   InternalErrorResponse,
-//   NotFoundResponse,
-//   BadRequestResponse,
-//   ForbiddenResponse,
-// } from './response.middleware'
-// enum ErrorType {
-//   BAD_TOKEN = 'BadTokenError',
-//   TOKEN_EXPIRED = 'TokenExpiredError',
-//   UNAUTHORIZED = 'AuthFailureError',
-//   ACCESS_TOKEN = 'AccessTokenError',
-//   INTERNAL = 'InternalError',
-//   NOT_FOUND = 'NotFoundError',
-//   NO_ENTRY = 'NoEntryError',
-//   NO_DATA = 'NoDataError',
-//   BAD_REQUEST = 'BadRequestError',
-//   FORBIDDEN = 'ForbiddenError',
-// }
-// export abstract class ApiError extends Error {
-//   constructor(public type: ErrorType, public message: string = 'error') {
-//     super(type);
-//   }
-//   public static handle(err: ApiError, res: Response): Response {
-//     switch (err.type) {
-//       case ErrorType.UNAUTHORIZED:
-//         return new AuthFailureResponse(err.message).send(res);
-//       case ErrorType.INTERNAL:
-//         return new InternalErrorResponse(err.message).send(res);
-//       case ErrorType.NOT_FOUND:
-//       case ErrorType.NO_ENTRY:
-//       case ErrorType.NO_DATA:
-//         return new NotFoundResponse(err.message).send(res);
-//       case ErrorType.BAD_REQUEST:
-//         return new BadRequestResponse(err.message).send(res);
-//       case ErrorType.FORBIDDEN:
-//         return new ForbiddenResponse(err.message).send(res);
-//       default: {
-//         let message = err.message;
-//         // Do not send failure message in production as it may send sensitive data
-//         if (process.env.NODE_ENV === 'production') message = 'Something wrong happened.';
-//         return new InternalErrorResponse(message).send(res);
-//       }
-//     }
-//   }
-// }
-// export class AuthFailureError extends ApiError {
-//   constructor(message = 'Invalid Credentials') {
-//     super(ErrorType.UNAUTHORIZED, message);
-//   }
-// }
-// export class InternalError extends ApiError {
-//   constructor(message = 'Internal error') {
-//     super(ErrorType.INTERNAL, message);
-//   }
-// }
-// export class BadRequestError extends ApiError {
-//   constructor(message = 'Bad Request') {
-//     super(ErrorType.BAD_REQUEST, message);
-//   }
-// }
-// export class NotFoundError extends ApiError {
-//   constructor(message = 'Not Found') {
-//     super(ErrorType.NOT_FOUND, message);
-//   }
-// }
-// export class ForbiddenError extends ApiError {
-//   constructor(message = 'Permission denied') {
-//     super(ErrorType.FORBIDDEN, message);
-//   }
-// }
-// export class NoEntryError extends ApiError {
-//   constructor(message = "Entry don't exists") {
-//     super(ErrorType.NO_ENTRY, message);
-//   }
-// }
-// export class NoDataError extends ApiError {
-//   constructor(message = 'No data available') {
-//     super(ErrorType.NO_DATA, message);
-//   }
-// }
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CustomErrorHandler = void 0;
+const routing_controllers_1 = require("routing-controllers");
+const errorResponse_middleware_1 = require("./errorResponse.middleware");
+const class_validator_1 = require("class-validator");
+let CustomErrorHandler = class CustomErrorHandler {
+    error(error, request, response, next) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (error.errors[0] instanceof class_validator_1.ValidationError) {
+                let message = '';
+                for (let i in error.errors[0].constraints) {
+                    message = error.errors[0].constraints[i];
+                }
+                response.json(new errorResponse_middleware_1.BadRequestError(message).send());
+            }
+            next();
+        });
+    }
+};
+CustomErrorHandler = __decorate([
+    (0, routing_controllers_1.Middleware)({ type: 'after' })
+], CustomErrorHandler);
+exports.CustomErrorHandler = CustomErrorHandler;
 //# sourceMappingURL=error.middleware.js.map

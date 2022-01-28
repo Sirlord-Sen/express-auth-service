@@ -20,28 +20,41 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
 const routing_controllers_1 = require("routing-controllers");
-const user_service_1 = require("../services/user.service");
+const response_middleware_1 = require("../../common/middlewares/response.middleware");
+const user_dto_1 = require("../dto/user.dto");
+const user_service_1 = __importDefault(require("../../user/services/user.service"));
 let UserController = class UserController {
     constructor() {
-        this.userService = new user_service_1.UserService();
+        this.userService = new user_service_1.default();
     }
-    post(user) {
+    Register(body, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const user = yield this.userService.register(body);
+                return new response_middleware_1.SuccessResponse('New User Created', { user: user }).send(res);
+            }
+            catch (err) {
+                return err;
+            }
         });
     }
 };
 __decorate([
-    (0, routing_controllers_1.Post)('/'),
+    (0, routing_controllers_1.Post)('/register'),
     __param(0, (0, routing_controllers_1.Body)()),
+    __param(1, (0, routing_controllers_1.Res)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [user_dto_1.SignUpDto, Object]),
     __metadata("design:returntype", Promise)
-], UserController.prototype, "post", null);
+], UserController.prototype, "Register", null);
 UserController = __decorate([
-    (0, routing_controllers_1.JsonController)('/api/users'),
+    (0, routing_controllers_1.Controller)('/api/user'),
     __metadata("design:paramtypes", [])
 ], UserController);
 exports.UserController = UserController;
