@@ -6,6 +6,7 @@ import { UserRepository } from '../repository/user.repository'
 import { NotFoundError } from '../../../utils/error-response.util'
 import { ILogin } from '../../auth/interfaces/auth.interface'
 import { FullUser } from '../user.types'
+import UserEntity from '../entity/user.entity'
 
 export default class UserService {
     public userRepository: UserRepository
@@ -21,9 +22,13 @@ export default class UserService {
         catch(err){ throw err }
     }
 
-    async findOne(query: Partial<FullUser>): Promise<FullUser>{
+    async findOne(query: Partial<FullUser>): Promise<UserEntity>{
         try{ return await this.userRepository.findOneOrFail({ where: query });}
         catch(err){ throw new NotFoundError("User not found").send() }
+    }
+
+    async update(query: Partial<FullUser>, body: Partial<Omit<IReturnUser, 'id'>>) {
+        await this.userRepository.updateUser(query, body)
     }
 
     async validateLoginCredentials(user: Pick<ILogin, 'password'>, password: string):Promise<Boolean>{

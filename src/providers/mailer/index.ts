@@ -1,0 +1,1 @@
+export { default as EmailQueue } from './email.queue';

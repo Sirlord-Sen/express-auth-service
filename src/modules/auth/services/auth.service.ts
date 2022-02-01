@@ -3,10 +3,12 @@ import { ILogin } from "../interfaces/auth.interface";
 import { UnauthorizedError } from "../../../utils/error-response.util";
 import { pick } from "lodash";
 import { IReturnUser } from "../../user/interfaces/user.interface";
-import { LogoutRequest, TokenRequest } from "../auth.types";
+import { ForgotPasswordRequest, LogoutRequest } from "../auth.types";
 import { TokenService } from ".";
 import { IRefreshTokenRequest, ITokenResponse } from "../interfaces/token.interface";
 import { TokenType } from "../../../utils/util-types";
+import { nanoid } from "nanoid";
+import { EmailQueue } from "../../../providers/mailer";
 
 
 export default class AuthService {
@@ -40,5 +42,16 @@ export default class AuthService {
         const accessToken = await this.tokenService.generateAccessToken({userId: user.id, email: user.email})
         const tokens = { tokenType: TokenType.BEARER , accessToken, refreshToken: body.refreshToken }
         return  tokens ;
+    }
+
+    async forgotPassword(body: ForgotPasswordRequest) {
+        const { email } = body;
+        const { id } = await this.userService.findOne({ email });
+
+        const confirmTokenPassword = nanoid();
+        const token = await this.tokenService.generateAccessToken({userId: id, email}, confirmTokenPassword)
+
+        await this.userService.update({ id }, { confirmTokenPassword });
+        void EmailQueue.addForgotPasswordToQueue({ token, email });
     }
 }

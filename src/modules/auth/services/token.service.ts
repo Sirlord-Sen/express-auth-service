@@ -27,13 +27,13 @@ export default class TokenService {
         this.tokenType = TokenType.BEARER 
     }
 
-    async generateAccessToken(body:AccessTokenRequest):Promise<string>{
+    async generateAccessToken(body:AccessTokenRequest, confirmTokenPassword?: string):Promise<string>{
         const opts: SignOptions = {
             expiresIn: JwtConfig.ACCESS_TOKEN_EXPIRATION,
         }
         const payload: JwtPayload = {
             ...body,
-            jti: nanoid(),
+            jti: confirmTokenPassword || nanoid(),
             sub: String(body.userId),
             typ: TokenType.BEARER
           };

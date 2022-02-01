@@ -22,6 +22,9 @@ export default class UserEntity extends BaseEntity{
     @Column()
     password: string
 
+    @Column('text', { nullable: true })
+    confirmTokenPassword?: string;
+
     @BeforeInsert()
     async hashPassword(){
         this.password = await argon2.hash(this.password)

@@ -9380,3 +9380,377 @@
 [32m            -------------[39m
 [32m          [39m 
 
+[2022-02-01 15:51:41:5141] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 15:51:41:5141] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 15:51:41:5141] [33mwarn[39m: [33mPossibly Unhandled Rejection at: Promise [39m 
+
+[2022-02-01 15:52:30:5230] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 15:52:31:5231] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 15:57:15:5715] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 15:57:16:5716] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 15:57:38:5738] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 15:57:38:5738] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 15:57:38:5738] [33mwarn[39m: [33mPossibly Unhandled Rejection at: Promise [39m 
+
+[2022-02-01 15:58:38:5838] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 15:58:39:5839] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 15:58:39:5839] [33mwarn[39m: [33mPossibly Unhandled Rejection at: Promise [39m 
+
+[2022-02-01 15:59:32:5932] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 15:59:33:5933] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 15:59:33:5933] [33mwarn[39m: [33mPossibly Unhandled Rejection at: Promise [39m 
+
+[2022-02-01 16:02:24:224] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 16:02:24:224] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 16:02:24:224] [33mwarn[39m: [33mPossibly Unhandled Rejection at: Promise [39m 
+
+[2022-02-01 16:02:44:244] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 16:02:44:244] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 16:02:44:244] [33mwarn[39m: [33mPossibly Unhandled Rejection at: Promise [39m 
+
+[2022-02-01 16:04:09:49] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 16:04:09:49] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 16:04:09:49] [33mwarn[39m: [33mPossibly Unhandled Rejection at: Promise [39m 
+
+[2022-02-01 16:04:19:419] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 16:04:20:420] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 16:04:44:444] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 16:04:46:446] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 16:05:12:512] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 16:05:13:513] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 16:05:13:513] [33mwarn[39m: [33mPossibly Unhandled Rejection at: Promise [39m 
+
+[2022-02-01 16:12:50:1250] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 16:12:52:1252] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 16:13:14:1314] [35mhttp[39m: [35m::1 - POST /api/auth/refresh-token HTTP/1.1 200 836 - 294.679 ms[39m
+[35m[39m 
+
+[2022-02-01 16:13:59:1359] [35mhttp[39m: [35m::1 - POST /api/auth/logout HTTP/1.1 200 206 - 209.592 ms[39m
+[35m[39m 
+
+[2022-02-01 16:21:41:2141] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 16:21:42:2142] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 16:21:42:2142] [33mwarn[39m: [33mPossibly Unhandled Rejection at: Promise [39m 
+
+[2022-02-01 16:21:58:2158] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 16:22:01:221] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 16:22:38:2238] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 16:22:40:2240] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 16:22:48:2248] [35mhttp[39m: [35m::1 - POST /api/auth/logout HTTP/1.1 401 182 - 16.103 ms[39m
+[35m[39m 
+
+[2022-02-01 16:28:57:2857] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 16:29:00:290] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 16:31:09:319] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 16:31:11:3111] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 16:33:00:330] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 16:33:02:332] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 16:34:03:343] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 16:34:05:345] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 16:38:18:3818] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 16:38:20:3820] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 16:39:16:3916] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 16:39:19:3919] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 16:54:52:5452] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 16:54:53:5453] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 16:54:57:5457] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 16:54:58:5458] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 16:56:12:5612] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 16:56:13:5613] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 17:01:37:137] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 17:01:38:138] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 17:01:47:147] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 17:01:48:148] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 17:05:12:512] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 17:05:13:513] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 17:13:57:1357] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 17:13:58:1358] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 17:16:56:1656] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 17:16:57:1657] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 17:17:58:1758] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 17:18:00:180] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 17:18:30:1830] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 17:18:31:1831] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 17:19:22:1922] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 17:19:23:1923] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 17:19:23:1923] [33mwarn[39m: [33mPossibly Unhandled Rejection at: Promise [39m 
+
+[2022-02-01 17:19:53:1953] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 17:19:54:1954] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 17:23:09:239] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 17:23:11:2311] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 17:23:11:2311] [31merror[39m: [31mPort should be >= 0 and < 65536. Received NaN.[39m 
+
+[2022-02-01 17:23:11:2311] [31merror[39m: [31mError initializing Lua scripts[39m 
+
+[2022-02-01 17:23:45:2345] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 17:23:46:2346] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 17:23:46:2346] [31merror[39m: [31mPort should be >= 0 and < 65536. Received NaN.[39m 
+
+[2022-02-01 17:23:46:2346] [31merror[39m: [31mError initializing Lua scripts[39m 
+
+[2022-02-01 17:24:59:2459] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-01 17:25:01:251] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-01 17:25:01:251] [31merror[39m: [31mPort should be >= 0 and < 65536. Received NaN.[39m 
+
+[2022-02-01 17:25:01:251] [31merror[39m: [31mError initializing Lua scripts[39m 
+

@@ -12,6 +12,7 @@ export interface IReturnUser {
     email: string;
     firstname: string;
     surname: string;
+    confirmTokenPassword?:string
 }
 
 export interface UserPayloadInterface{

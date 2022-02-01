@@ -1,7 +1,7 @@
 import { Response, Request } from 'express'
 import { Controller, Req, Res, Body, Post, UseBefore } from 'routing-controllers';
 import { SuccessResponse } from '../../../utils/response.util';
-import { LoginDto } from '../dto/auth.dto';
+import { ForgotPasswordDto, LoginDto } from '../dto/auth.dto';
 import UserService from '../../user/services/user.service'
 import {AuthService, TokenService} from '../services';
 import { addAuthToRes } from '../utils/auth.util'
@@ -49,5 +49,11 @@ export class UserController {
         const tokens = await this.authService.refreshToken({refreshToken: refreshToken})
         if (tokens) addAuthToRes(res, tokens);
         return new SuccessResponse('Refreshed Access Token', { payload: tokens}).send()
+    }
+
+    @Post('/forgot-password')
+    async ForgotPassword(@Res() res: Response, @Body() body: ForgotPasswordDto): Promise<any> {
+        await this.authService.forgotPassword(body)
+        return new SuccessResponse('Email Sent to user', { user: null}).send()
     }
 }

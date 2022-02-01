@@ -14,6 +14,16 @@
     "emitDecoratorMetadata": true,              
     "skipLibCheck": true,                           
     "forceConsistentCasingInFileNames": true ,
-    "sourceMap": true
+    "sourceMap": true,
+    "typeRoots": ["./src/@types", "./node_modules/@types"],
+    "paths": {
+      "@config/*": ["./src/config/*"],
+      "@core/*": ["./src/core/*"],
+      "@middlewares/*": ["./src/middlewares/*"],
+      "@modules/*": ["./src/modules/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@providers/*": ["./src/providers/*"],
+      "@helpers/*": ["./src/helpers/*"]
+    },
   }
 }
