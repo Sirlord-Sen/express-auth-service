@@ -27,7 +27,7 @@ export default class TokenService {
         this.tokenType = TokenType.BEARER 
     }
 
-    async generateAccessToken(body:AccessTokenRequest){
+    async generateAccessToken(body:AccessTokenRequest):Promise<string>{
         const opts: SignOptions = {
             expiresIn: JwtConfig.ACCESS_TOKEN_EXPIRATION,
         }
@@ -38,10 +38,10 @@ export default class TokenService {
             typ: TokenType.BEARER
           };
 
-        return this.jwtService.signAsync<JwtPayload>(payload, JwtConfig.ACCESS_TOKEN_SECRET, opts)
+        return await this.jwtService.signAsync<JwtPayload>(payload, JwtConfig.ACCESS_TOKEN_SECRET, opts)
     }
 
-    async generateRefreshToken(body:RefreshTokenRequest){
+    async generateRefreshToken(body:RefreshTokenRequest):Promise<string>{
         const jti = nanoid();
         const ms = DateHelper.convertToMS(JwtConfig.REFRESH_TOKEN_EXPIRATION);
         const expiredAt = DateHelper.addMillisecondToDate(new Date(), ms);
@@ -61,17 +61,17 @@ export default class TokenService {
         return this.jwtService.sign<JwtPayload>(payload, JwtConfig.REFRESH_TOKEN_SECRET, opts)
     }
 
-    async getTokens(body: TokenRequest){
+    async getTokens(body: TokenRequest):Promise<ITokenResponse>{
         const { id, email } = body;
         const [accessToken, refreshToken] = await Promise.all([
             this.generateAccessToken({ email: email, userId: id }),
-            this.generateRefreshToken({ userId: id }),
-          ]);
+            this.generateRefreshToken({ userId: id })
+        ]);
           
         return { tokenType: this.tokenType , accessToken, refreshToken };
     }
 
-    async update(query: Partial<FullRefreshToken>, body: Partial<IRefreshToken>){
+    async update(query: Partial<FullRefreshToken>, body: Partial<IRefreshToken>): Promise<void>{
         await this.refreshTokenRepository.updateRefreshToken(query, body)
     }
 

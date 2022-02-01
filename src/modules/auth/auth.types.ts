@@ -1,5 +1,5 @@
 import { IReturnUser } from "../user/interfaces/user.interface";
-import { IRefreshToken, ITokenPayload, ITokenResponse } from "./interfaces/token.interface";
+import { IRefreshToken, ITokenPayload } from "./interfaces/token.interface";
 
 type Id = {
     id: string

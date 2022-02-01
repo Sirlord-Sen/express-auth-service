@@ -1,5 +1,5 @@
 import { Response, Request } from 'express'
-import { Controller, Req, Res, Body, Post, Get, Put, Delete, QueryParam, UseBefore, CookieParam } from 'routing-controllers';
+import { Controller, Req, Res, Body, Post, UseBefore } from 'routing-controllers';
 import { SuccessResponse } from '../../../utils/response.util';
 import { LoginDto } from '../dto/auth.dto';
 import UserService from '../../user/services/user.service'
@@ -8,6 +8,7 @@ import { addAuthToRes } from '../utils/auth.util'
 import { AuthMiddleware } from '../../../middlewares/auth.middleware';
 import { TokenHelper } from '../../../helpers';
 import { RefreshTokenDto } from '../dto/token.dto';
+import { PayloadDto, TokenPayloadDto, UserPayloadDto } from '../../../utils/util-types';
 
 @Controller('/api/auth')
 export class UserController {
@@ -21,7 +22,7 @@ export class UserController {
     }
 
     @Post('/login')
-    async Login(@Body() body:LoginDto, @Res() res:Response, @Req() req: Request): Promise<any>{
+    async Login(@Body() body:LoginDto, @Res() res:Response, @Req() req: Request): Promise<UserPayloadDto>{
         try{
             // console.log(req.useragent)
             const user = await this.authService.login(body)
@@ -35,18 +36,18 @@ export class UserController {
 
     @Post('/logout')
     @UseBefore(AuthMiddleware)
-    async Logout(@Req() req: any, @Res() res: Response) {
+    async Logout(@Req() req: any, @Res() res: Response): Promise<PayloadDto>{
         // console.log(req.useragent)
         const { userId, email } = req.currentUser;
         await this.authService.logout({ userId })
-        return new SuccessResponse(`User with email:'${email}' logged out`, {}).send()
+        return new SuccessResponse(`User with email:'${email}' logged out`, {user: null}).send()
     }
 
     @Post('/refresh-token')
-    async RefreshToken(@Req() req: Request, @Res() res: Response, @Body() body: RefreshTokenDto) {
+    async RefreshToken(@Req() req: Request, @Res() res: Response, @Body() body: RefreshTokenDto): Promise<TokenPayloadDto> {
         const refreshToken = body.refreshToken || TokenHelper.getTokenFromCookies(req.cookies)
-        const {user, tokens} = await this.authService.refreshToken({refreshToken: refreshToken})
+        const tokens = await this.authService.refreshToken({refreshToken: refreshToken})
         if (tokens) addAuthToRes(res, tokens);
-        return new SuccessResponse('Refreshed Access Token', {user: user, payload: tokens}).send()
+        return new SuccessResponse('Refreshed Access Token', { payload: tokens}).send()
     }
 }

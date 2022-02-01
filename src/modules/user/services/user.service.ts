@@ -26,7 +26,7 @@ export default class UserService {
         catch(err){ throw new NotFoundError("User not found").send() }
     }
 
-    validateLoginCredentials(user: Pick<ILogin, 'password'>, password: string){
-        return user.password ? verify(user.password, password) : false;
+    async validateLoginCredentials(user: Pick<ILogin, 'password'>, password: string):Promise<Boolean>{
+        return user.password ? await verify(user.password, password) : false;
     }
 }

@@ -1,7 +1,6 @@
 import { response, Response } from 'express';
 import { pick } from 'lodash';
-import { UserPayloadDto } from '../modules/user/dto/user.dto';
-import { PayloadDto } from './util-types';
+import { PayloadDto, ResponsePayload, TokenPayloadDto } from './util-types';
 
 // Helper code for the API consumer to understand the error and handle is accordingly
 enum ResponseStatus {
@@ -67,7 +66,7 @@ export class SuccessResponse<T> extends ApiResponse{
     constructor(message: string, public data: T) {
         super(ResponseStatus.SUCCESS, StatusCode.SUCCESS, message);
     }
-    send(): UserPayloadDto { return super.prepare<SuccessResponse<T>>(response, this); }
+    send(): PayloadDto { return super.prepare<SuccessResponse<T>>(response, this); }
 }
 
 export class UnauthorizedResponse extends ApiResponse {

@@ -1,4 +1,5 @@
 import { IncomingHttpHeaders } from 'http';
+import { BadRequestError } from '../utils/error-response.util';
 import { TokenType } from '../utils/util-types';
 
 
@@ -18,7 +19,7 @@ export default (() => {
 
     const getTokenFromCookies = (cookies: any): string => {
         const { refreshToken } = cookies as { refreshToken : string };
-
+        if (!refreshToken) throw new BadRequestError('No Refresh Token')
         return refreshToken;
     };
 

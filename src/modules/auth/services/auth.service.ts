@@ -5,7 +5,7 @@ import { pick } from "lodash";
 import { IReturnUser } from "../../user/interfaces/user.interface";
 import { LogoutRequest, TokenRequest } from "../auth.types";
 import { TokenService } from ".";
-import { IRefreshTokenRequest } from "../interfaces/token.interface";
+import { IRefreshTokenRequest, ITokenResponse } from "../interfaces/token.interface";
 import { TokenType } from "../../../utils/util-types";
 
 
@@ -30,15 +30,15 @@ export default class AuthService {
         catch(err){throw err}
     }
 
-    async logout(body:LogoutRequest) {
+    async logout(body:LogoutRequest): Promise<void>{
         const { userId } = body
         await this.tokenService.update({ userId } , {isRevoked: true });
     }
 
-    async refreshToken(body: IRefreshTokenRequest){
+    async refreshToken(body: IRefreshTokenRequest): Promise<ITokenResponse>{
         let { user }  = await this.tokenService.resolveRefreshToken(body.refreshToken)
         const accessToken = await this.tokenService.generateAccessToken({userId: user.id, email: user.email})
         const tokens = { tokenType: TokenType.BEARER , accessToken, refreshToken: body.refreshToken }
-        return { user, tokens };
+        return  tokens ;
     }
 }

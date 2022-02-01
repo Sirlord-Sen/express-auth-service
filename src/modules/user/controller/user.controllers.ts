@@ -1,9 +1,9 @@
 import { Response } from 'express'
-import { Controller, Res, Body, Get, Post, Put, Delete, QueryParam } from 'routing-controllers';
+import { Controller, Res, Body, Post } from 'routing-controllers';
 import { SuccessResponse } from '../../../utils/response.util';
+import { UserPayloadDto } from '../../../utils/util-types';
 import { SignUpDto } from '../dto/user.dto';
 import UserService  from '../services/user.service'
-import { UserPayloadDto } from '../dto/user.dto';
 
 @Controller('/api/user')
 export class UserController {
