@@ -5,6 +5,7 @@ import { getCustomRepository } from 'typeorm'
 import { UserRepository } from '../repository/user.repository'
 import { NotFoundError } from '../../../utils/error-response.util'
 import { ILogin } from '../../auth/interfaces/auth.interface'
+import { FullUser } from '../user.types'
 
 export default class UserService {
     public userRepository: UserRepository
@@ -20,7 +21,7 @@ export default class UserService {
         catch(err){ throw err }
     }
 
-    async findOne(query: Partial<IReturnUser>){
+    async findOne(query: Partial<FullUser>): Promise<FullUser>{
         try{ return await this.userRepository.findOneOrFail({ where: query });}
         catch(err){ throw new NotFoundError("User not found").send() }
     }

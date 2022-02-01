@@ -16,7 +16,7 @@ export class UserController {
     async Register(@Body() body:SignUpDto, @Res() res: Response): Promise<UserPayloadDto>{
         try{
             const user = await this.userService.register(body)
-            return new SuccessResponse('New User Created', {user: user}).send(res)
+            return new SuccessResponse('New User Created', {user: user}).send()
         }
         catch(err: any){ return err }
     }

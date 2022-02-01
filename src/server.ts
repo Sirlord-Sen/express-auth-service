@@ -3,6 +3,7 @@ import { Application } from 'express'
 import * as path from 'path'
 import * as bodyParser from 'body-parser'
 import cors from 'cors'
+import useragent from 'express-useragent'
 import { useExpressServer } from 'routing-controllers'
 import morganMiddleware  from './middlewares/morgan.middleware';
 import { CustomErrorHandler } from './middlewares/error.middleware'
@@ -18,6 +19,7 @@ export class ExpressConfig {
 
     middlerwares(){
         this.app.use(cors());
+        this.app.use(useragent.express())
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({ extended: true }));
         this.app.use(morganMiddleware)

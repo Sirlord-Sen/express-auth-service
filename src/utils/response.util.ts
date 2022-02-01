@@ -1,4 +1,4 @@
-import { Response } from 'express';
+import { response, Response } from 'express';
 import { pick } from 'lodash';
 import { UserPayloadDto } from '../modules/user/dto/user.dto';
 import { PayloadDto } from './util-types';
@@ -10,7 +10,8 @@ enum ResponseStatus {
     NOTFOUND = 'NotFoundError',
     BADREQUEST = 'BadRequestError',
     CONFLICT = 'ConflictError',
-    UNAUTHORIZED = 'UnauthorizedError'
+    UNAUTHORIZED = 'UnauthorizedError',
+    FORBIDDEN = 'ForbiddenError'
 }
 
 enum StatusCode {
@@ -66,7 +67,7 @@ export class SuccessResponse<T> extends ApiResponse{
     constructor(message: string, public data: T) {
         super(ResponseStatus.SUCCESS, StatusCode.SUCCESS, message);
     }
-    send(res: Response): UserPayloadDto { return super.prepare<SuccessResponse<T>>(res, this); }
+    send(): UserPayloadDto { return super.prepare<SuccessResponse<T>>(response, this); }
 }
 
 export class UnauthorizedResponse extends ApiResponse {
@@ -90,7 +91,7 @@ export class NotFoundResponse extends ApiResponse {
 
 export class ForbiddenResponse extends ApiResponse {
     constructor(message = 'Forbidden') {
-        super(ResponseStatus.FAILURE, StatusCode.FORBIDDEN, message);
+        super(ResponseStatus.FORBIDDEN, StatusCode.FORBIDDEN, message);
     }
 }
 

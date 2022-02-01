@@ -1,0 +1,6 @@
+export const JwtConfig = {
+    ACCESS_TOKEN_EXPIRATION : String(process.env.ACCESS_TOKEN_EXPIRATION),
+    ACCESS_TOKEN_SECRET: String(process.env.ACCESS_TOKEN_SECRET),
+    REFRESH_TOKEN_SECRET: String(process.env.REFRESH_TOKEN_SECRET),
+    REFRESH_TOKEN_EXPIRATION: String(process.env.REFRESH_TOKEN_EXPIRATION)
+}

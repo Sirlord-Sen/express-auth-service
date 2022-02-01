@@ -35,7 +35,7 @@ exports.Application = void 0;
 const dotenv = __importStar(require("dotenv"));
 const config_1 = __importDefault(require("config"));
 const server_1 = require("./server");
-const logger_util_1 = require("./common/utils/logger.util");
+const logger_util_1 = require("./utils/logger.util");
 class Application {
     constructor() {
         dotenv.config();

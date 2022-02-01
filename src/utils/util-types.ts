@@ -21,3 +21,7 @@ export class PayloadDto{
 
     data: any
 }
+
+export enum TokenType {
+    BEARER = 'Bearer'
+}

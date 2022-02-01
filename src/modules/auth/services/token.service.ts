@@ -1,25 +1,30 @@
-import { UserPayloadDto } from "../../user/dto/user.dto";
-import jwt, {SignOptions, JwtPayload} from 'jsonwebtoken'
+import {SignOptions, JwtPayload} from 'jsonwebtoken'
+import { pick } from 'lodash'
 import { nanoid } from 'nanoid'
-import { TokenRequest, AccessTokenRequest, RefreshTokenRequest } from "../auth.types";
+import { TokenRequest, AccessTokenRequest, RefreshTokenRequest, FullRefreshToken, RefreshTokenPayload, RefreshToken } from "../auth.types";
 import JWTService from "../../../providers/jwt/jwt.service";
 import { DateHelper } from "../../../helpers";
 import RefreshTokenRepository from "../repository/refreshToken.repository";
 import { getCustomRepository } from "typeorm";
+import { TokenType } from "../../../utils/util-types";
+import { JwtConfig } from '../../../config/jwt.config';
+import { IRefreshToken, ITokenResponse } from '../interfaces/token.interface';
+import { UnauthorizedError } from '../../../utils/error-response.util';
+import UserService from '../../user/services/user.service';
+import { IReturnUser } from '../../user/interfaces/user.interface';
+import { FullUser } from '../../user/user.types';
 
-const JwtConfig = {
-    ACCESS_TOKEN_EXPIRATION : String(process.env.ACCESS_TOKEN_EXPIRATION),
-    ACCESS_TOKEN_SECRET: String(process.env.ACCESS_TOKEN_SECRET),
-    REFRESH_TOKEN_SECRET: String(process.env.REFRESH_TOKEN_SECRET),
-    REFRESH_TOKEN_EXPIRATION: String(process.env.REFRESH_TOKEN_EXPIRATION)
-}
 
 export default class TokenService {
-    private readonly jwtService: JWTService
     private readonly refreshTokenRepository: RefreshTokenRepository
+    private readonly jwtService: JWTService
+    private readonly userService: UserService
+    tokenType : TokenType
     constructor(){
-        this.jwtService = new JWTService()
         this.refreshTokenRepository = getCustomRepository(RefreshTokenRepository)
+        this.jwtService = new JWTService()
+        this.userService = new UserService()
+        this.tokenType = TokenType.BEARER 
     }
 
     async generateAccessToken(body:AccessTokenRequest){
@@ -30,7 +35,7 @@ export default class TokenService {
             ...body,
             jti: nanoid(),
             sub: String(body.userId),
-            typ: 'Bearer'
+            typ: TokenType.BEARER
           };
 
         return this.jwtService.signAsync<JwtPayload>(payload, JwtConfig.ACCESS_TOKEN_SECRET, opts)
@@ -41,16 +46,16 @@ export default class TokenService {
         const ms = DateHelper.convertToMS(JwtConfig.REFRESH_TOKEN_EXPIRATION);
         const expiredAt = DateHelper.addMillisecondToDate(new Date(), ms);
 
-        await this.refreshTokenRepository.createRefreshToken({ ...body, jti, expiredAt });
+        const savedRefreshToken = await this.refreshTokenRepository.createRefreshToken({ ...body, jti, expiredAt });
 
         const opts: SignOptions = {
             expiresIn: JwtConfig.REFRESH_TOKEN_EXPIRATION,
         }
 
         const payload: JwtPayload = {
-            sub: String(body.userId),
+            sub: String(savedRefreshToken.userId),
             jti,
-            typ: 'Bearer',
+            typ: TokenType.BEARER,
         };
 
         return this.jwtService.sign<JwtPayload>(payload, JwtConfig.REFRESH_TOKEN_SECRET, opts)
@@ -62,7 +67,42 @@ export default class TokenService {
             this.generateAccessToken({ email: email, userId: id }),
             this.generateRefreshToken({ userId: id }),
           ]);
-      
-          return { tokenType: 'Bearer', accessToken, refreshToken };
+          
+        return { tokenType: this.tokenType , accessToken, refreshToken };
+    }
+
+    async update(query: Partial<FullRefreshToken>, body: Partial<IRefreshToken>){
+        await this.refreshTokenRepository.updateRefreshToken(query, body)
+    }
+
+    async resolveRefreshToken(token:string): Promise<{user: TokenRequest, refreshToken: RefreshToken}> {
+        const payload = await this.decodeRefreshToken(token);
+        const refreshTokenFromDB = await this.getRefreshTokenFromPayload(payload);
+
+        if (refreshTokenFromDB?.isRevoked) throw new UnauthorizedError('Token expired').send();
+
+        const user = pick(await this.getUserFromRefreshTokenPayload(payload), ['id', 'email']);
+
+        return { user , refreshToken: refreshTokenFromDB };
+    }
+
+    private async decodeRefreshToken(token: string): Promise<RefreshTokenPayload> {
+        const payload = await this.jwtService.verifyAsync<RefreshTokenPayload>(
+                token,
+                JwtConfig.REFRESH_TOKEN_SECRET,
+            );
+        const { jti, sub } = payload
+        if (!jti || !sub) throw new UnauthorizedError('Token Malfunctioned').send()
+        return payload
+      }
+    
+    private getRefreshTokenFromPayload(payload: RefreshTokenPayload): Promise<IRefreshToken>{
+        const { jti, sub } = payload;
+        return this.refreshTokenRepository.findOneToken({ userId: sub, jti });
+    }
+    
+    private getUserFromRefreshTokenPayload(payload: RefreshTokenPayload): Promise<FullUser> {
+        const { sub } = payload;    
+        return this.userService.findOne({ id: sub });
     }
 }

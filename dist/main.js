@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
-const typeorm_config_1 = require("./common/config/typeorm.config");
+const typeorm_config_1 = require("./config/typeorm.config");
 const app_1 = require("./app");
 function bootstrap() {
     return __awaiter(this, void 0, void 0, function* () {

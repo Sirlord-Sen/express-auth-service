@@ -36,9 +36,10 @@ const express_1 = __importDefault(require("express"));
 const path = __importStar(require("path"));
 const bodyParser = __importStar(require("body-parser"));
 const cors_1 = __importDefault(require("cors"));
+const express_useragent_1 = __importDefault(require("express-useragent"));
 const routing_controllers_1 = require("routing-controllers");
-const morgan_middleware_1 = __importDefault(require("./common/middlewares/morgan.middleware"));
-const error_middleware_1 = require("./common/middlewares/error.middleware");
+const morgan_middleware_1 = __importDefault(require("./middlewares/morgan.middleware"));
+const error_middleware_1 = require("./middlewares/error.middleware");
 class ExpressConfig {
     constructor() {
         this.app = (0, express_1.default)();
@@ -47,14 +48,15 @@ class ExpressConfig {
     }
     middlerwares() {
         this.app.use((0, cors_1.default)());
+        this.app.use(express_useragent_1.default.express());
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({ extended: true }));
         this.app.use(morgan_middleware_1.default);
     }
     setupControllers() {
         return __awaiter(this, void 0, void 0, function* () {
-            const authControllers = path.resolve(__dirname, "auth/controller/**/*.ts");
-            const userControllers = path.resolve(__dirname, "user/controller/**/*.ts");
+            const authControllers = path.resolve(__dirname, "modules/auth/controller/**/*.ts");
+            const userControllers = path.resolve(__dirname, "modules/user/controller/**/*.ts");
             (0, routing_controllers_1.useExpressServer)(this.app, {
                 controllers: [authControllers, userControllers],
                 middlewares: [error_middleware_1.CustomErrorHandler],

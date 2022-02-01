@@ -94,6 +94,7 @@ export class ForbiddenError extends ApiError {
     constructor(message = 'Permission denied') {
         super(ErrorType.FORBIDDEN, message);
     }
+    send(): PayloadDto { return super.handle(this, response) }
 }
 
 export class NoEntryError extends ApiError {

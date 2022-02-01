@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { DateHelper } from '../../helpers';
+import { UnauthorizedError } from '../../utils/error-response.util';
 
 export default class JWTService {
 //   decode(
@@ -32,18 +33,17 @@ export default class JWTService {
 //     return jwt.verify(token, secret) as T;
 //   }
 
-//   verifyAsync<T>(token: string, secret: string): Promise<T> {
-//     return new Promise((resolve, reject) => {
-//       jwt.verify(token, secret, (error, decoded) => {
-//         if (error && error.name === 'TokenExpiredError') {
-//           return reject(ResponseHelper.error(HttpExceptionType.TOKEN_EXPIRED));
-//         }
-//         if (decoded) {
-//           return resolve(decoded as unknown as T);
-//         }
+    async verifyAsync<T>(token: string, secret: string): Promise<T> {
+        return new Promise((resolve, reject) => {
+            jwt.verify(token, secret, (error, decoded) => {
+                if (error && error.name === 'TokenExpiredError')
+                    return reject(new UnauthorizedError('Token Expired').send());
+                if (decoded)
+                    return resolve(decoded as unknown as T);
+                
+                return reject(new UnauthorizedError('Token Malfunctioned').send());
+            });
+        });
+    }
 
-//         return reject(ResponseHelper.error(HttpExceptionType.TOKEN_MALFORMED));
-//       });
-//     });
-//   }
 }
