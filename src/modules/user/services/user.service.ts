@@ -1,9 +1,9 @@
-import { IReturnUser, IUser } from '../interfaces/user.interface'
+import { IPassword, IReturnUser, IUser } from '../interfaces/user.interface'
 import { verify } from 'argon2'
 import { pick } from 'lodash'
 import { getCustomRepository } from 'typeorm'
 import { UserRepository } from '../repository/user.repository'
-import { NotFoundError, UnauthorizedError } from '../../../utils/error-response.util'
+import { InternalError, NotFoundError, UnauthorizedError } from '../../../utils/error-response.util'
 import { ILogin } from '../../auth/interfaces/auth.interface'
 import { FullUser } from '../user.types'
 import UserEntity from '../entity/user.entity'
@@ -31,8 +31,19 @@ export default class UserService {
         await this.userRepository.updateUser(query, body)
     }
 
+    async updatePassword(query: Partial<FullUser>, body: IPassword){
+        const { oldPassword, newPassword } = body
+        const user = await this.findOne(query)
+        const validate = await this.validateLoginCredentials(user, oldPassword)
+        if(!validate) throw new UnauthorizedError("Invalid Login Credentials").send()
+        await this.userRepository.updateUser(query, {password: newPassword})
+        // return pick(updatedUser, ["id", "username", "email", "firstname", "surname"])
+    }
+
     async validateLoginCredentials(user: Pick<ILogin, 'password'>, password: string):Promise<Boolean>{
-        try{return await verify(user.password, password)}
-        catch(err){throw new UnauthorizedError("Invalid Login Credentials").send()}
+        try{
+            return await verify(user.password, password)
+        }
+        catch(err){throw new InternalError("Could not verify Password").send()}
     }
 }

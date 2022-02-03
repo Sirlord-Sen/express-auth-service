@@ -26,7 +26,8 @@ export default class AuthService {
         try{
             const { email, password } = body
             const user = await this.userService.findOne({email})
-            await this.userService.validateLoginCredentials(user, password)
+            const validate = await this.userService.validateLoginCredentials(user, password)
+            if(!validate) throw new UnauthorizedError("Invalid Login Credentials").send()
             return pick(user, ["id", "username", "email", "firstname", "surname"])
         }
         catch(err){throw err}

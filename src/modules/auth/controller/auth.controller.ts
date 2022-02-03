@@ -28,7 +28,7 @@ export class UserController {
             const user = await this.authService.login(body)
             const tokens = await this.tokenService.getTokens(user)
             if (tokens) addAuthToRes(res, tokens);
-            return new SuccessResponse('New User Created', {user: user, payload: tokens}).send()
+            return new SuccessResponse('Login Successfull', {user: user, payload: tokens}).send()
             
         }
         catch(err: any){ return err }

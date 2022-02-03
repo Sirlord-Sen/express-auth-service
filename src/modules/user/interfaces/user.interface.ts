@@ -18,3 +18,8 @@ export interface IReturnUser {
 export interface UserPayloadInterface{
     user: IReturnUser
 }
+
+export interface IPassword{
+    oldPassword: string,
+    newPassword: string
+}
