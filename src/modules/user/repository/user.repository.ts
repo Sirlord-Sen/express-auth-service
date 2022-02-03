@@ -20,8 +20,13 @@ export class UserRepository extends Repository<UserEntity>{
     }
 
     async updateUser(query: Partial<FullUser>, body:Partial<Omit<IReturnUser, 'id'>>){
-        try{ await this.update(query, body) }
-        catch(err:any){ throw new InternalError('Could not update user').send()  }
+        try{ 
+            // const user = await this.findOneOrFail({ where: query})
+            // await this.save({...user, body})
+            await this.update(query, body) 
+        }
+        catch(err:any){ 
+            throw new InternalError('Could not update user').send()  }
 
     }
 }

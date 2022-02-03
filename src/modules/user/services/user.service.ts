@@ -3,7 +3,7 @@ import { verify } from 'argon2'
 import { pick } from 'lodash'
 import { getCustomRepository } from 'typeorm'
 import { UserRepository } from '../repository/user.repository'
-import { NotFoundError } from '../../../utils/error-response.util'
+import { NotFoundError, UnauthorizedError } from '../../../utils/error-response.util'
 import { ILogin } from '../../auth/interfaces/auth.interface'
 import { FullUser } from '../user.types'
 import UserEntity from '../entity/user.entity'
@@ -32,6 +32,7 @@ export default class UserService {
     }
 
     async validateLoginCredentials(user: Pick<ILogin, 'password'>, password: string):Promise<Boolean>{
-        return user.password ? await verify(user.password, password) : false;
+        try{return await verify(user.password, password)}
+        catch(err){throw new UnauthorizedError("Invalid Login Credentials").send()}
     }
 }

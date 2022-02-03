@@ -14,7 +14,8 @@ export const Connection = async() => {
             password,
             database,
             synchronize,
-            entities: ["src/modules/user/entity/**/*.ts", "src/modules/auth/entity/**/*.ts"]
+            entities: ["src/modules/**/*.entity.ts"],
+            subscribers: ["src/modules/**/*.subscriber.ts"]
         })
         Logger.info("Database connected successfully")
     }

@@ -26,9 +26,7 @@ export default class AuthService {
         try{
             const { email, password } = body
             const user = await this.userService.findOne({email})
-            const validateCredentials = await this.userService.validateLoginCredentials(user, password)
-
-            if(!validateCredentials){ throw new UnauthorizedError("Invalid Login Credentials").send() }
+            await this.userService.validateLoginCredentials(user, password)
             return pick(user, ["id", "username", "email", "firstname", "surname"])
         }
         catch(err){throw err}
@@ -60,6 +58,7 @@ export default class AuthService {
     async resetPassword(body: ResetPasswordRequest) {
         const { password, token } = body
         const { jti, email } = await this.tokenService.decodeAccessToken(token)
+
         await this.userService.update({email, confirmTokenPassword: jti}, {password: password})
         await this.emailQueue.addForgotPasswordToQueue({ email });
     }

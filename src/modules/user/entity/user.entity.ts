@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, BaseEntity, Unique, BeforeInsert } from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn, BaseEntity, Unique, BeforeInsert, BeforeUpdate } from 'typeorm'
 import argon2 from 'argon2'
 
 @Entity({name: "users"})
@@ -25,8 +25,10 @@ export default class UserEntity extends BaseEntity{
     @Column('text', { nullable: true })
     confirmTokenPassword?: string;
 
-    @BeforeInsert()
-    async hashPassword(){
-        this.password = await argon2.hash(this.password)
-    }
+    // @BeforeInsert()
+    // @BeforeUpdate()
+    // async hashPassword(){
+    //     this.password = await argon2.hash(this.password)
+    // }
+
 }
