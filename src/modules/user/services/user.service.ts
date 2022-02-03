@@ -27,7 +27,7 @@ export default class UserService {
         catch(err){ throw new NotFoundError("User not found").send() }
     }
 
-    async update(query: Partial<FullUser>, body: Partial<Omit<IReturnUser, 'id'>>) {
+    async update(query: Partial<FullUser>, body: Partial<Omit<FullUser, 'id'>>) {
         await this.userRepository.updateUser(query, body)
     }
 

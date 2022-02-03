@@ -9,5 +9,5 @@ export type DeployEmail = {
 
 export type ForgotPassword = {
   email: string;
-  token: string;
+  token?: string;
 };

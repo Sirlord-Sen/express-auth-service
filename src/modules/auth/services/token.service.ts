@@ -1,7 +1,7 @@
 import {SignOptions, JwtPayload} from 'jsonwebtoken'
 import { pick } from 'lodash'
 import { nanoid } from 'nanoid'
-import { TokenRequest, AccessTokenRequest, RefreshTokenRequest, FullRefreshToken, RefreshTokenPayload, RefreshToken } from "../auth.types";
+import { TokenRequest, AccessTokenRequest, RefreshTokenRequest, FullRefreshToken, RefreshTokenPayload, RefreshToken, AccessTokenPayload } from "../auth.types";
 import JWTService from "../../../providers/jwt/jwt.service";
 import { DateHelper } from "../../../helpers";
 import RefreshTokenRepository from "../repository/refreshToken.repository";
@@ -94,7 +94,9 @@ export default class TokenService {
         const { jti, sub } = payload
         if (!jti || !sub) throw new UnauthorizedError('Token Malfunctioned').send()
         return payload
-      }
+    }
+
+    
     
     private getRefreshTokenFromPayload(payload: RefreshTokenPayload): Promise<IRefreshToken>{
         const { jti, sub } = payload;
@@ -104,5 +106,15 @@ export default class TokenService {
     private getUserFromRefreshTokenPayload(payload: RefreshTokenPayload): Promise<FullUser> {
         const { sub } = payload;    
         return this.userService.findOne({ id: sub });
+    }
+
+    async decodeAccessToken(token:string) {
+        const payload = await this.jwtService.verifyAsync<AccessTokenPayload>(
+            token,
+            JwtConfig.ACCESS_TOKEN_SECRET,
+        );
+        const { jti, sub } = payload
+        if (!jti || !sub) throw new UnauthorizedError('Token Malfunctioned').send()
+        return payload
     }
 }

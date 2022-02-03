@@ -22,4 +22,4 @@ export type LogoutRequest = Pick<IRefreshToken, 'userId'>
 export type UpdateTokenRequest = LogoutRequest & Pick<IRefreshToken, 'isRevoked'>
 
 export type ForgotPasswordRequest = Required<Pick<FullUser, 'email'>>;
-export type ResetPasswordRequest = Required<Pick<FullUser, 'password'>> & Token
+export type ResetPasswordRequest = Required<Pick<FullUser, 'password'>> & {token: string}

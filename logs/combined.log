@@ -667,3 +667,176 @@
 
 [2022-02-02 23:53:26:5326] [32minfo[39m: [32mJob 29 has completed[39m 
 
+[2022-02-03 00:14:37:1437] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 00:14:48:1448] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 00:32:47:3247] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 00:32:58:3258] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 00:33:54:3354] [35mhttp[39m: [35m::1 - POST /api/auth/reset-password HTTP/1.1 400 192 - 20.973 ms[39m
+[35m[39m 
+
+[2022-02-03 00:35:03:353] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 00:35:14:3514] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 00:35:51:3551] [35mhttp[39m: [35m::1 - POST /api/auth/reset-password HTTP/1.1 400 192 - 18.884 ms[39m
+[35m[39m 
+
+[2022-02-03 00:36:19:3619] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 00:36:30:3630] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 00:36:34:3634] [35mhttp[39m: [35m::1 - POST /api/auth/reset-password HTTP/1.1 404 163 - 36.008 ms[39m
+[35m[39m 
+
+[2022-02-03 00:38:00:380] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 00:38:11:3811] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 00:38:22:3822] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 00:38:32:3832] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 00:38:40:3840] [32minfo[39m: [32mJob with ID: 30 moved to queue[39m 
+
+[2022-02-03 00:38:40:3840] [35mhttp[39m: [35m::1 - POST /api/auth/forgot-password HTTP/1.1 200 177 - 104.546 ms[39m
+[35m[39m 
+
+[2022-02-03 00:38:47:3847] [32minfo[39m: [32mJob 30 has completed[39m 
+
+[2022-02-03 00:44:33:4433] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 00:44:44:4444] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 00:44:52:4452] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 00:45:03:453] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 00:45:06:456] [35mhttp[39m: [35m::1 - POST /api/auth/reset-password HTTP/1.1 401 188 - 13.900 ms[39m
+[35m[39m 
+
+[2022-02-03 00:45:18:4518] [32minfo[39m: [32mJob with ID: 31 moved to queue[39m 
+
+[2022-02-03 00:45:18:4518] [35mhttp[39m: [35m::1 - POST /api/auth/forgot-password HTTP/1.1 200 177 - 89.462 ms[39m
+[35m[39m 
+
+[2022-02-03 00:45:22:4522] [32minfo[39m: [32mJob 31 has completed[39m 
+
+[2022-02-03 00:46:40:4640] [35mhttp[39m: [35m::1 - POST /api/auth/reset-password HTTP/1.1 404 163 - 16.734 ms[39m
+[35m[39m 
+
+[2022-02-03 00:49:05:495] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 00:49:16:4916] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 00:51:23:5123] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 00:51:34:5134] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 00:51:41:5141] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 00:51:51:5151] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 00:52:43:5243] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 00:52:53:5253] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 00:52:59:5259] [35mhttp[39m: [35m::1 - POST /api/auth/reset-password HTTP/1.1 401 182 - 13.364 ms[39m
+[35m[39m 
+
+[2022-02-03 00:53:05:535] [32minfo[39m: [32mJob with ID: 32 moved to queue[39m 
+
+[2022-02-03 00:53:05:535] [35mhttp[39m: [35m::1 - POST /api/auth/forgot-password HTTP/1.1 200 177 - 94.152 ms[39m
+[35m[39m 
+
+[2022-02-03 00:53:11:5311] [32minfo[39m: [32mJob 32 has completed[39m 
+
+[2022-02-03 00:54:01:541] [35mhttp[39m: [35m::1 - POST /api/auth/reset-password HTTP/1.1 200 173 - 76.950 ms[39m
+[35m[39m 
+
+[2022-02-03 00:56:33:5633] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 00:56:44:5644] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 00:57:14:5714] [32minfo[39m: [32mJob with ID: 33 moved to queue[39m 
+
+[2022-02-03 00:57:14:5714] [35mhttp[39m: [35m::1 - POST /api/auth/forgot-password HTTP/1.1 200 177 - 216.151 ms[39m
+[35m[39m 
+
+[2022-02-03 00:57:19:5719] [32minfo[39m: [32mJob 33 has completed[39m 
+
+[2022-02-03 00:58:18:5818] [32minfo[39m: [32mJob with ID: 34 moved to queue[39m 
+
+[2022-02-03 00:58:18:5818] [35mhttp[39m: [35m::1 - POST /api/auth/reset-password HTTP/1.1 200 173 - 71.766 ms[39m
+[35m[39m 
+
+[2022-02-03 00:58:22:5822] [32minfo[39m: [32mJob 34 has completed[39m 
+

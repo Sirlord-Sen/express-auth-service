@@ -39,18 +39,11 @@ class EmailService {
                 clientSecret: OAuthConfig.clientSecret,
                 refreshToken: OAuthConfig.refreshToken
             },
-            // tls: {
-            //   rejectUnauthorized: false
-            // }
+            tls: { rejectUnauthorized: false }
         });
 
         return transporter
     }
-
-
-    // async transport(){
-      
-    // }
 
     async sendEmail(data: SendEmail): Promise<any> {
         let emailTransporter = await this.createTransporter();

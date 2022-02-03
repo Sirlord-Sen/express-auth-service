@@ -3,7 +3,7 @@ import { ILogin } from "../interfaces/auth.interface";
 import { UnauthorizedError } from "../../../utils/error-response.util";
 import { pick } from "lodash";
 import { IReturnUser } from "../../user/interfaces/user.interface";
-import { ForgotPasswordRequest, LogoutRequest } from "../auth.types";
+import { ForgotPasswordRequest, LogoutRequest, ResetPasswordRequest } from "../auth.types";
 import { TokenService } from ".";
 import { IRefreshTokenRequest, ITokenResponse } from "../interfaces/token.interface";
 import { TokenType } from "../../../utils/util-types";
@@ -55,5 +55,12 @@ export default class AuthService {
 
         await this.userService.update({ id }, { confirmTokenPassword });
         await this.emailQueue.addForgotPasswordToQueue({ token, email });
+    }
+
+    async resetPassword(body: ResetPasswordRequest) {
+        const { password, token } = body
+        const { jti, email } = await this.tokenService.decodeAccessToken(token)
+        await this.userService.update({email, confirmTokenPassword: jti}, {password: password})
+        await this.emailQueue.addForgotPasswordToQueue({ email });
     }
 }
