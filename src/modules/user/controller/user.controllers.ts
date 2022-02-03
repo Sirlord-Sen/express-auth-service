@@ -1,6 +1,6 @@
 import { AuthMiddleware } from '../../../middlewares/auth.middleware';
 import { Response } from 'express'
-import { Controller, Res, Body, Post, Get, Req, UseBefore } from 'routing-controllers';
+import { Controller, Res, Body, Post, Get, Req, UseBefore, Put } from 'routing-controllers';
 import { SuccessResponse } from '../../../utils/response.util';
 import { UserPayloadDto } from '../../../utils/util-types';
 import { ResetPasswordDto, SignUpDto } from '../dto/user.dto';
@@ -34,7 +34,15 @@ export class UserController {
     @UseBefore(AuthMiddleware)
     async ResetPassword(@Body() body:ResetPasswordDto, @Req() req: any): Promise<UserPayloadDto> {
         const { userId } = req.currentUser
-        await this.userService.updatePassword({id: userId}, body)
-        return new SuccessResponse('Password Changed Successfully', {user: null}).send()
+        const user = await this.userService.updatePassword({id: userId}, body)
+        return new SuccessResponse('Password Changed Successfully', {user: user}).send()
+    }
+
+    @Put('/update')
+    @UseBefore(AuthMiddleware)
+    async UpdatedUser(@Body() body:any, @Req() req: any) {
+        const { userId } = req.currentUser
+        const user = await this.userService.update({id: userId}, body)
+        return new SuccessResponse('Updated User', {user: user}).send()
     }
 }

@@ -52,15 +52,17 @@ export default class AuthService {
         const confirmTokenPassword = nanoid();
         const token = await this.tokenService.generateAccessToken({userId: id, email}, confirmTokenPassword)
 
-        await this.userService.update({ id }, { confirmTokenPassword });
+        const user = await this.userService.update({ id }, { confirmTokenPassword });
         await this.emailQueue.addForgotPasswordToQueue({ token, email });
+        return user
     }
 
     async resetPassword(body: ResetPasswordRequest) {
         const { password, token } = body
         const { jti, email } = await this.tokenService.decodeAccessToken(token)
 
-        await this.userService.update({email, confirmTokenPassword: jti}, {password: password})
+        const user = await this.userService.update({email, confirmTokenPassword: jti}, {password: password})
         await this.emailQueue.addForgotPasswordToQueue({ email });
+        return user
     }
 }

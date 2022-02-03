@@ -2335,3 +2335,502 @@
 [2022-02-03 15:26:56:2656] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 970 - 25.761 ms[39m
 [35m[39m 
 
+[2022-02-03 15:30:21:3021] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 15:30:31:3031] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 15:30:47:3047] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 15:30:57:3057] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 15:36:26:3626] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 15:36:36:3636] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 15:37:34:3734] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 970 - 129.592 ms[39m
+[35m[39m 
+
+[2022-02-03 15:38:05:385] [35mhttp[39m: [35m::1 - PUT /api/user/update HTTP/1.1 200 171 - 66.020 ms[39m
+[35m[39m 
+
+[2022-02-03 15:38:39:3839] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 971 - 87.943 ms[39m
+[35m[39m 
+
+[2022-02-03 15:38:55:3855] [35mhttp[39m: [35m::1 - PUT /api/user/update HTTP/1.1 200 171 - 65.204 ms[39m
+[35m[39m 
+
+[2022-02-03 15:40:18:4018] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 15:40:28:4028] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 15:40:34:4034] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 15:40:47:4047] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 15:40:57:4057] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 15:41:09:419] [35mhttp[39m: [35m::1 - PUT /api/user/update HTTP/1.1 200 466 - 81.424 ms[39m
+[35m[39m 
+
+[2022-02-03 15:41:25:4125] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 974 - 111.096 ms[39m
+[35m[39m 
+
+[2022-02-03 15:41:36:4136] [35mhttp[39m: [35m::1 - PUT /api/user/update HTTP/1.1 200 466 - 63.726 ms[39m
+[35m[39m 
+
+[2022-02-03 15:41:42:4142] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 974 - 28.302 ms[39m
+[35m[39m 
+
+[2022-02-03 15:43:19:4319] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 15:43:30:4330] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 15:43:38:4338] [35mhttp[39m: [35m::1 - PUT /api/user/update HTTP/1.1 200 434 - 161.766 ms[39m
+[35m[39m 
+
+[2022-02-03 15:43:45:4345] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 401 194 - 34.378 ms[39m
+[35m[39m 
+
+[2022-02-03 15:44:50:4450] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 401 194 - 82.451 ms[39m
+[35m[39m 
+
+[2022-02-03 15:45:06:456] [35mhttp[39m: [35m::1 - PUT /api/user/update HTTP/1.1 200 437 - 202.981 ms[39m
+[35m[39m 
+
+[2022-02-03 15:46:04:464] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 15:46:14:4614] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 15:46:18:4618] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 401 194 - 206.385 ms[39m
+[35m[39m 
+
+[2022-02-03 15:47:05:475] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 15:47:15:4715] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 15:47:19:4719] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 401 194 - 100.231 ms[39m
+[35m[39m 
+
+[2022-02-03 15:47:52:4752] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 15:48:02:482] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 15:48:10:4810] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 401 194 - 97.273 ms[39m
+[35m[39m 
+
+[2022-02-03 15:48:40:4840] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 15:48:50:4850] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 15:49:19:4919] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 15:49:28:4928] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 15:49:49:4949] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 15:49:59:4959] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 15:50:12:5012] [35mhttp[39m: [35m::1 - POST /api/user/register HTTP/1.1 200 302 - 94.809 ms[39m
+[35m[39m 
+
+[2022-02-03 15:50:16:5016] [35mhttp[39m: [35m::1 - POST /api/user/register HTTP/1.1 409 196 - 45.542 ms[39m
+[35m[39m 
+
+[2022-02-03 15:50:28:5028] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 970 - 111.335 ms[39m
+[35m[39m 
+
+[2022-02-03 15:51:05:515] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 970 - 94.709 ms[39m
+[35m[39m 
+
+[2022-02-03 15:51:09:519] [35mhttp[39m: [35m::1 - PUT /api/user/update HTTP/1.1 200 302 - 24.495 ms[39m
+[35m[39m 
+
+[2022-02-03 15:51:17:5117] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 401 194 - 10.763 ms[39m
+[35m[39m 
+
+[2022-02-03 15:51:50:5150] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 15:52:00:520] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 15:52:04:524] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 401 194 - 103.661 ms[39m
+[35m[39m 
+
+[2022-02-03 15:52:10:5210] [35mhttp[39m: [35m::1 - PUT /api/user/update HTTP/1.1 200 302 - 9.268 ms[39m
+[35m[39m 
+
+[2022-02-03 15:54:01:541] [35mhttp[39m: [35m::1 - POST /api/user/register HTTP/1.1 409 196 - 94.254 ms[39m
+[35m[39m 
+
+[2022-02-03 15:54:12:5412] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 15:54:22:5422] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 15:54:28:5428] [35mhttp[39m: [35m::1 - POST /api/user/register HTTP/1.1 200 302 - 110.480 ms[39m
+[35m[39m 
+
+[2022-02-03 15:55:28:5528] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 15:55:37:5537] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 15:55:42:5542] [35mhttp[39m: [35m::1 - PUT /api/user/update HTTP/1.1 500 177 - 74.470 ms[39m
+[35m[39m 
+
+[2022-02-03 15:55:54:5554] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 970 - 570.440 ms[39m
+[35m[39m 
+
+[2022-02-03 15:56:15:5615] [35mhttp[39m: [35m::1 - PUT /api/user/update HTTP/1.1 200 302 - 80.029 ms[39m
+[35m[39m 
+
+[2022-02-03 15:56:48:5648] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 974 - 95.352 ms[39m
+[35m[39m 
+
+[2022-02-03 15:56:51:5651] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 974 - 20.826 ms[39m
+[35m[39m 
+
+[2022-02-03 15:57:58:5758] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 15:58:08:588] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 15:58:20:5820] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 974 - 116.933 ms[39m
+[35m[39m 
+
+[2022-02-03 15:58:21:5821] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 974 - 18.307 ms[39m
+[35m[39m 
+
+[2022-02-03 15:58:35:5835] [35mhttp[39m: [35m::1 - PUT /api/user/update HTTP/1.1 200 304 - 101.635 ms[39m
+[35m[39m 
+
+[2022-02-03 15:59:12:5912] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 15:59:22:5922] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 15:59:26:5926] [35mhttp[39m: [35m::1 - PUT /api/user/update HTTP/1.1 200 304 - 92.360 ms[39m
+[35m[39m 
+
+[2022-02-03 15:59:42:5942] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 15:59:52:5952] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 15:59:56:5956] [35mhttp[39m: [35m::1 - PUT /api/user/update HTTP/1.1 200 304 - 80.469 ms[39m
+[35m[39m 
+
+[2022-02-03 16:00:06:06] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 16:00:16:016] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 16:00:22:022] [35mhttp[39m: [35m::1 - PUT /api/user/update HTTP/1.1 200 304 - 79.993 ms[39m
+[35m[39m 
+
+[2022-02-03 16:00:41:041] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 16:00:50:050] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 16:01:02:12] [35mhttp[39m: [35m::1 - PUT /api/user/update HTTP/1.1 200 302 - 105.304 ms[39m
+[35m[39m 
+
+[2022-02-03 16:01:20:120] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 16:01:31:131] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 16:01:35:135] [35mhttp[39m: [35m::1 - PUT /api/user/update HTTP/1.1 200 302 - 97.702 ms[39m
+[35m[39m 
+
+[2022-02-03 16:01:44:144] [35mhttp[39m: [35m::1 - PUT /api/user/update HTTP/1.1 200 304 - 26.120 ms[39m
+[35m[39m 
+
+[2022-02-03 16:02:14:214] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 16:02:24:224] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 16:02:34:234] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 16:02:39:239] [35mhttp[39m: [35m::1 - PUT /api/user/update HTTP/1.1 200 302 - 118.761 ms[39m
+[35m[39m 
+
+[2022-02-03 16:04:46:446] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 16:04:56:456] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 16:05:02:52] [35mhttp[39m: [35m::1 - PUT /api/user/update HTTP/1.1 200 304 - 131.825 ms[39m
+[35m[39m 
+
+[2022-02-03 16:09:37:937] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 16:09:50:950] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 16:10:00:100] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 16:10:28:1028] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 16:10:38:1038] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 16:10:42:1042] [35mhttp[39m: [35m::1 - POST /api/user/register HTTP/1.1 200 302 - 106.545 ms[39m
+[35m[39m 
+
+[2022-02-03 16:11:00:110] [35mhttp[39m: [35m::1 - PUT /api/user/update HTTP/1.1 500 177 - 60.227 ms[39m
+[35m[39m 
+
+[2022-02-03 16:11:07:117] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 970 - 42.062 ms[39m
+[35m[39m 
+
+[2022-02-03 16:11:51:1151] [35mhttp[39m: [35m::1 - PUT /api/user/update HTTP/1.1 200 302 - 199.039 ms[39m
+[35m[39m 
+
+[2022-02-03 16:11:56:1156] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 974 - 29.160 ms[39m
+[35m[39m 
+
+[2022-02-03 16:12:00:120] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 974 - 14.781 ms[39m
+[35m[39m 
+
+[2022-02-03 16:14:20:1420] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 16:14:30:1430] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 16:15:07:157] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 16:15:17:1517] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 16:15:34:1534] [32minfo[39m: [32mJob with ID: 70 moved to queue[39m 
+
+[2022-02-03 16:15:34:1534] [35mhttp[39m: [35m::1 - POST /api/auth/forgot-password HTTP/1.1 200 308 - 105.807 ms[39m
+[35m[39m 
+
+[2022-02-03 16:15:44:1544] [32minfo[39m: [32mJob 70 has completed[39m 
+
+[2022-02-03 16:16:42:1642] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 974 - 184.132 ms[39m
+[35m[39m 
+
+[2022-02-03 16:17:00:170] [32minfo[39m: [32mJob with ID: 71 moved to queue[39m 
+
+[2022-02-03 16:17:00:170] [35mhttp[39m: [35m::1 - POST /api/auth/reset-password HTTP/1.1 200 304 - 83.665 ms[39m
+[35m[39m 
+
+[2022-02-03 16:17:03:173] [32minfo[39m: [32mJob 71 has completed[39m 
+
+[2022-02-03 16:17:14:1714] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 401 194 - 186.028 ms[39m
+[35m[39m 
+
+[2022-02-03 16:17:21:1721] [35mhttp[39m: [35m::1 - POST /api/auth/reset-password HTTP/1.1 500 177 - 2.675 ms[39m
+[35m[39m 
+
+[2022-02-03 16:17:36:1736] [32minfo[39m: [32mJob with ID: 72 moved to queue[39m 
+
+[2022-02-03 16:17:36:1736] [35mhttp[39m: [35m::1 - POST /api/auth/forgot-password HTTP/1.1 200 308 - 72.508 ms[39m
+[35m[39m 
+
+[2022-02-03 16:17:40:1740] [32minfo[39m: [32mJob 72 has completed[39m 
+
+[2022-02-03 16:18:29:1829] [32minfo[39m: [32mJob with ID: 73 moved to queue[39m 
+
+[2022-02-03 16:18:29:1829] [35mhttp[39m: [35m::1 - POST /api/auth/reset-password HTTP/1.1 200 304 - 78.405 ms[39m
+[35m[39m 
+
+[2022-02-03 16:18:32:1832] [32minfo[39m: [32mJob 73 has completed[39m 
+
+[2022-02-03 16:18:33:1833] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 974 - 24.505 ms[39m
+[35m[39m 
+
+[2022-02-03 16:21:11:2111] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 16:21:21:2121] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 16:21:37:2137] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 16:21:48:2148] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 16:21:50:2150] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 974 - 128.752 ms[39m
+[35m[39m 
+
+[2022-02-03 16:22:25:2225] [35mhttp[39m: [35m::1 - POST /api/user/reset-password HTTP/1.1 401 194 - 80.671 ms[39m
+[35m[39m 
+
+[2022-02-03 16:22:37:2237] [35mhttp[39m: [35m::1 - POST /api/user/reset-password HTTP/1.1 200 319 - 98.872 ms[39m
+[35m[39m 
+
+[2022-02-03 16:22:43:2243] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 401 194 - 15.693 ms[39m
+[35m[39m 
+
+[2022-02-03 16:22:51:2251] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 974 - 25.755 ms[39m
+[35m[39m 
+
+[2022-02-03 16:23:01:231] [35mhttp[39m: [35m::1 - POST /api/user/reset-password HTTP/1.1 200 319 - 94.754 ms[39m
+[35m[39m 
+
+[2022-02-03 16:23:08:238] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 401 194 - 9.581 ms[39m
+[35m[39m 
+
+[2022-02-03 16:23:12:2312] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 974 - 26.685 ms[39m
+[35m[39m 
+
+[2022-02-03 16:23:27:2327] [35mhttp[39m: [35m::1 - GET /api/user/current HTTP/1.1 401 182 - 1.119 ms[39m
+[35m[39m 
+
+[2022-02-03 16:23:36:2336] [35mhttp[39m: [35m::1 - GET /api/user/current HTTP/1.1 200 443 - 68.922 ms[39m
+[35m[39m 
+
+[2022-02-03 16:24:47:2447] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-03 16:24:57:2457] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-03 16:32:03:323] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 974 - 151.019 ms[39m
+[35m[39m 
+
+[2022-02-03 16:32:36:3236] [35mhttp[39m: [35m::1 - POST /api/auth/logout HTTP/1.1 200 206 - 70.832 ms[39m
+[35m[39m 
+
+[2022-02-03 16:33:03:333] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 974 - 85.633 ms[39m
+[35m[39m 
+
+[2022-02-03 16:33:34:3334] [35mhttp[39m: [35m::1 - POST /api/auth/refresh-token HTTP/1.1 200 836 - 89.597 ms[39m
+[35m[39m 
+

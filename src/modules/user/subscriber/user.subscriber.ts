@@ -1,4 +1,4 @@
-import argon2 from 'argon2'
+import { verify, hash } from 'argon2'
 import {
   EntitySubscriberInterface,
   EventSubscriber,
@@ -16,14 +16,19 @@ export class UserSubscriber implements EntitySubscriberInterface<UserEntity> {
 
   //FIXME:
     async beforeUpdate({entity, databaseEntity}: UpdateEvent<UserEntity>): Promise<void> {
-        if (entity?.password) {
-            await this.hashPassword(entity as UserEntity);
-            entity.confirmTokenPassword = '';      
+        //Checks if the password field exist
+        if (entity?.password && databaseEntity.password){
+            // Check if Password is not the same
+            if(entity?.password !== databaseEntity?.password && !(await verify(databaseEntity.password, entity?.password))){
+                await this.hashPassword(entity as UserEntity);
+                entity.confirmTokenPassword = '';  
+            }
+            else entity.password = databaseEntity.password;
         }
     }
 
     async hashPassword(entity: UserEntity): Promise<void> {
-        if (entity.password) entity.password = await argon2.hash(entity.password)
+        if (entity.password) entity.password = await hash(entity.password)
     }
 
     listenTo() {

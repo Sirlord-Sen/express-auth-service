@@ -53,13 +53,13 @@ export class UserController {
 
     @Post('/forgot-password')
     async ForgotPassword(@Body() body: ForgotPasswordDto): Promise<PayloadDto>{
-        await this.authService.forgotPassword(body)
-        return new SuccessResponse('Email Sent to user', { user: null}).send()
+        const user = await this.authService.forgotPassword(body)
+        return new SuccessResponse('Email Sent to user', { user: user}).send()
     }
 
     @Post('/reset-password')
     async ResetPassword(@Body() body: ResetPasswordDto): Promise<PayloadDto>{
-        await this.authService.resetPassword(body)
-        return new SuccessResponse('Password Reset', { user: null}).send()
+        const user = await this.authService.resetPassword(body)
+        return new SuccessResponse('Password Reset', { user: user}).send()
     }
 }

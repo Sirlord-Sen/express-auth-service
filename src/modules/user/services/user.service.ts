@@ -28,7 +28,8 @@ export default class UserService {
     }
 
     async update(query: Partial<FullUser>, body: Partial<Omit<FullUser, 'id'>>) {
-        await this.userRepository.updateUser(query, body)
+        const user = await this.userRepository.updateUser(query, body)
+        return pick(user, ["id", "username", "email", "firstname", "surname"])
     }
 
     async updatePassword(query: Partial<FullUser>, body: IPassword){
@@ -36,8 +37,7 @@ export default class UserService {
         const user = await this.findOne(query)
         const validate = await this.validateLoginCredentials(user, oldPassword)
         if(!validate) throw new UnauthorizedError("Invalid Login Credentials").send()
-        await this.userRepository.updateUser(query, {password: newPassword})
-        // return pick(updatedUser, ["id", "username", "email", "firstname", "surname"])
+        return await this.update(query, {password: newPassword})
     }
 
     async validateLoginCredentials(user: Pick<ILogin, 'password'>, password: string):Promise<Boolean>{
