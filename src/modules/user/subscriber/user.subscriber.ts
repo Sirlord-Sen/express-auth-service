@@ -14,7 +14,6 @@ export class UserSubscriber implements EntitySubscriberInterface<UserEntity> {
         return this.hashPassword(event.entity);
     }
 
-  //FIXME:
     async beforeUpdate({entity, databaseEntity}: UpdateEvent<UserEntity>): Promise<void> {
         //Checks if the password field exist
         if (entity?.password && databaseEntity.password){

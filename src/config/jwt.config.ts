@@ -1,6 +1,16 @@
-export const JwtConfig = {
-    ACCESS_TOKEN_EXPIRATION : String(process.env.ACCESS_TOKEN_EXPIRATION),
-    ACCESS_TOKEN_SECRET: String(process.env.ACCESS_TOKEN_SECRET),
-    REFRESH_TOKEN_SECRET: String(process.env.REFRESH_TOKEN_SECRET),
-    REFRESH_TOKEN_EXPIRATION: String(process.env.REFRESH_TOKEN_EXPIRATION)
-}
+class JwtConfig{
+    readonly accessTokenSecret: string;
+    readonly accessTokenExpiration: string;
+    readonly refreshTokenSecret: string;
+    readonly refreshTokenExpiration: string;
+  
+    constructor() {
+  
+      this.accessTokenSecret = String(process.env.ACCESS_TOKEN_SECRET)
+      this.accessTokenExpiration = String(process.env.ACCESS_TOKEN_EXPIRATION)
+      this.refreshTokenSecret = String(process.env.REFRESH_TOKEN_SECRET)
+      this.refreshTokenExpiration = String(process.env.REFRESH_TOKEN_EXPIRATION)
+    }
+  }
+  
+  export default new JwtConfig();

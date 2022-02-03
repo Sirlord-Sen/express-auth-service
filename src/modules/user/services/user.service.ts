@@ -27,12 +27,12 @@ export default class UserService {
         catch(err){ throw new NotFoundError("User not found").send() }
     }
 
-    async update(query: Partial<FullUser>, body: Partial<Omit<FullUser, 'id'>>) {
+    async update(query: Partial<FullUser>, body: Partial<Omit<FullUser, 'id'>>): Promise<IReturnUser> {
         const user = await this.userRepository.updateUser(query, body)
         return pick(user, ["id", "username", "email", "firstname", "surname"])
     }
 
-    async updatePassword(query: Partial<FullUser>, body: IPassword){
+    async updatePassword(query: Partial<FullUser>, body: IPassword): Promise<IReturnUser>{
         const { oldPassword, newPassword } = body
         const user = await this.findOne(query)
         const validate = await this.validateLoginCredentials(user, oldPassword)
@@ -41,9 +41,7 @@ export default class UserService {
     }
 
     async validateLoginCredentials(user: Pick<ILogin, 'password'>, password: string):Promise<Boolean>{
-        try{
-            return await verify(user.password, password)
-        }
+        try{return await verify(user.password, password)}
         catch(err){throw new InternalError("Could not verify Password").send()}
     }
 }

@@ -15,11 +15,8 @@ export class UserController {
 
     @Post('/register')
     async Register(@Body() body:SignUpDto, @Res() res: Response): Promise<UserPayloadDto>{
-        try{
-            const user = await this.userService.register(body)
-            return new SuccessResponse('New User Created', {user: user}).send()
-        }
-        catch(err: any){ return err }
+        const user = await this.userService.register(body)
+        return new SuccessResponse('New User Created', {user: user}).send()
     }
 
     @Get('/current')
@@ -40,7 +37,7 @@ export class UserController {
 
     @Put('/update')
     @UseBefore(AuthMiddleware)
-    async UpdatedUser(@Body() body:any, @Req() req: any) {
+    async UpdatedUser(@Body() body:any, @Req() req: any): Promise<UserPayloadDto> {
         const { userId } = req.currentUser
         const user = await this.userService.update({id: userId}, body)
         return new SuccessResponse('Updated User', {user: user}).send()

@@ -1,5 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, BaseEntity, Unique, BeforeInsert, BeforeUpdate } from 'typeorm'
-import argon2 from 'argon2'
+import { 
+    Entity, 
+    Column, 
+    PrimaryGeneratedColumn, 
+    BaseEntity, 
+    Unique 
+} from 'typeorm'
 
 @Entity({name: "users"})
 @Unique('UQ_USER_EMAIL', ['email'])
@@ -24,11 +29,4 @@ export default class UserEntity extends BaseEntity{
 
     @Column('text', { nullable: true })
     confirmTokenPassword?: string;
-
-    // @BeforeInsert()
-    // @BeforeUpdate()
-    // async hashPassword(){
-    //     this.password = await argon2.hash(this.password)
-    // }
-
 }

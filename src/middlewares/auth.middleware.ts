@@ -3,7 +3,7 @@ import { TokenHelper } from '../helpers';
 import { Request, Response } from 'express';
 import JWTService from '../providers/jwt/jwt.service';
 import { JwtPayload } from 'jsonwebtoken';
-import { JwtConfig } from '../config/jwt.config';
+import { JwtConfig } from '../config';
 import { ForbiddenError } from '../utils/error-response.util';
 
 export class AuthMiddleware implements ExpressMiddlewareInterface{
@@ -20,7 +20,7 @@ export class AuthMiddleware implements ExpressMiddlewareInterface{
             try {
                 const data = await this.jwtService.verifyAsync<JwtPayload>(
                     accessToken,
-                    JwtConfig.ACCESS_TOKEN_SECRET,
+                    JwtConfig.accessTokenSecret,
                 );
                 
                 req.currentUser = {

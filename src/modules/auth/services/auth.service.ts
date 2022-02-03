@@ -45,7 +45,7 @@ export default class AuthService {
         return  tokens ;
     }
 
-    async forgotPassword(body: ForgotPasswordRequest) {
+    async forgotPassword(body: ForgotPasswordRequest): Promise<IReturnUser> {
         const { email } = body;
         const { id } = await this.userService.findOne({ email });
 
@@ -57,7 +57,7 @@ export default class AuthService {
         return user
     }
 
-    async resetPassword(body: ResetPasswordRequest) {
+    async resetPassword(body: ResetPasswordRequest): Promise<IReturnUser> {
         const { password, token } = body
         const { jti, email } = await this.tokenService.decodeAccessToken(token)
 

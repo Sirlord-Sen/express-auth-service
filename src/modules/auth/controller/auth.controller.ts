@@ -23,15 +23,11 @@ export class UserController {
 
     @Post('/login')
     async Login(@Body() body:LoginDto, @Res() res:Response, @Req() req: Request): Promise<UserPayloadDto>{
-        try{
-            // console.log(req.useragent)
-            const user = await this.authService.login(body)
-            const tokens = await this.tokenService.getTokens(user)
-            if (tokens) addAuthToRes(res, tokens);
-            return new SuccessResponse('Login Successfull', {user: user, payload: tokens}).send()
-            
-        }
-        catch(err: any){ return err }
+        // console.log(req.useragent)
+        const user = await this.authService.login(body)
+        const tokens = await this.tokenService.getTokens(user)
+        if (tokens) addAuthToRes(res, tokens);
+        return new SuccessResponse('Login Successfull', {user: user, payload: tokens}).send()
     }
 
     @Post('/logout')
@@ -52,13 +48,13 @@ export class UserController {
     }
 
     @Post('/forgot-password')
-    async ForgotPassword(@Body() body: ForgotPasswordDto): Promise<PayloadDto>{
+    async ForgotPassword(@Body() body: ForgotPasswordDto): Promise<UserPayloadDto>{
         const user = await this.authService.forgotPassword(body)
         return new SuccessResponse('Email Sent to user', { user: user}).send()
     }
 
     @Post('/reset-password')
-    async ResetPassword(@Body() body: ResetPasswordDto): Promise<PayloadDto>{
+    async ResetPassword(@Body() body: ResetPasswordDto): Promise<UserPayloadDto>{
         const user = await this.authService.resetPassword(body)
         return new SuccessResponse('Password Reset', { user: user}).send()
     }

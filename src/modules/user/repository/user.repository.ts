@@ -10,7 +10,6 @@ export class UserRepository extends Repository<UserEntity>{
         try {
             const user = this.create(body);
             await this.save(user);
-    
             return user;
         } 
         catch (err:any) { 
@@ -19,12 +18,11 @@ export class UserRepository extends Repository<UserEntity>{
         }
     }
 
-    async updateUser(query: Partial<FullUser>, body:Partial<Omit<FullUser, 'id'>>){
+    async updateUser(query: Partial<FullUser>, body:Partial<Omit<FullUser, 'id'>>): Promise<UserEntity>{
         try{ 
             const user = await this.findOneOrFail({ where: query})
             this.merge(user, body)
             await this.save(user)
-
             return user
         }
         catch(err:any){ throw new InternalError('Could not update user').send()  }

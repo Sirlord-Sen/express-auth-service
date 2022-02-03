@@ -1,18 +1,25 @@
 import {SignOptions, JwtPayload} from 'jsonwebtoken'
 import { pick } from 'lodash'
 import { nanoid } from 'nanoid'
-import { TokenRequest, AccessTokenRequest, RefreshTokenRequest, FullRefreshToken, RefreshTokenPayload, RefreshToken, AccessTokenPayload } from "../auth.types";
 import JWTService from "../../../providers/jwt/jwt.service";
 import { DateHelper } from "../../../helpers";
 import RefreshTokenRepository from "../repository/refreshToken.repository";
 import { getCustomRepository } from "typeorm";
 import { TokenType } from "../../../utils/util-types";
-import { JwtConfig } from '../../../config/jwt.config';
+import { JwtConfig } from '../../../config';
 import { IRefreshToken, ITokenResponse } from '../interfaces/token.interface';
 import { UnauthorizedError } from '../../../utils/error-response.util';
 import UserService from '../../user/services/user.service';
-import { IReturnUser } from '../../user/interfaces/user.interface';
 import { FullUser } from '../../user/user.types';
+import { 
+    TokenRequest, 
+    AccessTokenRequest, 
+    RefreshTokenRequest, 
+    FullRefreshToken, 
+    RefreshTokenPayload, 
+    RefreshToken, 
+    AccessTokenPayload 
+} from "../auth.types";
 
 
 export default class TokenService {
@@ -29,7 +36,7 @@ export default class TokenService {
 
     async generateAccessToken(body:AccessTokenRequest, confirmTokenPassword?: string):Promise<string>{
         const opts: SignOptions = {
-            expiresIn: JwtConfig.ACCESS_TOKEN_EXPIRATION,
+            expiresIn: JwtConfig.accessTokenExpiration,
         }
         const payload: JwtPayload = {
             ...body,
@@ -38,18 +45,18 @@ export default class TokenService {
             typ: TokenType.BEARER
           };
 
-        return await this.jwtService.signAsync<JwtPayload>(payload, JwtConfig.ACCESS_TOKEN_SECRET, opts)
+        return await this.jwtService.signAsync<JwtPayload>(payload, JwtConfig.accessTokenSecret, opts)
     }
 
     async generateRefreshToken(body:RefreshTokenRequest):Promise<string>{
         const jti = nanoid();
-        const ms = DateHelper.convertToMS(JwtConfig.REFRESH_TOKEN_EXPIRATION);
+        const ms = DateHelper.convertToMS(JwtConfig.refreshTokenExpiration);
         const expiredAt = DateHelper.addMillisecondToDate(new Date(), ms);
 
         const savedRefreshToken = await this.refreshTokenRepository.createRefreshToken({ ...body, jti, expiredAt });
 
         const opts: SignOptions = {
-            expiresIn: JwtConfig.REFRESH_TOKEN_EXPIRATION,
+            expiresIn: JwtConfig.refreshTokenExpiration,
         }
 
         const payload: JwtPayload = {
@@ -58,7 +65,7 @@ export default class TokenService {
             typ: TokenType.BEARER,
         };
 
-        return this.jwtService.sign<JwtPayload>(payload, JwtConfig.REFRESH_TOKEN_SECRET, opts)
+        return this.jwtService.sign<JwtPayload>(payload, JwtConfig.refreshTokenSecret, opts)
     }
 
     async getTokens(body: TokenRequest):Promise<ITokenResponse>{
@@ -89,14 +96,12 @@ export default class TokenService {
     private async decodeRefreshToken(token: string): Promise<RefreshTokenPayload> {
         const payload = await this.jwtService.verifyAsync<RefreshTokenPayload>(
                 token,
-                JwtConfig.REFRESH_TOKEN_SECRET,
+                JwtConfig.refreshTokenSecret,
             );
         const { jti, sub } = payload
         if (!jti || !sub) throw new UnauthorizedError('Token Malfunctioned').send()
         return payload
     }
-
-    
     
     private getRefreshTokenFromPayload(payload: RefreshTokenPayload): Promise<IRefreshToken>{
         const { jti, sub } = payload;
@@ -108,10 +113,10 @@ export default class TokenService {
         return this.userService.findOne({ id: sub });
     }
 
-    async decodeAccessToken(token:string) {
+    async decodeAccessToken(token:string): Promise<AccessTokenPayload> {
         const payload = await this.jwtService.verifyAsync<AccessTokenPayload>(
             token,
-            JwtConfig.ACCESS_TOKEN_SECRET,
+            JwtConfig.accessTokenSecret,
         );
         const { jti, sub } = payload
         if (!jti || !sub) throw new UnauthorizedError('Token Malfunctioned').send()
