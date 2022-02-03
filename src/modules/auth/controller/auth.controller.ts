@@ -52,7 +52,7 @@ export class UserController {
     }
 
     @Post('/forgot-password')
-    async ForgotPassword(@Res() res: Response, @Body() body: ForgotPasswordDto): Promise<any> {
+    async ForgotPassword(@Body() body: ForgotPasswordDto): Promise<any> {
         await this.authService.forgotPassword(body)
         return new SuccessResponse('Email Sent to user', { user: null}).send()
     }

@@ -8,16 +8,18 @@ import { TokenService } from ".";
 import { IRefreshTokenRequest, ITokenResponse } from "../interfaces/token.interface";
 import { TokenType } from "../../../utils/util-types";
 import { nanoid } from "nanoid";
-import { EmailQueue } from "../../../providers/mailer";
+import EmailQueue  from "../../../providers/mailer";
 
 
 export default class AuthService {
     private userService: UserService 
     private tokenService: TokenService
+    private emailQueue : EmailQueue
 
     constructor(){
          this.userService = new UserService()
          this.tokenService = new TokenService()
+         this.emailQueue = new EmailQueue()
     }
 
     async login(body:ILogin): Promise<IReturnUser>{
@@ -52,6 +54,6 @@ export default class AuthService {
         const token = await this.tokenService.generateAccessToken({userId: id, email}, confirmTokenPassword)
 
         await this.userService.update({ id }, { confirmTokenPassword });
-        void EmailQueue.addForgotPasswordToQueue({ token, email });
+        await this.emailQueue.addForgotPasswordToQueue({ token, email });
     }
 }

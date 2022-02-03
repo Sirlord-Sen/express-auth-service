@@ -1,4 +1,5 @@
 import * as winston from 'winston'
+import process from 'process'
 import * as config from 'config'
 
 const levels = {
@@ -47,7 +48,7 @@ export const Logger = winston.createLogger({
     transports
 })
 
-process.on('unhandledRejection', (reason, p) => {
-    console.log(reason)
-    Logger.warn('Possibly Unhandled Rejection at: Promise ', p, ' reason: ', reason);
+process.on('unhandledRejection', async(reason, p) => {
+    // console.log(await reason)
+    Logger.warn('Possibly Unhandled Rejection at: Promise ', await p, ' reason: ', await reason);
 });

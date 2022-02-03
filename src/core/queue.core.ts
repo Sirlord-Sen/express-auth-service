@@ -1,6 +1,5 @@
 import Bull, {QueueOptions, Queue} from 'bull';
 import ms from 'ms';
-import { EventEmitter } from 'events';
 import { Logger } from '../utils/logger.util';
 import { RedisConfig } from '../config';
 
@@ -15,7 +14,7 @@ export default class QueueCore {
             redis: {
                 port: RedisConfig.port,
                 host: RedisConfig.host,
-                password: RedisConfig.password,
+                // password: RedisConfig.password,
             },
             prefix: RedisConfig.queuePrefix,
             ...this.queueOptions,
@@ -38,13 +37,10 @@ export default class QueueCore {
         };
     }
 
-    private eventError() {
-        const EventEmit = new EventEmitter()
-        this.queue.on('error', log => {
-            Logger.error(log)
+    private async eventError() {
+        this.queue.on('error', error => {
+            Logger.error(error)
         });
-        EventEmit.once('close', async () => {
-            await this.queue.close();
-        });
+        // await this.queue.close();
     }
 }
