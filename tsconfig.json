@@ -15,7 +15,7 @@
     "skipLibCheck": true,                           
     "forceConsistentCasingInFileNames": true ,
     "sourceMap": true,
-    "typeRoots": ["./src/@types", "./node_modules/@types"],
+    "typeRoots": ["./@types", "./node_modules/@types"],
     "paths": {
       "@config/*": ["./src/config/*"],
       "@core/*": ["./src/core/*"],

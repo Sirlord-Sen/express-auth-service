@@ -2,7 +2,6 @@ import { Response, Request } from 'express'
 import { Controller, Req, Res, Body, Post, UseBefore } from 'routing-controllers';
 import { SuccessResponse } from '../../../utils/response.util';
 import { ForgotPasswordDto, LoginDto, ResetPasswordDto } from '../dto/auth.dto';
-import UserService from '../../user/services/user.service'
 import {AuthService, TokenService} from '../services';
 import { addAuthToRes } from '../utils/auth.util'
 import { AuthMiddleware } from '../../../middlewares/auth.middleware';
@@ -12,15 +11,13 @@ import { PayloadDto, TokenPayloadDto, UserPayloadDto } from '../../../utils/util
 
 @Controller('/api/auth')
 export class UserController {
-    private readonly userService: UserService
     private readonly authService: AuthService
     private readonly tokenService: TokenService
     constructor(){
-        this.userService = new UserService()
         this.authService = new AuthService()
         this.tokenService = new TokenService()
     }
-
+    // FIX LOGINS WITH MULTIPLE DEVICES
     @Post('/login')
     async Login(@Body() body:LoginDto, @Res() res:Response, @Req() req: Request): Promise<UserPayloadDto>{
         // console.log(req.useragent)

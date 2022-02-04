@@ -4,9 +4,9 @@ type CurrentUser = {
 }
 
 declare global{
-    declare namespace Express {
-        export interface Request {
-            currentUser: CurrentUser
+    namespace Express {
+        interface Request {
+            currentUser?: CurrentUser
         }
     }
 }
