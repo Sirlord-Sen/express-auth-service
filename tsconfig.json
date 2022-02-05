@@ -15,9 +15,10 @@
     "skipLibCheck": true,                           
     "forceConsistentCasingInFileNames": true ,
     "sourceMap": true,
-    "typeRoots": ["./@types", "./node_modules/@types"],
     "baseUrl": "./",
+    "typeRoots": ["src/@types", "node_modules/@types"],
     "paths": {
+      "@auth-service/*": ["src/"],
       "@config/*": ["src/config/*"],
       "@core/*": ["src/core/*"],
       "@middlewares/*": ["src/middlewares/*"],
@@ -27,5 +28,7 @@
       "@helpers/*": ["src/helpers/*"],
       "@db/*": ["src/db/*"]
     },
-  }
+  },
+  "include": ["./src", "./tests"],
+  "exclude": ["node_modules", "dist"],
 }

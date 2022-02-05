@@ -9,8 +9,9 @@ import { TokenHelper } from '@helpers//';
 import { RefreshTokenDto } from '../dto/token.dto';
 import { PayloadDto, TokenPayloadDto, UserPayloadDto } from '@utils/util-types';
 
+
 @Controller('/api/auth')
-export class UserController {
+export class AuthController {
     private readonly authService: AuthService
     private readonly tokenService: TokenService
     constructor(){
@@ -19,7 +20,7 @@ export class UserController {
     }
     // FIX LOGINS WITH MULTIPLE DEVICES
     @Post('/login')
-    async Login(@Body() body:LoginDto, @Res() res:Response, @Req() req: Request): Promise<UserPayloadDto>{
+    async Login(@Body() body:LoginDto, @Req() req: any, @Res() res: Response): Promise<PayloadDto>{
         // console.log(req.useragent)
         const user = await this.authService.login(body)
         const tokens = await this.tokenService.getTokens(user)
