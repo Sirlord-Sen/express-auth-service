@@ -36,9 +36,11 @@ const dotenv = __importStar(require("dotenv"));
 const config_1 = __importDefault(require("config"));
 const server_1 = require("./server");
 const logger_util_1 = require("./utils/logger.util");
+const config_2 = require("./config");
 class Application {
     constructor() {
         dotenv.config();
+        console.log(config_2.EmailConfig.username);
         this.express = new server_1.ExpressConfig();
         this.start();
     }

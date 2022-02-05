@@ -48,7 +48,6 @@ export const Logger = winston.createLogger({
     transports
 })
 
-process.on('unhandledRejection', async(reason, p) => {
-    // console.log(await reason)
-    Logger.warn('Possibly Unhandled Rejection at: Promise ', await p, ' reason: ', await reason);
+process.on('unhandledRejection', async(reason:any, p) => {
+    Logger.warn(`Possibly Unhandled Rejection Reason: ${reason.message}`);
 });

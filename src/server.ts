@@ -26,10 +26,9 @@ export class ExpressConfig {
     }
   
     async setupControllers() {
-        const authControllers = path.resolve(__dirname, "modules/auth/controller/**/*.ts");
-        const userControllers = path.resolve(__dirname, "modules/user/controller/**/*.ts");
+        const Controllers = path.resolve(__dirname, "modules/**/*.controller.ts");
         useExpressServer(this.app, { 
-            controllers: [ authControllers, userControllers ], 
+            controllers: [ Controllers ], 
             middlewares: [ CustomErrorHandler ],
             classTransformer: true, 
             defaultErrorHandler: false,

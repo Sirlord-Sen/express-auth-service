@@ -1,20 +1,13 @@
+import { parsedEnv } from ".";
+import { ParsedVariables } from 'dotenv-parse-variables'
+
+
 class EmailConfig{
-  readonly driver: string;
-  readonly encryption: string;
-  readonly host: string;
-  readonly password: string;
-  readonly port: number;
   readonly username: string;
 
-  constructor() {
-
-    this.driver = String(process.env.MAIL_DRIVER)
-    this.host = String(process.env.MAIL_HOST)
-    this.port = Number(process.env.MAIL_PORT)
-    this.username = String(process.env.MAIL_USERNAME)
-    this.password = String(process.env.MAIL_PASSWORD)
-    this.encryption = String(process.env.MAIL_ENCRYPTION)
+  constructor(parsedEnv: ParsedVariables) {
+    this.username = String(parsedEnv.MAIL_USERNAME)
   }
 }
 
-export default new EmailConfig();
+export default new EmailConfig(parsedEnv);

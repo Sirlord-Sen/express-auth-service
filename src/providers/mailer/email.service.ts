@@ -1,5 +1,4 @@
-import nodemailer,{ createTransport } from 'nodemailer';
-import Mail from 'nodemailer/lib/mailer';
+import { createTransport } from 'nodemailer';
 import { EmailConfig } from '../../config';
 import { OAuthConfig } from '../../config'
 import { SendEmail } from './email.types';

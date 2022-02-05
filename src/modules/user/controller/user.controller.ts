@@ -23,7 +23,7 @@ export class UserController {
     @UseBefore(AuthMiddleware)
     async GetCurrentUser(@Req() req: any): Promise<UserPayloadDto> {
         const { userId } = req.currentUser
-        const user = await this.userService.findOne({id: userId})
+        const user = await this.userService.findCurrentUser({id: userId})
         return new SuccessResponse('Current User Found', {user: user}).send()
     }
 

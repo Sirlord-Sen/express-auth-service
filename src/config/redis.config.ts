@@ -1,17 +1,21 @@
-class RedisConfig {
+import { parsedEnv } from ".";
+import { ParsedVariables } from 'dotenv-parse-variables'
+import { RedisOptions } from 'ioredis'
+
+class RedisConfig implements RedisOptions{
   readonly host: string;
-  readonly password: string;
   readonly port: number;
   readonly queuePrefix: string;
-  readonly time: number;
+  // readonly password: string;
+  // readonly time: number;
 
-  constructor() {
-    this.port = Number(process.env.REDIS_PORT)
-    this.host = String(process.env.REDIS_HOST)
-    this.password = String(process.env.REDIS_PASSWORD)
-    this.time = Number(process.env.REDIS_TIME)
-    this.queuePrefix = String(process.env.QUEUE_PREFIX)
+  constructor(parsedEnv:ParsedVariables) {
+    this.host = String(parsedEnv.REDIS_HOST)
+    this.port = Number(parsedEnv.REDIS_PORT) 
+    this.queuePrefix = String(parsedEnv.QUEUE_PREFIX) 
+    // this.password = String(parsedEnv.REDIS_PASSWORD)
+    // this.time = Number(parsedEnv.REDIS_TIME)
   }
 }
 
-export default new RedisConfig();
+export default new RedisConfig(parsedEnv);

@@ -45,6 +45,8 @@ export default class AuthService {
         return  tokens ;
     }
 
+    // FIX
+    // SET EXPIRY FOR CONFIRMTOKENPASSWORD TO BE CLEARED FROM DATABASE AFTER EXPIRY
     async forgotPassword(body: ForgotPasswordRequest): Promise<IReturnUser> {
         const { email } = body;
         const { id } = await this.userService.findOne({ email });

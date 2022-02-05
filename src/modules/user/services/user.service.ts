@@ -22,6 +22,10 @@ export default class UserService {
         catch(err){ throw err }
     }
 
+    async findCurrentUser(data: Partial<FullUser>): Promise<IReturnUser>{
+        const user = await this.findOne(data)
+        return pick(user, ["id", "username", "email", "firstname", "surname"])
+    }
     async findOne(query: Partial<FullUser>): Promise<UserEntity>{
         try{ return await this.userRepository.findOneOrFail({ where: query });}
         catch(err){ throw new NotFoundError("User not found").send() }

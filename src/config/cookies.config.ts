@@ -1,11 +1,15 @@
+import { parsedEnv } from ".";
+import { ParsedVariables } from 'dotenv-parse-variables'
 import { CookieOptions } from "express";
 
-const isProduction = process.env.NODE_ENV === "production";
-
-const cookiesConfig: CookieOptions = {
-  httpOnly: true,
-  secure: isProduction ? true : false,
-  // Add sameSite & domain for prod
-};
-
-export default cookiesConfig;
+class CookiesConfig implements CookieOptions{
+    readonly httpOnly: boolean;
+    readonly secure: boolean;
+  
+    constructor(parsedEnv: ParsedVariables) {
+        this.httpOnly = Boolean(parsedEnv.HTTPONLY)
+        this.secure =  Boolean(parsedEnv.SECURE)
+    }
+  }
+  
+  export default new CookiesConfig(parsedEnv);

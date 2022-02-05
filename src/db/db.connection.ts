@@ -1,15 +1,8 @@
 import { createConnection } from 'typeorm'
-import config from 'config'
 import { Logger } from '../utils/logger.util'
-const { 
-    type, 
-    host, 
-    port, 
-    username, 
-    password, 
-    database, 
-    synchronize
-} = config.get('db')
+import { DBConfig } from '../config/'
+
+const { type ,username, password, database, synchronize, host, port } = DBConfig
 
 export const Connection = async() => {
     try{

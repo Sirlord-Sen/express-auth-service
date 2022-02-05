@@ -1,19 +1,17 @@
-import * as dotenv from 'dotenv'
-import config from 'config';
 import { ExpressConfig } from './server';
 import { Logger }  from './utils/logger.util';
+import { parsedEnv } from './config';
 
 export class Application {
     private express: ExpressConfig;
 
     constructor()  {
-        dotenv.config()
         this.express = new ExpressConfig();
         this.start()
     }
 
     private async start(){
-        const port = config.get('server.port')
+        const port = parsedEnv.PORT
         this.express.app.listen(port, () => {
           Logger.info
           (`

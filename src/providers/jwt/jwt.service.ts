@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import jwt, { SignOptions } from 'jsonwebtoken';
 import { DateHelper } from '../../helpers';
 import { UnauthorizedError } from '../../utils/error-response.util';
 
@@ -10,7 +10,7 @@ export default class JWTService {
 //     return jwt.decode(token, options);
 //   }
 
-    sign<T>(payload: T, secret: string, opts?: jwt.SignOptions): string {
+    sign<T>(payload: T, secret: string, opts?: SignOptions): string {
         return jwt.sign(
             { ...payload, iat: DateHelper.getUnixTimeOfDate() },
             secret,
@@ -18,7 +18,7 @@ export default class JWTService {
         );
   }
 
-    signAsync<T>(payload: T, secret: string, opts?: jwt.SignOptions): Promise<string> {
+    signAsync<T>(payload: T, secret: string, opts?: SignOptions): Promise<string> {
         return new Promise((resolve, reject) => {
             jwt.sign(
                 { ...payload, iat: DateHelper.getUnixTimeOfDate() },
