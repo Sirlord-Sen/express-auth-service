@@ -2,10 +2,10 @@ import Bull, {Job} from 'bull';
 import ms from 'ms';
 import EmailService from './email.service';
 import { ForgotPassword } from './email.types';
-import { Logger } from '../../utils/logger.util';
-import { EmailConfig } from '../../config';
+import { Logger } from '@utils/logger.util';
+import { EmailConfig } from '@config//';
 import { EventEmitter } from 'events';
-import QueueCore from '../../core/queue.core';
+import QueueCore from '@core/queue.core';
 
 export default class EmailQueue extends QueueCore{  
     constructor() {

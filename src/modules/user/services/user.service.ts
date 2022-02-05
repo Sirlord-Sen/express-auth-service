@@ -1,10 +1,10 @@
-import { IPassword, IReturnUser, IUser } from '../interfaces/user.interface'
 import { verify } from 'argon2'
 import { pick } from 'lodash'
 import { getCustomRepository } from 'typeorm'
+import { IPassword, IReturnUser, IUser } from '../interfaces/user.interface'
 import { UserRepository } from '../repository/user.repository'
-import { InternalError, NotFoundError, UnauthorizedError } from '../../../utils/error-response.util'
-import { ILogin } from '../../auth/interfaces/auth.interface'
+import { InternalError, NotFoundError, UnauthorizedError } from '@utils/error-response.util'
+import { ILogin } from '@modules/auth/interfaces/auth.interface'
 import { FullUser } from '../user.types'
 import UserEntity from '../entity/user.entity'
 

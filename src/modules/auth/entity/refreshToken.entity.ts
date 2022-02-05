@@ -1,5 +1,5 @@
 import { Column, Entity, BaseEntity, Index, ManyToOne, JoinColumn, PrimaryGeneratedColumn } from 'typeorm'
-import UserEntity from '../../user/entity/user.entity';
+import UserEntity from '@modules/user/entity/user.entity';
 
 @Entity('refresh-tokens')
 export default class RefreshTokenEntity extends BaseEntity{

@@ -1,5 +1,5 @@
 import { EntityRepository, Repository, UpdateResult } from 'typeorm';
-import { InternalError, NotFoundError } from '../../../utils/error-response.util';
+import { InternalError, NotFoundError } from '@utils/error-response.util';
 import { FullRefreshToken } from '../auth.types';
 import RefreshTokenEntity  from '../entity/refreshToken.entity';
 import { IRefreshToken } from '../interfaces/token.interface';

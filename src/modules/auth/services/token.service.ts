@@ -1,16 +1,16 @@
 import {SignOptions, JwtPayload} from 'jsonwebtoken'
 import { pick } from 'lodash'
 import { nanoid } from 'nanoid'
-import JWTService from "../../../providers/jwt/jwt.service";
-import { DateHelper } from "../../../helpers";
+import JWTService from "@providers/jwt/jwt.service";
+import { DateHelper } from "@helpers//";
 import RefreshTokenRepository from "../repository/refreshToken.repository";
 import { getCustomRepository } from "typeorm";
-import { TokenType } from "../../../utils/util-types";
-import { JwtConfig } from '../../../config';
+import { TokenType } from "@utils/util-types";
+import { JwtConfig } from '@config//';
 import { IRefreshToken, ITokenResponse } from '../interfaces/token.interface';
-import { UnauthorizedError } from '../../../utils/error-response.util';
-import UserService from '../../user/services/user.service';
-import { FullUser } from '../../user/user.types';
+import { UnauthorizedError } from '@utils/error-response.util';
+import UserService from '@modules/user/services/user.service';
+import { FullUser } from '@modules/user/user.types';
 import { 
     TokenRequest, 
     AccessTokenRequest, 

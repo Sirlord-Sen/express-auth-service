@@ -1,7 +1,8 @@
 import Bull, {QueueOptions, Queue} from 'bull';
 import ms from 'ms';
-import { Logger } from '../utils/logger.util';
-import { RedisConfig } from '../config';
+import { Logger } from '@utils/logger.util';
+import { RedisConfig } from '@config//';
+
 
 export default class QueueCore {
     readonly queue: Queue;

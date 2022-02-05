@@ -1,6 +1,6 @@
 import jwt, { SignOptions } from 'jsonwebtoken';
-import { DateHelper } from '../../helpers';
-import { UnauthorizedError } from '../../utils/error-response.util';
+import { DateHelper } from '@helpers//';
+import { UnauthorizedError } from '@utils/error-response.util';
 
 export default class JWTService {
 //   decode(

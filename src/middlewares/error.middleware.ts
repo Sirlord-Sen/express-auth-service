@@ -2,7 +2,7 @@ import {
   Middleware, 
   ExpressErrorMiddlewareInterface
 } from 'routing-controllers';
-import { BadRequestError } from '../utils/error-response.util'
+import { BadRequestError } from '@utils/error-response.util'
 import { ValidationError } from 'class-validator'
 
 @Middleware({ type: 'after' })

@@ -1,6 +1,6 @@
 import { IsString } from 'class-validator'
-import { ITokenResponse } from '../modules/auth/interfaces/token.interface'
-import { UserPayloadInterface } from '../modules/user/interfaces/user.interface'
+import { ITokenResponse } from '@modules/auth/interfaces/token.interface'
+import { UserPayloadInterface } from '@modules/user/interfaces/user.interface'
 
 export class PayloadDto{
     @IsString()

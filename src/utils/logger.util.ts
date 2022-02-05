@@ -1,6 +1,6 @@
 import * as winston from 'winston'
 import process from 'process'
-import * as config from 'config'
+import { parsedEnv } from '@config//'
 
 const levels = {
     error: 0,
@@ -11,7 +11,7 @@ const levels = {
 }
 
 const level = () => {
-    const env = process.env.NODE_ENV || 'development'
+    const env = parsedEnv.NODE_ENV || 'development'
     const isDevelopment = env === 'development'
     return isDevelopment ? 'debug' : 'warn'
 }

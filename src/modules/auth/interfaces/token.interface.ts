@@ -1,5 +1,5 @@
 import { Response } from "express";
-import { TokenType } from "../../../utils/util-types";
+import { TokenType } from "@utils/util-types";
 
 export interface ITokenPayload{
     jti: string;

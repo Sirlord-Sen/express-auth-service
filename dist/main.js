@@ -10,11 +10,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
-const typeorm_config_1 = require("./config/typeorm.config");
+const db_connection_1 = require("./db/db.connection");
 const app_1 = require("./app");
 function bootstrap() {
     return __awaiter(this, void 0, void 0, function* () {
-        yield (0, typeorm_config_1.Connection)();
+        yield (0, db_connection_1.Connection)();
         new app_1.Application();
     });
 }

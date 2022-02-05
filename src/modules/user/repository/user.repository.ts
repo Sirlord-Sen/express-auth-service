@@ -1,5 +1,5 @@
 import { EntityRepository, Repository } from 'typeorm'
-import { InternalError, ConflictError } from '../../../utils/error-response.util';
+import { InternalError, ConflictError } from '@utils/error-response.util';
 import UserEntity from '../entity/user.entity'
 import { IReturnUser, IUser } from '../interfaces/user.interface';
 import { FullUser } from '../user.types';

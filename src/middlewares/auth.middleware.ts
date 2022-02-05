@@ -1,10 +1,10 @@
 import { ExpressMiddlewareInterface } from 'routing-controllers';
-import { TokenHelper } from '../helpers';
+import { TokenHelper } from '@helpers//';
 import { Request, Response } from 'express';
-import JWTService from '../providers/jwt/jwt.service';
+import JWTService from '@providers/jwt/jwt.service';
 import { JwtPayload } from 'jsonwebtoken';
-import { JwtConfig } from '../config';
-import { ForbiddenError } from '../utils/error-response.util';
+import { JwtConfig } from '@config//';
+import { ForbiddenError } from '@utils/error-response.util';
 
 export class AuthMiddleware implements ExpressMiddlewareInterface{
     private readonly jwtService: JWTService

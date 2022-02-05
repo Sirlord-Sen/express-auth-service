@@ -1,14 +1,14 @@
-import UserService from "../../user/services/user.service";
+import UserService from "@modules/user/services/user.service";
 import { ILogin } from "../interfaces/auth.interface";
-import { UnauthorizedError } from "../../../utils/error-response.util";
+import { UnauthorizedError } from "@utils/error-response.util";
 import { pick } from "lodash";
-import { IReturnUser } from "../../user/interfaces/user.interface";
+import { IReturnUser } from "@modules/user/interfaces/user.interface";
 import { ForgotPasswordRequest, LogoutRequest, ResetPasswordRequest } from "../auth.types";
 import { TokenService } from ".";
 import { IRefreshTokenRequest, ITokenResponse } from "../interfaces/token.interface";
-import { TokenType } from "../../../utils/util-types";
+import { TokenType } from "@utils/util-types";
 import { nanoid } from "nanoid";
-import EmailQueue  from "../../../providers/mailer";
+import EmailQueue  from "@providers/mailer";
 
 
 export default class AuthService {

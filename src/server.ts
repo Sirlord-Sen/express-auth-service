@@ -5,8 +5,8 @@ import * as bodyParser from 'body-parser'
 import cors from 'cors'
 import useragent from 'express-useragent'
 import { useExpressServer } from 'routing-controllers'
-import morganMiddleware  from './middlewares/morgan.middleware';
-import { CustomErrorHandler } from './middlewares/error.middleware'
+import morganMiddleware  from '@middlewares/morgan.middleware';
+import { CustomErrorHandler } from '@middlewares/error.middleware'
 
 export class ExpressConfig {
     public app: Application;

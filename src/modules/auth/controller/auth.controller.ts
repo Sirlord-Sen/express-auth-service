@@ -1,13 +1,13 @@
 import { Response, Request } from 'express'
 import { Controller, Req, Res, Body, Post, UseBefore } from 'routing-controllers';
-import { SuccessResponse } from '../../../utils/response.util';
+import { SuccessResponse } from '@utils/response.util';
 import { ForgotPasswordDto, LoginDto, ResetPasswordDto } from '../dto/auth.dto';
 import {AuthService, TokenService} from '../services';
-import { addAuthToRes } from '../../../utils/cookies.utils'
-import { AuthMiddleware } from '../../../middlewares/auth.middleware';
-import { TokenHelper } from '../../../helpers';
+import { addAuthToRes } from '@utils/cookies.utils'
+import { AuthMiddleware } from '@middlewares/auth.middleware';
+import { TokenHelper } from '@helpers//';
 import { RefreshTokenDto } from '../dto/token.dto';
-import { PayloadDto, TokenPayloadDto, UserPayloadDto } from '../../../utils/util-types';
+import { PayloadDto, TokenPayloadDto, UserPayloadDto } from '@utils/util-types';
 
 @Controller('/api/auth')
 export class UserController {

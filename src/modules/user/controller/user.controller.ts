@@ -1,8 +1,8 @@
-import { AuthMiddleware } from '../../../middlewares/auth.middleware';
+import { AuthMiddleware } from '@middlewares/auth.middleware';
 import { Response } from 'express'
 import { Controller, Res, Body, Post, Get, Req, UseBefore, Put } from 'routing-controllers';
-import { SuccessResponse } from '../../../utils/response.util';
-import { UserPayloadDto } from '../../../utils/util-types';
+import { SuccessResponse } from '@utils/response.util';
+import { UserPayloadDto } from '@utils/util-types';
 import { ResetPasswordDto, SignUpDto } from '../dto/user.dto';
 import UserService  from '../services/user.service'
 
