@@ -16,7 +16,7 @@ export class UserController {
     @Post('/register')
     async Register(@Body() body:SignUpDto, @Res() res: Response): Promise<UserPayloadDto>{
         const user = await this.userService.register(body)
-        return new SuccessResponse('New User Created', {user: user}).send()
+        return new SuccessResponse('New User Created', { user }).send()
     }
 
     @Get('/current')
@@ -24,7 +24,7 @@ export class UserController {
     async GetCurrentUser(@Req() req: any): Promise<UserPayloadDto> {
         const { userId } = req.currentUser
         const user = await this.userService.findCurrentUser({id: userId})
-        return new SuccessResponse('Current User Found', {user: user}).send()
+        return new SuccessResponse('Current User Found', { user }).send()
     }
 
     @Post('/reset-password')
@@ -32,7 +32,7 @@ export class UserController {
     async ResetPassword(@Body() body:ResetPasswordDto, @Req() req: any): Promise<UserPayloadDto> {
         const { userId } = req.currentUser
         const user = await this.userService.updatePassword({id: userId}, body)
-        return new SuccessResponse('Password Changed Successfully', {user: user}).send()
+        return new SuccessResponse('Password Changed Successfully', { user }).send()
     }
 
     @Put('/update')
@@ -40,6 +40,6 @@ export class UserController {
     async UpdatedUser(@Body() body:any, @Req() req: any): Promise<UserPayloadDto> {
         const { userId } = req.currentUser
         const user = await this.userService.update({id: userId}, body)
-        return new SuccessResponse('Updated User', {user: user}).send()
+        return new SuccessResponse('Updated User', { user }).send()
     }
 }

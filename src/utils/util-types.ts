@@ -1,4 +1,4 @@
-import { IsString } from 'class-validator'
+import { IsBoolean, IsString } from 'class-validator'
 import { ITokenResponse } from '@modules/auth/interfaces/token.interface'
 import { UserPayloadInterface } from '@modules/user/interfaces/user.interface'
 
@@ -15,8 +15,11 @@ export class PayloadDto{
     @IsString()
     datetime: Date
 
+    @IsBoolean()
+    success: boolean
+
     @IsString()
-    status: string
+    status?: string
 
     @IsString()
     message: string

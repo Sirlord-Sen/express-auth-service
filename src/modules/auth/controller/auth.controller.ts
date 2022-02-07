@@ -25,7 +25,7 @@ export class AuthController {
         const user = await this.authService.login(body)
         const tokens = await this.tokenService.getTokens(user)
         if (tokens) addAuthToRes(res, tokens);
-        return new SuccessResponse('Login Successfull', {user: user, payload: tokens}).send()
+        return new SuccessResponse('Login Successfull', { user, tokens}).send()
     }
 
     @Post('/logout')
@@ -34,7 +34,7 @@ export class AuthController {
         // console.log(req.useragent)
         const { userId, email } = req.currentUser;
         await this.authService.logout({ userId })
-        return new SuccessResponse(`User with email:'${email}' logged out`, {user: null}).send()
+        return new SuccessResponse(`User with email:'${email}' logged out`, { }).send()
     }
 
     @Post('/refresh-token')
@@ -42,18 +42,18 @@ export class AuthController {
         const refreshToken = body.refreshToken || TokenHelper.getTokenFromCookies(req.cookies)
         const tokens = await this.authService.refreshToken({refreshToken: refreshToken})
         if (tokens) addAuthToRes(res, tokens);
-        return new SuccessResponse('Refreshed Access Token', { payload: tokens}).send()
+        return new SuccessResponse('Refreshed Access Token', { tokens }).send()
     }
 
     @Post('/forgot-password')
     async ForgotPassword(@Body() body: ForgotPasswordDto): Promise<UserPayloadDto>{
         const user = await this.authService.forgotPassword(body)
-        return new SuccessResponse('Email Sent to user', { user: user}).send()
+        return new SuccessResponse('Email Sent to user', { user}).send()
     }
 
     @Post('/reset-password')
     async ResetPassword(@Body() body: ResetPasswordDto): Promise<UserPayloadDto>{
         const user = await this.authService.resetPassword(body)
-        return new SuccessResponse('Password Reset', { user: user}).send()
+        return new SuccessResponse('Password Reset', { user}).send()
     }
 }
