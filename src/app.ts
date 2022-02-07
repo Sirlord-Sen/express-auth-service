@@ -1,12 +1,12 @@
-import { ExpressConfig } from './server';
+import ExpressServer  from './server';
 import { Logger }  from '@utils/logger.util';
 import { parsedEnv } from '@config//';
 
 export class Application {
-    private express: ExpressConfig;
+    private express: ExpressServer;
 
     constructor()  {
-        this.express = new ExpressConfig();
+        this.express = new ExpressServer()
         this.start()
     }
 

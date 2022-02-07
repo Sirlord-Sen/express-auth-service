@@ -8,7 +8,7 @@
     "start:dev": "cross-env ENV_FILE=./config/.env.dev nodemon",
     "start:prod": "cross-env ENV_FILE=./config/.env.prod build && node -r tsconfig-paths/register ./dist/main.js",
     "lint": "eslint \"src/**/*.ts\" --fix",
-    "test:unit": "cross-env ENV_FILE=./config/.env.test jest"
+    "test:unit": "cross-env ENV_FILE=./config/.env.test jest --detectOpenHandles"
   },
   "repository": {
     "type": "git",
@@ -44,6 +44,7 @@
     "nodemon": "^2.0.15",
     "pg": "^8.7.1",
     "routing-controllers": "^0.9.0",
+    "supertest": "^6.2.2",
     "swagger-ui-express": "^4.3.0",
     "typeorm": "^0.2.41",
     "winston": "^3.4.0"
@@ -63,6 +64,7 @@
     "@types/ms": "^0.7.31",
     "@types/node": "^17.0.10",
     "@types/nodemailer": "^6.4.4",
+    "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
     "cross-env": "^7.0.3",

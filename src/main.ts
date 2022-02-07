@@ -1,10 +1,10 @@
 'use strict'
 import 'reflect-metadata';
-import { Connection } from  '@db/db.connection'
+import { DB } from  '@db//'
 import { Application } from './app';
 
 async function bootstrap() {
-    await Connection()
+    await DB.on()
     new Application()
 }
 

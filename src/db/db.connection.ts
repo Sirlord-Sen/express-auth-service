@@ -1,12 +1,13 @@
-import { createConnection } from 'typeorm'
+import { createConnection, getConnection } from 'typeorm'
 import { Logger } from '@utils/logger.util'
 import { DBConfig } from '@config//'
 
 const { type ,username, password, database, synchronize, host, port } = DBConfig
 
-export const Connection = async() => {
-    try{
-        await createConnection({
+class Connection{
+    config: any
+    constructor(){
+        this.config = {
             type,
             host,
             port,
@@ -16,10 +17,24 @@ export const Connection = async() => {
             synchronize,
             entities: ["src/modules/**/*.entity.ts"],
             subscribers: ["src/modules/**/*.subscriber.ts"]
-        })
-        Logger.info("Database connected successfully")
+        }
     }
-    catch(err){
-        Logger.error(err)
+
+    async on(){
+        try{
+            await createConnection(this.config)
+            Logger.info("Database Connected!!!")
+        }
+        catch(err){ Logger.error(err) }
+    }
+
+    async close(){
+        try{
+            await getConnection().close()
+            Logger.info("Database Closed!!!")
+        }
+        catch(err){Logger.error(err)}
     }
 }
+
+export default new Connection()

@@ -3916,3 +3916,104 @@
 [32m            -------------[39m
 [32m          [39m 
 
+[2022-02-04 23:52:33:5233] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-04 23:53:17:5317] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-04 23:53:20:5320] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-04 23:53:20:5320] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-04 23:53:20:5320] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-04 23:53:20:5320] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-04 23:53:20:5320] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 74 - 185.173 ms[39m
+[35m[39m 
+
+[2022-02-04 23:53:20:5320] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-04 23:53:21:5321] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-04 23:53:21:5321] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-04 23:53:22:5322] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-04 23:53:25:5325] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-05 01:08:01:81] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-05 01:08:24:824] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-05 01:13:41:1341] [32minfo[39m: [32mDatabase connected successfully[39m 
+
+[2022-02-05 01:42:13:4213] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-05 01:42:34:4234] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-05 01:42:50:4250] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 974 - 181.588 ms[39m
+[35m[39m 
+
+[2022-02-06 05:05:25:525] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-06 05:05:25:525] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-06 05:05:25:525] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-06 05:05:25:525] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-06 05:05:25:525] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-06 05:05:25:525] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-06 05:05:26:526] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-06 05:05:27:527] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-06 05:05:30:530] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-06 05:05:38:538] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-06 05:05:58:558] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-06 05:06:18:618] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-06 05:06:38:638] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-06 05:06:58:658] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-06 05:07:18:718] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-06 05:07:38:738] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-06 05:07:58:758] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-06 05:08:18:818] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-07 11:25:29:2529] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 11:25:45:2545] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-07 11:26:58:2658] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 974 - 150.279 ms[39m
+[35m[39m 
+

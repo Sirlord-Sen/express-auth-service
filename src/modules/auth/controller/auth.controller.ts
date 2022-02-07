@@ -20,7 +20,7 @@ export class AuthController {
     }
     // FIX LOGINS WITH MULTIPLE DEVICES
     @Post('/login')
-    async Login(@Body() body:LoginDto, @Req() req: any, @Res() res: Response): Promise<PayloadDto>{
+    async Login(@Body() body:LoginDto, @Req() req: any, @Res() res: Response): Promise<UserPayloadDto>{
         // console.log(req.useragent)
         const user = await this.authService.login(body)
         const tokens = await this.tokenService.getTokens(user)

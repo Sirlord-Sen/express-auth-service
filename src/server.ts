@@ -8,7 +8,7 @@ import { useExpressServer } from 'routing-controllers'
 import morganMiddleware  from '@middlewares/morgan.middleware';
 import { CustomErrorHandler } from '@middlewares/error.middleware'
 
-export class ExpressConfig {
+export default class ExpressServer {
     public app: Application;
   
     constructor(){
@@ -39,8 +39,8 @@ export class ExpressConfig {
             }
         });
     }
-  
-  }
+}
+
 
 
 
