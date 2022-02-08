@@ -5,11 +5,12 @@ import { PayloadDto, ResponsePayload, TokenPayloadDto } from './util-types';
 // Helper code for the API consumer to understand the error and handle is accordingly
 enum ResponseStatus {
     FAILURE = 'FailError',
+    INTERNAL = 'InternalServerError',
     NOTFOUND = 'NotFoundError',
     BADREQUEST = 'BadRequestError',
     CONFLICT = 'ConflictError',
     UNAUTHORIZED = 'UnauthorizedError',
-    FORBIDDEN = 'ForbiddenError'
+    FORBIDDEN = 'ForbiddenError',
 }
 
 const Success = {
@@ -38,7 +39,7 @@ abstract class ApiResponse {
         public code: StatusCode,
         public message: string,
         public success: boolean,
-        public error?: ResponseStatus,
+        public error?: ResponseStatus | string,
     ) {
         this.program = 'stud-aid microservice'
         this.version = 'v1'
@@ -106,8 +107,8 @@ export class BadRequestResponse extends ApiResponse {
 }
 
 export class InternalErrorResponse extends ApiResponse {
-    constructor(message = 'Internal Error') {
-        super(StatusCode.INTERNAL_ERROR, message, Success.ERROR, ResponseStatus.FAILURE);
+    constructor(message = 'Internal Error', error = '') {
+        super(StatusCode.INTERNAL_ERROR, message, Success.ERROR, error || ResponseStatus.INTERNAL);
     }
 }
 

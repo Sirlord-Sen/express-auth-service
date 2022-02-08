@@ -61,7 +61,7 @@ export default class AuthService {
 
     async resetPassword(body: ResetPasswordRequest): Promise<IReturnUser> {
         const { password, token } = body
-        const { jti, email } = await this.tokenService.decodeAccessToken(token)
+        const { jti, email } = await this.tokenService.decodeForgotPasswordToken(token)
 
         const user = await this.userService.update({email, confirmTokenPassword: jti}, {password: password})
         await this.emailQueue.addForgotPasswordToQueue({ email });

@@ -1,4 +1,4 @@
-import {SignOptions, JwtPayload} from 'jsonwebtoken'
+import {SignOptions, JwtPayload, Secret, VerifyOptions} from 'jsonwebtoken'
 import { pick } from 'lodash'
 import { nanoid } from 'nanoid'
 import JWTService from "@providers/jwt/jwt.service";
@@ -8,7 +8,7 @@ import { getCustomRepository } from "typeorm";
 import { TokenType } from "@utils/util-types";
 import { JwtConfig } from '@config//';
 import { IRefreshToken, ITokenResponse } from '../interfaces/token.interface';
-import { UnauthorizedError } from '@utils/error-response.util';
+import { InternalError, UnauthorizedError } from '@utils/error-response.util';
 import UserService from '@modules/user/services/user.service';
 import { FullUser } from '@modules/user/user.types';
 import { 
@@ -20,6 +20,7 @@ import {
     RefreshToken, 
     AccessTokenPayload 
 } from "../auth.types";
+import { Logger } from '@utils/logger.util';
 
 
 export default class TokenService {
@@ -35,17 +36,22 @@ export default class TokenService {
     }
 
     async generateAccessToken(body:AccessTokenRequest, confirmTokenPassword?: string):Promise<string>{
+        const privateAccessSecret: Secret = {
+            key: JwtConfig.privateAccessKey,
+            passphrase: JwtConfig.privateAccessKeyPassphrase
+        }
+    
         const opts: SignOptions = {
             expiresIn: JwtConfig.accessTokenExpiration,
+            algorithm: 'RS256'
         }
         const payload: JwtPayload = {
             ...body,
             jti: confirmTokenPassword || nanoid(),
             sub: String(body.userId),
             typ: TokenType.BEARER
-          };
-
-        return await this.jwtService.signAsync<JwtPayload>(payload, JwtConfig.accessTokenSecret, opts)
+        };
+        return await this.jwtService.signAsync<JwtPayload>(payload, privateAccessSecret , opts)
     }
 
     async generateRefreshToken(body:RefreshTokenRequest):Promise<string>{
@@ -68,14 +74,14 @@ export default class TokenService {
         return this.jwtService.sign<JwtPayload>(payload, JwtConfig.refreshTokenSecret, opts)
     }
 
-    async getTokens(body: TokenRequest):Promise<ITokenResponse>{
+    async getTokens(body: TokenRequest):Promise<any>{
         const { id, email } = body;
         const [accessToken, refreshToken] = await Promise.all([
             this.generateAccessToken({ email: email, userId: id }),
             this.generateRefreshToken({ userId: id })
         ]);
           
-        return { tokenType: this.tokenType , accessToken, refreshToken };
+        return { tokenType: this.tokenType , accessToken , refreshToken};
     }
 
     async update(query: Partial<FullRefreshToken>, body: Partial<IRefreshToken>): Promise<void>{
@@ -94,7 +100,7 @@ export default class TokenService {
     }
 
     private async decodeRefreshToken(token: string): Promise<RefreshTokenPayload> {
-        const payload = await this.jwtService.verifyAsync<RefreshTokenPayload>(
+        const payload = this.jwtService.verify<RefreshTokenPayload>(
                 token,
                 JwtConfig.refreshTokenSecret,
             );
@@ -113,10 +119,15 @@ export default class TokenService {
         return this.userService.findOne({ id: sub });
     }
 
-    async decodeAccessToken(token:string): Promise<AccessTokenPayload> {
+    async decodeForgotPasswordToken(token:string): Promise<AccessTokenPayload> {
+        const publicKey = JwtConfig.publicAccessKey
+        const verifyOptions: VerifyOptions = {
+            algorithms: ['RS256']
+        }
         const payload = await this.jwtService.verifyAsync<AccessTokenPayload>(
             token,
-            JwtConfig.accessTokenSecret,
+            publicKey,
+            verifyOptions
         );
         const { jti, sub } = payload
         if (!jti || !sub) throw new UnauthorizedError('Token Malfunctioned').send()

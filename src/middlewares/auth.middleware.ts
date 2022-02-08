@@ -2,7 +2,7 @@ import { ExpressMiddlewareInterface } from 'routing-controllers';
 import { TokenHelper } from '@helpers//';
 import { Request, Response } from 'express';
 import JWTService from '@providers/jwt/jwt.service';
-import { JwtPayload } from 'jsonwebtoken';
+import { JwtPayload, VerifyOptions } from 'jsonwebtoken';
 import { JwtConfig } from '@config//';
 import { ForbiddenError } from '@utils/error-response.util';
 
@@ -18,9 +18,14 @@ export class AuthMiddleware implements ExpressMiddlewareInterface{
 
         if(accessToken) {
             try {
+                const publicKey = JwtConfig.publicAccessKey
+                const verifyOptions: VerifyOptions = {
+                    algorithms: ['RS256']
+                  }
                 const data = await this.jwtService.verifyAsync<JwtPayload>(
                     accessToken,
-                    JwtConfig.accessTokenSecret,
+                    publicKey,
+                    verifyOptions
                 );
                 
                 req.currentUser = {

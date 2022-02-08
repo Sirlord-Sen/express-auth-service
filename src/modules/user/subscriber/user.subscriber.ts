@@ -19,10 +19,10 @@ export class UserSubscriber implements EntitySubscriberInterface<UserEntity> {
         if (entity?.password && databaseEntity.password){
             // Check if Password is not the same
             if(entity?.password !== databaseEntity?.password && !(await verify(databaseEntity.password, entity?.password))){
-                await this.hashPassword(entity as UserEntity);
-                entity.confirmTokenPassword = '';  
+                await this.hashPassword(entity as UserEntity);  
             }
             else entity.password = databaseEntity.password;
+            entity.confirmTokenPassword = ''
         }
     }
 

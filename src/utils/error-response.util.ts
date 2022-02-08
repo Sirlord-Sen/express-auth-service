@@ -24,7 +24,7 @@ enum ErrorType {
 }
 
 export abstract class ApiError extends Error {
-    constructor(public type: ErrorType, public message: string = 'error') {
+    constructor(public type: ErrorType, public message: string = 'error', public error?: string) {
         super(type);
     }
 
@@ -34,7 +34,7 @@ export abstract class ApiError extends Error {
             case ErrorType.UNAUTHORIZED:
                 return new UnauthorizedResponse(err.message).send(res);
             case ErrorType.INTERNAL:
-                return new InternalErrorResponse(err.message).send(res);
+                return new InternalErrorResponse(err.message, err.error).send(res);
             case ErrorType.CONFLICT:
                 return new ConflictErrorResponse(err.message).send(res)
             case ErrorType.NOT_FOUND:
@@ -63,8 +63,8 @@ export class UnauthorizedError extends ApiError {
 }
 
 export class InternalError extends ApiError {
-    constructor(message = 'Internal error') {
-        super(ErrorType.INTERNAL, message);
+    constructor(message = 'Internal error', error?: string) {
+        super(ErrorType.INTERNAL, message, error);
     } 
     send(): PayloadDto { return super.handle(this, response) }
 }

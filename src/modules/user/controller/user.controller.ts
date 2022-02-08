@@ -3,7 +3,7 @@ import { Response } from 'express'
 import { Controller, Res, Body, Post, Get, Req, UseBefore, Put } from 'routing-controllers';
 import { SuccessResponse } from '@utils/response.util';
 import { UserPayloadDto } from '@utils/util-types';
-import { ResetPasswordDto, SignUpDto } from '../dto/user.dto';
+import { ResetPasswordDto, SignUpDto, UpdateUserDto } from '../dto/user.dto';
 import UserService  from '../services/user.service'
 
 @Controller('/api/user')
@@ -37,7 +37,7 @@ export class UserController {
 
     @Put('/update')
     @UseBefore(AuthMiddleware)
-    async UpdatedUser(@Body() body:any, @Req() req: any): Promise<UserPayloadDto> {
+    async UpdatedUser(@Body() body: UpdateUserDto, @Req() req: any): Promise<UserPayloadDto> {
         const { userId } = req.currentUser
         const user = await this.userService.update({id: userId}, body)
         return new SuccessResponse('Updated User', { user }).send()
