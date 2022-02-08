@@ -6,7 +6,7 @@ class RedisConfig implements RedisOptions{
   readonly host: string;
   readonly port: number;
   readonly queuePrefix: string;
-  readonly redisUrl: string
+  readonly url: string
   // readonly password: string;
   // readonly time: number;
 
@@ -14,7 +14,7 @@ class RedisConfig implements RedisOptions{
     this.host = String(parsedEnv.REDIS_HOST)
     this.port = Number(parsedEnv.REDIS_PORT) 
     this.queuePrefix = String(parsedEnv.QUEUE_PREFIX) 
-    this.redisUrl = String(parsedEnv.REDIS_URL)
+    this.url = String(parsedEnv.REDIS_URL)
     // this.password = String(parsedEnv.REDIS_PASSWORD)
     // this.time = Number(parsedEnv.REDIS_TIME)
   }

@@ -4,7 +4,7 @@ import * as r from 'redis'
 import { RedisClientOptions, RedisClientType } from 'redis'
 
 
-const redis : typeof r = RedisConfig.redisUrl === 'redis-mock' ? require('redis-mock') : require('redis')
+const redis : typeof r = RedisConfig.url === 'redis-mock' ? require('redis-mock') : require('redis')
 
 export default class CacheCore{
     

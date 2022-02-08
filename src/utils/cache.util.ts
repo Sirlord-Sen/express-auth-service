@@ -6,9 +6,8 @@ import { Logger } from "./logger.util";
 export default class AppCache extends CacheCore{  
     constructor() {
         super({ 
-            host: RedisConfig.host, 
-            port: RedisConfig.port 
-        } as RedisClientOptions)
+            url: RedisConfig.url
+        })
         this.open()
     }
 

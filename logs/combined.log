@@ -6750,3 +6750,167 @@
 [32m            -------------[39m
 [32m          [39m 
 
+[2022-02-08 00:32:37:3237] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:32:37:3237] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:32:38:3238] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:32:50:3250] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:33:53:3353] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:33:53:3353] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:33:54:3354] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:34:06:346] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:34:35:3435] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:34:35:3435] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:34:36:3436] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:34:48:3448] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:36:04:364] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:36:04:364] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:36:04:364] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:36:16:3616] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:36:35:3635] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:36:35:3635] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:36:36:3636] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:36:47:3647] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:38:08:388] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Invalid URL[39m 
+
+[2022-02-08 00:38:38:3838] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:38:38:3838] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:38:38:3838] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:38:54:3854] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:38:54:3854] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:38:55:3855] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:39:06:396] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:46:44:4644] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:46:44:4644] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:46:45:4645] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:46:56:4656] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:47:05:475] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:47:05:475] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:47:06:476] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:47:17:4717] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:47:45:4745] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:47:45:4745] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:47:45:4745] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:47:57:4757] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:48:28:4828] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:48:28:4828] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:48:29:4829] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:48:40:4840] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:50:36:5036] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:50:36:5036] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:50:36:5036] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:50:48:5048] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:51:17:5117] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:51:17:5117] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:51:18:5118] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:51:29:5129] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
