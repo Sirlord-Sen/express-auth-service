@@ -5248,3 +5248,1505 @@
 [2022-02-07 18:41:59:4159] [35mhttp[39m: [35m::1 - PUT /api/user/update HTTP/1.1 200 300 - 147.762 ms[39m
 [35m[39m 
 
+[2022-02-07 22:18:37:1837] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 22:18:49:1849] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-07 22:34:11:3411] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-07 22:34:12:3412] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 22:35:29:3529] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 22:35:41:3541] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-07 22:36:20:3620] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 22:36:32:3632] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-07 22:37:18:3718] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 22:37:30:3730] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-07 22:39:31:3931] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 22:39:42:3942] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-07 22:43:58:4358] [32minfo[39m: [32mRedis: Connected[39m 
+
+[2022-02-07 22:43:58:4358] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-07 22:43:59:4359] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 22:44:11:4411] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-07 22:44:55:4455] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-07 22:44:55:4455] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-07 22:44:55:4455] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 22:45:03:453] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-07 22:45:03:453] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-07 22:45:04:454] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 22:45:15:4515] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-07 22:59:41:5941] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-07 22:59:41:5941] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-07 22:59:41:5941] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 22:59:52:5952] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-07 22:59:53:5953] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-07 22:59:53:5953] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 23:09:00:90] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Invalid URL[39m 
+
+[2022-02-07 23:09:25:925] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Invalid URL[39m 
+
+[2022-02-07 23:09:37:937] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Invalid URL[39m 
+
+[2022-02-07 23:10:40:1040] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Invalid URL[39m 
+
+[2022-02-07 23:11:06:116] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Invalid URL[39m 
+
+[2022-02-07 23:12:53:1253] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Invalid URL[39m 
+
+[2022-02-07 23:13:22:1322] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-07 23:13:22:1322] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-07 23:13:23:1323] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 23:13:35:1335] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-07 23:18:01:181] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Invalid URL[39m 
+
+[2022-02-07 23:20:28:2028] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Invalid URL[39m 
+
+[2022-02-07 23:20:52:2052] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Invalid URL[39m 
+
+[2022-02-07 23:21:20:2120] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Invalid URL[39m 
+
+[2022-02-07 23:22:46:2246] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Cannot read properties of undefined (reading 'on')[39m 
+
+[2022-02-07 23:22:46:2246] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Cannot read properties of undefined (reading 'on')[39m 
+
+[2022-02-07 23:22:47:2247] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 23:23:00:230] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-07 23:23:32:2332] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Cannot read properties of undefined (reading 'on')[39m 
+
+[2022-02-07 23:23:32:2332] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Cannot read properties of undefined (reading 'on')[39m 
+
+[2022-02-07 23:23:33:2333] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 23:23:45:2345] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-07 23:24:55:2455] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Cannot read properties of undefined (reading 'on')[39m 
+
+[2022-02-07 23:24:55:2455] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Cannot read properties of undefined (reading 'on')[39m 
+
+[2022-02-07 23:24:55:2455] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 23:27:13:2713] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Cannot read properties of undefined (reading 'on')[39m 
+
+[2022-02-07 23:27:14:2714] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 23:27:25:2725] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-07 23:28:46:2846] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Cannot read properties of undefined (reading 'on')[39m 
+
+[2022-02-07 23:28:53:2853] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Cannot read properties of undefined (reading 'on')[39m 
+
+[2022-02-07 23:28:53:2853] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Cannot read properties of undefined (reading 'on')[39m 
+
+[2022-02-07 23:28:53:2853] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 23:29:06:296] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-07 23:29:30:2930] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Cannot read properties of undefined (reading 'on')[39m 
+
+[2022-02-07 23:29:30:2930] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Cannot read properties of undefined (reading 'on')[39m 
+
+[2022-02-07 23:29:31:2931] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 23:29:43:2943] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-07 23:30:05:305] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Cannot read properties of undefined (reading 'on')[39m 
+
+[2022-02-07 23:30:05:305] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Cannot read properties of undefined (reading 'on')[39m 
+
+[2022-02-07 23:30:06:306] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 23:30:18:3018] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-07 23:33:07:337] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Cannot read properties of undefined (reading 'on')[39m 
+
+[2022-02-07 23:33:07:337] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Cannot read properties of undefined (reading 'on')[39m 
+
+[2022-02-07 23:33:08:338] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 23:33:20:3320] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-07 23:35:39:3539] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Cannot read properties of undefined (reading 'on')[39m 
+
+[2022-02-07 23:35:39:3539] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Cannot read properties of undefined (reading 'on')[39m 
+
+[2022-02-07 23:35:39:3539] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 23:35:51:3551] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-07 23:37:14:3714] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Cannot read properties of undefined (reading 'on')[39m 
+
+[2022-02-07 23:37:14:3714] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Cannot read properties of undefined (reading 'on')[39m 
+
+[2022-02-07 23:37:15:3715] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 23:37:26:3726] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-07 23:39:03:393] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Cannot read properties of undefined (reading 'on')[39m 
+
+[2022-02-07 23:39:03:393] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Cannot read properties of undefined (reading 'on')[39m 
+
+[2022-02-07 23:39:04:394] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 23:39:16:3916] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-07 23:39:32:3932] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-07 23:39:32:3932] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-07 23:39:32:3932] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 23:42:35:4235] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-07 23:42:35:4235] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-07 23:42:36:4236] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 23:42:48:4248] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-07 23:47:05:475] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-07 23:47:05:475] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-07 23:47:06:476] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-07 23:47:17:4717] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:01:15:115] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:01:16:116] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:01:16:116] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:01:28:128] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:04:40:440] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:04:40:440] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:04:41:441] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:04:53:453] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:05:03:53] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:05:03:53] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:05:04:54] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:05:15:515] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:05:38:538] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:05:38:538] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:05:39:539] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:05:50:550] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:07:50:750] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:07:50:750] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:07:51:751] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:08:02:82] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:08:11:811] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:08:22:822] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:08:30:830] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:08:30:830] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:08:31:831] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:08:42:842] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:09:10:910] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:09:10:910] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:09:11:911] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:09:23:923] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:09:36:936] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:09:37:937] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:09:37:937] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:09:44:944] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:09:44:944] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:09:45:945] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:09:56:956] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:10:41:1041] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:10:41:1041] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:10:42:1042] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:10:54:1054] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:11:02:112] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:11:02:112] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:11:02:112] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:11:14:1114] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:12:16:1216] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:12:16:1216] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:12:17:1217] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:12:32:1232] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:12:32:1232] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:12:32:1232] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:12:44:1244] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:12:53:1253] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:12:53:1253] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:12:54:1254] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:13:05:135] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:13:11:1311] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:13:11:1311] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:13:12:1312] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:13:23:1323] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:13:52:1352] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:13:52:1352] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:13:53:1353] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:14:04:144] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:14:26:1426] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Invalid URL[39m 
+
+[2022-02-08 00:14:52:1452] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Invalid URL[39m 
+
+[2022-02-08 00:15:21:1521] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Invalid URL[39m 
+
+[2022-02-08 00:15:33:1533] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Invalid URL[39m 
+
+[2022-02-08 00:16:09:169] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: Invalid URL[39m 
+
+[2022-02-08 00:16:51:1651] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:16:51:1651] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:16:51:1651] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:17:08:178] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:17:08:178] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:17:09:179] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:17:21:1721] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:17:24:1724] [31merror[39m: [31mread ECONNRESET[39m 
+
+[2022-02-08 00:17:24:1724] [31merror[39m: [31mRedis: error: Error: [31mread ECONNRESET[31m[39m 
+
+[2022-02-08 00:17:24:1724] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:24:1724] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:24:1724] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:24:1724] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:24:1724] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:24:1724] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:24:1724] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:24:1724] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:24:1724] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:24:1724] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:24:1724] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:24:1724] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:24:1724] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:24:1724] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:24:1724] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:24:1724] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:24:1724] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:24:1724] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:25:1725] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:25:1725] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:25:1725] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:25:1725] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:25:1725] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:25:1725] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:25:1725] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:25:1725] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:25:1725] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:26:1726] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:26:1726] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:26:1726] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:26:1726] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:26:1726] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:26:1726] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:27:1727] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:27:1727] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:27:1727] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:27:1727] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:27:1727] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:27:1727] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:28:1728] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:28:1728] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:28:1728] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:28:1728] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:28:1728] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:28:1728] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:29:1729] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:29:1729] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:29:1729] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:29:1729] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:29:1729] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:29:1729] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:30:1730] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:30:1730] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:30:1730] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:30:1730] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:30:1730] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:30:1730] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:31:1731] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:31:1731] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:31:1731] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:31:1731] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:31:1731] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:31:1731] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:32:1732] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:32:1732] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:32:1732] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:32:1732] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:32:1732] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:32:1732] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:33:1733] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:33:1733] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:33:1733] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:33:1733] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:33:1733] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:33:1733] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:34:1734] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:34:1734] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:34:1734] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:34:1734] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:34:1734] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:34:1734] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:35:1735] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:35:1735] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:35:1735] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:35:1735] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:35:1735] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:35:1735] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:36:1736] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:36:1736] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:36:1736] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:36:1736] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:36:1736] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:36:1736] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:37:1737] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:37:1737] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:37:1737] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:37:1737] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:37:1737] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:37:1737] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:38:1738] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:38:1738] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:38:1738] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:38:1738] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:38:1738] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:38:1738] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:39:1739] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:39:1739] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:39:1739] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:39:1739] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:39:1739] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:39:1739] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:40:1740] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:40:1740] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:40:1740] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:17:41:1741] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:17:41:1741] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:17:41:1741] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:18:54:1854] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:18:54:1854] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:18:54:1854] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:18:54:1854] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:18:54:1854] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:18:54:1854] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:18:54:1854] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:18:54:1854] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:18:54:1854] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:18:54:1854] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:18:54:1854] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:18:55:1855] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:19:06:196] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:19:06:196] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:06:196] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:06:196] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:06:196] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:06:196] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:06:196] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:06:196] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:06:196] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:06:196] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:07:197] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:07:197] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:07:197] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:07:197] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:07:197] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:07:197] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:07:197] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:07:197] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:07:197] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:08:198] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:08:198] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:08:198] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:08:198] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:08:198] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:08:198] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:09:199] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:09:199] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:09:199] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:09:199] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:09:199] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:09:199] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:10:1910] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:10:1910] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:10:1910] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:10:1910] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:11:1911] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:11:1911] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:11:1911] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:11:1911] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:11:1911] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:12:1912] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:12:1912] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:12:1912] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:12:1912] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:12:1912] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:12:1912] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:13:1913] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:13:1913] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:13:1913] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:13:1913] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:13:1913] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:13:1913] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:14:1914] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:14:1914] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:14:1914] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:14:1914] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:14:1914] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:14:1914] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:15:1915] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:15:1915] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:15:1915] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:15:1915] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:15:1915] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:15:1915] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:16:1916] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:16:1916] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:16:1916] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:16:1916] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:16:1916] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:16:1916] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:17:1917] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:17:1917] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:17:1917] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:17:1917] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:17:1917] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:17:1917] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:18:1918] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:18:1918] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:18:1918] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:18:1918] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:18:1918] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:18:1918] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:19:1919] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:19:1919] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:19:1919] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:19:1919] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:19:1919] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:19:1919] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:20:1920] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:20:1920] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:20:1920] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:20:1920] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:20:1920] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:20:1920] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:21:1921] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:21:1921] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:21:1921] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:21:1921] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:21:1921] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:21:1921] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:22:1922] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:22:1922] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:22:1922] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:22:1922] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:22:1922] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:22:1922] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:23:1923] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:23:1923] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:23:1923] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:23:1923] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:23:1923] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:23:1923] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:24:1924] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:24:1924] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:24:1924] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:24:1924] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:24:1924] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:24:1924] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:25:1925] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:25:1925] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:25:1925] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:25:1925] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:25:1925] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:25:1925] [31merror[39m: [31mRedis: error: Error: [31mconnect ECONNREFUSED 127.0.0.1:6379[31m[39m 
+
+[2022-02-08 00:19:32:1932] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:32:1932] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:32:1932] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:32:1932] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:32:1932] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:32:1932] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:32:1932] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:32:1932] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:19:44:1944] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:19:44:1944] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:44:1944] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:44:1944] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:44:1944] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:44:1944] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:44:1944] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:44:1944] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:44:1944] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:45:1945] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:45:1945] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:45:1945] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:45:1945] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:46:1946] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:46:1946] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:46:1946] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:46:1946] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:47:1947] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:47:1947] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:47:1947] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:47:1947] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:48:1948] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:48:1948] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:48:1948] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:48:1948] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:49:1949] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:49:1949] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:49:1949] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:49:1949] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:50:1950] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:50:1950] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:50:1950] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:50:1950] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:51:1951] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:51:1951] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:51:1951] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:51:1951] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:52:1952] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:52:1952] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:52:1952] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:52:1952] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:53:1953] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:53:1953] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:53:1953] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:53:1953] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:54:1954] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:54:1954] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:54:1954] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:54:1954] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:55:1955] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:55:1955] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:55:1955] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:55:1955] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:56:1956] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:56:1956] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:57:1957] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:57:1957] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:57:1957] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:57:1957] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:58:1958] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:58:1958] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:58:1958] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:58:1958] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:59:1959] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:59:1959] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:19:59:1959] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:19:59:1959] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:00:200] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:00:200] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:00:200] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:00:200] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:01:201] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:01:201] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:01:201] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:01:201] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:02:202] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:02:202] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:02:202] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:02:202] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:03:203] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:03:203] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:03:203] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:03:203] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:04:204] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:04:204] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:04:204] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:04:204] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:05:205] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:05:205] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:05:205] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:05:205] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:06:206] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:06:206] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:06:206] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:06:206] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:07:207] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:07:207] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:07:207] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:07:207] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:08:208] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:08:208] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:08:208] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:08:208] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:09:209] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:09:209] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:09:209] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:09:209] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:10:2010] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:10:2010] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:10:2010] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:10:2010] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:11:2011] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:11:2011] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:11:2011] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:11:2011] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:17:2017] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:17:2017] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:17:2017] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:17:2017] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:17:2017] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:18:2018] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:18:2018] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:18:2018] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:20:29:2029] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:20:29:2029] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:29:2029] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:29:2029] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:29:2029] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:29:2029] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:29:2029] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:30:2030] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:30:2030] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:30:2030] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:30:2030] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:31:2031] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:31:2031] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:31:2031] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:31:2031] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:32:2032] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:32:2032] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:32:2032] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:32:2032] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:33:2033] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:33:2033] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:33:2033] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:33:2033] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:34:2034] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:34:2034] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:34:2034] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:34:2034] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:35:2035] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:35:2035] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:35:2035] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:35:2035] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:36:2036] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:36:2036] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:36:2036] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:36:2036] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:37:2037] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:37:2037] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:37:2037] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:37:2037] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:38:2038] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:38:2038] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:38:2038] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:38:2038] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:39:2039] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:39:2039] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:39:2039] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:39:2039] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:40:2040] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:40:2040] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:40:2040] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:40:2040] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:41:2041] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:41:2041] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:41:2041] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:41:2041] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:42:2042] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:42:2042] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:42:2042] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:42:2042] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:43:2043] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:43:2043] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:43:2043] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:43:2043] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:49:2049] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:49:2049] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:49:2049] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:49:2049] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:49:2049] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:50:2050] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:20:50:2050] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:20:50:2050] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:21:07:217] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:21:07:217] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:21:07:217] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:21:07:217] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:21:07:217] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:21:07:217] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:21:07:217] [31merror[39m: [31mconnect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-08 00:21:07:217] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:21:19:2119] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-02-08 00:21:19:2119] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-02-08 00:21:19:2119] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:21:19:2119] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:21:32:2132] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-02-08 00:21:32:2132] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-02-08 00:21:32:2132] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-02-08 00:21:44:2144] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+

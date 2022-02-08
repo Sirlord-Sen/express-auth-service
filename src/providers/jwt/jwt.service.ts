@@ -1,4 +1,4 @@
-import jwt, { Secret, SignOptions, VerifyOptions } from 'jsonwebtoken';
+import jwt, { Secret, SignOptions, VerifyErrors, VerifyOptions } from 'jsonwebtoken';
 import { DateHelper } from '@helpers//';
 import { InternalError, UnauthorizedError } from '@utils/error-response.util';
 import { Logger } from '@utils/logger.util';
@@ -46,7 +46,7 @@ export default class JWTService {
 
     async verifyAsync<T>(token: string, key: Secret, opts: VerifyOptions): Promise<T> {
         return new Promise((resolve, reject) => {
-            jwt.verify(token, key, opts, (error, decoded) => {
+            jwt.verify(token, key, opts, (error: VerifyErrors | null, decoded) => {
                 if (error && error.name === 'TokenExpiredError')
                     return reject(new UnauthorizedError('Token Expired').send());
                 if (decoded)
