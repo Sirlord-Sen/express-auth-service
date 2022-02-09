@@ -1,11 +1,11 @@
-import { createConnection, getConnection } from 'typeorm'
+import { ConnectionOptions, createConnection, getConnection } from 'typeorm'
 import { Logger } from '@utils/logger.util'
 import { DBConfig } from '@config//'
 
 const { type ,username, password, database, synchronize, host, port } = DBConfig
 
 class Connection{
-    config: any
+    config: ConnectionOptions
     constructor(){
         this.config = {
             type,

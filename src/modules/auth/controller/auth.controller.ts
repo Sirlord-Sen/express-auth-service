@@ -3,7 +3,7 @@ import { Controller, Req, Res, Body, Post, UseBefore } from 'routing-controllers
 import { SuccessResponse } from '@utils/response.util';
 import { ForgotPasswordDto, LoginDto, ResetPasswordDto } from '../dto/auth.dto';
 import {AuthService, TokenService} from '../services';
-import { addAuthToRes } from '@utils/cookies.util'
+import { addAuthToRes } from '@utils/tokens.util'
 import { AuthMiddleware } from '@middlewares/auth.middleware';
 import { TokenHelper } from '@helpers//';
 import { RefreshTokenDto } from '../dto/token.dto';
@@ -24,7 +24,7 @@ export class AuthController {
         // console.log(req.useragent)
         const user = await this.authService.login(body)
         const tokens = await this.tokenService.getTokens(user)
-        if (tokens) addAuthToRes(res, tokens);
+        if (tokens) addAuthToRes(res, tokens)
         return new SuccessResponse('Login Successfull', { user, tokens}).send()
     }
 

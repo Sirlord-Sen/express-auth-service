@@ -1,17 +1,21 @@
-import { RedisConfig } from "@config//";
 import CacheCore from "@core/cache.core";
-import { RedisClientOptions } from "redis";
+import { InternalError } from "./error-response.util";
 import { Logger } from "./logger.util";
 
-export default class AppCache extends CacheCore{  
+export default class TokensCache extends CacheCore{  
     constructor() {
         super({ 
-            url: RedisConfig.url
+            maxRetriesPerRequest: 1,
+            retryStrategy(times){
+                const delay = Math.min(times * 50, 2000)
+                if (times >= 20) return null
+                return delay
+            }
         })
-        this.open()
+        this.process()
     }
 
-    public async open(): Promise<void>{
+    public async process(): Promise<void>{
         return new Promise((resolve, reject) => {
             this.client.on('connect', () => {
                 Logger.info('Redis: connected')
@@ -35,5 +39,40 @@ export default class AppCache extends CacheCore{
 
         })
     }
+
+    public async setProp(key: string, value: string, expireAfter: number): Promise<void> {
+        try{ 
+            await this.client!.setex(key, expireAfter, value) 
+            Logger.info(`Token Cache added for User: ${value}`)
+        }
+        catch(err:any) { 
+            Logger.error('TOKEN_ERROR:', err)
+            throw new InternalError(err.message).send() 
+        } 
+    }
+
+    public async getProp(key: string): Promise<string| undefined> {
+        try{ 
+            const result = await this.client!.get(key)
+            return result ? result : undefined
+        }
+        catch(err:any){
+            Logger.error('TOKEN_ERROR:', err)
+            throw new InternalError(err.message).send()
+        }
+      
+    }
+    
+    // public async getProp(key: string): Promise<string|undefined> {
+    //     return new Promise((resolve, reject) => {
+    //         const result = this.client!.get(key, function(error, result) {
+    //             if (error) return reject(error)
+    //             resolve(result ? result : undefined)
+    //         })
+    //         if (result !== undefined && result === false) {
+    //             reject(new Error('Redis connection error'))
+    //         }
+    //     })
+    // }
         
 }

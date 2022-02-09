@@ -4,7 +4,7 @@ import { TokenType } from '@utils/util-types';
 
 
 export default (() => {
-    const getTokenFromHeader = (headers: IncomingHttpHeaders): string | null => {
+    const getTokenFromHeader = (headers: IncomingHttpHeaders): string | undefined => {
         const authorization = headers.authorization || headers.Authorization;
 
         if(
@@ -12,9 +12,9 @@ export default (() => {
         typeof authorization === 'string' &&
         authorization.startsWith(`${TokenType.BEARER} `)
         ){
-            return authorization.split(`${TokenType.BEARER} `)[1] || null;
+            return authorization.split(`${TokenType.BEARER} `)[1] || undefined;
         }
-        return null;
+        return undefined;
   };
 
     const getTokenFromCookies = (cookies: any): string => {

@@ -28,7 +28,10 @@ export default class EmailQueue extends QueueCore{
             const job = await this.queue.add('EMAIL_FORGOT_PASSWORD', data, opt) 
             Logger.info(`Job with ID: ${job.id} moved to queue`)
         }
-        catch(err){ Logger.error('EMAIL_QUEUQ', err) }
+        catch(err){ 
+            Logger.error('EMAIL_QUEUQ', err) 
+            throw err
+        }
     }
 
     private process() {

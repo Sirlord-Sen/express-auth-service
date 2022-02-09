@@ -1,6 +1,6 @@
 import UserService from "@modules/user/services/user.service";
 import { ILogin } from "../interfaces/auth.interface";
-import { UnauthorizedError } from "@utils/error-response.util";
+import { InternalError, UnauthorizedError } from "@utils/error-response.util";
 import { pick } from "lodash";
 import { IReturnUser } from "@modules/user/interfaces/user.interface";
 import { ForgotPasswordRequest, LogoutRequest, ResetPasswordRequest } from "../auth.types";
@@ -17,9 +17,9 @@ export default class AuthService {
     private emailQueue : EmailQueue
 
     constructor(){
-         this.userService = new UserService()
-         this.tokenService = new TokenService()
-         this.emailQueue = new EmailQueue()
+        this.emailQueue = new EmailQueue()
+        this.userService = new UserService()
+        this.tokenService = new TokenService()
     }
 
     async login(body:ILogin): Promise<IReturnUser>{
@@ -40,8 +40,8 @@ export default class AuthService {
 
     async refreshToken(body: IRefreshTokenRequest): Promise<ITokenResponse>{
         let { user }  = await this.tokenService.resolveRefreshToken(body.refreshToken)
-        const accessToken = await this.tokenService.generateAccessToken({userId: user.id, email: user.email})
-        const tokens = { tokenType: TokenType.BEARER , accessToken, refreshToken: body.refreshToken }
+        const { accessToken, expiredAt } = await this.tokenService.generateAccessToken({userId: user.id, email: user.email})
+        const tokens = { tokenType: TokenType.BEARER , accessToken, expiredAt, refreshToken: body.refreshToken }
         return  tokens ;
     }
 
@@ -52,11 +52,13 @@ export default class AuthService {
         const { id } = await this.userService.findOne({ email });
 
         const confirmTokenPassword = nanoid();
-        const token = await this.tokenService.generateAccessToken({userId: id, email}, confirmTokenPassword)
+        const { accessToken } = await this.tokenService.generateAccessToken({userId: id, email}, confirmTokenPassword)
 
         const user = await this.userService.update({ id }, { confirmTokenPassword });
-        await this.emailQueue.addForgotPasswordToQueue({ token, email });
+
+        await this.emailQueue.addForgotPasswordToQueue({ token: accessToken, email }) 
         return user
+        
     }
 
     async resetPassword(body: ResetPasswordRequest): Promise<IReturnUser> {

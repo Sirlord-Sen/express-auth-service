@@ -18,24 +18,29 @@ import {
     FullRefreshToken, 
     RefreshTokenPayload, 
     RefreshToken, 
-    AccessTokenPayload 
+    AccessTokenPayload, 
+    AccessTokenResponse
 } from "../auth.types";
 import { Logger } from '@utils/logger.util';
+import TokensCache from '@utils/cache.util';
 
 
 export default class TokenService {
     private readonly refreshTokenRepository: RefreshTokenRepository
     private readonly jwtService: JWTService
     private readonly userService: UserService
+    private readonly tokenCache: TokensCache
     tokenType : TokenType
     constructor(){
         this.refreshTokenRepository = getCustomRepository(RefreshTokenRepository)
         this.jwtService = new JWTService()
         this.userService = new UserService()
+        this.tokenCache = new TokensCache()
         this.tokenType = TokenType.BEARER 
     }
 
-    async generateAccessToken(body:AccessTokenRequest, confirmTokenPassword?: string):Promise<string>{
+    async generateAccessToken(body:AccessTokenRequest, confirmTokenPassword?: string):Promise<AccessTokenResponse>{
+        const { userId } = body
         const privateAccessSecret: Secret = {
             key: JwtConfig.privateAccessKey,
             passphrase: JwtConfig.privateAccessKeyPassphrase
@@ -45,13 +50,20 @@ export default class TokenService {
             expiresIn: JwtConfig.accessTokenExpiration,
             algorithm: 'RS256'
         }
+
         const payload: JwtPayload = {
             ...body,
             jti: confirmTokenPassword || nanoid(),
-            sub: String(body.userId),
+            sub: String(userId),
             typ: TokenType.BEARER
         };
-        return await this.jwtService.signAsync<JwtPayload>(payload, privateAccessSecret , opts)
+        const accessToken = await this.jwtService.signAsync<JwtPayload>(payload, privateAccessSecret , opts)
+
+        const ms = DateHelper.convertToMS(JwtConfig.accessTokenExpiration)
+        const expiredAt = DateHelper.addMillisecondToDate(new Date(), ms);
+
+        await this.tokenCache.setProp(accessToken, userId, ms/1000)
+        return {accessToken, expiredAt}
     }
 
     async generateRefreshToken(body:RefreshTokenRequest):Promise<string>{
@@ -74,14 +86,14 @@ export default class TokenService {
         return this.jwtService.sign<JwtPayload>(payload, JwtConfig.refreshTokenSecret, opts)
     }
 
-    async getTokens(body: TokenRequest):Promise<any>{
+    async getTokens(body: TokenRequest):Promise<ITokenResponse>{
         const { id, email } = body;
-        const [accessToken, refreshToken] = await Promise.all([
+        const [{accessToken, expiredAt}, refreshToken] = await Promise.all([
             this.generateAccessToken({ email: email, userId: id }),
             this.generateRefreshToken({ userId: id })
         ]);
           
-        return { tokenType: this.tokenType , accessToken , refreshToken};
+        return { tokenType: this.tokenType ,expiredAt , accessToken, refreshToken};
     }
 
     async update(query: Partial<FullRefreshToken>, body: Partial<IRefreshToken>): Promise<void>{

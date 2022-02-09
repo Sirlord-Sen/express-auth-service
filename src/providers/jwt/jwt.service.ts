@@ -2,10 +2,7 @@ import jwt, { Secret, SignOptions, VerifyErrors, VerifyOptions } from 'jsonwebto
 import { DateHelper } from '@helpers//';
 import { InternalError, UnauthorizedError } from '@utils/error-response.util';
 import { Logger } from '@utils/logger.util';
-
-interface SignError extends Error {
-    code?: string;
-}
+import { CodeError } from '@utils/util-types' 
 
 export default class JWTService {
 //   decode(
@@ -30,7 +27,7 @@ export default class JWTService {
                 { ...payload, iat: DateHelper.getUnixTimeOfDate() },
                 secret,
                 opts || {},
-                (err: SignError | null, encoded) => {
+                (err: CodeError | null, encoded) => {
                     if (err) {
                         Logger.error(`${err}`)
                         reject(new InternalError(`${err}`, err.code).send())

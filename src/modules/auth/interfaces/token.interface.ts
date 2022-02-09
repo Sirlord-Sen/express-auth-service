@@ -22,7 +22,8 @@ export interface IRefreshToken {
 export interface ITokenResponse {
   accessToken: string,
   refreshToken: string,
-  tokenType: TokenType
+  tokenType: TokenType,
+  expiredAt: Date
 }
 
 export interface TokenResponse {
