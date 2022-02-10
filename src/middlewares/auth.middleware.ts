@@ -21,14 +21,14 @@ export class AuthMiddleware implements ExpressMiddlewareInterface{
 
         if(accessToken) {
             try {
-                // const userId = await this.tokensCache.getProp(accessToken)
-                // if (userId) {
-                //     req.currentUser = { 
-                //         userId: userId,
-                //         email: "lodwaf12@gmail.com"
-                //     }
-                //     return next()
-                // }
+                const userId = await this.tokensCache.getProp(accessToken)
+                if (userId) {
+                    req.currentUser = { 
+                        userId: userId,
+                        email: "lodwaf12@gmail.com"
+                    }
+                    return next()
+                }
                 const publicKey = JwtConfig.publicAccessKey
 
                 const verifyOptions: VerifyOptions = {

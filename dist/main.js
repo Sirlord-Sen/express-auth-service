@@ -10,11 +10,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
-const db_connection_1 = require("./db/db.connection");
+const _1 = require("@db//");
 const app_1 = require("./app");
 function bootstrap() {
     return __awaiter(this, void 0, void 0, function* () {
-        yield (0, db_connection_1.Connection)();
+        // new TokensCache()
+        yield _1.DB.on();
         new app_1.Application();
     });
 }

@@ -3,7 +3,9 @@ import {
     Column, 
     PrimaryGeneratedColumn, 
     BaseEntity, 
-    Unique 
+    Unique, 
+    CreateDateColumn,
+    UpdateDateColumn
 } from 'typeorm'
 
 @Entity({name: "users"})
@@ -29,4 +31,10 @@ export default class UserEntity extends BaseEntity{
 
     @Column('text', { nullable: true })
     confirmTokenPassword?: string;
+
+    @CreateDateColumn()
+    created_at: Date;
+
+    @UpdateDateColumn()
+    updated_at: Date;
 }

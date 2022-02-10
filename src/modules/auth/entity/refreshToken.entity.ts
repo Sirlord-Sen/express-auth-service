@@ -1,4 +1,4 @@
-import { Column, Entity, BaseEntity, Index, ManyToOne, JoinColumn, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, BaseEntity, Index, ManyToOne, JoinColumn, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm'
 import UserEntity from '@modules/user/entity/user.entity';
 
 @Entity('refresh-tokens')
@@ -35,4 +35,10 @@ export default class RefreshTokenEntity extends BaseEntity{
     @Index()
     @Column('uuid')
     userId!: string;
+
+    @CreateDateColumn()
+    created_at: Date;
+
+    @UpdateDateColumn()
+    updated_at: Date;
 }

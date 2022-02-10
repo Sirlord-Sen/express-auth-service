@@ -8,19 +8,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Application = void 0;
-const server_1 = require("./server");
-const logger_util_1 = require("./utils/logger.util");
-const config_1 = require("./config");
+const server_1 = __importDefault(require("./server"));
+const logger_util_1 = require("@utils/logger.util");
+const _1 = require("@config//");
 class Application {
     constructor() {
-        this.express = new server_1.ExpressConfig();
+        this.express = new server_1.default();
         this.start();
     }
     start() {
         return __awaiter(this, void 0, void 0, function* () {
-            const port = config_1.parsedEnv.PORT;
+            const port = _1.parsedEnv.PORT;
             this.express.app.listen(port, () => {
                 logger_util_1.Logger.info(`
             ------------

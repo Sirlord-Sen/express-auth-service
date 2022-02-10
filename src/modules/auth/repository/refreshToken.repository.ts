@@ -3,6 +3,7 @@ import { InternalError, NotFoundError } from '@utils/error-response.util';
 import { FullRefreshToken } from '../auth.types';
 import RefreshTokenEntity  from '../entity/refreshToken.entity';
 import { IRefreshToken } from '../interfaces/token.interface';
+import { Logger } from '@utils/logger.util';
 
 @EntityRepository(RefreshTokenEntity)
 export default class RefreshTokenRepository extends Repository<RefreshTokenEntity> {
@@ -21,7 +22,12 @@ export default class RefreshTokenRepository extends Repository<RefreshTokenEntit
     }
 
     async updateRefreshToken( query: Partial<FullRefreshToken>, body: Partial<IRefreshToken> ): Promise<void> {
-        try{ await this.update(query, body) }
+        try{ 
+            const refreshToken = await this.findOneOrFail({where: query})
+            if (refreshToken.isRevoked) Logger.warn("POTENTIAL THREAT: User in posession of Revoked RefreshToken")
+            this.merge(refreshToken, body)
+            await this.save(refreshToken) 
+        }
         catch(err){ throw new InternalError('Could not update refresh token').send() }
     }
 }

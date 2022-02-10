@@ -31,16 +31,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ExpressConfig = void 0;
 const express_1 = __importDefault(require("express"));
 const path = __importStar(require("path"));
 const bodyParser = __importStar(require("body-parser"));
 const cors_1 = __importDefault(require("cors"));
 const express_useragent_1 = __importDefault(require("express-useragent"));
 const routing_controllers_1 = require("routing-controllers");
-const morgan_middleware_1 = __importDefault(require("./middlewares/morgan.middleware"));
-const error_middleware_1 = require("./middlewares/error.middleware");
-class ExpressConfig {
+const morgan_middleware_1 = __importDefault(require("@middlewares/morgan.middleware"));
+const error_middleware_1 = require("@middlewares/error.middleware");
+class ExpressServer {
     constructor() {
         this.app = (0, express_1.default)();
         this.middlerwares();
@@ -70,5 +69,5 @@ class ExpressConfig {
         });
     }
 }
-exports.ExpressConfig = ExpressConfig;
+exports.default = ExpressServer;
 //# sourceMappingURL=server.js.map
