@@ -23,14 +23,11 @@ export default class AuthService {
     }
 
     async login(body:ILogin): Promise<IReturnUser>{
-        try{
-            const { email, password } = body
-            const user = await this.userService.findOne({email})
-            const validate = await this.userService.validateLoginCredentials(user, password)
-            if(!validate) throw new UnauthorizedError("Invalid Login Credentials").send()
-            return pick(user, ["id", "username", "email", "firstname", "surname"])
-        }
-        catch(err){throw err}
+        const { email, password } = body
+        const user = await this.userService.findOne({email})
+        const validate = await this.userService.validateLoginCredentials(user, password)
+        if(!validate) throw new UnauthorizedError("Invalid Login Credentials").send()
+        return pick(user, ["id", "username", "email", "firstname", "surname"])      
     }
 
     async logout(body:LogoutRequest): Promise<void>{
@@ -56,8 +53,7 @@ export default class AuthService {
 
         const user = await this.userService.update({ id }, { confirmTokenPassword });
 
-        try{await this.emailQueue.addForgotPasswordToQueue({ token: accessToken, email })} 
-        catch(err){throw err}
+        await this.emailQueue.addForgotPasswordToQueue({ token: accessToken, email })
         return user
         
     }

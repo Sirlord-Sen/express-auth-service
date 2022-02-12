@@ -40,7 +40,7 @@ export default class TokenService {
     }
 
     async generateAccessToken(body:AccessTokenRequest, confirmTokenPassword?: string):Promise<any>{
-        try{const { userId } = body
+        const { userId } = body
         const privateAccessSecret: Secret = {
             key: JwtConfig.privateAccessKey,
             passphrase: JwtConfig.privateAccessKeyPassphrase
@@ -63,8 +63,7 @@ export default class TokenService {
         const expiredAt = DateHelper.addMillisecondToDate(new Date(), ms);
 
         await this.tokenCache.setProp(accessToken, userId, ms/1000)
-        return {accessToken, expiredAt}}
-        catch(err){return console.log('lkjhgfrdsasdfghjkjhgfd')}
+        return {accessToken, expiredAt}
     }
 
     async generateRefreshToken(body:RefreshTokenRequest):Promise<string>{

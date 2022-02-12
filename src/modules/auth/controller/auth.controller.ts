@@ -47,9 +47,8 @@ export class AuthController {
 
     @Post('/forgot-password')
     async ForgotPassword(@Body() body: ForgotPasswordDto): Promise<UserPayloadDto>{
-        try{const user = await this.authService.forgotPassword(body)
-        return new SuccessResponse('Email Sent to user', { user}).send()}
-        catch(err){throw err}
+        const user = await this.authService.forgotPassword(body)
+        return new SuccessResponse('Email Sent to user', { user}).send()
     }
 
     @Post('/reset-password')
