@@ -6,6 +6,7 @@ import { Logger } from '@utils/logger.util';
 import { EmailConfig } from '@config//';
 import { EventEmitter } from 'events';
 import QueueCore from '@core/queue.core';
+import { InternalError } from '@utils/error-response.util';
 
 export default class EmailQueue extends QueueCore{  
     constructor() {
@@ -20,18 +21,21 @@ export default class EmailQueue extends QueueCore{
         });
     
         this.process();
-        this.completion()
     }
 
-    async addForgotPasswordToQueue(data: ForgotPassword, opt?: Bull.JobOptions) {
-        try{ 
-            const job = await this.queue.add('EMAIL_FORGOT_PASSWORD', data, opt) 
-            Logger.info(`Job with ID: ${job.id} moved to queue`)
-        }
-        catch(err){ 
-            Logger.error('EMAIL_QUEUQ', err) 
-            throw err
-        }
+    public addForgotPasswordToQueue(data: ForgotPassword, opt?: Bull.JobOptions): Promise<void> {
+        return new Promise((resolve, reject) => {
+            this.queue.add('EMAIL_FORGOT_PASSWORD', data, opt)
+                .then(job => {
+                    Logger.info(`Job added for ${job.id}`)
+                    resolve()
+                })
+                .catch(err => {
+                    Logger.warn(`EMAIL_QUEUQ EMAIL_FORGOT_PASSWORD: ${err.message} for ${data.email}`)
+                    reject(new InternalError(err.message).send())
+                })
+
+        })
     }
 
     private process() {
@@ -56,8 +60,9 @@ export default class EmailQueue extends QueueCore{
                     await job.progress(100)
 
                     return {status: 'completed'}
-                }catch (err) {
-                    Logger.error(`EMAIL_QUEUQ EMAIL_FORGOT_PASSWORD`, err)
+                }
+                catch (err:any) {
+                    Logger.error(`EMAIL_QUEUQ EMAIL_FORGOT_PASSWORD ${err.message} at ${err.response.config.url}`)
                     return Promise.reject(err);
                 }
             })
@@ -65,9 +70,4 @@ export default class EmailQueue extends QueueCore{
         EventEmit.emit('start')
     }
 
-    private completion() {
-        this.queue.on('completed', async (job, result) => {
-            Logger.info(`Job ${job.id} has ${ result.status }`)
-        })
-    }
 }

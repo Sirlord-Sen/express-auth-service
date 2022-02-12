@@ -9,11 +9,11 @@ import TokensCache from '@utils/cache.util';
 
 export class AuthMiddleware implements ExpressMiddlewareInterface{
     private readonly jwtService: JWTService
-    private tokensCache: TokensCache
+    private tokensCache
 
     constructor(){
       this.jwtService = new JWTService()
-      this.tokensCache = new TokensCache()
+      this.tokensCache = TokensCache
     }
     
     async use(req: any, res: Response, next: (err?: any) => any) {
@@ -24,8 +24,7 @@ export class AuthMiddleware implements ExpressMiddlewareInterface{
                 const userId = await this.tokensCache.getProp(accessToken)
                 if (userId) {
                     req.currentUser = { 
-                        userId: userId,
-                        email: "lodwaf12@gmail.com"
+                        userId: userId
                     }
                     return next()
                 }
@@ -40,12 +39,15 @@ export class AuthMiddleware implements ExpressMiddlewareInterface{
                     publicKey,
                     verifyOptions
                 );
+                const exp = data.exp as number
 
-                console.log(data.exp)
-                // await this.tokensCache.setProp(accessToken, data.userId, data.exp)
+                const expireAfter = exp - Math.round((new Date()).valueOf() / 1000)
+        
+                await this.tokensCache.setProp(accessToken, data.userId, expireAfter)
+
                 req.currentUser = {
                     userId: data.userId,
-                    email: data.email
+                    // email: data.email
                 };
 
                 return next();

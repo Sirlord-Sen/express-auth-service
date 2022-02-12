@@ -20,10 +20,8 @@ class EmailService {
 
         const accessToken: string = await new Promise((resolve, reject) => {
             oauth2Client.getAccessToken((err, token) => {
-                if (err) {
-                    console.log(err)
-                    reject("Failed to create access token :(");
-                }
+                if (err) reject(err);
+    
                 resolve(String(token));
             });
         });
@@ -45,8 +43,12 @@ class EmailService {
     }
 
     async sendEmail(data: SendEmail): Promise<any> {
-        let emailTransporter = await this.createTransporter();
-        return await emailTransporter.sendMail(data);
+        try{
+            let emailTransporter = await this.createTransporter();
+            return await emailTransporter.sendMail(data);
+        }
+        catch(err) { throw err }
+        
    }
 }
 

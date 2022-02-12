@@ -32,9 +32,9 @@ export class AuthController {
     @UseBefore(AuthMiddleware)
     async Logout(@Req() req: any, @Res() res: Response): Promise<PayloadDto>{
         // console.log(req.useragent)
-        const { userId, email } = req.currentUser;
+        const { userId } = req.currentUser;
         await this.authService.logout({ userId })
-        return new SuccessResponse(`User with email:'${email}' logged out`, { }).send()
+        return new SuccessResponse(`User with email:'${userId}' logged out`, { }).send()
     }
 
     @Post('/refresh-token')
@@ -47,8 +47,9 @@ export class AuthController {
 
     @Post('/forgot-password')
     async ForgotPassword(@Body() body: ForgotPasswordDto): Promise<UserPayloadDto>{
-        const user = await this.authService.forgotPassword(body)
-        return new SuccessResponse('Email Sent to user', { user}).send()
+        try{const user = await this.authService.forgotPassword(body)
+        return new SuccessResponse('Email Sent to user', { user}).send()}
+        catch(err){throw err}
     }
 
     @Post('/reset-password')

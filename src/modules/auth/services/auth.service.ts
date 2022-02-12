@@ -56,7 +56,8 @@ export default class AuthService {
 
         const user = await this.userService.update({ id }, { confirmTokenPassword });
 
-        await this.emailQueue.addForgotPasswordToQueue({ token: accessToken, email }) 
+        try{await this.emailQueue.addForgotPasswordToQueue({ token: accessToken, email })} 
+        catch(err){throw err}
         return user
         
     }
@@ -66,7 +67,8 @@ export default class AuthService {
         const { jti, email } = await this.tokenService.decodeForgotPasswordToken(token)
 
         const user = await this.userService.update({email, confirmTokenPassword: jti}, {password: password})
-        await this.emailQueue.addForgotPasswordToQueue({ email });
+        await this.emailQueue.addForgotPasswordToQueue({ email })
+     
         return user
     }
 }

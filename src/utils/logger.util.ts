@@ -49,5 +49,5 @@ export const Logger = winston.createLogger({
 })
 
 process.on('unhandledRejection', async(reason:any, p) => {
-    Logger.warn(`Possibly Unhandled Rejection Reason: ${reason.message}`);
+    Logger.warn(`Possibly Unhandled Rejection Reason: ${reason.message}`);    
 });

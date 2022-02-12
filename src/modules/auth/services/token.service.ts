@@ -29,18 +29,18 @@ export default class TokenService {
     private readonly refreshTokenRepository: RefreshTokenRepository
     private readonly jwtService: JWTService
     private readonly userService: UserService
-    private readonly tokenCache: TokensCache
+    private readonly tokenCache
     tokenType : TokenType
     constructor(){
         this.refreshTokenRepository = getCustomRepository(RefreshTokenRepository)
         this.jwtService = new JWTService()
         this.userService = new UserService()
-        this.tokenCache = new TokensCache()
+        this.tokenCache = TokensCache
         this.tokenType = TokenType.BEARER 
     }
 
-    async generateAccessToken(body:AccessTokenRequest, confirmTokenPassword?: string):Promise<AccessTokenResponse>{
-        const { userId } = body
+    async generateAccessToken(body:AccessTokenRequest, confirmTokenPassword?: string):Promise<any>{
+        try{const { userId } = body
         const privateAccessSecret: Secret = {
             key: JwtConfig.privateAccessKey,
             passphrase: JwtConfig.privateAccessKeyPassphrase
@@ -63,7 +63,8 @@ export default class TokenService {
         const expiredAt = DateHelper.addMillisecondToDate(new Date(), ms);
 
         await this.tokenCache.setProp(accessToken, userId, ms/1000)
-        return {accessToken, expiredAt}
+        return {accessToken, expiredAt}}
+        catch(err){return console.log('lkjhgfrdsasdfghjkjhgfd')}
     }
 
     async generateRefreshToken(body:RefreshTokenRequest):Promise<string>{

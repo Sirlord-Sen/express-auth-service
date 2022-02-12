@@ -1,5 +1,4 @@
 import { RedisConfig } from '@config//'
-import { InternalError } from '@utils/error-response.util'
 import { Logger } from '@utils/logger.util'
 import r from 'ioredis'
 import { RedisOptions, Redis } from 'ioredis'
@@ -20,7 +19,8 @@ export default class CacheCore{
             ...opts
         })
         this.initialConnection = true  
-        this.eventError()
+        this.listeners()
+        this.errorListener()
     }
 
     private get defaultOptions(){
@@ -29,14 +29,43 @@ export default class CacheCore{
         }
     }
 
+    public async listeners(): Promise<void>{
+        return new Promise((resolve, reject) => {
+            this.client.on('connect', () => {
+                Logger.info('Redis: connected')
+            })
+            this.client.on('ready', () => {
+                if(this.initialConnection){
+                    this.initialConnection = false
+                    resolve()
+                }
+                Logger.info('Redis: ready')
+            })
+            this.client.on('reconnecting', () => {
+                Logger.info('Redis: reconnecting')
+            })
+            this.client.on('end', () => {
+                Logger.info('Redis: end')
+            })
+            this.client.on('disconnected', () => {
+                Logger.error('Redis: disconnected')
+            })
+
+        })
+    }
+
+
     public async close():Promise<void> {
         await this.client.quit() 
         return
     }
 
-    private async eventError() {
-        this.client.on('error', error => {
-            Logger.error(error.message)
-        });
+
+    private async errorListener(): Promise<void> {
+        return new Promise((resolve, reject) => {
+            this.client.on('error', function(err) {
+                Logger.error(`Redis: ${err}`)
+            })
+        })
     } 
 }
