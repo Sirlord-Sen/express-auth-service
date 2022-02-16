@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 import JWTService from '@providers/jwt/jwt.service';
 import { JwtPayload, VerifyOptions } from 'jsonwebtoken';
 import { JwtConfig } from '@config//';
-import { ForbiddenError } from '@utils/error-response.util';
+import { BadRequestError, ForbiddenError } from '@utils/error-response.util';
 import TokensCache from '@utils/cache.util';
 
 export class AuthMiddleware implements ExpressMiddlewareInterface{
@@ -17,11 +17,13 @@ export class AuthMiddleware implements ExpressMiddlewareInterface{
     }
     
     async use(req: any, res: Response, next: (err?: any) => any) {
+        const id = req.params.id
         const accessToken = TokenHelper.getTokenFromHeader(req.headers)
 
         if(accessToken) {
             try {
                 const userId = await this.tokensCache.getProp(accessToken)
+                if(userId && id!==userId) throw new BadRequestError("User Does not match").send()
                 if (userId) {
                     req.currentUser = { 
                         userId: userId
