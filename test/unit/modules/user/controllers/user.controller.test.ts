@@ -69,7 +69,7 @@ describe('POST /api/user/register', () => {
         const user = dummy()
         const { username, email, firstname,surname, password} = user
         const res = await request(server)
-                                .post('/api/user/register')
+                                .post('/api/users')
                                 .send({
                                     username,
                                     email: 'lodwaf',
