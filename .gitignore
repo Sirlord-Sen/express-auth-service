@@ -2,5 +2,8 @@
 node_modules
 dist
 
-# os
-.env
+# configs
+.env.dev
+.env.test
+.env.prod
+

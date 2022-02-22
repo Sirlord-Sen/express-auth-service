@@ -22,3 +22,35 @@
 
 [2022-02-15 00:51:28:5128] [31merror[39m: [31mduplicate key value violates unique constraint "UQ_USER_EMAIL"[39m 
 
+[2022-02-21 18:03:12:312] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-21 18:03:13:313] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-21 18:03:13:313] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-21 18:03:13:313] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-21 18:03:13:313] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-21 18:03:13:313] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-21 18:03:14:314] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-21 18:03:14:314] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-21 18:03:14:314] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-21 18:03:15:315] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-21 18:03:15:315] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-21 18:03:16:316] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-21 18:03:16:316] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-21 18:03:17:317] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-21 18:03:18:318] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-02-21 18:03:19:319] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
