@@ -9,23 +9,23 @@ import { createDummy, dummy } from '../../../helpers/user'
 
 let server: Application
 beforeAll(async () => {
-    // new CacheCore()
+    new CacheCore()
     await DB.on()
     server = new ExpressServer().app
 })
 
 afterAll(async () => {
-    // await new CacheCore().close()
+    await new CacheCore().close()
     try{await DB.close()}
     catch(err){ expect(err).toMatch('error'); }
 })
 
-describe('POST /api/user/register', () => {
+describe('POST /api/users/register', () => {
     it('should return 200 & valid response for a valid signup request', async()=> {
         const user = dummy()
         const { username, email, firstname,surname } = user
         const res = await request(server)
-                                .post('/api/user/register')
+                                .post('/api/users/register')
                                 .send({...user})
         expect(res.status).toBe(200)
         expect(res.body).toMatchObject({
@@ -50,7 +50,7 @@ describe('POST /api/user/register', () => {
     it('should return 409 & valid response for duplicated user', async() => {
         const user = await createDummy()
         const res = await request(server)
-                                .post('/api/user/register')
+                                .post('/api/users/register')
                                 .send({...user})
         expect(res.status).toBe(409)
         expect(res.body).toMatchObject({
@@ -69,7 +69,7 @@ describe('POST /api/user/register', () => {
         const user = dummy()
         const { username, email, firstname,surname, password} = user
         const res = await request(server)
-                                .post('/api/users')
+                                .post('/api/users/register')
                                 .send({
                                     username,
                                     email: 'lodwaf',

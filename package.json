@@ -8,7 +8,7 @@
     "start:dev": "cross-env ENV_FILE=./config/.env.dev nodemon",
     "start:prod": "cross-env ENV_FILE=./config/.env.prod build && node -r tsconfig-paths/register ./dist/main.js",
     "lint": "eslint \"src/**/*.ts\" --fix",
-    "test:unit": "cross-env ENV_FILE=./config/.env.test jest --detectOpenHandles --coverage"
+    "test:unit": "cross-env ENV_FILE=./config/.env.test jest --detectOpenHandles"
   },
   "repository": {
     "type": "git",

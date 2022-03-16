@@ -652,3 +652,24 @@
 [2022-02-21 18:03:51:351] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 1307 - 180.221 ms[39m
 [35m[39m 
 
+[2022-03-16 16:49:01:491] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-03-16 16:49:12:4912] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-03-16 16:49:12:4912] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-03-16 16:49:12:4912] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-03-16 16:49:23:4923] [35mhttp[39m: [35m::1 - POST /api/users/register HTTP/1.1 409 200 - 110.740 ms[39m
+[35m[39m 
+
+[2022-03-16 16:49:42:4942] [32minfo[39m: [32mToken Cache added for User: fd1ec2e5-63f7-4006-bfe9-e37956093174[39m 
+
+[2022-03-16 16:49:42:4942] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 1307 - 139.810 ms[39m
+[35m[39m 
+
