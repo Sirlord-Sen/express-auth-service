@@ -39,7 +39,7 @@ export default class TokenService {
         this.tokenType = TokenType.BEARER 
     }
 
-    async generateAccessToken(body:AccessTokenRequest, confirmTokenPassword?: string):Promise<any>{
+    async generateAccessToken(body:AccessTokenRequest, confirmTokenPassword?: string):Promise<AccessTokenResponse>{
         const { userId } = body
         const privateAccessSecret: Secret = {
             key: JwtConfig.privateAccessKey,
