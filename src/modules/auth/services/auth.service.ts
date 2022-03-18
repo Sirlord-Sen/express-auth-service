@@ -3,7 +3,7 @@ import { ILogin } from "../interfaces/auth.interface";
 import { InternalError, UnauthorizedError } from "@utils/error-response.util";
 import { pick } from "lodash";
 import { IReturnUser } from "@modules/user/interfaces/user.interface";
-import { ForgotPasswordRequest, LogoutRequest, ResetPasswordRequest } from "../auth.types";
+import { ForgotPasswordRequest, LogoutRequest, ResetPasswordRequest, UserAgentDets } from "../auth.types";
 import { TokenService } from ".";
 import { IRefreshTokenRequest, ITokenResponse } from "../interfaces/token.interface";
 import { TokenType } from "@utils/util-types";
@@ -30,12 +30,12 @@ export default class AuthService {
         return pick(user, ["id", "username", "email", "firstname", "surname"])      
     }
 
-    async logout(body:LogoutRequest): Promise<void>{
+    async logout(body:LogoutRequest, useragent: UserAgentDets): Promise<void>{
         const { userId } = body
-        await this.tokenService.update({ userId } , {isRevoked: true });
+        await this.tokenService.update({ userId, ...useragent, isRevoked: false } , {isRevoked: true });
     }
 
-    async refreshToken(body: IRefreshTokenRequest): Promise<ITokenResponse>{
+    async refreshToken(body: IRefreshTokenRequest): Promise<Partial<ITokenResponse>>{
         let { user }  = await this.tokenService.resolveRefreshToken(body.refreshToken)
         const { accessToken, expiredAt } = await this.tokenService.generateAccessToken({userId: user.id, email: user.email})
         const tokens = { tokenType: TokenType.BEARER , accessToken, expiredAt, refreshToken: body.refreshToken }

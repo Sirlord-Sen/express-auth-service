@@ -673,3 +673,409 @@
 [2022-03-16 16:49:42:4942] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 1307 - 139.810 ms[39m
 [35m[39m 
 
+[2022-03-18 16:57:54:5754] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-03-18 16:58:02:582] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-03-18 16:58:02:582] [33mwarn[39m: [33mPossibly Unhandled Rejection Reason: ⨯ Unable to compile TypeScript:[39m
+[33m[96msrc/modules/auth/services/auth.service.ts[0m:[93m42[0m:[93m9[0m - [91merror[0m[90m TS2741: [0mProperty 'lastSignIn' is missing in type '{ tokenType: TokenType; accessToken: string; expiredAt: Date; refreshToken: string; }' but required in type 'ITokenResponse'.[39m
+
+[33m[7m42[0m         return  tokens ;[39m
+[33m[7m  [0m [91m        ~~~~~~~~~~~~~~~~[0m[39m
+
+[33m  [96msrc/modules/auth/interfaces/token.interface.ts[0m:[93m27[0m:[93m3[0m[39m
+[33m    [7m27[0m   lastSignIn: Date | undefined[39m
+[33m    [7m  [0m [96m  ~~~~~~~~~~[0m[39m
+[33m    'lastSignIn' is declared here.[39m
+[33m[39m 
+
+[2022-03-18 16:59:53:5953] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-03-18 16:59:58:5958] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-03-18 17:00:10:010] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-03-18 17:00:10:010] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-03-18 17:00:10:010] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-03-18 17:00:10:010] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-03-18 17:00:10:010] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-03-18 17:00:10:010] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-03-18 17:00:10:010] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-03-18 17:00:11:011] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-03-18 17:00:11:011] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-03-18 17:00:11:011] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-03-18 17:00:11:011] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-03-18 17:00:11:011] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-03-18 17:00:11:011] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-03-18 17:00:11:011] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-03-18 17:00:11:011] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-03-18 17:00:12:012] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-03-18 17:00:12:012] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-03-18 17:00:12:012] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-03-18 17:00:12:012] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-03-18 17:00:13:013] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-03-18 17:00:13:013] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-03-18 17:00:13:013] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-03-18 17:00:13:013] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-03-18 17:00:14:014] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-03-18 17:00:14:014] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-03-18 17:00:14:014] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-03-18 17:00:14:014] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-03-18 17:00:15:015] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-03-18 17:00:15:015] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-03-18 17:00:16:016] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-03-18 17:00:16:016] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-03-18 17:00:16:016] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-03-18 17:00:16:016] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-03-18 17:00:17:017] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-03-18 17:00:17:017] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-03-18 17:00:18:018] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-03-18 17:00:18:018] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-03-18 17:00:19:019] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-03-18 17:00:19:019] [32minfo[39m: [32mRedis: reconnecting[39m 
+
+[2022-03-18 17:00:20:020] [31merror[39m: [31mRedis: Error: connect ECONNREFUSED 127.0.0.1:6379[39m 
+
+[2022-03-18 17:00:20:020] [32minfo[39m: [32mRedis: end[39m 
+
+[2022-03-18 17:00:40:040] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-03-18 17:00:53:053] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-03-18 17:00:53:053] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-03-18 17:00:53:053] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-03-18 17:01:02:12] [35mhttp[39m: [35m::1 - POST /api/users/register HTTP/1.1 200 302 - 124.218 ms[39m
+[35m[39m 
+
+[2022-03-18 17:01:22:122] [32minfo[39m: [32mToken Cache added for User: dbe51a2d-d61d-42a8-bd65-65a7503f9c98[39m 
+
+[2022-03-18 17:01:22:122] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 1307 - 129.416 ms[39m
+[35m[39m 
+
+[2022-03-18 17:01:32:132] [32minfo[39m: [32mToken Cache added for User: dbe51a2d-d61d-42a8-bd65-65a7503f9c98[39m 
+
+[2022-03-18 17:01:32:132] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 1307 - 99.391 ms[39m
+[35m[39m 
+
+[2022-03-18 17:02:47:247] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-03-18 17:03:12:312] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-03-18 17:03:24:324] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-03-18 17:03:24:324] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-03-18 17:03:24:324] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-03-18 17:03:40:340] [35mhttp[39m: [35m::1 - POST /api/users/register HTTP/1.1 200 302 - 103.387 ms[39m
+[35m[39m 
+
+[2022-03-18 17:03:45:345] [32minfo[39m: [32mToken Cache added for User: 4f1662b8-42ee-42f7-850f-3c766b8dceac[39m 
+
+[2022-03-18 17:03:45:345] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 1307 - 44.780 ms[39m
+[35m[39m 
+
+[2022-03-18 17:05:04:54] [32minfo[39m: [32mToken Cache added for User: 4f1662b8-42ee-42f7-850f-3c766b8dceac[39m 
+
+[2022-03-18 17:05:04:54] [33mwarn[39m: [33mAttempting to Signin again from same device[39m 
+
+[2022-03-18 17:05:04:54] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 1307 - 116.502 ms[39m
+[35m[39m 
+
+[2022-03-18 17:05:19:519] [32minfo[39m: [32mToken Cache added for User: 4f1662b8-42ee-42f7-850f-3c766b8dceac[39m 
+
+[2022-03-18 17:05:19:519] [33mwarn[39m: [33mAttempting to Signin again from same device[39m 
+
+[2022-03-18 17:05:19:519] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 1307 - 96.818 ms[39m
+[35m[39m 
+
+[2022-03-18 17:06:09:69] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-03-18 17:06:20:620] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-03-18 17:06:20:620] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-03-18 17:06:20:620] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-03-18 17:06:40:640] [32minfo[39m: [32mToken Cache added for User: 4f1662b8-42ee-42f7-850f-3c766b8dceac[39m 
+
+[2022-03-18 17:06:40:640] [33mwarn[39m: [33mAttempting to Signin again from same device[39m 
+
+[2022-03-18 17:06:40:640] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 1307 - 162.332 ms[39m
+[35m[39m 
+
+[2022-03-18 17:07:04:74] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-03-18 17:07:15:715] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-03-18 17:07:15:715] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-03-18 17:07:15:715] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-03-18 17:07:21:721] [32minfo[39m: [32mToken Cache added for User: 4f1662b8-42ee-42f7-850f-3c766b8dceac[39m 
+
+[2022-03-18 17:07:21:721] [33mwarn[39m: [33mAttempting to Signin again from same device[39m 
+
+[2022-03-18 17:07:21:721] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 1307 - 136.930 ms[39m
+[35m[39m 
+
+[2022-03-18 17:07:53:753] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-03-18 17:08:05:85] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-03-18 17:08:05:85] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-03-18 17:08:05:85] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-03-18 17:08:11:811] [32minfo[39m: [32mToken Cache added for User: 4f1662b8-42ee-42f7-850f-3c766b8dceac[39m 
+
+[2022-03-18 17:08:11:811] [33mwarn[39m: [33mAttempting to Signin again from same device[39m 
+
+[2022-03-18 17:08:11:811] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 1307 - 139.598 ms[39m
+[35m[39m 
+
+[2022-03-18 17:12:16:1216] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-03-18 17:12:27:1227] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-03-18 17:12:27:1227] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-03-18 17:12:27:1227] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-03-18 17:12:46:1246] [35mhttp[39m: [35m::1 - POST /api/auth/logout HTTP/1.1 400 190 - 3.958 ms[39m
+[35m[39m 
+
+[2022-03-18 17:13:45:1345] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-03-18 17:13:57:1357] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-03-18 17:13:57:1357] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-03-18 17:13:57:1357] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-03-18 17:14:41:1441] [35mhttp[39m: [35m::1 - POST /api/users/register HTTP/1.1 200 302 - 128.742 ms[39m
+[35m[39m 
+
+[2022-03-18 17:14:46:1446] [32minfo[39m: [32mToken Cache added for User: 106a0292-9d52-4796-a3eb-9096c9836d73[39m 
+
+[2022-03-18 17:14:46:1446] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 1307 - 51.134 ms[39m
+[35m[39m 
+
+[2022-03-18 17:17:33:1733] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-03-18 17:17:44:1744] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-03-18 17:17:44:1744] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-03-18 17:17:44:1744] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-03-18 17:18:18:1818] [35mhttp[39m: [35m::1 - POST /api/auth/logout HTTP/1.1 400 190 - 6.936 ms[39m
+[35m[39m 
+
+[2022-03-18 17:18:58:1858] [35mhttp[39m: [35m::1 - POST /api/auth/logout HTTP/1.1 400 190 - 1.270 ms[39m
+[35m[39m 
+
+[2022-03-18 17:19:30:1930] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-03-18 17:19:42:1942] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-03-18 17:19:42:1942] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-03-18 17:19:42:1942] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-03-18 17:20:03:203] [35mhttp[39m: [35m::1 - POST /api/auth/logout HTTP/1.1 400 190 - 4.043 ms[39m
+[35m[39m 
+
+[2022-03-18 17:20:16:2016] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-03-18 17:20:28:2028] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-03-18 17:20:28:2028] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-03-18 17:20:28:2028] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-03-18 17:21:16:2116] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-03-18 17:21:28:2128] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-03-18 17:21:28:2128] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-03-18 17:21:28:2128] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-03-18 17:21:39:2139] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-03-18 17:21:50:2150] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-03-18 17:21:50:2150] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-03-18 17:21:50:2150] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-03-18 17:21:53:2153] [35mhttp[39m: [35m::1 - POST /api/auth/logout HTTP/1.1 400 190 - 6.396 ms[39m
+[35m[39m 
+
+[2022-03-18 17:24:41:2441] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-03-18 17:24:52:2452] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-03-18 17:24:52:2452] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-03-18 17:24:52:2452] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-03-18 17:25:19:2519] [35mhttp[39m: [35m::1 - POST /api/auth/logout HTTP/1.1 200 209 - 134.422 ms[39m
+[35m[39m 
+
+[2022-03-18 17:25:58:2558] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-03-18 17:26:09:269] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-03-18 17:26:09:269] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-03-18 17:26:09:269] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-03-18 17:26:53:2653] [32minfo[39m: [32mToken Cache added for User: 106a0292-9d52-4796-a3eb-9096c9836d73[39m 
+
+[2022-03-18 17:26:53:2653] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 1347 - 152.146 ms[39m
+[35m[39m 
+
+[2022-03-18 17:27:16:2716] [32minfo[39m: [32mDatabase Connected!!![39m 
+
+[2022-03-18 17:27:28:2728] [32minfo[39m: [32m[39m
+[32m            ------------[39m
+[32m            Server Started![39m
+[32m            Http: http://localhost:4000[39m
+[32m            -------------[39m
+[32m          [39m 
+
+[2022-03-18 17:27:28:2728] [32minfo[39m: [32mRedis: connected[39m 
+
+[2022-03-18 17:27:28:2728] [32minfo[39m: [32mRedis: ready[39m 
+
+[2022-03-18 17:27:35:2735] [32minfo[39m: [32mToken Cache added for User: 106a0292-9d52-4796-a3eb-9096c9836d73[39m 
+
+[2022-03-18 17:27:35:2735] [33mwarn[39m: [33mAttempting to Signin again from same device[39m 
+
+[2022-03-18 17:27:35:2735] [35mhttp[39m: [35m::1 - POST /api/auth/login HTTP/1.1 200 1347 - 136.785 ms[39m
+[35m[39m 
+
+[2022-03-18 17:27:55:2755] [35mhttp[39m: [35m::1 - POST /api/auth/logout HTTP/1.1 200 209 - 234.617 ms[39m
+[35m[39m 
+

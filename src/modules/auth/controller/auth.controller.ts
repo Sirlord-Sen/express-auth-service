@@ -21,9 +21,13 @@ export class AuthController {
     // FIX LOGINS WITH MULTIPLE DEVICES
     @Post('/login')
     async Login(@Body() body:LoginDto, @Req() req: any, @Res() res: Response): Promise<UserPayloadDto>{
-        // console.log(req.useragent)
+        const { useragent } = req
+        const userAgent = {
+            os: useragent?.os,
+            browser: useragent?.browser
+        }
         const user = await this.authService.login(body)
-        const tokens = await this.tokenService.getTokens(user)
+        const tokens = await this.tokenService.getTokens(user, userAgent)
         if (tokens) addAuthToRes(res, tokens)
         return new SuccessResponse('Login Successfull', { user, tokens}).send()
     }
@@ -31,9 +35,13 @@ export class AuthController {
     @Post('/logout')
     @UseBefore(AuthMiddleware)
     async Logout(@Req() req: any, @Res() res: Response): Promise<PayloadDto>{
-        // console.log(req.useragent)
+        const { useragent } = req
+        const userAgent = {
+            os: useragent?.os,
+            browser: useragent?.browser
+        }
         const { userId } = req.currentUser;
-        await this.authService.logout({ userId })
+        await this.authService.logout({ userId }, userAgent)
         return new SuccessResponse(`User with email:'${userId}' logged out`, { }).send()
     }
 

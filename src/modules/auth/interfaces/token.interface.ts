@@ -23,12 +23,18 @@ export interface ITokenResponse {
   accessToken: string,
   refreshToken: string,
   tokenType: TokenType,
-  expiredAt: Date
+  expiredAt: Date,
+  lastSignIn: Date | undefined
+}
+
+export interface IRefreshTokenResponse{
+  refreshToken: string,
+  lastSignIn: Date | undefined
 }
 
 export interface TokenResponse {
   ( res: Response,
-    tokens: ITokenResponse): void
+    tokens: Partial<ITokenResponse>): void
 }
 
 export interface IRefreshTokenRequest{

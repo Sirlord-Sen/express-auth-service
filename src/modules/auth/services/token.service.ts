@@ -7,7 +7,7 @@ import RefreshTokenRepository from "../repository/refreshToken.repository";
 import { getCustomRepository } from "typeorm";
 import { TokenType } from "@utils/util-types";
 import { JwtConfig } from '@config//';
-import { IRefreshToken, ITokenResponse } from '../interfaces/token.interface';
+import { IRefreshToken, IRefreshTokenResponse, ITokenResponse } from '../interfaces/token.interface';
 import { InternalError, UnauthorizedError } from '@utils/error-response.util';
 import UserService from '@modules/user/services/user.service';
 import { FullUser } from '@modules/user/user.types';
@@ -19,10 +19,12 @@ import {
     RefreshTokenPayload, 
     RefreshToken, 
     AccessTokenPayload, 
-    AccessTokenResponse
+    AccessTokenResponse,
+    UserAgentDets
 } from "../auth.types";
 import { Logger } from '@utils/logger.util';
 import TokensCache from '@utils/cache.util';
+import RefreshTokenEntity from '../entity/refreshToken.entity';
 
 
 export default class TokenService {
@@ -66,12 +68,34 @@ export default class TokenService {
         return {accessToken, expiredAt}
     }
 
-    async generateRefreshToken(body:RefreshTokenRequest):Promise<string>{
+    async lastSignIn(body:RefreshTokenRequest, useragent: UserAgentDets): Promise<RefreshTokenEntity | undefined>{
+        const lastSignIn = (await this.refreshTokenRepository.find({
+            where: {
+                ...useragent, 
+                ...body, 
+                isRevoked: true
+            },   
+            order: {
+                created_at: "DESC"
+            }
+        }))[0]
+        if(lastSignIn) return lastSignIn
+        return undefined
+    }
+
+    async generateRefreshToken(body:RefreshTokenRequest, useragent: UserAgentDets):Promise<IRefreshTokenResponse>{
         const jti = nanoid();
         const ms = DateHelper.convertToMS(JwtConfig.refreshTokenExpiration);
         const expiredAt = DateHelper.addMillisecondToDate(new Date(), ms);
 
-        const savedRefreshToken = await this.refreshTokenRepository.createRefreshToken({ ...body, jti, expiredAt });
+        // Only Allowing User to Login again after logout with same broswer and OS
+        if ((await this.refreshTokenRepository.findOne({...useragent, ...body , isRevoked: false}))) {
+            Logger.warn("Attempting to Signin again from same device");
+        }
+
+        const lastSignIn = (await this.lastSignIn(body, useragent))?.created_at
+
+        const savedRefreshToken = await this.refreshTokenRepository.createRefreshToken({ ...body, ...useragent ,jti, expiredAt });
 
         const opts: SignOptions = {
             expiresIn: JwtConfig.refreshTokenExpiration,
@@ -83,17 +107,19 @@ export default class TokenService {
             typ: TokenType.BEARER,
         };
 
-        return this.jwtService.sign<JwtPayload>(payload, JwtConfig.refreshTokenSecret, opts)
+        const refreshToken = this.jwtService.sign<JwtPayload>(payload, JwtConfig.refreshTokenSecret, opts)
+
+        return { refreshToken, lastSignIn }
     }
 
-    async getTokens(body: TokenRequest):Promise<ITokenResponse>{
+    async getTokens(body: TokenRequest, agent: UserAgentDets):Promise<ITokenResponse>{
         const { id, email } = body;
-        const [{accessToken, expiredAt}, refreshToken] = await Promise.all([
+        const [{accessToken, expiredAt}, {refreshToken, lastSignIn}] = await Promise.all([
             this.generateAccessToken({ email: email, userId: id }),
-            this.generateRefreshToken({ userId: id })
+            this.generateRefreshToken({ userId: id }, agent)
         ]);
           
-        return { tokenType: this.tokenType ,expiredAt , accessToken, refreshToken};
+        return { tokenType: this.tokenType ,expiredAt , accessToken, refreshToken ,lastSignIn};
     }
 
     async update(query: Partial<FullRefreshToken>, body: Partial<IRefreshToken>): Promise<void>{

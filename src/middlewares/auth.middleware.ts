@@ -17,13 +17,11 @@ export class AuthMiddleware implements ExpressMiddlewareInterface{
     }
     
     async use(req: any, res: Response, next: (err?: any) => any) {
-        const id = req.params.id
         const accessToken = TokenHelper.getTokenFromHeader(req.headers)
 
         if(accessToken) {
             try {
                 const userId = await this.tokensCache.getProp(accessToken)
-                if(userId && id!==userId) throw new BadRequestError("User Does not match").send()
                 if (userId) {
                     req.currentUser = { 
                         userId: userId

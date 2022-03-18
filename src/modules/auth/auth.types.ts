@@ -24,3 +24,5 @@ export type UpdateTokenRequest = LogoutRequest & Pick<IRefreshToken, 'isRevoked'
 
 export type ForgotPasswordRequest = Required<Pick<FullUser, 'email'>>;
 export type ResetPasswordRequest = Required<Pick<FullUser, 'password'>> & Token
+
+export type UserAgentDets = Pick<FullRefreshToken, 'browser' | 'os'>
