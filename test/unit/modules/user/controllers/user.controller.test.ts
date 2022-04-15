@@ -20,7 +20,7 @@ afterAll(async () => {
     catch(err){ expect(err).toMatch('error'); }
 })
 
-describe('POST /api/users/register', () => {
+describe('POST /api/v1/users/register', () => {
     it('should return 200 & valid response for a valid signup request', async()=> {
         const user = dummy()
         const { username, email, firstname,surname } = user
@@ -50,7 +50,7 @@ describe('POST /api/users/register', () => {
     it('should return 409 & valid response for duplicated user', async() => {
         const user = await createDummy()
         const res = await request(server)
-                                .post('/api/users/register')
+                                .post('/api/v1/users/register')
                                 .send({...user})
         expect(res.status).toBe(409)
         expect(res.body).toMatchObject({
@@ -69,7 +69,7 @@ describe('POST /api/users/register', () => {
         const user = dummy()
         const { username, email, firstname,surname, password} = user
         const res = await request(server)
-                                .post('/api/users/register')
+                                .post('/api/v1/users/register')
                                 .send({
                                     username,
                                     email: 'lodwaf',

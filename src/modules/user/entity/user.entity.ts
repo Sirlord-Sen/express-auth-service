@@ -20,8 +20,8 @@ export default class UserEntity extends EntityCore<IUser> implements IUser{
     @Column()
     password: string
 
-    @Column()
-    isActive: boolean;
+    @Column({ default: false })
+    isActive?: boolean;
 
     @Column({ nullable: true })
     accountActivationToken?: string;

@@ -4,7 +4,8 @@ import * as path from 'path'
 import * as bodyParser from 'body-parser'
 import cors from 'cors'
 import useragent from 'express-useragent'
-import { useExpressServer } from 'routing-controllers'
+import Container from 'typedi'
+import { useContainer, useExpressServer } from 'routing-controllers'
 import morganMiddleware  from '@middlewares/morgan.middleware';
 import { CustomErrorHandler } from '@middlewares/error.middleware'
 
@@ -27,6 +28,7 @@ export default class ExpressServer {
   
     async setupControllers() {
         const Controllers = path.resolve(__dirname, "modules/**/*.controller.ts");
+        useContainer(Container);
         useExpressServer(this.app, { 
             controllers: [ Controllers ], 
             middlewares: [ CustomErrorHandler ],

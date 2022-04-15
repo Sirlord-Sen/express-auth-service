@@ -21,19 +21,17 @@ import {
 import { Logger } from '@utils/logger.util';
 import TokensCache from '@utils/cache.util';
 import { ITokenService } from '../interfaces/service.interface';
+import { Service } from 'typedi'
+import { InjectRepository } from 'typeorm-typedi-extensions';
 
-
+@Service()
 export default class TokenService implements ITokenService{
-    private readonly refreshTokenRepository: RefreshTokenRepository
-    private readonly jwtService: JWTService
-    private readonly userService: UserService
-    private readonly tokenCache
-    constructor(){
-        this.refreshTokenRepository = getCustomRepository(RefreshTokenRepository)
-        this.jwtService = new JWTService()
-        this.userService = new UserService()
-        this.tokenCache = TokensCache
-    }
+    constructor(
+        @InjectRepository() 
+        private readonly refreshTokenRepository: RefreshTokenRepository,
+        private readonly jwtService: JWTService,
+        private readonly userService: UserService
+    ){}
 
     async generateAccessToken(body:AccessTokenRequest, confirmTokenPassword?: string) {
         const { userId } = body
@@ -58,7 +56,7 @@ export default class TokenService implements ITokenService{
         const ms = DateHelper.convertToMS(JwtConfig.accessTokenExpiration)
         const expiredAt = DateHelper.addMillisecondToDate(new Date(), ms);
 
-        await this.tokenCache.setProp(accessToken, userId, ms/1000)
+        await TokensCache.setProp(accessToken, userId, ms/1000)
         return {accessToken, expiredAt}
     }
 

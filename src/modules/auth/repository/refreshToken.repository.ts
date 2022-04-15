@@ -4,7 +4,9 @@ import { FullRefreshToken } from '../auth.types';
 import RefreshTokenEntity  from '../entity/refresh-token.entity';
 import { IRefreshToken } from '../interfaces/refresh-token.interface';
 import { Logger } from '@utils/logger.util';
+import { Service } from 'typedi'
 
+@Service()
 @EntityRepository(RefreshTokenEntity)
 export default class RefreshTokenRepository extends Repository<RefreshTokenEntity> {
 

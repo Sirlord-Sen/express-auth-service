@@ -7,7 +7,9 @@ import { EmailConfig } from '@config//';
 import { EventEmitter } from 'events';
 import QueueCore from '@core/queue.core';
 import { InternalError } from '@utils/error-response.util';
+import { Service } from 'typedi'
 
+@Service()
 export default class EmailQueue extends QueueCore{  
     constructor() {
         super('EMAIL_QUEUQ', {

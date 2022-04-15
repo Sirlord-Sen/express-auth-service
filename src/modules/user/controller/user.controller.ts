@@ -1,18 +1,19 @@
 import { AuthMiddleware } from '@middlewares/auth.middleware';
 import { Response } from 'express'
+import { Service } from 'typedi'
 import { Controller, Res, Body, Post, Get, Req, UseBefore, Put } from 'routing-controllers';
 import { SuccessResponse } from '@utils/response.util';
 import { UserPayloadDto } from '@utils/utility-types';
 import { ResetPasswordDto, SignUpDto, UpdateUserDto } from '../dto/user.dto';
 import UserService  from '../services/user.service'
 
-@Controller('/api/users')
+@Service()
+@Controller('/api/v1/users')
 export class UserController {
-    private readonly userService: UserService
-    constructor(){
-        this.userService = new UserService()
-    }
-j
+    constructor(
+        private readonly userService: UserService
+    ){}
+
     @Post('/register')
     async Register(@Body() body:SignUpDto, @Res() res: Response): Promise<UserPayloadDto>{
         const user = await this.userService.register(body)

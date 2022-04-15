@@ -14,25 +14,22 @@ import { nanoid } from "nanoid";
 import EmailQueue  from "@providers/mailer";
 import { IAuthService } from "../interfaces/service.interface";
 import { ValidateHelper } from "@helpers//";
+import { Service } from 'typedi'
 
-
+@Service()
 export default class AuthService implements IAuthService{
-    private userService: UserService 
-    private tokenService: TokenService
-    private emailQueue : EmailQueue
-
-    constructor(){
-        this.emailQueue = new EmailQueue()
-        this.userService = new UserService()
-        this.tokenService = new TokenService()
-    }
+    constructor(
+        private userService: UserService,
+        private tokenService: TokenService,
+        private emailQueue : EmailQueue
+    ){}
 
     async login(body: LoginRequest) {
         const { email, password } = body
         const user = await this.userService.findOneOrFail({email})
         const validate = await ValidateHelper.credentials(user.password, password)
         if(!validate) throw new UnauthorizedError("Invalid Login Credentials").send()
-        return pick(user, ["id", "username", "email", "firstname", "surname"])      
+        return pick(user, ["id", "username", "email"])      
     }
 
     async logout(body: LogoutRequest, useragent: UserAgent) {

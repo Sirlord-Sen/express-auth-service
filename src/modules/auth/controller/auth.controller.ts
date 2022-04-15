@@ -7,17 +7,16 @@ import { AuthMiddleware } from '@middlewares/auth.middleware';
 import { TokenHelper } from '@helpers//';
 import { RefreshTokenDto } from '../dto/token.dto';
 import { PayloadDto, TokenPayloadDto, UserPayloadDto } from '@utils/utility-types';
+import { Service } from 'typedi'
 
-
-@Controller('/api/auth')
+@Service()
+@Controller('/api/v1/auth')
 export class AuthController {
-    private readonly authService: AuthService
-    private readonly tokenService: TokenService
-    constructor(){
-        this.authService = new AuthService()
-        this.tokenService = new TokenService()
-    }
-    // FIX LOGINS WITH MULTIPLE DEVICES
+    constructor(
+        private readonly authService: AuthService,
+        private readonly tokenService: TokenService
+    ){}
+ 
     @Post('/login')
     async Login(@Body() body:LoginDto, @Req() req: any, @Res() res: Response): Promise<UserPayloadDto>{
         const { useragent } = req
@@ -26,7 +25,7 @@ export class AuthController {
             browser: useragent?.browser
         }
         const user = await this.authService.login(body)
-        const tokens = await this.tokenService.getTokens(user, userAgent)
+        const tokens = await this.tokenService.getTokens({id: user.id, email: user.email}, userAgent)
         return new SuccessResponse('Login Successfull', { user, tokens}).send()
     }
 

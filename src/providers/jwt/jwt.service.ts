@@ -3,7 +3,9 @@ import { DateHelper } from '@helpers//';
 import { InternalError, UnauthorizedError } from '@utils/error-response.util';
 import { Logger } from '@utils/logger.util';
 import { CodeError } from '@utils/utility-types' 
+import { Service } from 'typedi'
 
+@Service()
 export default class JWTService {
 //   decode(
 //     token: string,

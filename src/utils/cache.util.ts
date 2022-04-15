@@ -1,7 +1,8 @@
 import CacheCore from "@core/cache.core";
-import { InternalError } from "./error-response.util";
 import { Logger } from "./logger.util";
+import { Service } from 'typedi'
 
+@Service()
 class TokensCache extends CacheCore{  
     private static _instance: TokensCache
     constructor(){

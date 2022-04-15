@@ -3,7 +3,9 @@ import { EmailConfig } from '@config//';
 import { OAuthConfig } from '@config//'
 import { SendEmail } from './email.types';
 import { google } from 'googleapis'
+import { Service } from 'typedi'
 
+@Service()
 class EmailService {
 
     createTransporter = async() =>{

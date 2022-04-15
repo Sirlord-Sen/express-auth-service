@@ -1,6 +1,4 @@
 import { IsBoolean, IsString } from 'class-validator'
-import { ITokenResponse } from '@modules/auth/interfaces/refresh-token.interface'
-import { UserPayloadInterface } from '@modules/user/user.types'
 
 export class PayloadDto{
     @IsString()
@@ -29,11 +27,11 @@ export class PayloadDto{
 }
 
 export class UserPayloadDto extends PayloadDto{
-    data: UserPayloadInterface
+    data: any
 }
 
 export class TokenPayloadDto extends PayloadDto{
-    data: ITokenResponse
+    data: any
 }
 
 export type ResponsePayload = PayloadDto | TokenPayloadDto | UserPayloadDto

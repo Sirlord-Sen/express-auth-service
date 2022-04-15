@@ -5,7 +5,9 @@ import {
 import { Request, Response, NextFunction } from 'express'
 import { BadRequestError } from '@utils/error-response.util'
 import { ValidationError } from 'class-validator'
+import { Service } from 'typedi'
 
+@Service()
 @Middleware({ type: 'after' })
 export class CustomErrorHandler implements ExpressErrorMiddlewareInterface {
     async error(error: any, request: Request, response: Response, next:NextFunction) {

@@ -6,7 +6,9 @@ import { JwtPayload, VerifyOptions } from 'jsonwebtoken';
 import { JwtConfig } from '@config//';
 import { BadRequestError, ForbiddenError } from '@utils/error-response.util';
 import TokensCache from '@utils/cache.util';
+import { Service } from 'typedi'
 
+@Service()
 export class AuthMiddleware implements ExpressMiddlewareInterface{
     private readonly jwtService: JWTService
     private tokensCache

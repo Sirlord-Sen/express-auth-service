@@ -3,7 +3,7 @@ import { IProfile } from './profile.interface';
 export interface IUser {
     username: string
     email: string;
-    isActive: boolean;
+    isActive?: boolean;
     password: string;
     profile?: IProfile;
     passwordResetToken?: string;
