@@ -5,9 +5,9 @@ import JWTService from "@providers/jwt/jwt.service";
 import { DateHelper } from "@helpers//";
 import RefreshTokenRepository from "../repository/refreshToken.repository";
 import { getCustomRepository } from "typeorm";
-import { TokenType } from "@utils/util-types";
+import { TokenType } from "@utils/utility-types";
 import { JwtConfig } from '@config//';
-import { IRefreshToken, IRefreshTokenResponse, ITokenResponse } from '../interfaces/token.interface';
+import { IRefreshToken, IRefreshTokenResponse, ITokenResponse } from '../interfaces/refresh-token.interface';
 import { InternalError, UnauthorizedError } from '@utils/error-response.util';
 import UserService from '@modules/user/services/user.service';
 import { FullUser } from '@modules/user/user.types';
@@ -24,7 +24,7 @@ import {
 } from "../auth.types";
 import { Logger } from '@utils/logger.util';
 import TokensCache from '@utils/cache.util';
-import RefreshTokenEntity from '../entity/refreshToken.entity';
+import RefreshTokenEntity from '../entity/refresh-token.entity';
 
 
 export default class TokenService {

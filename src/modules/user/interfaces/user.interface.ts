@@ -1,25 +1,13 @@
+import { IProfile } from './profile.interface';
+
 export interface IUser {
-    username: string;
+    username: string
     email: string;
-    firstname: string;
-    surname: string;
-    password: string;
-}
-
-export interface IReturnUser {
-    id: string;
-    username: string;
-    email: string;
-    firstname: string;
-    surname: string;
-    confirmTokenPassword?:string
-}
-
-export interface UserPayloadInterface{
-    user: IReturnUser
-}
-
-export interface IPassword{
-    oldPassword: string,
-    newPassword: string
+    isActive: boolean;
+    password?: string;
+    profile?: IProfile;
+    passwordResetToken?: string;
+    passwordResetExpires?: Date;
+    accountActivationToken?: string;
+    accountActivationExpires?: Date 
 }

@@ -1,27 +1,18 @@
+import EntityCore from '@core/entity.core'
 import { 
     Entity, 
-    Column, 
-    PrimaryGeneratedColumn, 
-    BaseEntity, 
-    Unique, 
-    CreateDateColumn,
-    UpdateDateColumn
+    Column,
+    Unique,
+    OneToOne
 } from 'typeorm'
+import { IUser } from '../interfaces/user.interface'
+import ProfileEntity from './profile.entity'
 
 @Entity({name: "users"})
 @Unique('UQ_USER_EMAIL', ['email'])
-export default class UserEntity extends BaseEntity{
-    @PrimaryGeneratedColumn('uuid')
-    id: string
-
+export default class UserEntity extends EntityCore<IUser> implements IUser{
     @Column()
     username: string
-
-    @Column()
-    firstname: string
-
-    @Column()
-    surname: string
 
     @Column()
     email: string
@@ -29,12 +20,24 @@ export default class UserEntity extends BaseEntity{
     @Column()
     password: string
 
+    @Column()
+    isActive: boolean;
+
+    @Column({ nullable: true })
+    accountActivationToken?: string;
+
+    @Column({ nullable: true })
+    accountActivationExpires?: Date;
+
     @Column('text', { nullable: true })
-    confirmTokenPassword?: string;
+    passwordResetToken?: string;
 
-    @CreateDateColumn()
-    created_at: Date;
+    @Column({ nullable: true })
+    passwordResetExpires?: Date;
 
-    @UpdateDateColumn()
-    updated_at: Date;
+    @OneToOne(() => ProfileEntity, (profile) => profile.user, {
+        eager: true,
+        cascade: true,
+      })
+    profile!: ProfileEntity;
 }

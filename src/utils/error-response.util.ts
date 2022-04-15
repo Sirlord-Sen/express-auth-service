@@ -1,5 +1,5 @@
 import { response, Response } from 'express';
-import { PayloadDto } from './util-types';
+import { PayloadDto } from './utility-types';
 import {
     UnauthorizedResponse,
     InternalErrorResponse,

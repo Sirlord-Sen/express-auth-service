@@ -7,7 +7,7 @@ import { addAuthToRes } from '@utils/tokens.util'
 import { AuthMiddleware } from '@middlewares/auth.middleware';
 import { TokenHelper } from '@helpers//';
 import { RefreshTokenDto } from '../dto/token.dto';
-import { PayloadDto, TokenPayloadDto, UserPayloadDto } from '@utils/util-types';
+import { PayloadDto, TokenPayloadDto, UserPayloadDto } from '@utils/utility-types';
 
 
 @Controller('/api/auth')

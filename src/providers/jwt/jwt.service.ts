@@ -2,7 +2,7 @@ import jwt, { Secret, SignOptions, VerifyErrors, VerifyOptions } from 'jsonwebto
 import { DateHelper } from '@helpers//';
 import { InternalError, UnauthorizedError } from '@utils/error-response.util';
 import { Logger } from '@utils/logger.util';
-import { CodeError } from '@utils/util-types' 
+import { CodeError } from '@utils/utility-types' 
 
 export default class JWTService {
 //   decode(

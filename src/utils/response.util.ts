@@ -1,6 +1,6 @@
 import { response, Response } from 'express';
 import { pick } from 'lodash';
-import { PayloadDto, ResponsePayload, TokenPayloadDto } from './util-types';
+import { PayloadDto, ResponsePayload, TokenPayloadDto } from './utility-types';
 
 // Helper code for the API consumer to understand the error and handle is accordingly
 enum ResponseStatus {

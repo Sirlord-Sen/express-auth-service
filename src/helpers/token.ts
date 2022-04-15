@@ -1,6 +1,6 @@
 import { IncomingHttpHeaders } from 'http';
 import { BadRequestError } from '@utils/error-response.util';
-import { TokenType } from '@utils/util-types';
+import { TokenType } from '@utils/utility-types';
 
 
 export default (() => {

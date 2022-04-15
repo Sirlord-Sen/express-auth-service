@@ -1,11 +1,10 @@
-import { Column, Entity, BaseEntity, Index, ManyToOne, JoinColumn, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm'
+import { Column, Entity, Index, ManyToOne, JoinColumn} from 'typeorm'
 import UserEntity from '@modules/user/entity/user.entity';
+import EntityCore from '@core/entity.core';
+import { IRefreshToken } from '../interfaces';
 
 @Entity('refresh-tokens')
-export default class RefreshTokenEntity extends BaseEntity{
-    @PrimaryGeneratedColumn('uuid')
-    id: string
-
+export default class RefreshTokenEntity extends EntityCore<IRefreshToken> implements IRefreshToken{
     @Column('text', { nullable: true })
     browser!: string;
 
@@ -35,10 +34,4 @@ export default class RefreshTokenEntity extends BaseEntity{
     @Index()
     @Column('uuid')
     userId!: string;
-
-    @CreateDateColumn()
-    created_at: Date;
-
-    @UpdateDateColumn()
-    updated_at: Date;
 }

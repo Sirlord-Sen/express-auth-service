@@ -1,6 +1,6 @@
 import { IsBoolean, IsString } from 'class-validator'
 import { ITokenResponse } from '@modules/auth/interfaces/token.interface'
-import { UserPayloadInterface } from '@modules/user/interfaces/user.interface'
+import { UserPayloadInterface } from '@modules/user/user.types'
 
 export class PayloadDto{
     @IsString()
@@ -44,4 +44,9 @@ export enum TokenType {
 
 export interface CodeError extends Error {
     code?: string;
+}
+
+export enum Gender {
+    MALE = 'male',
+    FEMALE = 'female'
 }

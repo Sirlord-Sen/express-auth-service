@@ -1,8 +1,8 @@
 import { EntityRepository, Repository, UpdateResult } from 'typeorm';
 import { InternalError, NotFoundError } from '@utils/error-response.util';
 import { FullRefreshToken } from '../auth.types';
-import RefreshTokenEntity  from '../entity/refreshToken.entity';
-import { IRefreshToken } from '../interfaces/token.interface';
+import RefreshTokenEntity  from '../entity/refresh-token.entity';
+import { IRefreshToken } from '../interfaces/refresh-token.interface';
 import { Logger } from '@utils/logger.util';
 
 @EntityRepository(RefreshTokenEntity)

@@ -4,7 +4,7 @@ import {
     EventSubscriber,
     UpdateEvent
 } from 'typeorm'
-import RefreshTokenEntity from '../entity/refreshToken.entity'
+import RefreshTokenEntity from '../entity/refresh-token.entity'
 
 @EventSubscriber()
 export class RefreshTokenSubscriber implements EntitySubscriberInterface<RefreshTokenEntity>{

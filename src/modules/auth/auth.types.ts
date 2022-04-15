@@ -1,6 +1,6 @@
 import { FullUser } from "@modules/user/user.types";
 import { IReturnUser } from "../user/interfaces/user.interface";
-import { IRefreshToken, ITokenPayload } from "./interfaces/token.interface";
+import { IRefreshToken, ITokenPayload } from "./interfaces/refresh-token.interface";
 
 type Id = {
     id: string
@@ -26,3 +26,33 @@ export type ForgotPasswordRequest = Required<Pick<FullUser, 'email'>>;
 export type ResetPasswordRequest = Required<Pick<FullUser, 'password'>> & Token
 
 export type UserAgentDets = Pick<FullRefreshToken, 'browser' | 'os'>
+
+
+export interface ITokenPayload{
+    jti: string;
+    sub: string;
+    typ: string;
+  };
+  
+  
+  export interface ITokenResponse {
+    accessToken: string,
+    refreshToken: string,
+    tokenType: TokenType,
+    expiredAt: Date,
+    lastSignIn: Date | undefined
+  }
+  
+  export interface IRefreshTokenResponse{
+    refreshToken: string,
+    lastSignIn: Date | undefined
+  }
+  
+  export interface TokenResponse {
+    ( res: Response,
+      tokens: Partial<ITokenResponse>): void
+  }
+  
+  export interface IRefreshTokenRequest{
+      refreshToken: string
+  }

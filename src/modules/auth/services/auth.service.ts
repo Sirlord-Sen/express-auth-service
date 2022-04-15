@@ -5,8 +5,8 @@ import { pick } from "lodash";
 import { IReturnUser } from "@modules/user/interfaces/user.interface";
 import { ForgotPasswordRequest, LogoutRequest, ResetPasswordRequest, UserAgentDets } from "../auth.types";
 import { TokenService } from ".";
-import { IRefreshTokenRequest, ITokenResponse } from "../interfaces/token.interface";
-import { TokenType } from "@utils/util-types";
+import { IRefreshTokenRequest, ITokenResponse } from "../interfaces/refresh-token.interface";
+import { TokenType } from "@utils/utility-types";
 import { nanoid } from "nanoid";
 import EmailQueue  from "@providers/mailer";
 

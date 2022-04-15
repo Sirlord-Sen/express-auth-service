@@ -2,7 +2,7 @@ import Bull, {QueueOptions, Queue} from 'bull';
 import ms from 'ms';
 import { Logger } from '@utils/logger.util';
 import { RedisConfig } from '@config//';
-import { CodeError } from '@utils/util-types' 
+import { CodeError } from '@utils/utility-types' 
 import { EventEmitter } from 'events';
 
 import Redis from 'ioredis';
