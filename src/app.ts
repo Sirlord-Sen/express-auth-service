@@ -13,13 +13,7 @@ export class Application {
     private async start(){
         const port = parsedEnv.PORT
         this.express.app.listen(port, () => {
-          Logger.info
-          (`
-            ------------
-            Server Started!
-            Http: http://localhost:${port}
-            -------------
-          `);
+          Logger.info(`Server Started! Http: http://localhost:${port}`);
         });
     }
 

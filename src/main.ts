@@ -2,10 +2,11 @@
 import 'reflect-metadata';
 import { DB } from  '@db//'
 import { Application } from './app';
-import TokensCache from '@utils/cache.util';
+import { useContainer } from 'typeorm';
+import { Container } from 'typeorm-typedi-extensions'
 
 async function bootstrap() {
-    // new TokensCache()
+    useContainer(Container);
     await DB.on()
     new Application()
 }
