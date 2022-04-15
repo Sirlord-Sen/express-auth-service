@@ -17,11 +17,15 @@ export type AccessTokenRequest = Pick<RefreshToken, 'userId'> & Pick<FullUser, '
 
 export type AccessTokenResponse = {accessToken: string, expiredAt: Date}
 
-export type TokenRequest = Pick<FullUser, 'email' | 'id'>
+export type TokenPayload = Pick<RefreshToken, 'jti'> & { sub: string, typ: string, email: string }
 
-export type Tokens =  Token & AccessTokenResponse & RefreshTokenResponse
+export type TokensRequest = Pick<FullUser, 'email' | 'id'>
 
-export type LogoutRequest = Pick<IRefreshToken, 'userId'>
+export type TokensResponse =  Token & AccessTokenResponse & RefreshTokenResponse
+
+export type LoginRequest = Required<Pick<FullUser, 'email' | 'password'>>;
+
+export type LogoutRequest = Required<Pick<IRefreshToken, 'userId'>>
 
 export type ForgotPasswordRequest = Required<Pick<FullUser, 'email'>>;
 

@@ -12,7 +12,7 @@ export class UserController {
     constructor(){
         this.userService = new UserService()
     }
-
+j
     @Post('/register')
     async Register(@Body() body:SignUpDto, @Res() res: Response): Promise<UserPayloadDto>{
         const user = await this.userService.register(body)

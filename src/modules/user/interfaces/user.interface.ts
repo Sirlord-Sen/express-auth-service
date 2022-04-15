@@ -4,7 +4,7 @@ export interface IUser {
     username: string
     email: string;
     isActive: boolean;
-    password?: string;
+    password: string;
     profile?: IProfile;
     passwordResetToken?: string;
     passwordResetExpires?: Date;

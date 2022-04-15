@@ -7,41 +7,35 @@ import RefreshTokenRepository from "../repository/refreshToken.repository";
 import { getCustomRepository } from "typeorm";
 import { TokenType } from "@utils/utility-types";
 import { JwtConfig } from '@config//';
-import { IRefreshToken, IRefreshTokenResponse, ITokenResponse } from '../interfaces/refresh-token.interface';
-import { InternalError, UnauthorizedError } from '@utils/error-response.util';
+import { UnauthorizedError } from '@utils/error-response.util';
 import UserService from '@modules/user/services/user.service';
-import { FullUser } from '@modules/user/user.types';
 import { 
-    TokenRequest, 
+    TokensRequest, 
     AccessTokenRequest, 
     RefreshTokenRequest, 
-    FullRefreshToken, 
-    RefreshTokenPayload, 
-    RefreshToken, 
-    AccessTokenPayload, 
-    AccessTokenResponse,
-    UserAgentDets
+    FullRefreshToken,
+    RefreshToken,
+    UserAgent,
+    TokenPayload
 } from "../auth.types";
 import { Logger } from '@utils/logger.util';
 import TokensCache from '@utils/cache.util';
-import RefreshTokenEntity from '../entity/refresh-token.entity';
+import { ITokenService } from '../interfaces/service.interface';
 
 
-export default class TokenService {
+export default class TokenService implements ITokenService{
     private readonly refreshTokenRepository: RefreshTokenRepository
     private readonly jwtService: JWTService
     private readonly userService: UserService
     private readonly tokenCache
-    tokenType : TokenType
     constructor(){
         this.refreshTokenRepository = getCustomRepository(RefreshTokenRepository)
         this.jwtService = new JWTService()
         this.userService = new UserService()
         this.tokenCache = TokensCache
-        this.tokenType = TokenType.BEARER 
     }
 
-    async generateAccessToken(body:AccessTokenRequest, confirmTokenPassword?: string):Promise<AccessTokenResponse>{
+    async generateAccessToken(body:AccessTokenRequest, confirmTokenPassword?: string) {
         const { userId } = body
         const privateAccessSecret: Secret = {
             key: JwtConfig.privateAccessKey,
@@ -68,22 +62,7 @@ export default class TokenService {
         return {accessToken, expiredAt}
     }
 
-    async lastSignIn(body:RefreshTokenRequest, useragent: UserAgentDets): Promise<RefreshTokenEntity | undefined>{
-        const lastSignIn = (await this.refreshTokenRepository.find({
-            where: {
-                ...useragent, 
-                ...body, 
-                isRevoked: true
-            },   
-            order: {
-                created_at: "DESC"
-            }
-        }))[0]
-        if(lastSignIn) return lastSignIn
-        return undefined
-    }
-
-    async generateRefreshToken(body:RefreshTokenRequest, useragent: UserAgentDets):Promise<IRefreshTokenResponse>{
+    async generateRefreshToken(body:RefreshTokenRequest, useragent: UserAgent) {
         const jti = nanoid();
         const ms = DateHelper.convertToMS(JwtConfig.refreshTokenExpiration);
         const expiredAt = DateHelper.addMillisecondToDate(new Date(), ms);
@@ -92,8 +71,6 @@ export default class TokenService {
         if ((await this.refreshTokenRepository.findOne({...useragent, ...body , isRevoked: false}))) {
             Logger.warn("Attempting to Signin again from same device");
         }
-
-        const lastSignIn = (await this.lastSignIn(body, useragent))?.created_at
 
         const savedRefreshToken = await this.refreshTokenRepository.createRefreshToken({ ...body, ...useragent ,jti, expiredAt });
 
@@ -109,24 +86,24 @@ export default class TokenService {
 
         const refreshToken = this.jwtService.sign<JwtPayload>(payload, JwtConfig.refreshTokenSecret, opts)
 
-        return { refreshToken, lastSignIn }
+        return { refreshToken }
     }
 
-    async getTokens(body: TokenRequest, agent: UserAgentDets):Promise<ITokenResponse>{
+    async getTokens(body: TokensRequest, agent: UserAgent) {
         const { id, email } = body;
-        const [{accessToken, expiredAt}, {refreshToken, lastSignIn}] = await Promise.all([
+        const [{accessToken, expiredAt}, { refreshToken }] = await Promise.all([
             this.generateAccessToken({ email: email, userId: id }),
             this.generateRefreshToken({ userId: id }, agent)
         ]);
           
-        return { tokenType: this.tokenType ,expiredAt , accessToken, refreshToken ,lastSignIn};
+        return { tokenType: TokenType.BEARER ,expiredAt , accessToken, refreshToken };
     }
 
-    async update(query: Partial<FullRefreshToken>, body: Partial<IRefreshToken>): Promise<void>{
+    async update(query: Partial<FullRefreshToken>, body: Partial<RefreshToken>) {
         await this.refreshTokenRepository.updateRefreshToken(query, body)
     }
 
-    async resolveRefreshToken(token:string): Promise<{user: TokenRequest, refreshToken: RefreshToken}> {
+    async resolveRefreshToken(token:string) {
         const payload = await this.decodeRefreshToken(token);
         const refreshTokenFromDB = await this.getRefreshTokenFromPayload(payload);
 
@@ -137,8 +114,8 @@ export default class TokenService {
         return { user , refreshToken: refreshTokenFromDB };
     }
 
-    private async decodeRefreshToken(token: string): Promise<RefreshTokenPayload> {
-        const payload = this.jwtService.verify<RefreshTokenPayload>(
+    private async decodeRefreshToken(token: string){
+        const payload = this.jwtService.verify<TokenPayload>(
                 token,
                 JwtConfig.refreshTokenSecret,
             );
@@ -147,22 +124,22 @@ export default class TokenService {
         return payload
     }
     
-    private getRefreshTokenFromPayload(payload: RefreshTokenPayload): Promise<IRefreshToken>{
+    private getRefreshTokenFromPayload(payload: TokenPayload) {
         const { jti, sub } = payload;
         return this.refreshTokenRepository.findOneToken({ userId: sub, jti });
     }
     
-    private getUserFromRefreshTokenPayload(payload: RefreshTokenPayload): Promise<FullUser> {
+    private getUserFromRefreshTokenPayload(payload: TokenPayload){
         const { sub } = payload;    
-        return this.userService.findOne({ id: sub });
+        return this.userService.findOneOrFail({ id: sub });
     }
 
-    async decodeForgotPasswordToken(token:string): Promise<AccessTokenPayload> {
+    async decodeForgotPasswordToken(token:string){
         const publicKey = JwtConfig.publicAccessKey
         const verifyOptions: VerifyOptions = {
             algorithms: ['RS256']
         }
-        const payload = await this.jwtService.verifyAsync<AccessTokenPayload>(
+        const payload = await this.jwtService.verifyAsync<TokenPayload>(
             token,
             publicKey,
             verifyOptions

@@ -1,12 +1,11 @@
 import { EntityRepository, Repository } from 'typeorm'
 import { InternalError, ConflictError } from '@utils/error-response.util';
 import UserEntity from '../entity/user.entity'
-import { IReturnUser, IUser } from '../interfaces/user.interface';
-import { FullUser } from '../user.types';
+import { FilterUser, FullUser, UpdateUser, User } from '../user.types';
 
 @EntityRepository(UserEntity)
 export class UserRepository extends Repository<UserEntity>{
-    async createUser(body: IUser): Promise<UserEntity> {
+    async createUser(body: User): Promise<UserEntity> {
         try {
             const user = this.create(body);
             await this.save(user);
@@ -18,7 +17,7 @@ export class UserRepository extends Repository<UserEntity>{
         }
     }
 
-    async updateUser(query: Partial<FullUser>, body:Partial<Omit<FullUser, 'id'>>): Promise<UserEntity>{
+    async updateUser(query: FilterUser, body: UpdateUser): Promise<UserEntity>{
         try{ 
             const user = await this.findOneOrFail({ where: query})
             this.merge(user, body)
@@ -26,6 +25,5 @@ export class UserRepository extends Repository<UserEntity>{
             return user
         }
         catch(err:any){ throw new InternalError('Could not update user').send()  }
-
     }
 }

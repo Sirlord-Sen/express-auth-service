@@ -1,5 +1,5 @@
 type Id = {
-    id: number;
+    id: string;
 };
   
 type DateInfo = {
