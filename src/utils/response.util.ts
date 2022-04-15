@@ -1,6 +1,5 @@
 import { response, Response } from 'express';
-import { pick } from 'lodash';
-import { PayloadDto, ResponsePayload, TokenPayloadDto } from './utility-types';
+import { DataResponses, Payload } from './utility-types';
 
 // Helper code for the API consumer to understand the error and handle is accordingly
 enum ResponseStatus {
@@ -30,103 +29,90 @@ enum StatusCode {
 
 
 abstract class ApiResponse {
-    program: string
-    version: string
-    release: string
-    datetime: Date
-    data: any
     constructor(
-        public code: StatusCode,
-        public message: string,
         public success: boolean,
+        public status_code: StatusCode,
+        public message: string,
         public error?: ResponseStatus | string,
-    ) {
-        this.program = 'stud-aid microservice'
-        this.version = 'v1'
-        this.release = '1.2.1'
-        this.datetime = new Date()
-        this.data = {}
-    }
+        public data?: DataResponses
+    ){}
 
 
-    protected prepare<T extends ApiResponse>(res: Response, response: T): PayloadDto {
-        res.status(this.code)
+    protected prepare<T extends ApiResponse>(res: Response, response: T){
+        res.status(this.status_code)
         return ApiResponse.sanitize(response)   
     }
 
-    public send(res: Response): PayloadDto {
+    public send(res: Response){
         return this.prepare<ApiResponse>(res, this);
     }
 
-    private static sanitize<T extends ApiResponse>(response: T): PayloadDto {
+    private static sanitize<T extends ApiResponse>(response: T){
         const clone: T = {} as T;
         Object.assign(clone, response);
         
         for (const i in clone) if (typeof clone[i] === 'undefined') delete clone[i];
-        const output = pick(clone, ["program", "version", "release", "datetime", "success", "error", "message", "data"])
-        return output;
+        return clone;
     }
 }
 
-export class SuccessResponse<T> extends ApiResponse{
-    constructor(message: string, public data: T) {
-        super(StatusCode.SUCCESS, message, Success.SUCCESS);
-    }
-    send(): PayloadDto { return super.prepare<SuccessResponse<T>>(response, this); }
-}
-
-export class UnauthorizedResponse extends ApiResponse {
-    constructor(message = 'Authentication Failure') {
-        super(StatusCode.UNAUTHORIZED, message, Success.ERROR, ResponseStatus.UNAUTHORIZED);
+// Custom Response for Success
+export class SuccessResponse<T extends DataResponses> extends ApiResponse{
+    constructor(message: string, data: T) {
+        super( Success.SUCCESS, StatusCode.SUCCESS, message, undefined, data);
+        super.prepare<SuccessResponse<T>>(response, this);
     }
 }
 
+// Custom Response for Not Found Error
 export class NotFoundResponse extends ApiResponse {
     private url: string | undefined;
 
     constructor(message = 'Not Found') {
-        super(StatusCode.NOT_FOUND, message, Success.ERROR, ResponseStatus.NOTFOUND,);
-    }
-
-    send(res: Response): PayloadDto {
-        this.url = res.req?.originalUrl;
-        return super.prepare<NotFoundResponse>(res, this);
+        super(Success.ERROR, StatusCode.NOT_FOUND, message, ResponseStatus.NOTFOUND );
+        this.url = response.req?.originalUrl;
+        super.prepare<NotFoundResponse>(response, this);
     }
 }
 
+// Custom Response for Unauthorized Error
+export class UnauthorizedResponse extends ApiResponse {
+    constructor(message = 'Authentication Failure') {
+        super(Success.ERROR, StatusCode.UNAUTHORIZED, message, ResponseStatus.UNAUTHORIZED);
+    }
+}
+
+// Custom Response for Forbidden Error
 export class ForbiddenResponse extends ApiResponse {
     constructor(message = 'Forbidden') {
-        super(StatusCode.FORBIDDEN, message, Success.ERROR, ResponseStatus.FORBIDDEN);
+        super(Success.ERROR, StatusCode.FORBIDDEN, message, ResponseStatus.FORBIDDEN);
     }
 }
 
+// Custom Response for BadRequest Error
 export class BadRequestResponse extends ApiResponse {
     constructor(message = 'Bad Parameters') {
-        super(StatusCode.BAD_REQUEST, message, Success.ERROR, ResponseStatus.BADREQUEST);
+        super(Success.ERROR, StatusCode.BAD_REQUEST, message, ResponseStatus.BADREQUEST);
     }
 }
 
-export class InternalErrorResponse extends ApiResponse {
+// Custom Response for InternalServer Error
+export class InternalServerErrorResponse extends ApiResponse {
     constructor(message = 'Internal Error', error = '') {
-        super(StatusCode.INTERNAL_ERROR, message, Success.ERROR, error || ResponseStatus.INTERNAL);
+        super(Success.ERROR, StatusCode.INTERNAL_ERROR, message, error || ResponseStatus.INTERNAL);
     }
 }
 
+// Custom Response for Conflict Error
 export class ConflictErrorResponse extends ApiResponse {
     constructor(message = 'Conflict Error') {
-        super(StatusCode.CONFLICT, message, Success.ERROR, ResponseStatus.CONFLICT);
+        super(Success.ERROR, StatusCode.CONFLICT, message, ResponseStatus.CONFLICT);
     }
 }
 
-export class SuccessMsgResponse extends ApiResponse {
-    constructor(message: string) {
-        super(StatusCode.SUCCESS, message, Success.SUCCESS);
-    }
-}
-
+// Custom Response for Failure Error
 export class FailureMsgResponse extends ApiResponse {
     constructor(message: string) {
-        super(StatusCode.SUCCESS, message, Success.ERROR, ResponseStatus.FAILURE);
+        super(Success.ERROR, StatusCode.SUCCESS, message, ResponseStatus.FAILURE);
     }
 }
-

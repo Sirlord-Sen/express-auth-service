@@ -6,7 +6,7 @@ import { Logger } from '@utils/logger.util';
 import { EmailConfig } from '@config//';
 import { EventEmitter } from 'events';
 import QueueCore from '@core/queue.core';
-import { InternalError } from '@utils/error-response.util';
+import { InternalServerError } from '@utils/error-response.util';
 import { Service } from 'typedi'
 
 @Service()
@@ -34,7 +34,7 @@ export default class EmailQueue extends QueueCore{
                 })
                 .catch(err => {
                     Logger.warn(`EMAIL_QUEUQ EMAIL_FORGOT_PASSWORD: ${err.message} for ${data.email}`)
-                    reject(new InternalError(err.message).send())
+                    reject(new InternalServerError(err.message))
                 })
 
         })

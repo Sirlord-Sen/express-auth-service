@@ -1,6 +1,6 @@
 import jwt, { Secret, SignOptions, VerifyErrors, VerifyOptions } from 'jsonwebtoken';
 import { DateHelper } from '@helpers//';
-import { InternalError, UnauthorizedError } from '@utils/error-response.util';
+import { InternalServerError, UnauthorizedError } from '@utils/error-response.util';
 import { Logger } from '@utils/logger.util';
 import { CodeError } from '@utils/utility-types' 
 import { Service } from 'typedi'
@@ -32,7 +32,7 @@ export default class JWTService {
                 (err: CodeError | null, encoded) => {
                     if (err) {
                         Logger.error(`${err}`)
-                        reject(new InternalError(`${err}`, err.code).send())
+                        reject(new InternalServerError(`${err}`, err.code))
                     }
                     resolve(encoded as string)}
             );
@@ -47,11 +47,11 @@ export default class JWTService {
         return new Promise((resolve, reject) => {
             jwt.verify(token, key, opts, (error: VerifyErrors | null, decoded) => {
                 if (error && error.name === 'TokenExpiredError')
-                    return reject(new UnauthorizedError('Token Expired').send());
+                    return reject(new UnauthorizedError('Token Expired'));
                 if (decoded)
                     return resolve(decoded as unknown as T);
                 
-                return reject(new UnauthorizedError('Token Malfunctioned').send());
+                return reject(new UnauthorizedError('Token Malfunctioned'));
             });
         });
     }

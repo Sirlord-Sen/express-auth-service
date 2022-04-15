@@ -1,5 +1,4 @@
 import { pick } from 'lodash'
-import { getCustomRepository } from 'typeorm'
 import { FilterUser, UpdateUser, User } from '../user.types'
 import { UserRepository } from '../repository/user.repository'
 import { NotFoundError, UnauthorizedError } from '@utils/error-response.util'
@@ -29,7 +28,7 @@ export default class UserService implements IUserService{
     
     async findOneOrFail(query: FilterUser){
         try{ return await this.userRepository.findOneOrFail({ where: query });}
-        catch(err){ throw new NotFoundError("User not found").send() }
+        catch(err){ throw new NotFoundError("User not found") }
     }
 
     async update(query: FilterUser, body: UpdateUser){
@@ -41,7 +40,7 @@ export default class UserService implements IUserService{
         const { oldPassword, newPassword } = body
         const user = await this.findOneOrFail(query)
         const validate = await ValidateHelper.credentials(user.password, oldPassword)
-        if(!validate) throw new UnauthorizedError("Wrong Password").send()
+        if(!validate) throw new UnauthorizedError("Wrong Password")
         return await this.update(query, {password: newPassword})
     }
 }

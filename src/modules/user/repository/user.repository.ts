@@ -1,7 +1,7 @@
 import { EntityRepository, Repository } from 'typeorm'
-import { InternalError, ConflictError } from '@utils/error-response.util';
+import { InternalServerError, ConflictError } from '@utils/error-response.util';
 import UserEntity from '../entity/user.entity'
-import { FilterUser, FullUser, UpdateUser, User } from '../user.types';
+import { FilterUser, UpdateUser, User } from '../user.types';
 
 @EntityRepository(UserEntity)
 export class UserRepository extends Repository<UserEntity>{
@@ -12,8 +12,8 @@ export class UserRepository extends Repository<UserEntity>{
             return user;
         } 
         catch (err:any) { 
-            if (err.code === '23505' || 'ER_DUP_ENTRY') throw new ConflictError('Username or Email already exist').send()
-            throw new InternalError('User could not be saved').send() 
+            if (err.code === '23505' || 'ER_DUP_ENTRY') throw new ConflictError('Username or Email already exist')
+            throw new InternalServerError('User could not be saved')
         }
     }
 
@@ -24,6 +24,6 @@ export class UserRepository extends Repository<UserEntity>{
             await this.save(user)
             return user
         }
-        catch(err:any){ throw new InternalError('Could not update user').send()  }
+        catch(err:any){ throw new InternalServerError('Could not update user')  }
     }
 }

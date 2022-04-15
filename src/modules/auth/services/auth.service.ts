@@ -28,7 +28,7 @@ export default class AuthService implements IAuthService{
         const { email, password } = body
         const user = await this.userService.findOneOrFail({email})
         const validate = await ValidateHelper.credentials(user.password, password)
-        if(!validate) throw new UnauthorizedError("Invalid Login Credentials").send()
+        if(!validate) throw new UnauthorizedError("Invalid Login Credentials")
         return pick(user, ["id", "username", "email"])      
     }
 

@@ -1,40 +1,40 @@
-import { IsBoolean, IsString } from 'class-validator'
+import { TokensResponse } from "@modules/auth/auth.types"
+import { FullUser } from "@modules/user/user.types"
 
-export class PayloadDto{
-    @IsString()
-    program: string
+export enum Gender {
+    MALE = 'male',
+    FEMALE = 'female'
+}
 
-    @IsString()
-    version: string
-
-    @IsString()
-    release: string
-
-    @IsString()
-    datetime: Date
-
-    @IsBoolean()
+export class Payload{
     success: boolean
-
-    @IsString()
-    status?: string
-
-    @IsString()
+    status_code: number
     message: string
-
-    data: any
-
+    error?: string
+    data?: DataResponses
 }
 
-export class UserPayloadDto extends PayloadDto{
-    data: any
+export type UserResponse = {
+    user: Partial<FullUser>
 }
 
-export class TokenPayloadDto extends PayloadDto{
-    data: any
+export type Tokens = {
+    tokens: TokensResponse
 }
 
-export type ResponsePayload = PayloadDto | TokenPayloadDto | UserPayloadDto
+export type LoginResponse = UserResponse & Tokens
+
+type LogoutResponse = {}
+
+export type DataResponses = UserResponse | Tokens | LoginResponse | LogoutResponse
+
+// export class RegisterPayload extends Payload{}
+// export class ForgotPasswordPayload extends Payload{}
+// export class ResetPasswordPayload extends Payload{}
+// export class UserPayload extends Payload{}
+// export class LoginPayload extends Payload{}
+// export class LogoutPayload extends Payload{}
+// export class TokensPayload extends Payload{}
 
 export enum TokenType {
     BEARER = 'Bearer'
@@ -42,9 +42,4 @@ export enum TokenType {
 
 export interface CodeError extends Error {
     code?: string;
-}
-
-export enum Gender {
-    MALE = 'male',
-    FEMALE = 'female'
 }

@@ -1,12 +1,11 @@
 import { Response, Request } from 'express'
 import { Controller, Req, Res, Body, Post, UseBefore } from 'routing-controllers';
 import { SuccessResponse } from '@utils/response.util';
-import { ForgotPasswordDto, LoginDto, ResetPasswordDto } from '../dto/auth.dto';
+import { ForgotPasswordDto, LoginDto, ResetPasswordDto, RefreshTokenDto } from '../dto/auth.dto';
 import {AuthService, TokenService} from '../services';
 import { AuthMiddleware } from '@middlewares/auth.middleware';
 import { TokenHelper } from '@helpers//';
-import { RefreshTokenDto } from '../dto/token.dto';
-import { PayloadDto, TokenPayloadDto, UserPayloadDto } from '@utils/utility-types';
+import { LoginResponse, Payload, Tokens, UserResponse } from '@utils/utility-types';
 import { Service } from 'typedi'
 
 @Service()
@@ -18,7 +17,7 @@ export class AuthController {
     ){}
  
     @Post('/login')
-    async Login(@Body() body:LoginDto, @Req() req: any, @Res() res: Response): Promise<UserPayloadDto>{
+    async Login(@Req() req: any, @Res() res: Response, @Body() body:LoginDto): Promise<Payload>{
         const { useragent } = req
         const userAgent = {
             os: useragent?.os,
@@ -26,12 +25,12 @@ export class AuthController {
         }
         const user = await this.authService.login(body)
         const tokens = await this.tokenService.getTokens({id: user.id, email: user.email}, userAgent)
-        return new SuccessResponse('Login Successfull', { user, tokens}).send()
+        return new SuccessResponse<LoginResponse>('Login Successfull', { user, tokens})
     }
 
     @Post('/logout')
     @UseBefore(AuthMiddleware)
-    async Logout(@Req() req: any, @Res() res: Response): Promise<PayloadDto>{
+    async Logout(@Req() req: any): Promise<Payload>{
         const { useragent } = req
         const userAgent = {
             os: useragent?.os,
@@ -39,25 +38,25 @@ export class AuthController {
         }
         const { userId } = req.currentUser;
         await this.authService.logout({ userId }, userAgent)
-        return new SuccessResponse(`User with email:'${userId}' logged out`, { }).send()
+        return new SuccessResponse<{}>(`User with email:'${userId}' logged out`, { });
     }
 
     @Post('/refresh-token')
-    async RefreshToken(@Req() req: Request, @Res() res: Response, @Body() body: RefreshTokenDto): Promise<TokenPayloadDto> {
+    async RefreshToken(@Req() req: Request, @Res() res: Response, @Body() body: RefreshTokenDto): Promise<Payload> {
         const refreshToken = body.refreshToken || TokenHelper.getTokenFromCookies(req.cookies)
         const tokens = await this.authService.refreshToken(refreshToken)
-        return new SuccessResponse('Refreshed Access Token', { tokens }).send()
+        return new SuccessResponse<Tokens>('Refreshed Access Token', { tokens });
     }
 
     @Post('/forgot-password')
-    async ForgotPassword(@Body() body: ForgotPasswordDto): Promise<UserPayloadDto>{
+    async ForgotPassword(@Body() body: ForgotPasswordDto): Promise<Payload>{
         const user = await this.authService.forgotPassword(body)
-        return new SuccessResponse('Email Sent to user', { user}).send()
+        return new SuccessResponse<UserResponse>('Email Sent to user', { user});
     }
 
     @Post('/reset-password')
-    async ResetPassword(@Body() body: ResetPasswordDto): Promise<UserPayloadDto>{
+    async ResetPassword(@Body() body: ResetPasswordDto): Promise<Payload>{
         const user = await this.authService.resetPassword(body)
-        return new SuccessResponse('Password Reset', { user}).send()
+        return new SuccessResponse<UserResponse>('Password Reset', { user});
     }
 }

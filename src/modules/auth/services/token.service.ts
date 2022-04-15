@@ -4,7 +4,6 @@ import { nanoid } from 'nanoid'
 import JWTService from "@providers/jwt/jwt.service";
 import { DateHelper } from "@helpers//";
 import RefreshTokenRepository from "../repository/refreshToken.repository";
-import { getCustomRepository } from "typeorm";
 import { TokenType } from "@utils/utility-types";
 import { JwtConfig } from '@config//';
 import { UnauthorizedError } from '@utils/error-response.util';
@@ -105,7 +104,7 @@ export default class TokenService implements ITokenService{
         const payload = await this.decodeRefreshToken(token);
         const refreshTokenFromDB = await this.getRefreshTokenFromPayload(payload);
 
-        if (refreshTokenFromDB?.isRevoked) throw new UnauthorizedError('Token expired').send();
+        if (refreshTokenFromDB?.isRevoked) throw new UnauthorizedError('Token expired');
 
         const user = pick(await this.getUserFromRefreshTokenPayload(payload), ['id', 'email']);
 
@@ -118,7 +117,7 @@ export default class TokenService implements ITokenService{
                 JwtConfig.refreshTokenSecret,
             );
         const { jti, sub } = payload
-        if (!jti || !sub) throw new UnauthorizedError('Token Malfunctioned').send()
+        if (!jti || !sub) throw new UnauthorizedError('Token Malfunctioned')
         return payload
     }
     
@@ -143,7 +142,7 @@ export default class TokenService implements ITokenService{
             verifyOptions
         );
         const { jti, sub } = payload
-        if (!jti || !sub) throw new UnauthorizedError('Token Malfunctioned').send()
+        if (!jti || !sub) throw new UnauthorizedError('Token Malfunctioned')
         return payload
     }
 }
