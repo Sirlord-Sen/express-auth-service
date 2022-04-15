@@ -1,5 +1,5 @@
 import { IsBoolean, IsString } from 'class-validator'
-import { ITokenResponse } from '@modules/auth/interfaces/token.interface'
+import { ITokenResponse } from '@modules/auth/interfaces/refresh-token.interface'
 import { UserPayloadInterface } from '@modules/user/user.types'
 
 export class PayloadDto{

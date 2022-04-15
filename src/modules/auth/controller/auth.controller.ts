@@ -3,7 +3,6 @@ import { Controller, Req, Res, Body, Post, UseBefore } from 'routing-controllers
 import { SuccessResponse } from '@utils/response.util';
 import { ForgotPasswordDto, LoginDto, ResetPasswordDto } from '../dto/auth.dto';
 import {AuthService, TokenService} from '../services';
-import { addAuthToRes } from '@utils/tokens.util'
 import { AuthMiddleware } from '@middlewares/auth.middleware';
 import { TokenHelper } from '@helpers//';
 import { RefreshTokenDto } from '../dto/token.dto';
@@ -28,7 +27,6 @@ export class AuthController {
         }
         const user = await this.authService.login(body)
         const tokens = await this.tokenService.getTokens(user, userAgent)
-        if (tokens) addAuthToRes(res, tokens)
         return new SuccessResponse('Login Successfull', { user, tokens}).send()
     }
 
@@ -49,7 +47,6 @@ export class AuthController {
     async RefreshToken(@Req() req: Request, @Res() res: Response, @Body() body: RefreshTokenDto): Promise<TokenPayloadDto> {
         const refreshToken = body.refreshToken || TokenHelper.getTokenFromCookies(req.cookies)
         const tokens = await this.authService.refreshToken({refreshToken: refreshToken})
-        if (tokens) addAuthToRes(res, tokens);
         return new SuccessResponse('Refreshed Access Token', { tokens }).send()
     }
 

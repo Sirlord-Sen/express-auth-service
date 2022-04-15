@@ -1,22 +1,7 @@
-type Password= {
-    password: string
-}
-export type FullUser = IReturnUser & Password
+import { IUser } from "./interfaces";
 
-export interface IReturnUser {
-    id: string;
-    username: string;
-    email: string;
-    firstname: string;
-    surname: string;
-    confirmTokenPassword?:string
-}
+export type User = IUser
 
-export interface UserPayloadInterface{
-    user: IReturnUser
-}
+export type FullUser = Id & User & DateInfo
 
-export interface IPassword{
-    oldPassword: string,
-    newPassword: string
-}
+export type Password = { oldPassword: string, newPassword: string }

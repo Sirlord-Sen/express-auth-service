@@ -1,58 +1,30 @@
 import { FullUser } from "@modules/user/user.types";
-import { IReturnUser } from "../user/interfaces/user.interface";
-import { IRefreshToken, ITokenPayload } from "./interfaces/refresh-token.interface";
+import { TokenType } from "@utils/utility-types";
+import { Response } from "express";
+import { IRefreshToken } from "./interfaces/refresh-token.interface";
 
-type Id = {
-    id: string
-}
+export type Token = { tokenType: TokenType }
 
-type Token = {
-    token: string;
-}
-
-export type RefreshTokenPayload = ITokenPayload
-export type TokenRequest = Pick<IReturnUser, 'email' | 'id'>
-export type AccessTokenPayload = Pick<IReturnUser, 'email'> & ITokenPayload
-export type AccessTokenResponse = {accessToken: string, expiredAt: Date}
-export type AccessTokenRequest = Pick<IRefreshToken, 'userId'> & Pick<AccessTokenPayload, 'email'>;
-
-export type RefreshTokenRequest = Omit<IRefreshToken, 'jti' | 'expiredAt'>
 export type RefreshToken = IRefreshToken
-export type FullRefreshToken = RefreshToken & Id
+
+export type FullRefreshToken = Id & RefreshToken & DateInfo 
+
+export type RefreshTokenRequest = Pick<RefreshToken, 'userId'>
+
+export type RefreshTokenResponse = { refreshToken: string }
+
+export type AccessTokenRequest = Pick<RefreshToken, 'userId'> & Pick<FullUser, 'email'>;
+
+export type AccessTokenResponse = {accessToken: string, expiredAt: Date}
+
+export type TokenRequest = Pick<FullUser, 'email' | 'id'>
+
+export type Tokens =  Token & AccessTokenResponse & RefreshTokenResponse
+
 export type LogoutRequest = Pick<IRefreshToken, 'userId'>
-export type UpdateTokenRequest = LogoutRequest & Pick<IRefreshToken, 'isRevoked'>
 
 export type ForgotPasswordRequest = Required<Pick<FullUser, 'email'>>;
-export type ResetPasswordRequest = Required<Pick<FullUser, 'password'>> & Token
 
-export type UserAgentDets = Pick<FullRefreshToken, 'browser' | 'os'>
+export type ResetPasswordRequest = Required<Pick<FullUser, 'password'>> & { token: string }
 
-
-export interface ITokenPayload{
-    jti: string;
-    sub: string;
-    typ: string;
-  };
-  
-  
-  export interface ITokenResponse {
-    accessToken: string,
-    refreshToken: string,
-    tokenType: TokenType,
-    expiredAt: Date,
-    lastSignIn: Date | undefined
-  }
-  
-  export interface IRefreshTokenResponse{
-    refreshToken: string,
-    lastSignIn: Date | undefined
-  }
-  
-  export interface TokenResponse {
-    ( res: Response,
-      tokens: Partial<ITokenResponse>): void
-  }
-  
-  export interface IRefreshTokenRequest{
-      refreshToken: string
-  }
+export type UserAgent = Pick<RefreshToken, 'browser' | 'os' | 'ip' | 'userAgent'>
