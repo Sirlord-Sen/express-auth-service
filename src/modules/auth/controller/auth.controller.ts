@@ -17,7 +17,7 @@ export class AuthController {
     ){}
  
     @Post('/login')
-    async Login(@Req() req: any, @Res() res: Response, @Body() body:LoginDto): Promise<Payload>{
+    async Login(@Req() req: Request, @Body() body:LoginDto): Promise<Payload>{
         const { useragent } = req
         const userAgent = {
             os: useragent?.os,
@@ -30,7 +30,7 @@ export class AuthController {
 
     @Post('/logout')
     @UseBefore(AuthMiddleware)
-    async Logout(@Req() req: any): Promise<Payload>{
+    async Logout(@Req() req: Request): Promise<Payload>{
         const { useragent } = req
         const userAgent = {
             os: useragent?.os,

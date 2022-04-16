@@ -1,12 +1,11 @@
 type CurrentUser = {
-    email: string,
-    userId: string
-}
-
-declare global{
-    namespace Express {
-        interface Request {
-            currentUser?: CurrentUser
-        }
+    userId: string;
+    jti?: string
+  };
+  
+  declare namespace Express {
+    export interface Request {
+      currentUser: CurrentUser;
+      params: any;
     }
-}
+  }

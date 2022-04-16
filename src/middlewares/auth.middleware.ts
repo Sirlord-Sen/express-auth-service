@@ -18,7 +18,7 @@ export class AuthMiddleware implements ExpressMiddlewareInterface{
       this.tokensCache = TokensCache
     }
     
-    async use(req: any, res: Response, next: (err?: any) => any) {
+    async use(req: Request, res: Response, next: (err?: any) => any) {
         const accessToken = TokenHelper.getTokenFromHeader(req.headers)
 
         if(accessToken) {
@@ -26,7 +26,7 @@ export class AuthMiddleware implements ExpressMiddlewareInterface{
                 const userId = await this.tokensCache.getProp(accessToken)
                 if (userId) {
                     req.currentUser = { 
-                        userId: userId
+                        userId: userId,
                     }
                     return next()
                 }
@@ -57,6 +57,6 @@ export class AuthMiddleware implements ExpressMiddlewareInterface{
             catch (err) { return next(err) }
         }
 
-        return next( new ForbiddenError().send() )
+        return next( new ForbiddenError() )
     }
 }
