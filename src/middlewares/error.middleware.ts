@@ -11,7 +11,6 @@ import { Service } from 'typedi'
 @Middleware({ type: 'after' })
 export class CustomErrorHandler implements ExpressErrorMiddlewareInterface {
     async error(error: any, request: Request, response: Response, next:NextFunction) {
-        console.log(error)
         if(error.errors && error.errors[0] instanceof ValidationError){
             let message: string = ''
             for(let i in error.errors[0].constraints){

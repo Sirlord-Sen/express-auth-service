@@ -11,18 +11,25 @@ import {
 import { TokenService } from ".";
 import { TokenType } from "@utils/utility-types";
 import { nanoid } from "nanoid";
-import { EmailQueue }  from "@providers/mailer";
 import { IAuthService } from "../interfaces/service.interface";
 import { ValidateHelper } from "@helpers//";
 import { Service } from 'typedi'
+import { EmailConfirmAccount } from "@providers/mailer/email.util";
 
 @Service()
 export default class AuthService implements IAuthService{
     constructor(
         private userService: UserService,
         private tokenService: TokenService,
-        private emailQueue : EmailQueue
     ){}
+
+    async confirmAccount(token: string){
+        const { jti, email } = await this.tokenService.decodeConfirmationToken(token)
+        console.log(jti)
+        const user = await this.userService.update({email, accountActivationToken: jti}, { isAccountActivated: true })
+        new EmailConfirmAccount({email})
+        return pick(user, ["id", "username", "email"])
+    }
 
     async login(body: LoginRequest) {
         const { email, password } = body
@@ -62,7 +69,7 @@ export default class AuthService implements IAuthService{
 
     async resetPassword(body: ResetPasswordRequest) {
         const { password, token } = body
-        const { jti, email } = await this.tokenService.decodeForgotPasswordToken(token)
+        const { jti, email } = await this.tokenService.decodeConfirmationToken(token)
 
         const user = await this.userService.update({email, passwordResetToken: jti}, {password: password})
         // await this.emailQueue.addEmailToQueue({ email })

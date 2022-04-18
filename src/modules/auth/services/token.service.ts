@@ -131,7 +131,7 @@ export default class TokenService implements ITokenService{
         return this.userService.findOneOrFail({ id: sub });
     }
 
-    async decodeForgotPasswordToken(token:string){
+    async decodeConfirmationToken(token:string){
         const publicKey = JwtConfig.publicAccessKey
         const verifyOptions: VerifyOptions = {
             algorithms: ['RS256']

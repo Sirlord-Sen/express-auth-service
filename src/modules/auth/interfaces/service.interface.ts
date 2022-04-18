@@ -22,10 +22,11 @@ export interface ITokenService{
     getTokens(body: TokensRequest, agent: UserAgent):Promise<TokensResponse>
     update(query: Partial<FullRefreshToken>, body: Partial<RefreshToken>): Promise<void>
     resolveRefreshToken(token:string): Promise<{user: TokensRequest, refreshToken: RefreshToken}> 
-    decodeForgotPasswordToken(token:string): Promise<TokenPayload> 
+    decodeConfirmationToken(token:string): Promise<TokenPayload> 
 }
 
 export interface IAuthService{
+    confirmAccount(token: string): Promise<Partial<FullUser>>
     login(body: LoginRequest): Promise<Partial<FullUser>>
     logout(body: LogoutRequest, useragent: UserAgent): Promise<void>
     refreshToken(refreshToken: string): Promise<Partial<TokensResponse>>

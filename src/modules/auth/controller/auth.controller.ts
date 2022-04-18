@@ -1,8 +1,9 @@
 import { Request } from 'express'
 import { Controller, Req, Body, Post, UseBefore } from 'routing-controllers';
 import { SuccessResponse } from '@utils/response.util';
-import { ForgotPasswordDto, LoginDto, ResetPasswordDto, RefreshTokenDto } from '../dto/auth.dto';
-import {AuthService, TokenService} from '../services';
+import { ForgotPasswordDto, LoginDto, ResetPasswordDto, RefreshTokenDto, ConfirmAccountDto } from '../dto/auth.dto';
+import AuthService from '../services/auth.service';
+import TokenService from '../services/token.service'
 import { AuthMiddleware } from '@middlewares/auth.middleware';
 import { TokenHelper } from '@helpers//';
 import { LoginResponse, Payload, Tokens, UserResponse } from '@utils/utility-types';
@@ -16,6 +17,18 @@ export class AuthController {
         private readonly tokenService: TokenService
     ){}
  
+    @Post('/confirm-account')
+    async ConfirmAccount(@Req() req: Request, @Body() body: ConfirmAccountDto): Promise<Payload>{
+        const { useragent } = req
+        const userAgent = {
+            os: useragent?.os,
+            browser: useragent?.browser
+        }
+        const user = await this.authService.confirmAccount(body.token)
+        const tokens = await this.tokenService.getTokens(user, userAgent)
+        return new SuccessResponse<LoginResponse>("User Account Verified", { user, tokens })
+    }
+
     @Post('/login')
     async Login(@Req() req: Request, @Body() body:LoginDto): Promise<Payload>{
         const { useragent } = req

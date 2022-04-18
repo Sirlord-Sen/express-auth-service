@@ -31,3 +31,10 @@ export class RefreshTokenDto{
     @IsString()
     refreshToken: string
 }
+
+
+export class ConfirmAccountDto{
+    @IsNotEmpty()
+    @IsString()
+    token: string
+}
