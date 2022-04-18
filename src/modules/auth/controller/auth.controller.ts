@@ -3,7 +3,7 @@ import { Controller, Req, Body, Post, UseBefore } from 'routing-controllers';
 import { SuccessResponse } from '@utils/response.util';
 import { ForgotPasswordDto, LoginDto, ResetPasswordDto, RefreshTokenDto, ConfirmAccountDto } from '../dto/auth.dto';
 import AuthService from '../services/auth.service';
-import TokenService from '../services/token.service'
+import TokenService from '../services/token.service';
 import { AuthMiddleware } from '@middlewares/auth.middleware';
 import { TokenHelper } from '@helpers//';
 import { LoginResponse, Payload, Tokens, UserResponse } from '@utils/utility-types';
@@ -51,7 +51,7 @@ export class AuthController {
         }
         const { userId } = req.currentUser;
         await this.authService.logout({ userId }, userAgent)
-        return new SuccessResponse<{}>(`User with email:'${userId}' logged out`, { });
+        return new SuccessResponse(`logged out`);
     }
 
     @Post('/refresh-token')
