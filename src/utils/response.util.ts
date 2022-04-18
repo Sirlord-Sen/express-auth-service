@@ -58,7 +58,7 @@ abstract class ApiResponse {
 
 // Custom Response for Success
 export class SuccessResponse<T extends DataResponses> extends ApiResponse{
-    constructor(message: string, data: T) {
+    constructor(message: string, data?: T) {
         super( Success.SUCCESS, StatusCode.SUCCESS, message, undefined, data);
         super.prepare<SuccessResponse<T>>(response, this);
     }

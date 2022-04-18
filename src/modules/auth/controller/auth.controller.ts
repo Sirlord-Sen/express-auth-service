@@ -1,5 +1,5 @@
-import { Response, Request } from 'express'
-import { Controller, Req, Res, Body, Post, UseBefore } from 'routing-controllers';
+import { Request } from 'express'
+import { Controller, Req, Body, Post, UseBefore } from 'routing-controllers';
 import { SuccessResponse } from '@utils/response.util';
 import { ForgotPasswordDto, LoginDto, ResetPasswordDto, RefreshTokenDto } from '../dto/auth.dto';
 import {AuthService, TokenService} from '../services';
@@ -42,7 +42,7 @@ export class AuthController {
     }
 
     @Post('/refresh-token')
-    async RefreshToken(@Req() req: Request, @Res() res: Response, @Body() body: RefreshTokenDto): Promise<Payload> {
+    async RefreshToken(@Req() req: Request, @Body() body: RefreshTokenDto): Promise<Payload> {
         const refreshToken = body.refreshToken || TokenHelper.getTokenFromCookies(req.cookies)
         const tokens = await this.authService.refreshToken(refreshToken)
         return new SuccessResponse<Tokens>('Refreshed Access Token', { tokens });

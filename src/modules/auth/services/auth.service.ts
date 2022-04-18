@@ -11,7 +11,7 @@ import {
 import { TokenService } from ".";
 import { TokenType } from "@utils/utility-types";
 import { nanoid } from "nanoid";
-import EmailQueue  from "@providers/mailer";
+import { EmailQueue }  from "@providers/mailer";
 import { IAuthService } from "../interfaces/service.interface";
 import { ValidateHelper } from "@helpers//";
 import { Service } from 'typedi'
@@ -55,7 +55,7 @@ export default class AuthService implements IAuthService{
 
         const user = await this.userService.update({ id }, { passwordResetToken, passwordResetExpires: expiredAt });
 
-        await this.emailQueue.addForgotPasswordToQueue({ token: accessToken, email })
+        // await this.emailQueue.addEmailToQueue({ token: accessToken, email })
         return user
         
     }
@@ -65,7 +65,7 @@ export default class AuthService implements IAuthService{
         const { jti, email } = await this.tokenService.decodeForgotPasswordToken(token)
 
         const user = await this.userService.update({email, passwordResetToken: jti}, {password: password})
-        await this.emailQueue.addForgotPasswordToQueue({ email })
+        // await this.emailQueue.addEmailToQueue({ email })
      
         return user
     }

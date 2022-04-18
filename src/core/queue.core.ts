@@ -95,7 +95,7 @@ export default class QueueCore{
             finishedOn: ${finishedOn}
             -------------
           `
-            Logger.warn(logMessage)
+          Logger.warn(logMessage)
         })
 
         this.queue.on('completed', async (job, result) => {

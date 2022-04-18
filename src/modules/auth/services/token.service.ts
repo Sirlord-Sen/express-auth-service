@@ -32,7 +32,7 @@ export default class TokenService implements ITokenService{
         private readonly userService: UserService
     ){}
 
-    async generateAccessToken(body:AccessTokenRequest, confirmTokenPassword?: string) {
+    async generateAccessToken(body:AccessTokenRequest, confirmationToken?: string) {
         const { userId } = body
         const privateAccessSecret: Secret = {
             key: JwtConfig.privateAccessKey,
@@ -46,7 +46,7 @@ export default class TokenService implements ITokenService{
 
         const payload: JwtPayload = {
             ...body,
-            jti: confirmTokenPassword || nanoid(),
+            jti: confirmationToken || nanoid(),
             sub: String(userId),
             typ: TokenType.BEARER
         };
