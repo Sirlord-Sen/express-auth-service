@@ -63,13 +63,13 @@ export class AuthController {
 
     @Post('/forgot-password')
     async ForgotPassword(@Body() body: ForgotPasswordDto): Promise<Payload>{
-        const user = await this.authService.forgotPassword(body)
-        return new SuccessResponse<UserResponse>('Email Sent to user', { user});
+        await this.authService.forgotPassword(body)
+        return new SuccessResponse('Email Sent to user');
     }
 
     @Post('/reset-password')
     async ResetPassword(@Body() body: ResetPasswordDto): Promise<Payload>{
         const user = await this.authService.resetPassword(body)
-        return new SuccessResponse<UserResponse>('Password Reset', { user});
+        return new SuccessResponse<UserResponse>('Password changed', { user});
     }
 }

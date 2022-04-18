@@ -1,5 +1,5 @@
 import UserService from "@modules/user/services/user.service";
-import { UnauthorizedError } from "@utils/error-response.util";
+import { ConflictError, UnauthorizedError } from "@utils/error-response.util";
 import { pick } from "lodash";
 import { 
     ForgotPasswordRequest, 
@@ -8,13 +8,13 @@ import {
     ResetPasswordRequest, 
     UserAgent 
 } from "../auth.types";
-import { TokenService } from ".";
+import TokenService from "./token.service";
 import { TokenType } from "@utils/utility-types";
 import { nanoid } from "nanoid";
 import { IAuthService } from "../interfaces/service.interface";
 import { ValidateHelper } from "@helpers//";
 import { Service } from 'typedi'
-import { EmailConfirmAccount } from "@providers/mailer/email.util";
+import { EmailConfirmAccount, EmailResetPassword } from "@providers/mailer/email.util";
 
 @Service()
 export default class AuthService implements IAuthService{
@@ -60,20 +60,21 @@ export default class AuthService implements IAuthService{
         const passwordResetToken = nanoid();
         const { accessToken, expiredAt } = await this.tokenService.generateAccessToken({userId: id, email}, passwordResetToken)
 
-        const user = await this.userService.update({ id }, { passwordResetToken, passwordResetExpires: expiredAt });
+        await this.userService.update({ id }, { passwordResetToken, passwordResetExpires: expiredAt });
 
-        // await this.emailQueue.addEmailToQueue({ token: accessToken, email })
-        return user
+        new EmailResetPassword({email, token: accessToken})
         
     }
 
     async resetPassword(body: ResetPasswordRequest) {
         const { password, token } = body
         const { jti, email } = await this.tokenService.decodeConfirmationToken(token)
-
-        const user = await this.userService.update({email, passwordResetToken: jti}, {password: password})
-        // await this.emailQueue.addEmailToQueue({ email })
+        const user = await this.userService.findOneOrFail({email, passwordResetToken: jti})
+        const validate = await ValidateHelper.credentials(user.password, password)
+        if(validate) throw new ConflictError("Same password")
+        const updatedUser = await this.userService.update({email, passwordResetToken: jti}, {password: password})
+        new EmailResetPassword({email})
      
-        return user
+        return updatedUser
     }
 }

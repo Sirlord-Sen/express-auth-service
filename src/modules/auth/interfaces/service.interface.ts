@@ -30,6 +30,6 @@ export interface IAuthService{
     login(body: LoginRequest): Promise<Partial<FullUser>>
     logout(body: LogoutRequest, useragent: UserAgent): Promise<void>
     refreshToken(refreshToken: string): Promise<Partial<TokensResponse>>
-    forgotPassword(body: ForgotPasswordRequest): Promise<Partial<FullUser>> 
+    forgotPassword(body: ForgotPasswordRequest): Promise<void> 
     resetPassword(body: ResetPasswordRequest): Promise<Partial<FullUser>> 
 }
