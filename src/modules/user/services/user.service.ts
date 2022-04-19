@@ -31,7 +31,7 @@ export default class UserService implements IUserService{
 
     async findCurrentUser(data: Partial<FullUser>){
         const user = await this.findOneOrFail(data)
-        return pick(user, ["id", "username", "email"])
+        return pick(user, ["id", "username", "email", "profile"])
     }
     
     async findOneOrFail(query: FilterUser){
@@ -45,7 +45,7 @@ export default class UserService implements IUserService{
 
     async update(query: FilterUser, body: UpdateUser){
         const user = await this.userRepository.updateUser(query, body)
-        return pick(user, ["id", "username", "email"])
+        return pick(user, ["id", "username", "email", "profile"])
     }
 
     async updatePassword(query: Partial<FullUser>, body: Password){

@@ -24,6 +24,9 @@ export class UserRepository extends Repository<UserEntity>{
             await this.save(user)
             return user
         }
-        catch(err:any){ throw new InternalServerError('Could not update user')  }
+        catch(err:any){ 
+            console.log(err)
+            throw new InternalServerError('Could not update user')  
+        }
     }
 }

@@ -1,3 +1,4 @@
+import { Gender } from '@utils/utility-types'
 import { IsString, IsEmail, IsNotEmpty, IsOptional } from 'class-validator'
 
 export class SignUpDto{
@@ -14,6 +15,24 @@ export class SignUpDto{
     password: string
 }
 
+class UpdateProfile{
+    @IsOptional()
+    @IsString()
+    firstname?: string
+
+    @IsOptional()
+    @IsString()
+    lastname?: string
+
+    @IsOptional()
+    @IsString()
+    gender?: Gender
+
+    @IsOptional()
+    @IsString()
+    picture?: string
+}
+
 export class UpdateUserDto{
     @IsOptional()
     @IsString()
@@ -24,13 +43,9 @@ export class UpdateUserDto{
     email?: string
 
     @IsOptional()
-    @IsString()
-    firstname?: string
-
-    @IsOptional()
-    @IsString()
-    surname?: string
+    profile?: UpdateProfile
 }
+
 
 export class ResetPasswordDto{
     @IsNotEmpty()

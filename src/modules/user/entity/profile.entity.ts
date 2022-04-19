@@ -7,13 +7,13 @@ import { Gender } from '@utils/utility-types';
 @Entity({ name: "profiles" })
 export default class ProfileEntity extends EntityCore<IProfile> implements IProfile {
   @Column('varchar')
-  firstName!: string;
+  firstname?: string;
 
   @Column('varchar')
-  lastName!: string;
+  lastname?: string;
 
-  @Column('enum', { enum: Gender })
-  gender: Gender
+  @Column('enum', { enum: Gender, nullable: true })
+  gender?: Gender
 
   @OneToOne(() => UserEntity, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'userId' })
@@ -26,6 +26,6 @@ export default class ProfileEntity extends EntityCore<IProfile> implements IProf
   picture?: string;
 
   public get fullName(): string {
-    return `${this.firstName || ''} ${this.lastName || ''}`.trim();
+    return `${this.firstname || ''} ${this.lastname || ''}`.trim();
   }
 }
