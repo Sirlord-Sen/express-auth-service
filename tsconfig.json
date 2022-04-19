@@ -23,6 +23,8 @@
           "@core/*": ["src/core/*"],
           "@middlewares/*": ["src/middlewares/*"],
           "@modules/*": ["src/modules/*"],
+          "@user/*": ["src/modules/user/*"],
+          "@auth/*": ["src/modules/auth/*"],
           "@utils/*": ["src/utils/*"],
           "@providers/*": ["src/providers/*"],
           "@helpers/*": ["src/helpers/*"],

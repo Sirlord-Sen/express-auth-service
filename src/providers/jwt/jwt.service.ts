@@ -7,12 +7,6 @@ import { Service } from 'typedi'
 
 @Service()
 export default class JWTService {
-//   decode(
-//     token: string,
-//     options?: jwt.DecodeOptions,
-//   ): null | { [key: string]: any } | string {
-//     return jwt.decode(token, options);
-//   }
 
     sign<T>(payload: T, secret: string, opts?: SignOptions): string {
         return jwt.sign(
@@ -20,8 +14,7 @@ export default class JWTService {
             secret,
             opts,
         );
-  }
-
+    }
 
     signAsync<T>(payload: T, secret: Secret, opts?: SignOptions): Promise<string> {
         return new Promise((resolve, reject) => {
@@ -39,9 +32,9 @@ export default class JWTService {
         });
     }
 
-  verify<T>(token: string, secret: string) {
-    return jwt.verify(token, secret) as T;
-  }
+    verify<T>(token: string, secret: string) {
+        return jwt.verify(token, secret) as T;
+    }
 
     async verifyAsync<T>(token: string, key: Secret, opts: VerifyOptions): Promise<T> {
         return new Promise((resolve, reject) => {

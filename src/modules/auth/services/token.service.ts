@@ -6,8 +6,7 @@ import { DateHelper } from "@helpers//";
 import RefreshTokenRepository from "../repository/refreshToken.repository";
 import { TokenType } from "@utils/utility-types";
 import { JwtConfig } from '@config//';
-import { UnauthorizedError } from '@utils/error-response.util';
-import UserService from '@modules/user/services/user.service';
+import { NotFoundError, UnauthorizedError } from '@utils/error-response.util';
 import { 
     TokensRequest, 
     AccessTokenRequest, 
@@ -22,14 +21,17 @@ import TokensCache from '@utils/cache.util';
 import { ITokenService } from '../interfaces/service.interface';
 import { Service } from 'typedi'
 import { InjectRepository } from 'typeorm-typedi-extensions';
+import { UserRepository } from "@user/repository/user.repository";
 
 @Service()
 export default class TokenService implements ITokenService{
     constructor(
         @InjectRepository() 
         private readonly refreshTokenRepository: RefreshTokenRepository,
+        @InjectRepository()
+        private readonly userRepository: UserRepository,
         private readonly jwtService: JWTService,
-        private readonly userService: UserService
+        // private readonly userService: UserService
     ){}
 
     async generateAccessToken(body:AccessTokenRequest, confirmationToken?: string) {
@@ -55,7 +57,7 @@ export default class TokenService implements ITokenService{
         const ms = DateHelper.convertToMS(JwtConfig.accessTokenExpiration)
         const expiredAt = DateHelper.addMillisecondToDate(new Date(), ms);
 
-        await TokensCache.setProp(accessToken, userId, ms/1000)
+        confirmationToken ? undefined : await TokensCache.setProp(accessToken, userId, ms/1000)
         return {accessToken, expiredAt}
     }
 
@@ -104,11 +106,13 @@ export default class TokenService implements ITokenService{
         const payload = await this.decodeRefreshToken(token);
         const refreshTokenFromDB = await this.getRefreshTokenFromPayload(payload);
 
-        if (refreshTokenFromDB?.isRevoked) throw new UnauthorizedError('Token expired');
+        if (refreshTokenFromDB?.isRevoked) throw new UnauthorizedError('Please log in');
 
         const user = pick(await this.getUserFromRefreshTokenPayload(payload), ['id', 'email']);
 
-        return { user , refreshToken: refreshTokenFromDB };
+        await this.update({ userId: user.id, jti: payload.jti } , {isRevoked: true })
+
+        return user;
     }
 
     private async decodeRefreshToken(token: string){
@@ -121,14 +125,14 @@ export default class TokenService implements ITokenService{
         return payload
     }
     
-    private getRefreshTokenFromPayload(payload: TokenPayload) {
+    private async getRefreshTokenFromPayload(payload: TokenPayload) {
         const { jti, sub } = payload;
-        return this.refreshTokenRepository.findOneToken({ userId: sub, jti });
+        return await this.refreshTokenRepository.findOneToken({ userId: sub, jti });
     }
     
-    private getUserFromRefreshTokenPayload(payload: TokenPayload){
-        const { sub } = payload;    
-        return this.userService.findOneOrFail({ id: sub });
+    private async getUserFromRefreshTokenPayload(payload: TokenPayload){  
+        try{return await this.userRepository.findOneOrFail({ id: payload.sub });}
+        catch(e){ throw new NotFoundError('User not found')}
     }
 
     async decodeConfirmationToken(token:string){

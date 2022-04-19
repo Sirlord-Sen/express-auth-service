@@ -1,4 +1,4 @@
-import { IUser } from "@modules/user/interfaces";
+import { IUser } from "@user/interfaces";
 
 export interface IRefreshToken {
     browser?: string;

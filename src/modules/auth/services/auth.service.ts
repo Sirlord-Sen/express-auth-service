@@ -1,4 +1,4 @@
-import UserService from "@modules/user/services/user.service";
+import UserService from "@user/services/user.service";
 import { ConflictError, UnauthorizedError } from "@utils/error-response.util";
 import { pick } from "lodash";
 import { 
@@ -9,7 +9,6 @@ import {
     UserAgent 
 } from "../auth.types";
 import TokenService from "./token.service";
-import { TokenType } from "@utils/utility-types";
 import { nanoid } from "nanoid";
 import { IAuthService } from "../interfaces/service.interface";
 import { ValidateHelper } from "@helpers//";
@@ -19,13 +18,12 @@ import { EmailConfirmAccount, EmailResetPassword } from "@providers/mailer/email
 @Service()
 export default class AuthService implements IAuthService{
     constructor(
-        private userService: UserService,
         private tokenService: TokenService,
+        private userService: UserService,
     ){}
 
     async confirmAccount(token: string){
         const { jti, email } = await this.tokenService.decodeConfirmationToken(token)
-        console.log(jti)
         const user = await this.userService.update({email, accountActivationToken: jti}, { isAccountActivated: true })
         new EmailConfirmAccount({email})
         return pick(user, ["id", "username", "email"])
@@ -44,10 +42,9 @@ export default class AuthService implements IAuthService{
         await this.tokenService.update({ userId, ...useragent, isRevoked: false } , {isRevoked: true });
     }
 
-    async refreshToken(refreshToken: string) {
-        let { user }  = await this.tokenService.resolveRefreshToken(refreshToken)
-        const { accessToken, expiredAt } = await this.tokenService.generateAccessToken({userId: user.id, email: user.email})
-        const tokens = { tokenType: TokenType.BEARER , accessToken, expiredAt, refreshToken: refreshToken }
+    async refreshToken(refreshToken: string, agent: UserAgent) {
+        let user   = await this.tokenService.resolveRefreshToken(refreshToken)
+        const tokens = await this.tokenService.getTokens(user, agent)
         return  tokens ;
     }
 

@@ -56,8 +56,13 @@ export class AuthController {
 
     @Post('/refresh-token')
     async RefreshToken(@Req() req: Request, @Body() body: RefreshTokenDto): Promise<Payload> {
+        const { useragent } = req
+        const userAgent = {
+            os: useragent?.os,
+            browser: useragent?.browser
+        }
         const refreshToken = body.refreshToken || TokenHelper.getTokenFromCookies(req.cookies)
-        const tokens = await this.authService.refreshToken(refreshToken)
+        const tokens = await this.authService.refreshToken(refreshToken, userAgent)
         return new SuccessResponse<Tokens>('Refreshed Access Token', { tokens });
     }
 

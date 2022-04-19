@@ -13,11 +13,10 @@ import { EmailConfirmAccount } from '@providers/mailer/email.util'
 
 @Service()
 export default class UserService implements IUserService{
-    
     constructor(
         @InjectRepository()
         private readonly userRepository: UserRepository,
-        private readonly tokenService: TokenService,
+        private readonly tokenService: TokenService
     ){}
 
     async register(data: User){
