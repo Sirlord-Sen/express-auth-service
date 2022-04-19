@@ -36,9 +36,9 @@ export class UserController {
         return new SuccessResponse<UserResponse>('Updated User', { user })
     }
 
-    @Post('/reset-password')
+    @Post('/change-password')
     @UseBefore(AuthMiddleware)
-    async ResetPassword(@Body() body:ResetPasswordDto, @Req() req: Request): Promise<Payload> {
+    async ChangePassword(@Body() body:ResetPasswordDto, @Req() req: Request): Promise<Payload> {
         const { userId } = req.currentUser
         const user = await this.userService.updatePassword({id: userId}, body)
         return new SuccessResponse<UserResponse>('Password Changed Successfully', { user })

@@ -1,7 +1,7 @@
 import { pick } from 'lodash'
 import { FilterUser, UpdateUser, User } from '../user.types'
 import { UserRepository } from '../repository/user.repository'
-import { NotFoundError, UnauthorizedError } from '@utils/error-response.util'
+import { ConflictError, NotFoundError, UnauthorizedError } from '@utils/error-response.util'
 import { FullUser, Password } from '../user.types'
 import { IUserService } from '../interfaces/service.interface'
 import { ValidateHelper } from '@helpers//'
@@ -51,8 +51,8 @@ export default class UserService implements IUserService{
     async updatePassword(query: Partial<FullUser>, body: Password){
         const { oldPassword, newPassword } = body
         const user = await this.findOneOrFail(query)
-        const validate = await ValidateHelper.credentials(user.password, oldPassword)
-        if(!validate) throw new UnauthorizedError("Wrong Password")
+        if(!await ValidateHelper.credentials(user.password, oldPassword)) throw new UnauthorizedError("Wrong Password")
+        if(await ValidateHelper.credentials(user.password, newPassword)) throw new ConflictError("Same Password")
         return await this.update(query, {password: newPassword})
     }
 }
