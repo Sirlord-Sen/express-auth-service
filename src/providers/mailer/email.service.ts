@@ -11,13 +11,13 @@ class EmailService {
     createTransporter = async() =>{
         const OAuth2 = google.auth.OAuth2
         const oauth2Client = new OAuth2(
-            OAuthConfig.clientId,
-            OAuthConfig.clientSecret,
+            OAuthConfig.googleClientId,
+            OAuthConfig.googleClientSecret,
             "https://developers.google.com/oauthplayground"
           );
           
         oauth2Client.setCredentials({
-            refresh_token: OAuthConfig.refreshToken
+            refresh_token: OAuthConfig.googleRefreshToken
         });
 
         const accessToken: string = await new Promise((resolve, reject) => {
@@ -34,9 +34,9 @@ class EmailService {
                 type: "OAuth2",
                 user: EmailConfig.username,
                 accessToken,
-                clientId: OAuthConfig.clientId,
-                clientSecret: OAuthConfig.clientSecret,
-                refreshToken: OAuthConfig.refreshToken
+                clientId: OAuthConfig.googleClientId,
+                clientSecret: OAuthConfig.googleClientSecret,
+                refreshToken: OAuthConfig.googleRefreshToken
             },
             tls: { rejectUnauthorized: false }
         });

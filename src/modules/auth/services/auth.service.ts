@@ -39,6 +39,7 @@ export default class AuthService implements IAuthService{
 
     async logout(body: LogoutRequest, useragent: UserAgent) {
         const { userId } = body
+        await this.userService.update({id: userId}, {isActive: false});
         await this.tokenService.update({ userId, ...useragent, isRevoked: false } , {isRevoked: true });
     }
 

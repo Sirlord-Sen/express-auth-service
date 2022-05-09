@@ -9,7 +9,7 @@ import { IUser } from '../interfaces/user.interface'
 import ProfileEntity from './profile.entity'
 
 @Entity({name: "users"})
-// @Unique('UQ_USER_EMAIL', ['email'])
+@Unique('UQ_USER_EMAIL', ['email'])
 export default class UserEntity extends EntityCore<IUser> implements IUser{
     @Column()
     username: string

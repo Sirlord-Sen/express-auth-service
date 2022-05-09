@@ -9,7 +9,7 @@ export default (() => {
                 'You are receiving this because you (or someone else) have requested to reset your account password.\n\n' +
                 'To change password, kindly use the token below\n\n' + token +
                 'If you did not request this, please ignore this email and your password will remain unchanged.\n'
-                : 'Hello,\n\n' + 'This is a confirmation that the password to your account with email ' +
+                : 'Hello,\n\n' + 'This is a confirmation that you have created an account with StudAid.' +
                 email + ' has just been changed.\n'
             }
     }
@@ -22,7 +22,7 @@ export default (() => {
                 'You are receiving this because you (or someone else) have requested to change password' + 
                 'To activate account, kindly use the token below\n\n' + token  +
                 'If you did not request this, please ignore this email\n'
-                : 'Hello,\n\n' + 'This is a confirmation that you have created an account with StudAid.\n'
+                : 'Hello,\n\n' + 'This is a confirmation that the password to your account with email \n'
         }
     }
 

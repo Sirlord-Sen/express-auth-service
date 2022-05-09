@@ -2,15 +2,23 @@ import { parsedEnv } from ".";
 import { ParsedVariables } from 'dotenv-parse-variables'
 
 class OAuthConfig{
-    readonly clientId: string;
-    readonly clientSecret: string;
-    readonly refreshToken: string;
+    readonly googleClientId: string;
+    readonly googleClientSecret: string;
+    readonly googleRefreshToken: string;
+    readonly googleRedirectUrl: string;
+    readonly facebookClientId: string;
+    readonly facebookClientSecret: string;
+    readonly facebookRedirectUrl: string
   
     constructor(parsedEnv: ParsedVariables) {
   
-      this.clientId = String(parsedEnv.OAUTH_CLIENTID)
-      this.clientSecret = String(parsedEnv.OAUTH_CLIENT_SECRET)
-      this.refreshToken = String(parsedEnv.OAUTH_REFRESH_TOKEN)
+      this.googleClientId = String(parsedEnv.GOOGLE_OAUTH_CLIENTID)
+      this.googleClientSecret = String(parsedEnv.GOOGLE_OAUTH_CLIENT_SECRET)
+      this.googleRefreshToken = String(parsedEnv.GOOGLE_OAUTH_REFRESH_TOKEN)
+      this.googleRedirectUrl = String(parsedEnv.GOOGLE_OAUTH_REDIRECT_URL)
+      this.facebookClientId = String(parsedEnv.FACEBOOK_OAUTH_CLIENTID)
+      this.facebookClientSecret = String(parsedEnv.FACEBOOK_OAUTH_CLIENT_SECRET)
+      this.facebookRedirectUrl = String(parsedEnv.FACEBOOK_OAUTH_REDIRECT_URL)
     }
   }
   
