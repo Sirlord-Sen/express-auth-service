@@ -1,4 +1,4 @@
 export enum PlatformNetwork {
-    FACEBOOK = 'facebook',
-    GOOGLE = 'google',
-  }
+  FACEBOOK = 'facebook',
+  GOOGLE = 'google',
+}

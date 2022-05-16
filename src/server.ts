@@ -2,7 +2,7 @@ import express from 'express'
 import { Application } from 'express'
 import * as path from 'path'
 import * as bodyParser from 'body-parser'
-import passport from 'passport'
+import passport from "@providers/passport/passport"
 import cors from 'cors'
 import useragent from 'express-useragent'
 import Container from 'typedi'
