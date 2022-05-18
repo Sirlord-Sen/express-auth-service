@@ -3,6 +3,7 @@ import {Strategy, Profile} from "passport-facebook"
 import { InternalServerError } from '@utils/error-response.util';
 import { Logger } from '@utils/logger.util';
 import { PlatformNetwork } from '../../modules/platform/platform.types';
+import { IUser } from '@modules/user/interfaces';
 
 export const FacebookStrategy =  new Strategy(
     {
@@ -13,20 +14,23 @@ export const FacebookStrategy =  new Strategy(
     },
     async(accessToken, refreshToken, profile: Profile, done) => {
         try{
-            const { id, name, username, emails, gender, photos } = profile
-  
-            const user = {
-                provider: PlatformNetwork.FACEBOOK,
-                providerId: id,
-                username,
+            const { id, name, emails, photos } = profile
+            
+            const user: IUser = {
+                username: emails![0].value.split("@")[0],
                 email: emails![0].value,
-                gender,
                 password: 'provided',
-                firstName: name?.givenName,
-                lastName: name?.familyName,
-                picture: photos![0].value,
-                accessToken
+                profile: {
+                    firstname: name?.givenName,
+                    lastname: name?.familyName,
+                    picture: photos![0].value,
+                },
+                platform: {
+                    name: PlatformNetwork.FACEBOOK,
+                    ssid: id,
+                }
             }
+
             return done(null, user);
         }   
         catch(e:any){

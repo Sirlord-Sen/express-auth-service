@@ -1,4 +1,6 @@
 import { OAuthConfig } from '@config//';
+import { IPlatform } from '@modules/platform/interfaces';
+import { IUser } from '@modules/user/interfaces';
 import { InternalServerError } from '@utils/error-response.util';
 import { Logger } from '@utils/logger.util';
 import { OAuth2Strategy, Profile } from 'passport-google-oauth'
@@ -12,19 +14,21 @@ export const GoogleStrategy = new OAuth2Strategy(
     },
     async( accessToken: string, refreshToken: string, profile: Profile, done) => {
         try{
-            const { id, name, emails, username, gender, photos } = profile
-
-            const user = {
-                provider: PlatformNetwork.GOOGLE,
-                providerId: id,
-                username,
+            const { id, name, emails, photos } = profile
+            
+            const user: IUser = {
+                username: emails![0].value.split("@")[0],
                 email: emails![0].value,
-                gender,
                 password: 'provided',
-                firstname: name?.givenName,
-                lastname: name?.familyName,
-                photos: photos![0].value,
-                accessToken
+                profile: {
+                    firstname: name?.givenName,
+                    lastname: name?.familyName,
+                    picture: photos![0].value,
+                },
+                platform: {
+                    name: PlatformNetwork.GOOGLE,
+                    ssid: id,
+                }
             }
             return done(null, user);
         }

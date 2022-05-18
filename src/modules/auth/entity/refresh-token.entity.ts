@@ -3,7 +3,7 @@ import UserEntity from '@modules/user/entity/user.entity';
 import EntityCore from '@core/entity.core';
 import { IRefreshToken } from '../interfaces';
 
-@Entity('refresh-tokens')
+@Entity('refresh_tokens')
 export default class RefreshTokenEntity extends EntityCore<IRefreshToken> implements IRefreshToken{
     @Column('text', { nullable: true })
     browser!: string;

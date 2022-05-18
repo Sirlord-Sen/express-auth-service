@@ -28,7 +28,6 @@ npm run start:dev
   - Platform
     - [X] Google
     - [X] Facebook
-    - [X] Apple  
 
 
 ## Project Structure

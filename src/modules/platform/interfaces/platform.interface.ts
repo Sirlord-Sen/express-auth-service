@@ -4,5 +4,5 @@ export interface IPlatform {
   name: PlatformNetwork;
   ssid: string;
   url?: string;
-  userId: string;
+  userId?: string;
 }

@@ -1,8 +1,8 @@
 import { Gender } from "@utils/utility-types";
 
 export interface IProfile {
-    firstName?: string;
-    lastName?: string;
+    firstname?: string;
+    lastname?: string;
     gender?: Gender
     userId?: string;
     picture?: string;

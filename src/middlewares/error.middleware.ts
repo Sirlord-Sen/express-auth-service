@@ -3,9 +3,10 @@ import {
   ExpressErrorMiddlewareInterface
 } from 'routing-controllers';
 import { Request, Response, NextFunction } from 'express'
-import { BadRequestError } from '@utils/error-response.util'
+import { BadRequestError, InternalServerError } from '@utils/error-response.util'
 import { ValidationError } from 'class-validator'
 import { Service } from 'typedi'
+import { Logger } from '@utils/logger.util';
 
 @Service()
 @Middleware({ type: 'after' })
@@ -20,7 +21,10 @@ export class CustomErrorHandler implements ExpressErrorMiddlewareInterface {
             response.json(new BadRequestError(message))
         }
         if(error.error) response.json(error)
-    
+        else {
+          Logger.error(error)
+          response.json(new InternalServerError()) 
+      }
         return next();
   }
 }

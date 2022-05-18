@@ -1,3 +1,4 @@
+import { IPlatform } from '@modules/platform/interfaces';
 import { IProfile } from './profile.interface';
 
 export interface IUser {
@@ -11,4 +12,5 @@ export interface IUser {
     passwordResetToken?: string;
     passwordResetExpires?: Date;
     profile?: IProfile;
+    platform?: IPlatform
 }

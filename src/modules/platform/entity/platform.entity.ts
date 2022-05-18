@@ -8,20 +8,20 @@ import EntityCore from '@core/entity.core';
 @Entity({ name: "platforms" })
 @Unique("UQ_PLATFORM_SSID", ['ssid'])
 export default class PlatformEntity extends EntityCore<IPlatform> implements IPlatform {
-  @Column('enum', { enum: PlatformNetwork })
-  name!: PlatformNetwork;
+    @Column('enum', { enum: PlatformNetwork })
+    name!: PlatformNetwork;
 
-  @Column('varchar')
-  ssid!: string;
+    @Column('varchar')
+    ssid!: string;
 
-  @Column('text', { nullable: true })
-  url?: string;
+    @Column('text', { nullable: true })
+    url?: string;
 
-  @ManyToOne(() => UserEntity, { onDelete: 'CASCADE' })
-  @JoinColumn({ name: 'userId' })
-  user!: UserEntity;
+    @ManyToOne(() => UserEntity, { onDelete: 'CASCADE' })
+    @JoinColumn({ name: 'userId' })
+    user!: UserEntity;
 
-  @Index()
-  @Column('string')
-  userId!: string;
+    @Index()
+    @Column('uuid', { unique: true })
+    userId!: string;
 }
