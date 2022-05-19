@@ -1,4 +1,4 @@
-import { Entity, Column, JoinColumn, ManyToOne, Unique, Index } from 'typeorm';
+import { Entity, Column, JoinColumn, OneToOne, Unique, Index } from 'typeorm';
 import UserEntity from '@modules/user/entity/user.entity';
 
 import { IPlatform } from '../interfaces';
@@ -17,7 +17,7 @@ export default class PlatformEntity extends EntityCore<IPlatform> implements IPl
     @Column('text', { nullable: true })
     url?: string;
 
-    @ManyToOne(() => UserEntity, { onDelete: 'CASCADE' })
+    @OneToOne(() => UserEntity, { onDelete: 'CASCADE' })
     @JoinColumn({ name: 'userId' })
     user!: UserEntity;
 

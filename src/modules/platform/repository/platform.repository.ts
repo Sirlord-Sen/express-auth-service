@@ -12,10 +12,7 @@ export class PlatformRepository extends Repository<PlatformEntity>{
             return platform;
         } 
         catch (err:any) { 
-            if (err.code === '23505' || 'ER_DUP_ENTRY') {
-                console.log(err)
-                throw new ConflictError('User already exist')
-            }
+            if (err.code === '23505' || 'ER_DUP_ENTRY') throw new ConflictError('User already exist')
             throw new InternalServerError('User could not be saved')
         }
     }
