@@ -5,8 +5,8 @@ import { EmailJob } from './email.types';
 import { Logger } from '@utils/logger.util';
 import { EmailConfig } from '@config//';
 import { EventEmitter } from 'events';
-import QueueCore from '@core/queue.core';
-import { InternalServerError } from '@utils/error-response.util';
+import { QueueCore } from '@core//';
+import { InternalServerError } from '@exceptions//';
 import { Service } from 'typedi'
 
 @Service()

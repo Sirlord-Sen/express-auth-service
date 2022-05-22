@@ -1,4 +1,4 @@
-import { InternalServerError } from "@utils/error-response.util"
+import { InternalServerError } from "@exceptions//"
 import { verify } from "argon2"
 
 export default {

@@ -1,11 +1,17 @@
 type CurrentUser = {
-    userId: string;
-    jti?: string
-  };
+  userId: string;
+  jti?: string
+};
+
+type UserAgent = {
+  os?:string,
+  browser?: string
+}
   
-  declare namespace Express {
-    export interface Request {
-      currentUser: CurrentUser;
-      params: any;
-    }
+declare namespace Express {
+  export interface Request {
+    currentUser: CurrentUser;
+    userAgent: UserAgent;
+    params: any;
   }
+}

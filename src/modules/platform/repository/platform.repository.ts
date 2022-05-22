@@ -1,5 +1,5 @@
 import { EntityRepository, Repository } from 'typeorm'
-import { InternalServerError, ConflictError } from '@utils/error-response.util';
+import { InternalServerError, ConflictError } from '@exceptions//';
 import { PlatformEntity } from '../entity/';
 import { Platform } from '../platform.types';
 

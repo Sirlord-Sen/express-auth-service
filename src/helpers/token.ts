@@ -1,5 +1,5 @@
 import { IncomingHttpHeaders } from 'http';
-import { BadRequestError } from '@utils/error-response.util';
+import { BadRequestError } from '@exceptions//';
 import { TokenType } from '@utils/utility-types';
 
 

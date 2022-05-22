@@ -5,16 +5,6 @@ import { Service } from 'typedi'
 @Service()
 class TokensCache extends CacheCore{  
     private static _instance: TokensCache
-    constructor(){
-        super({ 
-            maxRetriesPerRequest: 20,
-            retryStrategy(times){
-                const delay = Math.min(times * 50, 2000)
-                if (times >= 20) return null
-                return delay
-            }
-        })
-    }
     
     public static getInstance(): TokensCache {
         if (!TokensCache._instance) {

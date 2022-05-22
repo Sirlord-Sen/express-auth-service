@@ -7,7 +7,6 @@ import { RedisOptions, Redis } from 'ioredis'
 const redis : typeof r = RedisConfig.url === 'redis-mock' ? require('ioredis-mock') : require('ioredis')
 
 export default class CacheCore{
-    
     readonly client: Redis
     initialConnection: boolean
 
@@ -25,7 +24,12 @@ export default class CacheCore{
 
     private get defaultOptions(){
         return {
-            maxRetriesPerRequest : 20
+            maxRetriesPerRequest : 20,
+            retryStrategy(times:number){
+                const delay = Math.min(times * 50, 2000)
+                if (times >= this.maxRetriesPerRequest) return null
+                return delay
+            }
         }
     }
 

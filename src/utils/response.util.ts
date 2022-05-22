@@ -1,5 +1,5 @@
 import { response, Response } from 'express';
-import { DataResponses, Payload } from './utility-types';
+import { DataResponses } from './utility-types';
 
 // Helper code for the API consumer to understand the error and handle is accordingly
 enum ResponseStatus {

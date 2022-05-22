@@ -1,11 +1,6 @@
-import {
-    PrimaryGeneratedColumn,
-    CreateDateColumn,
-    UpdateDateColumn,
-    BeforeUpdate,
-  } from 'typeorm';
+import { PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BeforeUpdate } from 'typeorm';
   
-  export default class EntityCore<T> {
+export default class EntityCore<T> {
     @PrimaryGeneratedColumn("uuid")
     id!: string;
 
@@ -25,4 +20,4 @@ import {
     updateDate() {
       this.updatedAt = new Date();
     }
-  }
+}

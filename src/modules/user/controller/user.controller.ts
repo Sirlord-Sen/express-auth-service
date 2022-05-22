@@ -5,7 +5,7 @@ import { Controller, Body, Post, Get, Req, UseBefore, Put } from 'routing-contro
 import { SuccessResponse } from '@utils/response.util';
 import { Payload, UserResponse } from '@utils/utility-types';
 import { ResetPasswordDto, SignUpDto, UpdateUserDto } from '../dto/user.dto';
-import UserService  from '../services/user.service'
+import { UserService }  from '../services/user.service'
 
 @Service()
 @Controller('/api/v1/users')

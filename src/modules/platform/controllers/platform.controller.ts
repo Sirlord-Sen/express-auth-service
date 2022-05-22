@@ -6,7 +6,7 @@ import { Controller, Get, Req, UseBefore } from "routing-controllers";
 import { Service } from "typedi";
 import { PlatformService } from "../services/platform.service";
 import { User } from "@modules/user/user.types";
-import TokenService from '@auth/services/token.service';
+import { TokenService } from '@auth/services/token.service';
 
 @Service()
 @Controller("/api/v1/platforms")
@@ -25,11 +25,7 @@ export class PlatformController{
     @Get("/google/redirect")
     @UseBefore(GoogleGuard)
     async googleAuthRedirect(@Req() req: Request): Promise<Payload>{
-        const { useragent } = req
-        const userAgent = {
-            os: useragent?.os,
-            browser: useragent?.browser
-        }
+        const { userAgent } = req
         const data: User = req.user as User
         const user = await this.platformService.create(data)
         const tokens = await this.tokenService.getTokens(user, userAgent)
@@ -45,11 +41,7 @@ export class PlatformController{
     @Get("/facebook/redirect")
     @UseBefore(FacebookGuard)
     async facebookAuthRedirect(@Req() req: Request): Promise<Payload>{
-        const { useragent } = req
-        const userAgent = {
-            os: useragent?.os,
-            browser: useragent?.browser
-        }
+        const { userAgent } = req
         const data: User = req.user as User
         const user = await this.platformService.create(data)
         const tokens = await this.tokenService.getTokens(user, userAgent)

@@ -3,7 +3,7 @@ import {
   ExpressErrorMiddlewareInterface
 } from 'routing-controllers';
 import { Request, Response, NextFunction } from 'express'
-import { BadRequestError, InternalServerError } from '@utils/error-response.util'
+import { BadRequestError, InternalServerError } from '@exceptions//'
 import { ValidationError } from 'class-validator'
 import { Service } from 'typedi'
 import { Logger } from '@utils/logger.util';

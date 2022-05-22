@@ -1,12 +1,12 @@
 import {SignOptions, JwtPayload, Secret, VerifyOptions} from 'jsonwebtoken'
 import { pick } from 'lodash'
 import { nanoid } from 'nanoid'
-import JWTService from "@providers/jwt/jwt.service";
+import { JWTService } from "@providers/jwt";
 import { DateHelper } from "@helpers//";
-import RefreshTokenRepository from "../repository/refreshToken.repository";
+import { RefreshTokenRepository } from "../repository/refreshToken.repository";
 import { TokenType } from "@utils/utility-types";
 import { JwtConfig } from '@config//';
-import { NotFoundError, UnauthorizedError } from '@utils/error-response.util';
+import { NotFoundError, UnauthorizedError } from '@exceptions//';
 import { 
     TokensRequest, 
     AccessTokenRequest, 
@@ -17,14 +17,14 @@ import {
     TokenPayload
 } from "../auth.types";
 import { Logger } from '@utils/logger.util';
-import TokensCache from '@utils/cache.util';
+import { TokensCache } from '@utils//';
 import { ITokenService } from '../interfaces/service.interface';
 import { Service } from 'typedi'
 import { InjectRepository } from 'typeorm-typedi-extensions';
 import { UserRepository } from "@user/repository/user.repository";
 
 @Service()
-export default class TokenService implements ITokenService{
+export class TokenService implements ITokenService{
     constructor(
         @InjectRepository() 
         private readonly refreshTokenRepository: RefreshTokenRepository,

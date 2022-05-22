@@ -1,48 +1,34 @@
 import { Service } from "typedi"
 import { EmailHelper } from "."
 import { EmailQueue } from "./"
-import { EmailRequest } from "./email.types"
-
-export enum EmailOcassion {
-    CONFIRM_ACCOUNT = 'confirm_account',
-    FORGOT_PASSWORD = 'forgot_password'
-  }
+import { DeployEmail, EmailRequest } from "./email.types"
     
 @Service()  
-export abstract class EmailThings{
+export abstract class EmailHandler{
     private emailQueue: EmailQueue
     constructor(
-        public type: EmailOcassion,
         public request: EmailRequest,
+        public deploy: DeployEmail
     ){
         this.emailQueue = new EmailQueue
     }
   
-    protected async emailHandler(email: EmailThings){
-        const { request, type } = email
-        let deploy
-        switch(type){
-            case EmailOcassion.CONFIRM_ACCOUNT:
-                deploy = EmailHelper.confirmAccount(request)
-                return await this.emailQueue.addEmailToQueue({request, deploy})
-            
-            case EmailOcassion.FORGOT_PASSWORD:
-                deploy = EmailHelper.confirmResetPassword(request)
-                return await this.emailQueue.addEmailToQueue({request, deploy})
-        }
+    protected async handler(email: EmailHandler){
+        const { request, deploy } = email
+        return await this.emailQueue.addEmailToQueue({request, deploy})
     }
 }
   
-export class EmailConfirmAccount extends EmailThings{
+export class EmailConfirmAccount extends EmailHandler{
     constructor(request: EmailRequest){
-      super(EmailOcassion.CONFIRM_ACCOUNT, request)
-      super.emailHandler(this)
+      super(request, EmailHelper.confirmAccount(request))
+      super.handler(this)
     }
 }
 
-export class EmailResetPassword extends EmailThings{
+export class EmailResetPassword extends EmailHandler{
     constructor(request: EmailRequest){
-      super(EmailOcassion.FORGOT_PASSWORD, request)
-      super.emailHandler(this)
+      super(request, EmailHelper.confirmResetPassword(request))
+      super.handler(this)
     }
 }

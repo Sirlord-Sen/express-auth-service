@@ -9,6 +9,7 @@ import Container from 'typedi'
 import { useContainer, useExpressServer } from 'routing-controllers'
 import morganMiddleware  from '@middlewares/morgan.middleware';
 import { CustomErrorHandler } from '@middlewares/error.middleware'
+import { RequestMiddleware } from '@middlewares/request.middleware'
 
 export default class ExpressServer {
     public app: Application;
@@ -33,7 +34,7 @@ export default class ExpressServer {
         useContainer(Container);
         useExpressServer(this.app, { 
             controllers: [ Controllers ], 
-            middlewares: [ CustomErrorHandler ],
+            middlewares: [ CustomErrorHandler, RequestMiddleware ],
             classTransformer: true, 
             defaultErrorHandler: false,
             validation: {

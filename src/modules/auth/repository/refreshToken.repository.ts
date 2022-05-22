@@ -1,14 +1,14 @@
-import { EntityRepository, Repository, UpdateResult } from 'typeorm';
-import { InternalServerError, NotFoundError } from '@utils/error-response.util';
+import { EntityRepository, Repository } from 'typeorm';
 import { FullRefreshToken } from '../auth.types';
-import RefreshTokenEntity  from '../entity/refresh-token.entity';
+import { RefreshTokenEntity }  from '../entity';
 import { IRefreshToken } from '../interfaces/refresh-token.interface';
 import { Logger } from '@utils/logger.util';
 import { Service } from 'typedi'
+import { InternalServerError, NotFoundError } from '@exceptions//';
 
 @Service()
 @EntityRepository(RefreshTokenEntity)
-export default class RefreshTokenRepository extends Repository<RefreshTokenEntity> {
+export class RefreshTokenRepository extends Repository<RefreshTokenEntity> {
 
     async createRefreshToken(body: IRefreshToken): Promise<RefreshTokenEntity> {
         try{

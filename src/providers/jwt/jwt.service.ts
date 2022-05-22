@@ -1,6 +1,6 @@
 import jwt, { Secret, SignOptions, VerifyErrors, VerifyOptions } from 'jsonwebtoken';
 import { DateHelper } from '@helpers//';
-import { InternalServerError, UnauthorizedError } from '@utils/error-response.util';
+import { InternalServerError, UnauthorizedError } from '@exceptions//';
 import { Logger } from '@utils/logger.util';
 import { CodeError } from '@utils/utility-types' 
 import { Service } from 'typedi'

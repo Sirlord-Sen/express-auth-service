@@ -1,7 +1,6 @@
 import { OAuthConfig } from '@config//';
-import { IPlatform } from '@modules/platform/interfaces';
 import { IUser } from '@modules/user/interfaces';
-import { InternalServerError } from '@utils/error-response.util';
+import { InternalServerError } from '@exceptions//';
 import { Logger } from '@utils/logger.util';
 import { OAuth2Strategy, Profile } from 'passport-google-oauth'
 import { PlatformNetwork } from '../../modules/platform/platform.types';

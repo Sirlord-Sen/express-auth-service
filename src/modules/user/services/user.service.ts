@@ -1,18 +1,18 @@
 import { pick } from 'lodash'
 import { FilterUser, UpdateUser, User } from '../user.types'
 import { UserRepository } from '../repository/user.repository'
-import { ConflictError, NotFoundError, UnauthorizedError } from '@utils/error-response.util'
+import { ConflictError, NotFoundError, UnauthorizedError } from '@exceptions//'
 import { FullUser, Password } from '../user.types'
 import { IUserService } from '../interfaces/service.interface'
 import { ValidateHelper } from '@helpers//'
 import { Service } from 'typedi'
 import { InjectRepository } from 'typeorm-typedi-extensions'
 import { nanoid } from 'nanoid'
-import TokenService from '@modules/auth/services/token.service'
+import { TokenService } from '@auth/services/token.service'
 import { EmailConfirmAccount } from '@providers/mailer/email.util'
 
 @Service()
-export default class UserService implements IUserService{
+export class UserService implements IUserService{
     constructor(
         @InjectRepository()
         private readonly userRepository: UserRepository,

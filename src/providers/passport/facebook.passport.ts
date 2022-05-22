@@ -1,6 +1,6 @@
 import { OAuthConfig } from '@config//';
 import {Strategy, Profile} from "passport-facebook"
-import { InternalServerError } from '@utils/error-response.util';
+import { InternalServerError } from '@exceptions//';
 import { Logger } from '@utils/logger.util';
 import { PlatformNetwork } from '../../modules/platform/platform.types';
 import { IUser } from '@modules/user/interfaces';

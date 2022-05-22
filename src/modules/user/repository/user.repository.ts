@@ -1,6 +1,6 @@
 import { EntityRepository, Repository } from 'typeorm'
-import { InternalServerError, ConflictError } from '@utils/error-response.util';
-import UserEntity from '../entity/user.entity'
+import { InternalServerError, ConflictError } from '@exceptions//';
+import { UserEntity } from '../entity/'
 import { FilterUser, UpdateUser, User } from '../user.types';
 
 @EntityRepository(UserEntity)

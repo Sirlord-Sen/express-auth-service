@@ -1,6 +1,6 @@
-import { Column, Entity, Index, ManyToOne, JoinColumn} from 'typeorm'
-import UserEntity from '@modules/user/entity/user.entity';
-import EntityCore from '@core/entity.core';
+import { Column, Entity, Index, ManyToOne, JoinColumn } from 'typeorm'
+import { UserEntity } from '@user/entity/';
+import { EntityCore } from '@core//';
 import { IRefreshToken } from '../interfaces';
 
 @Entity('refresh_tokens')

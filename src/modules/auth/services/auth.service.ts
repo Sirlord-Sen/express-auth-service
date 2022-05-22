@@ -1,5 +1,5 @@
-import UserService from "@user/services/user.service";
-import { ConflictError, UnauthorizedError } from "@utils/error-response.util";
+import { UserService } from "@user/services/user.service";
+import { ConflictError, UnauthorizedError } from "@exceptions//";
 import { pick } from "lodash";
 import { 
     ForgotPasswordRequest, 
@@ -8,7 +8,7 @@ import {
     ResetPasswordRequest, 
     UserAgent 
 } from "../auth.types";
-import TokenService from "./token.service";
+import { TokenService } from "./token.service";
 import { nanoid } from "nanoid";
 import { IAuthService } from "../interfaces/service.interface";
 import { ValidateHelper } from "@helpers//";
@@ -16,7 +16,7 @@ import { Service } from 'typedi'
 import { EmailConfirmAccount, EmailResetPassword } from "@providers/mailer/email.util";
 
 @Service()
-export default class AuthService implements IAuthService{
+export class AuthService implements IAuthService{
     constructor(
         private tokenService: TokenService,
         private userService: UserService,
@@ -24,7 +24,7 @@ export default class AuthService implements IAuthService{
 
     async confirmAccount(token: string){
         const { jti, email } = await this.tokenService.decodeConfirmationToken(token)
-        const user = await this.userService.update({email, accountActivationToken: jti}, { isAccountActivated: true })
+        const user = await this.userService.update({email, accountActivationToken: jti}, { isAccountActivated: true, isActive: true })
         new EmailConfirmAccount({email})
         return pick(user, ["id", "username", "email"])
     }

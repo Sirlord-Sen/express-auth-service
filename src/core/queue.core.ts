@@ -5,10 +5,6 @@ import { RedisConfig } from '@config//';
 import { CodeError } from '@utils/utility-types' 
 import { EventEmitter } from 'events';
 
-import Redis from 'ioredis';
-import CacheCore from './cache.core';
-
-
 
 export default class QueueCore{
     readonly queue: Queue;
@@ -20,14 +16,6 @@ export default class QueueCore{
         name: string,
         opts?: Pick<QueueOptions, 'limiter' | 'defaultJobOptions'>,
     ){
-        // super({ 
-        //     maxRetriesPerRequest: 20,
-        //     retryStrategy(times){
-        //         const delay = Math.min(times * 50, 2000)
-        //         if (times >= 20) return null
-        //         return delay
-        //     }
-        // })
         this.queue = new Bull(name, {
             redis: {
                 port: RedisConfig.port,
@@ -58,26 +46,6 @@ export default class QueueCore{
             }
         };
     }
-
-    // private get RedisConnection():QueueOptions {
-    //     const client = new Redis({
-    //         host: RedisConfig.host,
-    //         port: RedisConfig.port});
-    //     const subscriber = new Redis({
-    //         host: RedisConfig.host,
-    //         port: RedisConfig.port,});
-    //     const _client = this.client
-    //     return{
-    //         createClient(type:any): Redis.Redis {
-    //             switch (type) {
-    //                 // case 'client': return client;
-    //                 // case 'subscriber': return subscriber;
-
-    //                 default: return _client
-    //             }
-    //         },
-    //     };
-    // }
 
     private bullListeners() {
         this.queue.on('failed',async (job, error) => {

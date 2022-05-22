@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 import JWTService from '@providers/jwt/jwt.service';
 import { JwtPayload, VerifyOptions } from 'jsonwebtoken';
 import { JwtConfig } from '@config//';
-import { BadRequestError, ForbiddenError } from '@utils/error-response.util';
+import { BadRequestError, ForbiddenError } from '@exceptions//';
 import TokensCache from '@utils/cache.util';
 import { Service } from 'typedi'
 

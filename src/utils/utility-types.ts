@@ -28,18 +28,24 @@ type LogoutResponse = {}
 
 export type DataResponses = UserResponse | Tokens | LoginResponse | LogoutResponse
 
-// export class RegisterPayload extends Payload{}
-// export class ForgotPasswordPayload extends Payload{}
-// export class ResetPasswordPayload extends Payload{}
-// export class UserPayload extends Payload{}
-// export class LoginPayload extends Payload{}
-// export class LogoutPayload extends Payload{}
-// export class TokensPayload extends Payload{}
-
 export enum TokenType {
     BEARER = 'Bearer'
 }
 
 export interface CodeError extends Error {
     code?: string;
+}
+
+export enum ErrorType {
+    BAD_TOKEN = 'BadTokenError',
+    TOKEN_EXPIRED = 'TokenExpiredError',
+    UNAUTHORIZED = 'AuthFailureError',
+    ACCESS_TOKEN = 'AccessTokenError',
+    INTERNAL = 'InternalError',
+    NOT_FOUND = 'NotFoundError',
+    NO_ENTRY = 'NoEntryError',
+    NO_DATA = 'NoDataError',
+    BAD_REQUEST = 'BadRequestError',
+    FORBIDDEN = 'ForbiddenError',
+    CONFLICT = 'ConflictError'
 }
