@@ -4,11 +4,22 @@
   "description": "This is a complete authentication service",
   "main": "main.js",
   "scripts": {
+    "env:dev": "cross-env ENV_FILE=./config/.env.dev",
+    "env:prod": "cross-env ENV_FILE=./config/.env.prod",
+    "env:test": "cross-env ENV_FILE=./config/.env.test",
     "build": "rimraf ./dist && tsc",
-    "start:dev": "cross-env ENV_FILE=./config/.env.dev nodemon",
-    "start:prod": "cross-env ENV_FILE=./config/.env.prod build && node -r tsconfig-paths/register ./dist/main.js",
     "lint": "eslint \"src/**/*.ts\" --fix",
-    "test:unit": "cross-env ENV_FILE=./config/.env.test jest --detectOpenHandles"
+    "start:dev": "npm run env:dev nodemon",
+    "typeorm": "ts-node ./node_modules/typeorm/cli -f ./ormconfig.js",
+    "start:prod": "npm run env:prod build && node -r tsconfig-paths/register ./dist/main.js",
+    "test:unit": "npm run env:dev jest \"unit/.*\\.test\\.ts\" --detectOpenHandles",
+    "test:e2e": "npm run env:dev jest \"e2e/.*\\.test\\.ts\" --detectOpenHandles",
+    "test:integration": "npm run env:dev jest \"integration/.*\\.test\\.ts\" --detectOpenHandles",
+    "seed:run": "npm run env:dev ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
+    "migrate:create": "npm run env:dev && typeorm migration:create -n users",
+    "migrate:generate": "npm run env:dev && npm run typeorm migration:generate -n users",
+    "migrate:run": "npm run env:dev ts-node ./node_modules/typeorm/cli.js migration:run",
+    "migrate:revert": "npm run env:dev ts-node ./node_modules/typeorm/cli.js migration:revert"
   },
   "repository": {
     "type": "git",
@@ -53,6 +64,7 @@
     "swagger-ui-express": "^4.3.0",
     "typedi": "^0.10.0",
     "typeorm": "^0.2.41",
+    "typeorm-seeding": "^1.6.1",
     "typeorm-typedi-extensions": "^0.4.1",
     "winston": "^3.4.0"
   },
@@ -88,8 +100,8 @@
     "rimraf": "^3.0.2",
     "ts-helpers": "^1.1.2",
     "ts-jest": "^27.1.3",
-    "ts-node": "^10.4.0",
+    "ts-node": "^10.8.0",
     "tsconfig-paths": "^3.12.0",
-    "typescript": "^4.5.5"
+    "typescript": "^4.6.4"
   }
 }

@@ -46,7 +46,7 @@ class EmailService {
 
     async sendEmail(data: SendEmail): Promise<any> {
         try{
-            let emailTransporter = await this.createTransporter();
+            const emailTransporter = await this.createTransporter();
             return await emailTransporter.sendMail(data);
         }
         catch(err) { throw err }

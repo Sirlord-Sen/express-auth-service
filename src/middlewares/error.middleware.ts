@@ -13,8 +13,8 @@ import { Logger } from '@utils/logger.util';
 export class CustomErrorHandler implements ExpressErrorMiddlewareInterface {
     async error(error: any, request: Request, response: Response, next:NextFunction) {
         if(error.errors && error.errors[0] instanceof ValidationError){
-            let message: string = ''
-            for(let i in error.errors[0].constraints){
+            let message = ''
+            for(const i in error.errors[0].constraints){
                 message = error.errors[0].constraints[i]
             }
 

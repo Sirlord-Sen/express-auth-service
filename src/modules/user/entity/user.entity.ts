@@ -26,7 +26,7 @@ export default class UserEntity extends EntityCore<IUser> implements IUser{
     @Column({ default: false })
     isAccountActivated?: boolean
 
-    @Column({ nullable: true })
+    @Column('text',{ nullable: true })
     accountActivationToken?: string;
 
     @Column({ nullable: true })

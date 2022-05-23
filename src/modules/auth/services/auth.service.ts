@@ -44,7 +44,7 @@ export class AuthService implements IAuthService{
     }
 
     async refreshToken(refreshToken: string, agent: UserAgent) {
-        let user   = await this.tokenService.resolveRefreshToken(refreshToken)
+        const user   = await this.tokenService.resolveRefreshToken(refreshToken)
         const tokens = await this.tokenService.getTokens(user, agent)
         return  tokens ;
     }
@@ -56,9 +56,9 @@ export class AuthService implements IAuthService{
         const { id } = await this.userService.findOneOrFail({ email });
 
         const passwordResetToken = nanoid();
-        const { accessToken, expiredAt } = await this.tokenService.generateAccessToken({userId: id, email}, passwordResetToken)
+        const { accessToken, expiresAt } = await this.tokenService.generateAccessToken({userId: id, email}, passwordResetToken)
 
-        await this.userService.update({ id }, { passwordResetToken, passwordResetExpires: expiredAt });
+        await this.userService.update({ id }, { passwordResetToken, passwordResetExpires: expiresAt });
 
         new EmailResetPassword({email, token: accessToken})
         

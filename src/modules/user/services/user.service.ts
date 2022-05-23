@@ -20,11 +20,11 @@ export class UserService implements IUserService{
     ){}
 
     async register(data: User){
-        let user = await this.userRepository.createUser(data)
+        const user = await this.userRepository.createUser(data)
         const { id, email } = user
         const accountActivationToken = nanoid();
-        const {accessToken, expiredAt} = await this.tokenService.generateAccessToken({userId: id, email}, accountActivationToken)
-        await this.update({ id }, { accountActivationToken, accountActivationExpires: expiredAt });
+        const {accessToken, expiresAt} = await this.tokenService.generateAccessToken({userId: id, email}, accountActivationToken)
+        await this.update({ id }, { accountActivationToken, accountActivationExpires: expiresAt });
         new EmailConfirmAccount({ token: accessToken, email })
         return user
     }

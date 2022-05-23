@@ -15,7 +15,7 @@ export type RefreshTokenResponse = { refreshToken: string }
 
 export type AccessTokenRequest = Pick<RefreshToken, 'userId'> & Pick<FullUser, 'email'>;
 
-export type AccessTokenResponse = {accessToken: string, expiredAt: Date}
+export type AccessTokenResponse = {accessToken: string, expiresAt: Date}
 
 export type TokenPayload = Pick<RefreshToken, 'jti'> & { sub: string, typ: string, email: string }
 

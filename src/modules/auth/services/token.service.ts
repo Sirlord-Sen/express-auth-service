@@ -55,23 +55,23 @@ export class TokenService implements ITokenService{
         const accessToken = await this.jwtService.signAsync<JwtPayload>(payload, privateAccessSecret , opts)
 
         const ms = DateHelper.convertToMS(JwtConfig.accessTokenExpiration)
-        const expiredAt = DateHelper.addMillisecondToDate(new Date(), ms);
+        const expiresAt = DateHelper.addMillisecondToDate(new Date(), ms);
 
         confirmationToken ? undefined : await TokensCache.setProp(accessToken, userId, ms/1000)
-        return {accessToken, expiredAt}
+        return {accessToken, expiresAt}
     }
 
     async generateRefreshToken(body:RefreshTokenRequest, useragent: UserAgent) {
         const jti = nanoid();
         const ms = DateHelper.convertToMS(JwtConfig.refreshTokenExpiration);
-        const expiredAt = DateHelper.addMillisecondToDate(new Date(), ms);
+        const expiresAt = DateHelper.addMillisecondToDate(new Date(), ms);
 
         // Only Allowing User to Login again after logout with same broswer and OS
         if ((await this.refreshTokenRepository.findOne({...useragent, ...body , isRevoked: false}))) {
             Logger.warn("Attempting to Signin again from same device");
         }
 
-        const savedRefreshToken = await this.refreshTokenRepository.createRefreshToken({ ...body, ...useragent ,jti, expiredAt });
+        const savedRefreshToken = await this.refreshTokenRepository.createRefreshToken({ ...body, ...useragent ,jti, expiresAt });
 
         const opts: SignOptions = {
             expiresIn: JwtConfig.refreshTokenExpiration,
@@ -90,12 +90,12 @@ export class TokenService implements ITokenService{
 
     async getTokens(body: TokensRequest, agent: UserAgent) {
         const { id, email } = body;
-        const [{accessToken, expiredAt}, { refreshToken }] = await Promise.all([
+        const [{accessToken, expiresAt}, { refreshToken }] = await Promise.all([
             this.generateAccessToken({ email: email, userId: id }),
             this.generateRefreshToken({ userId: id }, agent)
         ]);
           
-        return { tokenType: TokenType.BEARER ,expiredAt , accessToken, refreshToken };
+        return { tokenType: TokenType.BEARER ,expiresAt , accessToken, refreshToken };
     }
 
     async update(query: Partial<FullRefreshToken>, body: Partial<RefreshToken>) {

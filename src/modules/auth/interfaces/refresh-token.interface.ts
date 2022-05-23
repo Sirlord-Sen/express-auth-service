@@ -2,7 +2,7 @@ import { IUser } from "@user/interfaces";
 
 export interface IRefreshToken {
     browser?: string;
-    expiredAt: Date;
+    expiresAt: Date;
     ip?: string;
     isRevoked?: boolean;
     jti: string;

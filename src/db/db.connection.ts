@@ -16,7 +16,11 @@ class Connection{
             database,
             synchronize,
             entities: ["src/modules/**/*.entity.ts"],
-            subscribers: ["src/modules/**/*.subscriber.ts"]
+            subscribers: ["src/modules/**/*.subscriber.ts"],
+            migrations: ["src/db/migrations/**/*.ts"],
+            cli: {
+                migrationsDir: './migration',
+            }
         }
     }
 

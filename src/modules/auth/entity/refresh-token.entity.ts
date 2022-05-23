@@ -9,13 +9,13 @@ export default class RefreshTokenEntity extends EntityCore<IRefreshToken> implem
     browser!: string;
 
     @Column('timestamptz')
-    expiredAt!: Date;
+    expiresAt!: Date;
 
     @Column('cidr', { nullable: true })
     ip!: string;
 
     @Column('boolean', { default: false })
-    isRevoked = false;
+    isRevoked: boolean;
 
     @Index()
     @Column('varchar')

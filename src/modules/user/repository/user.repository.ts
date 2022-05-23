@@ -12,6 +12,7 @@ export class UserRepository extends Repository<UserEntity>{
             return user;
         } 
         catch (err:any) { 
+            console.log(err)
             if (err.code === '23505' || 'ER_DUP_ENTRY') throw new ConflictError('Username or Email already exist')
             throw new InternalServerError('User could not be saved')
         }
