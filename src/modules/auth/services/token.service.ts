@@ -13,7 +13,6 @@ import {
     RefreshTokenRequest, 
     FullRefreshToken,
     RefreshToken,
-    UserAgent,
     TokenPayload
 } from "../auth.types";
 import { Logger } from '@utils/logger.util';
@@ -61,17 +60,17 @@ export class TokenService implements ITokenService{
         return {accessToken, expiresAt}
     }
 
-    async generateRefreshToken(body:RefreshTokenRequest, useragent: UserAgent) {
+    async generateRefreshToken(body:RefreshTokenRequest, ctx: Context) {
         const jti = nanoid();
         const ms = DateHelper.convertToMS(JwtConfig.refreshTokenExpiration);
         const expiresAt = DateHelper.addMillisecondToDate(new Date(), ms);
 
         // Only Allowing User to Login again after logout with same broswer and OS
-        if ((await this.refreshTokenRepository.findOne({...useragent, ...body , isRevoked: false}))) {
+        if ((await this.refreshTokenRepository.findOne({...ctx, ...body , isRevoked: false}))) {
             Logger.warn("Attempting to Signin again from same device");
         }
 
-        const savedRefreshToken = await this.refreshTokenRepository.createRefreshToken({ ...body, ...useragent ,jti, expiresAt });
+        const savedRefreshToken = await this.refreshTokenRepository.createRefreshToken({ ...body, ...ctx ,jti, expiresAt });
 
         const opts: SignOptions = {
             expiresIn: JwtConfig.refreshTokenExpiration,
@@ -88,11 +87,11 @@ export class TokenService implements ITokenService{
         return { refreshToken }
     }
 
-    async getTokens(body: TokensRequest, agent: UserAgent) {
+    async getTokens(body: TokensRequest, ctx: Context) {
         const { id, email } = body;
         const [{accessToken, expiresAt}, { refreshToken }] = await Promise.all([
             this.generateAccessToken({ email: email, userId: id }),
-            this.generateRefreshToken({ userId: id }, agent)
+            this.generateRefreshToken({ userId: id }, ctx)
         ]);
           
         return { tokenType: TokenType.BEARER ,expiresAt , accessToken, refreshToken };

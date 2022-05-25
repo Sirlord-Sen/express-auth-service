@@ -5,7 +5,9 @@ type CurrentUser = {
 
 type Context = {
   os?:string,
-  browser?: string
+  browser?: string,
+  ip?: string,
+  userAgent?: string
 }
   
 declare namespace Express {

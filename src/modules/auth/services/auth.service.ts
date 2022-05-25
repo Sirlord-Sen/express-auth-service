@@ -1,12 +1,11 @@
 import { UserService } from "@user/services/user.service";
 import { ConflictError, UnauthorizedError } from "@exceptions//";
 import { pick } from "lodash";
-import { 
+import {
     ForgotPasswordRequest, 
     LoginRequest, 
     LogoutRequest, 
-    ResetPasswordRequest, 
-    UserAgent 
+    ResetPasswordRequest,  
 } from "../auth.types";
 import { TokenService } from "./token.service";
 import { nanoid } from "nanoid";
@@ -37,15 +36,15 @@ export class AuthService implements IAuthService{
         return pick(user, ["id", "username", "email"])      
     }
 
-    async logout(body: LogoutRequest, useragent: UserAgent) {
+    async logout(body: LogoutRequest, ctx: Context) {
         const { userId } = body
         await this.userService.update({id: userId}, {isActive: false});
-        await this.tokenService.update({ userId, ...useragent, isRevoked: false } , {isRevoked: true });
+        await this.tokenService.update({ userId, ...ctx, isRevoked: false } , {isRevoked: true });
     }
 
-    async refreshToken(refreshToken: string, agent: UserAgent) {
+    async refreshToken(refreshToken: string, ctx: Context) {
         const user   = await this.tokenService.resolveRefreshToken(refreshToken)
-        const tokens = await this.tokenService.getTokens(user, agent)
+        const tokens = await this.tokenService.getTokens(user, ctx)
         return  tokens ;
     }
 

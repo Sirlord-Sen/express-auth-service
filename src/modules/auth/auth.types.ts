@@ -30,5 +30,3 @@ export type LogoutRequest = Required<Pick<IRefreshToken, 'userId'>>
 export type ForgotPasswordRequest = Required<Pick<FullUser, 'email'>>;
 
 export type ResetPasswordRequest = Required<Pick<FullUser, 'password'>> & { token: string }
-
-export type UserAgent = Pick<RefreshToken, 'browser' | 'os' | 'ip' | 'userAgent'>
