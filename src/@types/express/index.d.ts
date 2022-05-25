@@ -3,7 +3,7 @@ type CurrentUser = {
   jti?: string
 };
 
-type UserAgent = {
+type Context = {
   os?:string,
   browser?: string
 }
@@ -11,7 +11,7 @@ type UserAgent = {
 declare namespace Express {
   export interface Request {
     currentUser: CurrentUser;
-    userAgent: UserAgent;
+    ctx: Context;
     params: any;
   }
 }

@@ -1,15 +1,12 @@
 import express from 'express'
 import { Application } from 'express'
-import * as path from 'path'
+import { resolve } from 'path'
 import * as bodyParser from 'body-parser'
 import passport from "@providers/passport/passport"
 import cors from 'cors'
 import useragent from 'express-useragent'
 import Container from 'typedi'
 import { useContainer, useExpressServer } from 'routing-controllers'
-import morganMiddleware  from '@middlewares/morgan.middleware';
-import { CustomErrorHandler } from '@middlewares/error.middleware'
-import { RequestMiddleware } from '@middlewares/request.middleware'
 
 export default class ExpressServer {
     public app: Application;
@@ -26,15 +23,15 @@ export default class ExpressServer {
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({ extended: true }));
         this.app.use(passport.initialize())
-        this.app.use(morganMiddleware)
     }
   
     async setupControllers() {
-        const Controllers = path.resolve(__dirname, "modules/**/*.controller.ts");
         useContainer(Container);
+        const Controllers = resolve(__dirname, "modules/**/*.controller.ts");
+        const Middlewares = resolve(__dirname, "middlewares/*.middleware.ts");
         useExpressServer(this.app, { 
             controllers: [ Controllers ], 
-            middlewares: [ CustomErrorHandler, RequestMiddleware ],
+            middlewares: [ Middlewares ],
             classTransformer: true, 
             defaultErrorHandler: false,
             validation: {

@@ -1,4 +1,4 @@
-import { FacebookGuard, GoogleGuard } from "@middlewares/guards.middleware";
+import { FacebookGuard, GoogleGuard } from "src/auth/guards.middleware";
 import { Request } from 'express'
 import { SuccessResponse } from "@utils/response.util";
 import { LoginResponse, Payload } from "@utils/utility-types";
@@ -25,10 +25,10 @@ export class PlatformController{
     @Get("/google/redirect")
     @UseBefore(GoogleGuard)
     async googleAuthRedirect(@Req() req: Request): Promise<Payload>{
-        const { userAgent } = req
+        const { ctx } = req
         const data: User = req.user as User
         const user = await this.platformService.create(data)
-        const tokens = await this.tokenService.getTokens(user, userAgent)
+        const tokens = await this.tokenService.getTokens(user, ctx)
         return new SuccessResponse<LoginResponse>("Google login working", {user, tokens})
     }
 
@@ -41,10 +41,10 @@ export class PlatformController{
     @Get("/facebook/redirect")
     @UseBefore(FacebookGuard)
     async facebookAuthRedirect(@Req() req: Request): Promise<Payload>{
-        const { userAgent } = req
+        const { ctx } = req
         const data: User = req.user as User
         const user = await this.platformService.create(data)
-        const tokens = await this.tokenService.getTokens(user, userAgent)
+        const tokens = await this.tokenService.getTokens(user, ctx)
         return new SuccessResponse("Facebook login working", {user, tokens})
     }
 }

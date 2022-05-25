@@ -1,4 +1,4 @@
-import { AuthMiddleware } from '@middlewares/auth.middleware';
+import { AuthMiddleware } from 'src/auth/auth.middleware';
 import { Request } from 'express'
 import { Service } from 'typedi'
 import { Controller, Body, Post, Get, Req, UseBefore, Put } from 'routing-controllers';

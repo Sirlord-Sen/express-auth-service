@@ -4,7 +4,7 @@ import { DBConfig } from '@config//'
 
 const { type ,username, password, database, synchronize, host, port } = DBConfig
 
-class Connection{
+class Database{
     config: ConnectionOptions
     constructor(){
         this.config = {
@@ -24,7 +24,7 @@ class Connection{
         }
     }
 
-    async on(){
+    async createConnection(){
         try{
             await createConnection(this.config)
             Logger.info("Database Connected!!!")
@@ -32,7 +32,7 @@ class Connection{
         catch(err){ Logger.error(err) }
     }
 
-    async close(){
+    async closeConnection(){
         try{
             await getConnection().close()
             Logger.info("Database Closed!!!")
@@ -41,4 +41,4 @@ class Connection{
     }
 }
 
-export default new Connection()
+export default new Database()

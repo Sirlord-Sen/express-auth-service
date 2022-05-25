@@ -1,1 +1,1 @@
-export { default as DB } from './db.connection'
+export { default as Database } from './db.connection'

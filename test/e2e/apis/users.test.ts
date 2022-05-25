@@ -1,10 +1,9 @@
-import request from 'supertest'
-import {Application} from 'express'
-
-import CacheCore from '../../../src/core/cache.core'
-import { DB } from '../../../src/db'
+import { Database } from '../../../src/db'
 import ExpressServer from '../../../src/server'
-import UserEntity from '../../../src/modules/user/entity/user.entity'
+import { CacheCore } from '../../../src/core'
+import { UserEntity } from '../../../src/modules/user/entity/'
+import { Application } from 'express'
+import request from 'supertest';
 
 let server: Application
 let user: UserEntity
@@ -12,14 +11,16 @@ const Cache = new CacheCore()
 
 beforeAll(async () => {
     Cache
-    await DB.on()
+    await Database.createConnection()
     server = new ExpressServer().app
 })
 
 afterAll(async () => {
-    await Cache.close()
-    try{await DB.close()}
-    catch(err){ expect(err).toMatch('error'); }
+    try{
+        await Cache.close()
+        await Database.closeConnection()
+    }
+    catch(err){ console.log(err) }
 })
 
 
@@ -28,16 +29,16 @@ describe('POST /api/v1/users', () => {
 
     it('should return 200 & valid response for a valid signup request', async()=> {
         const user = {
-            username: "demdemdem",
+            username: "demdem",
             password: "123",
-            email: "lodwaf12@gmail.com"
+            email: "lodwa@gmail.com"
         }
         const res = await request(server)
                 .post('/api/v1/users/')
                 .send({...user})
                 .expect(200)
         
-        expect(res.body.data.username).toBe(user.username)
+        expect(res.body.message).toBe("New User Created")
        
     })
 
