@@ -1,17 +1,17 @@
-import express from 'express'
-import { Application } from 'express';
-import { MicroframeworkLoader, MicroframeworkSettings } from 'microframework-w3tec';
-import passport from "@providers/social/passport"
 import cors from 'cors'
-import useragent from 'express-useragent'
 import { resolve } from 'path'
+import { Connection } from 'typeorm';
+import useragent from 'express-useragent'
 import * as bodyParser from 'body-parser'
+import express, { Application } from 'express'
 import { useExpressServer } from 'routing-controllers'
+import { MicroframeworkLoader, MicroframeworkSettings } from 'microframework-w3tec';
+
+import passport from "@providers/social/passport"
 import { AppConfig } from '@config//'
 import { Logger } from '@utils/logger.util'
-import { authorizationChecker } from '../auth/authorizationChecker'
-import { Connection } from 'typeorm';
-import { currentUserChecker } from 'src/auth/currentUserChecker';
+import { authorizationChecker } from '@auth/authorizationChecker'
+import { currentUserChecker } from '@auth/currentUserChecker';
 
 class ExpressServer {
     public app: Application;
@@ -31,8 +31,8 @@ class ExpressServer {
     }
   
     public setupControllers(connection: Connection) {
-        const Controllers = resolve(__dirname, "../modules/**/*.controller.ts");
-        const Middlewares = resolve(__dirname, "../middlewares/*.middleware.ts");
+        const Controllers = resolve(__dirname, "../api/modules/**/*.controller.ts");
+        const Middlewares = resolve(__dirname, "../api/middlewares/*.middleware.ts");
         useExpressServer<Application>(this.app, { 
             controllers: [ Controllers ], 
             middlewares: [ Middlewares ],

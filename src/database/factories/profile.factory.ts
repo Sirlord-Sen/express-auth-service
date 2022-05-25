@@ -1,7 +1,8 @@
+import * as uuid from 'uuid';
 import * as Faker from 'faker';
 import { define, factory } from 'typeorm-seeding';
-import * as uuid from 'uuid';
-import { ProfileEntity, UserEntity } from '@user/entity';
+
+import { ProfileEntity, UserEntity } from '@user-module/entity';
 
 define(ProfileEntity, (faker: typeof Faker) => {
     // const gender = faker.datatype.number(1);

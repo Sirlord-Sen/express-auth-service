@@ -1,6 +1,7 @@
-import { Logger } from "../../utils/logger.util";
 import { Service } from 'typedi'
-import { RedisApplication } from "src/loaders/redis.loader";
+
+import { Logger } from "@utils/logger.util";
+import { RedisApplication } from "@loaders/redis.loader";
 
 @Service()
 class TokensCache extends RedisApplication{  

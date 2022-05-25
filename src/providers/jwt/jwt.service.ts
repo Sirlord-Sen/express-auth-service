@@ -1,9 +1,10 @@
+import { Service } from 'typedi'
 import jwt, { Secret, SignOptions, VerifyErrors, VerifyOptions } from 'jsonwebtoken';
+
 import { DateHelper } from '@helpers//';
-import { InternalServerError, UnauthorizedError } from '@exceptions//';
 import { Logger } from '@utils/logger.util';
 import { CodeError } from '@utils/utility-types' 
-import { Service } from 'typedi'
+import { InternalServerError, UnauthorizedError } from '@exceptions//';
 
 @Service()
 export default class JWTService {

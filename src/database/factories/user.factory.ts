@@ -1,7 +1,8 @@
 import * as Faker from 'faker';
-import { define } from 'typeorm-seeding';
 import * as uuid from 'uuid';
-import { UserEntity } from '@user/entity';
+import { define } from 'typeorm-seeding';
+
+import { UserEntity } from '@user-module/entity';
 
 define(UserEntity, (faker: typeof Faker) => {
     const email = faker.internet.email();

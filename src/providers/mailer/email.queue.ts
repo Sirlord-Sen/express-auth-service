@@ -1,13 +1,14 @@
-import Bull, {Job} from 'bull';
 import ms from 'ms';
-import EmailService from './email.service';
-import { EmailJob } from './email.types';
-import { Logger } from '@utils/logger.util';
-import { EmailConfig } from '@config//';
-import { EventEmitter } from 'events';
-import { BullQueue } from '@lib/queue';
-import { InternalServerError } from '@exceptions//';
+import Bull, { Job } from 'bull';
 import { Service } from 'typedi'
+import { EventEmitter } from 'events';
+
+import { EmailService } from './';
+import { EmailJob } from './email.types';
+import { EmailConfig } from '@config//';
+import { BullQueue } from '@lib/queue';
+import { Logger } from '@utils/logger.util';
+import { InternalServerError } from '@exceptions//';
 
 @Service()
 export default class EmailQueue extends BullQueue{  

@@ -1,5 +1,6 @@
 import { Service } from "typedi"
-import { EmailHelper } from "."
+
+import { EmailHelper } from "./"
 import { EmailQueue } from "./"
 import { DeployEmail, EmailRequest } from "./email.types"
     
@@ -10,7 +11,7 @@ export abstract class EmailHandler{
         public request: EmailRequest,
         public deploy: DeployEmail
     ){
-        this.emailQueue = new EmailQueue
+        this.emailQueue = new EmailQueue()
     }
   
     protected async handler(email: EmailHandler){

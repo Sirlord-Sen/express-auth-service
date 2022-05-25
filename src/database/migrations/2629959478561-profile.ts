@@ -1,5 +1,6 @@
-import { Gender } from "@utils/utility-types";
 import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm";
+
+import { Gender } from "@utils/utility-types";
 
 export class Profile1629959478561 implements MigrationInterface{
     async down(queryRunner: QueryRunner): Promise<any> {

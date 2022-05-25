@@ -1,8 +1,9 @@
-import { AppConfig, RedisConfig } from '@config//'
-import { Logger } from '@utils/logger.util'
 import r from 'ioredis'
 import { Redis } from 'ioredis'
 import { MicroframeworkLoader, MicroframeworkSettings } from 'microframework-w3tec';
+
+import { AppConfig, RedisConfig } from '@config//'
+import { Logger } from '@utils/logger.util'
 
 
 const redis : typeof r = RedisConfig.url === 'redis-mock' ? require('ioredis-mock') : require('ioredis')

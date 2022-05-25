@@ -1,9 +1,10 @@
-import { OAuthConfig } from '@config//';
-import { IUser } from '@modules/user/interfaces';
-import { InternalServerError } from '@exceptions//';
-import { Logger } from '@utils/logger.util';
 import { OAuth2Strategy, Profile } from 'passport-google-oauth'
-import { PlatformNetwork } from '../../../modules/platform/platform.types';
+
+import { OAuthConfig } from '@config//';
+import { Logger } from '@utils/logger.util';
+import { IUser } from '@user-module/interfaces';
+import { InternalServerError } from '@exceptions//';
+import { PlatformNetwork } from '@platform-module/platform.types';
 
 export const GoogleStrategy = new OAuth2Strategy(
     {

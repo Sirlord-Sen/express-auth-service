@@ -1,6 +1,6 @@
 import passport from "passport";
-import { ExpressMiddlewareInterface } from "routing-controllers";
 import { Service } from "typedi";
+import { ExpressMiddlewareInterface } from "routing-controllers";
 
 @Service()
 export default class GoogleGuard implements ExpressMiddlewareInterface {

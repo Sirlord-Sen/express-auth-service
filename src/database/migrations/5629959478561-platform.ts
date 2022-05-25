@@ -1,5 +1,6 @@
-import { PlatformNetwork } from "@platform/platform.types";
 import { MigrationInterface, QueryRunner, Table, TableForeignKey, TableIndex, TableUnique } from "typeorm";
+
+import { PlatformNetwork } from "@platform-module/platform.types";
 
 export class Platform1629959478561 implements MigrationInterface{
     async down(queryRunner: QueryRunner): Promise<any> {

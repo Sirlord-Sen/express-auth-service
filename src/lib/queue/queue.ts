@@ -1,11 +1,13 @@
-import Bull, {QueueOptions, Queue} from 'bull';
 import ms from 'ms';
+import { Service } from 'typedi';
+import { EventEmitter } from 'events';
+import Bull, {QueueOptions, Queue} from 'bull';
+
 import { Logger } from '@utils/logger.util';
 import { RedisConfig } from '@config//';
 import { CodeError } from '@utils/utility-types' 
-import { EventEmitter } from 'events';
 
-
+@Service()
 export default class BullQueue{
     readonly queue: Queue;
     ee: EventEmitter

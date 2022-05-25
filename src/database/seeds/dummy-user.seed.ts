@@ -1,8 +1,8 @@
+import * as uuid from 'uuid';
 import { Connection } from 'typeorm';
 import { Factory, Seeder } from 'typeorm-seeding';
-import * as uuid from 'uuid';
 
-import { ProfileEntity, UserEntity } from '@user/entity';
+import { ProfileEntity, UserEntity } from '@user-module/entity';
 
 export class CreateBruce implements Seeder {
 

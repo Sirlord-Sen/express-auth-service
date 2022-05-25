@@ -1,12 +1,14 @@
+import { Service } from 'typedi'
+import { google } from 'googleapis'
 import { createTransport } from 'nodemailer';
+
 import { EmailConfig } from '@config//';
 import { OAuthConfig } from '@config//'
 import { SendEmail } from './email.types';
-import { google } from 'googleapis'
-import { Service } from 'typedi'
+
 
 @Service()
-class EmailService {
+export class EmailService {
 
     createTransporter = async() =>{
         const OAuth2 = google.auth.OAuth2

@@ -1,5 +1,7 @@
-import { MicroframeworkLoader, MicroframeworkSettings } from 'microframework-w3tec';
+import { resolve } from 'path'
 import { createConnection, getConnectionOptions } from 'typeorm';
+import { MicroframeworkLoader, MicroframeworkSettings } from 'microframework-w3tec';
+
 import { DBConfig } from '@config//'
 import { Logger } from '@utils/logger.util';
 
@@ -15,12 +17,12 @@ export const typeormLoader: MicroframeworkLoader = async (settings: Microframewo
         username,
         password,
         database,
-        synchronize,
-        entities: ["src/modules/**/*.entity.ts"],
-        subscribers: ["src/modules/**/*.subscriber.ts"],
-        migrations: ["src/db/migrations/**/*.ts"],
+        synchronize, 
+        entities: [resolve(__dirname, "../api/modules/**/*.entity.ts")],
+        subscribers: [resolve(__dirname, "../api/modules/**/*.subscriber.ts")],
+        migrations: [resolve(__dirname, "../database/migrations/**/*.ts")],
         cli: {
-            migrationsDir: './migration',
+            migrationsDir: resolve(__dirname, "../database/migrations/"),
         }
     });
 
