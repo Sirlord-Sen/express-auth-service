@@ -3,7 +3,7 @@ import { IUser } from '@modules/user/interfaces';
 import { InternalServerError } from '@exceptions//';
 import { Logger } from '@utils/logger.util';
 import { OAuth2Strategy, Profile } from 'passport-google-oauth'
-import { PlatformNetwork } from '../../modules/platform/platform.types';
+import { PlatformNetwork } from '../../../modules/platform/platform.types';
 
 export const GoogleStrategy = new OAuth2Strategy(
     {

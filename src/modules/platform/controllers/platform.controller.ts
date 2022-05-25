@@ -1,4 +1,3 @@
-import { FacebookGuard, GoogleGuard } from "src/auth/guards.middleware";
 import { Request } from 'express'
 import { SuccessResponse } from "@utils/response.util";
 import { LoginResponse, Payload } from "@utils/utility-types";
@@ -7,6 +6,8 @@ import { Service } from "typedi";
 import { PlatformService } from "../services/platform.service";
 import { User } from "@modules/user/user.types";
 import { TokenService } from '@auth/services/token.service';
+import { GoogleGuard } from '@providers/social/google';
+import { FacebookGuard } from '@providers/social/facebook';
 
 @Service()
 @Controller("/api/v1/platforms")
@@ -25,10 +26,9 @@ export class PlatformController{
     @Get("/google/redirect")
     @UseBefore(GoogleGuard)
     async googleAuthRedirect(@Req() req: Request): Promise<Payload>{
-        const { ctx } = req
         const data: User = req.user as User
         const user = await this.platformService.create(data)
-        const tokens = await this.tokenService.getTokens(user, ctx)
+        const tokens = await this.tokenService.getTokens(user, req.ctx)
         return new SuccessResponse<LoginResponse>("Google login working", {user, tokens})
     }
 
@@ -41,10 +41,9 @@ export class PlatformController{
     @Get("/facebook/redirect")
     @UseBefore(FacebookGuard)
     async facebookAuthRedirect(@Req() req: Request): Promise<Payload>{
-        const { ctx } = req
         const data: User = req.user as User
         const user = await this.platformService.create(data)
-        const tokens = await this.tokenService.getTokens(user, ctx)
+        const tokens = await this.tokenService.getTokens(user, req.ctx)
         return new SuccessResponse("Facebook login working", {user, tokens})
     }
 }

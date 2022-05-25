@@ -5,12 +5,12 @@ import { EmailJob } from './email.types';
 import { Logger } from '@utils/logger.util';
 import { EmailConfig } from '@config//';
 import { EventEmitter } from 'events';
-import { QueueCore } from '@core//';
+import { BullQueue } from '@lib/queue';
 import { InternalServerError } from '@exceptions//';
 import { Service } from 'typedi'
 
 @Service()
-export default class EmailQueue extends QueueCore{  
+export default class EmailQueue extends BullQueue{  
     constructor() {
         super('EMAIL_QUEUQ', {
             defaultJobOptions: {

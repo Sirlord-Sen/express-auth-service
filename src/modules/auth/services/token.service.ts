@@ -16,11 +16,11 @@ import {
     TokenPayload
 } from "../auth.types";
 import { Logger } from '@utils/logger.util';
-import { TokensCache } from '@utils//';
 import { ITokenService } from '../interfaces/service.interface';
 import { Service } from 'typedi'
 import { InjectRepository } from 'typeorm-typedi-extensions';
 import { UserRepository } from "@user/repository/user.repository";
+import { TokensCache } from '@providers/cache';
 
 @Service()
 export class TokenService implements ITokenService{

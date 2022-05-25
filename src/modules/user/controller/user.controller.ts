@@ -1,7 +1,5 @@
-import { AuthMiddleware } from 'src/auth/auth.middleware';
-import { Request } from 'express'
 import { Service } from 'typedi'
-import { Controller, Body, Post, Get, Req, UseBefore, Put } from 'routing-controllers';
+import { Controller, Body, Post, Get, Put, Authorized, CurrentUser } from 'routing-controllers';
 import { SuccessResponse } from '@utils/response.util';
 import { Payload, UserResponse } from '@utils/utility-types';
 import { ResetPasswordDto, SignUpDto, UpdateUserDto } from '../dto/user.dto';
@@ -20,26 +18,23 @@ export class UserController {
         return new SuccessResponse('New User Created')
     }
 
+    @Authorized()
     @Get('/:id')
-    @UseBefore(AuthMiddleware)
-    async GetCurrentUser(@Req() req: Request ): Promise<Payload> {
-        const { userId } = req.currentUser
+    async GetCurrentUser(@CurrentUser() {userId}: CurrentUser ): Promise<Payload> {
         const user = await this.userService.findCurrentUser({id: userId})
         return new SuccessResponse<UserResponse>('Current User Found', { user })
     }
 
+    @Authorized()
     @Put('/:id')
-    @UseBefore(AuthMiddleware)
-    async UpdatedUser(@Body() body: UpdateUserDto, @Req() req: Request): Promise<Payload> {
-        const { userId } = req.currentUser
+    async UpdatedUser(@Body() body: UpdateUserDto, @CurrentUser() {userId}: CurrentUser): Promise<Payload> {
         const user = await this.userService.update({id: userId}, body)
         return new SuccessResponse<UserResponse>('Updated User', { user })
     }
 
+    @Authorized()
     @Post('/change-password')
-    @UseBefore(AuthMiddleware)
-    async ChangePassword(@Body() body:ResetPasswordDto, @Req() req: Request): Promise<Payload> {
-        const { userId } = req.currentUser
+    async ChangePassword(@Body() body:ResetPasswordDto, @CurrentUser() {userId}: CurrentUser): Promise<Payload> {
         const user = await this.userService.updatePassword({id: userId}, body)
         return new SuccessResponse<UserResponse>('Password Changed Successfully', { user })
     }

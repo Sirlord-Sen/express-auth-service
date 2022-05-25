@@ -1,0 +1,1 @@
+export { default as FacebookGuard } from './facebook.guard'

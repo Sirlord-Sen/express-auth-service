@@ -1,9 +1,9 @@
-import CacheCore from "@core/cache.core";
-import { Logger } from "./logger.util";
+import { Logger } from "../../utils/logger.util";
 import { Service } from 'typedi'
+import { RedisApplication } from "src/loaders/redis.loader";
 
 @Service()
-class TokensCache extends CacheCore{  
+class TokensCache extends RedisApplication{  
     private static _instance: TokensCache
     
     public static getInstance(): TokensCache {

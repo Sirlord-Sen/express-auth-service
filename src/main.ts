@@ -1,13 +1,23 @@
 'use strict'
 import 'reflect-metadata';
-import { Database } from  '@db//'
-import { Application } from './app';
-import { useContainer } from 'typeorm';
-import { Container } from 'typeorm-typedi-extensions'
+import { Logger } from "@utils/logger.util";
+import { bootstrapMicroframework } from "microframework-w3tec";
+import { expressLoader } from "./loaders/express.loader";
+import { redisLoader } from "./loaders/redis.loader";
+import { typeormLoader } from "./loaders/typeorm.loader";
+import { iocLoader } from './loaders/ioc.loader';
 
-async function bootstrap() {
-    useContainer(Container);
-    await Database.createConnection()
-    new Application()
-}
-bootstrap()
+bootstrapMicroframework({
+    /**
+     * Loader is a place where you can configure all your modules during microframework
+     * bootstrap process. All loaders are executed one by one in a sequential order.
+     */
+    loaders: [
+        iocLoader,
+        typeormLoader,
+        expressLoader,
+        redisLoader,
+    ],
+})
+    .then(() => {})
+    .catch(error => Logger.error('Application is crashed: ' + error));

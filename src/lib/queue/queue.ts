@@ -6,7 +6,7 @@ import { CodeError } from '@utils/utility-types'
 import { EventEmitter } from 'events';
 
 
-export default class QueueCore{
+export default class BullQueue{
     readonly queue: Queue;
     ee: EventEmitter
     queueConnectionAttemps : number
@@ -17,21 +17,14 @@ export default class QueueCore{
         opts?: Pick<QueueOptions, 'limiter' | 'defaultJobOptions'>,
     ){
         this.queue = new Bull(name, {
-            redis: {
-                port: RedisConfig.port,
-                host: RedisConfig.host,
-                // password: RedisConfig.password,
-            },
             prefix: RedisConfig.queuePrefix,
-            // ...this.RedisConnection,
             ...this.queueOptions,
             ...opts,
         });
         this.ee = new EventEmitter()
         this.queueConnectionAttemps = 0
         this.MAX_CACHE_RETRY_ATTEMPTS = 5
-        this.bullListeners()
-        this.bullErrorListener()
+        this.start()
     }
 
     private get queueOptions(): QueueOptions {
@@ -47,7 +40,7 @@ export default class QueueCore{
         };
     }
 
-    private bullListeners() {
+    private start() {
         this.queue.on('failed',async (job, error) => {
             const { name, id, data, attemptsMade, finishedOn, failedReason } = job
             const { message } = error
@@ -70,13 +63,9 @@ export default class QueueCore{
             Logger.info(`Job ${job.id} has ${ result.status }`)
         })
 
-    }
-
-    private async bullErrorListener(): Promise<void> {
-        return new Promise((resolve, reject) => {
-            this.queue.on('error', async(error: CodeError) => {
-                Logger.error(`Redis: ${error}`)
-            })
+        this.queue.on('error', async(error: CodeError) => {
+            Logger.error(`Bull Error: ${error}`)
         })
+
     }
 }

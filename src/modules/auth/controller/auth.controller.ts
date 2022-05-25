@@ -1,10 +1,9 @@
 import { Request } from 'express'
-import { Controller, Req, Body, Post, UseBefore } from 'routing-controllers';
+import { Controller, Req, Body, Post, Authorized, CurrentUser } from 'routing-controllers';
 import { SuccessResponse } from '@utils/response.util';
 import { ForgotPasswordDto, LoginDto, ResetPasswordDto, RefreshTokenDto, ConfirmAccountDto } from '../dto/auth.dto';
 import { AuthService } from '../services/auth.service';
 import { TokenService } from '../services/token.service';
-import { AuthMiddleware } from 'src/auth/auth.middleware';
 import { TokenHelper } from '@helpers//';
 import { LoginResponse, Payload, Tokens, UserResponse } from '@utils/utility-types';
 import { Service } from 'typedi'
@@ -19,34 +18,29 @@ export class AuthController {
  
     @Post('/confirm-account')
     async ConfirmAccount(@Req() req: Request, @Body() body: ConfirmAccountDto): Promise<Payload>{
-        const { ctx } = req
         const user = await this.authService.confirmAccount(body.token)
-        const tokens = await this.tokenService.getTokens(user, ctx)
+        const tokens = await this.tokenService.getTokens(user, req.ctx)
         return new SuccessResponse<LoginResponse>("User Account Verified", { user, tokens })
     }
 
     @Post('/login')
     async Login(@Req() req: Request, @Body() body:LoginDto): Promise<Payload>{
-        const { ctx } = req
         const user = await this.authService.login(body)
-        const tokens = await this.tokenService.getTokens({id: user.id, email: user.email}, ctx)
+        const tokens = await this.tokenService.getTokens({id: user.id, email: user.email}, req.ctx)
         return new SuccessResponse<LoginResponse>('Login Successfull', { user, tokens})
     }
 
+    @Authorized()
     @Post('/logout')
-    @UseBefore(AuthMiddleware)
-    async Logout(@Req() req: Request): Promise<Payload>{
-        const { ctx } = req
-        const { userId } = req.currentUser;
-        await this.authService.logout({ userId }, ctx)
+    async Logout(@Req() req: Request, @CurrentUser() {userId}: CurrentUser ): Promise<Payload>{
+        await this.authService.logout({ userId }, req.ctx)
         return new SuccessResponse(`logged out`);
     }
 
     @Post('/refresh-token')
     async RefreshToken(@Req() req: Request, @Body() body: RefreshTokenDto): Promise<Payload> {
-        const { ctx } = req
         const refreshToken = body.refreshToken || TokenHelper.getTokenFromCookies(req.cookies)
-        const tokens = await this.authService.refreshToken(refreshToken, ctx)
+        const tokens = await this.authService.refreshToken(refreshToken, req.ctx)
         return new SuccessResponse<Tokens>('Refreshed Access Token', { tokens });
     }
 
