@@ -1,4 +1,5 @@
-import { IsString, IsEmail, IsNotEmpty, IsOptional } from 'class-validator'
+import { IsString, IsEmail, IsNotEmpty, IsOptional, ValidateNested, IsObject } from 'class-validator'
+import { Type } from 'class-transformer'
 
 import { Gender } from '@utils/utility-types'
 
@@ -44,11 +45,14 @@ export class UpdateUserDto{
     email?: string
 
     @IsOptional()
+    @IsObject()
+    @ValidateNested()
+    @Type(() => UpdateProfile)
     profile?: UpdateProfile
 }
 
 
-export class ResetPasswordDto{
+export class ChangePasswordDto{
     @IsNotEmpty()
     @IsString()
     oldPassword: string

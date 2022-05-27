@@ -1,14 +1,15 @@
 import { Request } from 'express'
 import { Service } from "typedi";
+import { ResponseSchema } from 'routing-controllers-openapi';
 import { Controller, Get, Req, UseBefore } from "routing-controllers";
 
 import { User } from "@user-module/user.types";
 import { GoogleGuard } from '@providers/social/google';
 import { SuccessResponse } from "@utils/response.util";
 import { FacebookGuard } from '@providers/social/facebook';
-import { LoginResponse, Payload } from "@utils/utility-types";
 import { PlatformService } from "../services/platform.service";
 import { TokenService } from '@auth-module/services/token.service';
+import { BasePayload, DataLogin, LoginResponse } from "@utils/utility-types";
 
 @Service()
 @Controller("/api/v1/platforms")
@@ -20,31 +21,35 @@ export class PlatformController{
 
     @Get("/google")
     @UseBefore(GoogleGuard)
-    async googleAuth(): Promise<Payload>{
+    @ResponseSchema(BasePayload)
+    async googleAuth(): Promise<BasePayload>{
         return new SuccessResponse("Google login working")
     }
 
     @Get("/google/redirect")
     @UseBefore(GoogleGuard)
-    async googleAuthRedirect(@Req() req: Request): Promise<Payload>{
+    @ResponseSchema(LoginResponse)
+    async googleAuthRedirect(@Req() req: Request): Promise<BasePayload>{
         const data: User = req.user as User
         const user = await this.platformService.create(data)
         const tokens = await this.tokenService.getTokens(user, req.ctx)
-        return new SuccessResponse<LoginResponse>("Google login working", {user, tokens})
+        return new SuccessResponse<DataLogin>("Google login working", {user, tokens})
     }
 
     @Get("/facebook")
     @UseBefore(FacebookGuard)
-    async facebookAuth(): Promise<Payload>{
+    @ResponseSchema(BasePayload)
+    async facebookAuth(): Promise<BasePayload>{
         return new SuccessResponse("Facebook login working")
     }
 
     @Get("/facebook/redirect")
     @UseBefore(FacebookGuard)
-    async facebookAuthRedirect(@Req() req: Request): Promise<Payload>{
+    @ResponseSchema(LoginResponse)
+    async facebookAuthRedirect(@Req() req: Request): Promise<BasePayload>{
         const data: User = req.user as User
         const user = await this.platformService.create(data)
         const tokens = await this.tokenService.getTokens(user, req.ctx)
-        return new SuccessResponse("Facebook login working", {user, tokens})
+        return new SuccessResponse<DataLogin>("Facebook login working", {user, tokens})
     }
 }

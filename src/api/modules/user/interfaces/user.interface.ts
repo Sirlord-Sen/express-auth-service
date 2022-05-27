@@ -4,7 +4,7 @@ import { IProfile } from './profile.interface';
 export interface IUser {
     username: string
     email: string;
-    password: string;
+    password?: string;
     isActive?: boolean;
     isAccountActivated?: boolean
     accountActivationToken?: string;

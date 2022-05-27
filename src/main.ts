@@ -7,6 +7,7 @@ import { expressLoader } from "@loaders/express.loader";
 import { redisLoader } from "@loaders/redis.loader";
 import { typeormLoader } from "@loaders/typeorm.loader";
 import { iocLoader } from '@loaders/ioc.loader';
+import { swaggerLoader } from '@loaders/swagger.loader';
 
 bootstrapMicroframework({
 
@@ -14,6 +15,7 @@ bootstrapMicroframework({
         iocLoader,
         typeormLoader,
         expressLoader,
+        swaggerLoader,
         redisLoader,
     ],
 })

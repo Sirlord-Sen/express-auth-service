@@ -1,10 +1,11 @@
 import { Service } from 'typedi'
+import { OpenAPI, ResponseSchema } from 'routing-controllers-openapi';
 import { Controller, Body, Post, Get, Put, Authorized, CurrentUser } from 'routing-controllers';
 
 import { SuccessResponse } from '@utils/response.util';
 import { UserService }  from '../services/user.service'
-import { Payload, UserResponse } from '@utils/utility-types';
-import { ResetPasswordDto, SignUpDto, UpdateUserDto } from '../dto/user.dto';
+import { BasePayload, DataUser, UserResponse } from '@utils/utility-types';
+import { ChangePasswordDto, SignUpDto, UpdateUserDto } from '../dto/user.dto';
 
 @Service()
 @Controller('/api/v1/users')
@@ -14,29 +15,35 @@ export class UserController {
     ){}
 
     @Post('/')
-    async Register(@Body() body:SignUpDto): Promise<Payload>{
+    async Register(@Body() body:SignUpDto): Promise<BasePayload>{
         await this.userService.register(body)
         return new SuccessResponse('New User Created')
     }
 
-    @Authorized()
+    
     @Get('/:id')
-    async GetCurrentUser(@CurrentUser() {userId}: CurrentUser ): Promise<Payload> {
+    @Authorized()
+    @ResponseSchema(UserResponse)
+    async GetCurrentUser(@CurrentUser() {userId}: CurrentUser ): Promise<BasePayload> {
         const user = await this.userService.findCurrentUser({id: userId})
-        return new SuccessResponse<UserResponse>('Current User Found', { user })
+        return new SuccessResponse<DataUser>('Current User Found', { user })
     }
 
-    @Authorized()
+    
     @Put('/:id')
-    async UpdatedUser(@Body() body: UpdateUserDto, @CurrentUser() {userId}: CurrentUser): Promise<Payload> {
+    @Authorized()
+    @ResponseSchema(UserResponse)
+    async UpdatedUser(@Body() body: UpdateUserDto, @CurrentUser() {userId}: CurrentUser): Promise<BasePayload> {
         const user = await this.userService.update({id: userId}, body)
-        return new SuccessResponse<UserResponse>('Updated User', { user })
+        return new SuccessResponse<DataUser>('Updated User', { user })
     }
 
-    @Authorized()
+    
     @Post('/change-password')
-    async ChangePassword(@Body() body:ResetPasswordDto, @CurrentUser() {userId}: CurrentUser): Promise<Payload> {
+    @Authorized()
+    @ResponseSchema(UserResponse)
+    async ChangePassword(@Body() body:ChangePasswordDto, @CurrentUser() {userId}: CurrentUser): Promise<BasePayload> {
         const user = await this.userService.updatePassword({id: userId}, body)
-        return new SuccessResponse<UserResponse>('Password Changed Successfully', { user })
+        return new SuccessResponse<DataUser>('Password Changed Successfully', { user })
     }
 }

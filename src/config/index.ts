@@ -20,3 +20,4 @@ export { default as OAuthConfig } from './oauth.config';
 export { default as JwtConfig } from './jwt.config';
 export { default as RedisConfig } from './redis.config';
 export { default as AppConfig } from './app.config';
+export { default as SwaggerConfig } from './swagger.config'
