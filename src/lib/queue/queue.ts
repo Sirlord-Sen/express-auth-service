@@ -70,4 +70,8 @@ export default class BullQueue{
         })
 
     }
+
+    public async close (){
+        await this.queue.close()
+    }
 }

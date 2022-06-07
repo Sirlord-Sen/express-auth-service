@@ -14,5 +14,5 @@ module.exports = {
     subscribers: [resolve(__dirname, "src/api/modules/**/*.subscriber.ts")],
     migrations: [resolve(__dirname, "src/database/migrations/**/*.ts")],
     seeds: ["src/database/seeds/**/*.seed.ts"],
-    factories: ["src/database/factories/**/*.factory.ts"],
-  }
+    factories: ["src/database/factories/**/*.factory.ts"]
+}

@@ -34,10 +34,10 @@
           "@database/*": ["src/database/*"],
           "@lib/*": ["src/lib/*"],
           "@loaders/*": ["src/loaders/*"],
-          "@providers/*": ["src/providers/*"],          
+          "@providers/*": ["src/providers/*"]         
       }
   },
-  "include": ["./src", "./tests"],
+  "include": ["./src", "./test"],
   "exclude": ["node_modules", "dist"],
   "ts-node": {
       "files": true,
