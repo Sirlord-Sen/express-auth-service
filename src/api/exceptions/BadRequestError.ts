@@ -6,7 +6,7 @@ import { ErrorType } from "@utils/utility-types";
 // Custom Error for Bad requests requests
 export default class BadRequestError extends ExceptionCore {
     constructor(message = 'Bad Request') {
-        super(ErrorType.BAD_REQUEST, message);
+        super(ErrorType.BADREQUEST, message);
         return super.handle(this, response);
     }
 }

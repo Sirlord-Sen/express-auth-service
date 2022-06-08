@@ -32,11 +32,11 @@ export default abstract class ExceptionCore extends Error {
                 return new InternalServerErrorResponse(err.message, err.error).send(res);
             case ErrorType.CONFLICT:
                 return new ConflictErrorResponse(err.message).send(res)
-            case ErrorType.NOT_FOUND:
-            case ErrorType.NO_ENTRY:
-            case ErrorType.NO_DATA:
+            case ErrorType.NOTFOUND:
+            case ErrorType.NOENTRY:
+            case ErrorType.NODATA:
                 return new NotFoundResponse(err.message).send(res);
-            case ErrorType.BAD_REQUEST:
+            case ErrorType.BADREQUEST:
                 return new BadRequestResponse(err.message).send(res);
             case ErrorType.FORBIDDEN:
                 return new ForbiddenResponse(err.message).send(res);

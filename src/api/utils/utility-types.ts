@@ -12,17 +12,15 @@ export enum TokenType {
 }
 
 export enum ErrorType {
-    BAD_TOKEN = 'BadTokenError',
-    TOKEN_EXPIRED = 'TokenExpiredError',
     UNAUTHORIZED = 'AuthFailureError',
-    ACCESS_TOKEN = 'AccessTokenError',
     INTERNAL = 'InternalError',
-    NOT_FOUND = 'NotFoundError',
-    NO_ENTRY = 'NoEntryError',
-    NO_DATA = 'NoDataError',
-    BAD_REQUEST = 'BadRequestError',
+    NOTFOUND = 'NotFoundError',
+    NOENTRY = 'NoEntryError',
+    NODATA = 'NoDataError',
+    BADREQUEST = 'BadRequestError',
     FORBIDDEN = 'ForbiddenError',
-    CONFLICT = 'ConflictError'
+    CONFLICT = 'ConflictError',
+    FAILURE = 'FailError',
 }
 
 class BaseProfile implements IProfile{

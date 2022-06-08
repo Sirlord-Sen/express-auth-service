@@ -28,13 +28,13 @@ export default class EmailQueue extends BullQueue{
 
     public addEmailToQueue(data: EmailJob, opt?: Bull.JobOptions): Promise<void> {
         return new Promise((resolve, reject) => {
-            this.queue.add('EMAIL_FORGOT_PASSWORD', data, opt)
+            this.queue.add(data.name, data, opt)
                 .then(job => {
                     Logger.info(`Job added for ${job.id}`)
                     resolve()
                 })
                 .catch(err => {
-                    Logger.warn(`EMAIL_QUEUQ EMAIL_FORGOT_PASSWORD: ${err.message} for ${data.request.email}`)
+                    Logger.warn(`EMAIL_QUEUQ ${data.name}: ${err.message} for ${data.request.email}`)
                     reject(new InternalServerError(err.message))
                 })
 
@@ -44,7 +44,7 @@ export default class EmailQueue extends BullQueue{
     private process() {
         const EventEmit = new EventEmitter()
         EventEmit.on('start', (): void => {
-            this.queue.process('EMAIL_FORGOT_PASSWORD', async (job: Job<EmailJob>) => {
+            this.queue.process(async (job: Job<EmailJob>) => {
                 try {
                     const { email } = job.data.request
                     const {html, subject} = job.data.deploy
@@ -60,7 +60,7 @@ export default class EmailQueue extends BullQueue{
                     return {status: 'completed'}
                 }
                 catch (err:any) {
-                    Logger.error(`EMAIL_QUEUQ EMAIL_FORGOT_PASSWORD ${err.message} at ${err.response.config.url}`)
+                    Logger.error(`EMAIL_QUEUQ ${job.data.name} ${err.message} at ${err.response.config.url}`)
                     return Promise.reject(err);
                 }
             })

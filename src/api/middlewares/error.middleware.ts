@@ -17,12 +17,15 @@ export class CustomErrorHandler implements ExpressErrorMiddlewareInterface {
             }
 
             response.json(new BadRequestError(message))
+            return next();
         }
-        if(error.error) response.json(error)
-        else {
-          Logger.error(error)
-          response.json(new UnauthorizedError()) 
-      }
+        if(error.error) {
+            response.json(error)
+            return next()
+        }
+        Logger.error(error)
+        response.json(new UnauthorizedError()) 
+        
         return next();
   }
 }

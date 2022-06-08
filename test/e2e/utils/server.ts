@@ -8,6 +8,6 @@ export const prepareServer = async (options?: { migrate: boolean }) => {
     // if (options && options.migrate) {
     //     await migrateDatabase(settings.connection);
     // }
-    useRefreshDatabase({connection: 'memory'});
+    // useRefreshDatabase({connection: 'memory'});
     return settings;
 };

@@ -10,14 +10,13 @@ import { iocLoader } from '@loaders/ioc.loader';
 import { swaggerLoader } from '@loaders/swagger.loader';
 
 bootstrapMicroframework({
-
     loaders: [
         iocLoader,
         typeormLoader,
         expressLoader,
         swaggerLoader,
         redisLoader,
-    ],
+    ]
 })
     .then(() => {})
     .catch(error => Logger.error('Application is crashed: ' + error));

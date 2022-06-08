@@ -33,7 +33,6 @@ class TokensCache extends RedisApplication{
         return new Promise((resolve, reject) => {
             this.client!.get(key, (error, result) => {
                 if (error){
-                    console.log('asdasds')
                     Logger.warn(`${error.name}:: ${error.message}`)
                 }
                 return resolve(result ? result : undefined)

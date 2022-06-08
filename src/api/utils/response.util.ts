@@ -1,16 +1,5 @@
 import { response, Response } from 'express';
-import { DataResponses } from './utility-types';
-
-// Helper code for the API consumer to understand the error and handle is accordingly
-enum ResponseStatus {
-    FAILURE = 'FailError',
-    INTERNAL = 'InternalServerError',
-    NOTFOUND = 'NotFoundError',
-    BADREQUEST = 'BadRequestError',
-    CONFLICT = 'ConflictError',
-    UNAUTHORIZED = 'UnauthorizedError',
-    FORBIDDEN = 'ForbiddenError',
-}
+import { DataResponses, ErrorType } from './utility-types';
 
 const Success = {
     SUCCESS : true,
@@ -19,11 +8,11 @@ const Success = {
 
 enum StatusCode {
     SUCCESS = 200,
-    BAD_REQUEST = 400,
+    BADREQUEST = 400,
     UNAUTHORIZED = 401,
     FORBIDDEN = 403,
-    NOT_FOUND = 404,
-    INTERNAL_ERROR = 500,
+    NOTFOUND = 404,
+    INTERNALERROR = 500,
     CONFLICT = 409
 }
 
@@ -33,7 +22,7 @@ abstract class ApiResponse {
         public success: boolean,
         public status_code: StatusCode,
         public message: string,
-        public error?: ResponseStatus | string,
+        public error?: ErrorType | string,
         public data?: DataResponses
     ){}
 
@@ -69,7 +58,7 @@ export class NotFoundResponse extends ApiResponse {
     private url: string | undefined;
 
     constructor(message = 'Not Found') {
-        super(Success.ERROR, StatusCode.NOT_FOUND, message, ResponseStatus.NOTFOUND );
+        super(Success.ERROR, StatusCode.NOTFOUND, message, ErrorType.NOTFOUND );
         this.url = response.req?.originalUrl;
         super.prepare<NotFoundResponse>(response, this);
     }
@@ -78,41 +67,41 @@ export class NotFoundResponse extends ApiResponse {
 // Custom Response for Unauthorized Error
 export class UnauthorizedResponse extends ApiResponse {
     constructor(message = 'Authentication Failure') {
-        super(Success.ERROR, StatusCode.UNAUTHORIZED, message, ResponseStatus.UNAUTHORIZED);
+        super(Success.ERROR, StatusCode.UNAUTHORIZED, message, ErrorType.UNAUTHORIZED);
     }
 }
 
 // Custom Response for Forbidden Error
 export class ForbiddenResponse extends ApiResponse {
     constructor(message = 'Forbidden') {
-        super(Success.ERROR, StatusCode.FORBIDDEN, message, ResponseStatus.FORBIDDEN);
+        super(Success.ERROR, StatusCode.FORBIDDEN, message, ErrorType.FORBIDDEN);
     }
 }
 
 // Custom Response for BadRequest Error
 export class BadRequestResponse extends ApiResponse {
     constructor(message = 'Bad Parameters') {
-        super(Success.ERROR, StatusCode.BAD_REQUEST, message, ResponseStatus.BADREQUEST);
+        super(Success.ERROR, StatusCode.BADREQUEST, message, ErrorType.BADREQUEST);
     }
 }
 
 // Custom Response for InternalServer Error
 export class InternalServerErrorResponse extends ApiResponse {
     constructor(message = 'Internal Error', error = '') {
-        super(Success.ERROR, StatusCode.INTERNAL_ERROR, message, error || ResponseStatus.INTERNAL);
+        super(Success.ERROR, StatusCode.INTERNALERROR, message, error || ErrorType.INTERNAL);
     }
 }
 
 // Custom Response for Conflict Error
 export class ConflictErrorResponse extends ApiResponse {
     constructor(message = 'Conflict Error') {
-        super(Success.ERROR, StatusCode.CONFLICT, message, ResponseStatus.CONFLICT);
+        super(Success.ERROR, StatusCode.CONFLICT, message, ErrorType.CONFLICT);
     }
 }
 
 // Custom Response for Failure Error
 export class FailureMsgResponse extends ApiResponse {
     constructor(message: string) {
-        super(Success.ERROR, StatusCode.SUCCESS, message, ResponseStatus.FAILURE);
+        super(Success.ERROR, StatusCode.SUCCESS, message, ErrorType.FAILURE);
     }
 }

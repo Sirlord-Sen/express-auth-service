@@ -1,5 +1,10 @@
 import { Options } from 'nodemailer/lib/mailer';
 
+export enum QueueName {
+  RESETPASSWORD = 'EMAIL_FORGOT_PASSWORD',
+  CONFIRMACCOUNT = 'EMAIL_CONFIRM_ACCOUNT'
+}
+
 export type SendEmail = Pick<Options, 'from' | 'to' | 'subject' | 'text' | 'html'>;
 
 export type DeployEmail = {
@@ -13,6 +18,7 @@ export type EmailRequest = {
 };
 
 export type EmailJob = {
-  request: EmailRequest,
-  deploy: DeployEmail
+  name: QueueName;
+  request: EmailRequest;
+  deploy: DeployEmail;
 }

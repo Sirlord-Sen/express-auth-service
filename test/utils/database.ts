@@ -14,7 +14,7 @@ export const createDatabaseConnection = async (): Promise<Connection> => {
         username,
         host,
         port,
-        synchronize,
+        synchronize: true,
         entities: [resolve(__dirname, "../../src/api/modules/**/*.entity.ts")],
         subscribers: [resolve(__dirname, "../../src/api/modules/**/*.subscriber.ts")],
     });
