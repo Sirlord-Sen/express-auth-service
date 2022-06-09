@@ -3,6 +3,7 @@ import { resolve } from 'path'
 import { Connection } from 'typeorm';
 import useragent from 'express-useragent'
 import * as bodyParser from 'body-parser'
+import cookieParser from 'cookie-parser'
 import express, { Application } from 'express'
 import { useExpressServer } from 'routing-controllers'
 import { MicroframeworkLoader, MicroframeworkSettings } from 'microframework-w3tec';
@@ -26,6 +27,7 @@ class ExpressServer {
         this.app.use(cors());
         this.app.use(useragent.express())
         this.app.use(bodyParser.json());
+        this.app.use(cookieParser())
         this.app.use(bodyParser.urlencoded({ extended: true }));
         this.app.use(passport.initialize())
     }

@@ -49,10 +49,10 @@ export class AuthController {
     }
     
     @Post('/logout')
-    @Authorized()
     @ResponseSchema(BasePayload)
-    async Logout(@Req() req: Request, @CurrentUser() {userId}: CurrentUser ): Promise<BasePayload>{
-        await this.authService.logout({ userId }, req.ctx)
+    async Logout(@Req() req: Request): Promise<BasePayload>{
+        const refreshToken = TokenHelper.getTokenFromCookies(req.cookies);
+        await this.authService.logout({ refreshToken }, req.ctx)
         return new SuccessResponse(`logged out`);
     }
 

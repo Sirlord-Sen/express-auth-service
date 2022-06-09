@@ -12,7 +12,7 @@ import { closeRedis } from '../../utils/cache';
 import { Application } from 'express';
 import { IDummyUser, IUpdateDummy, NewDummyUser, updateDummy } from '../utils/dummy';
 import { ErrorType } from '../../../src/api/utils/utility-types'
-import { signJwt } from '../utils/jwt';
+import { signAccessJwt } from '../utils/jwt';
 
 
 describe('/api/v1/users', () => {
@@ -34,8 +34,8 @@ describe('/api/v1/users', () => {
         app = settings.app
         dummy = await runSeeder(CreateDummyUser);
         newDummy = NewDummyUser()
-        dummyAuthorization = signJwt({userId: dummy.id, email: dummy.email});
-        randomAuthorization = signJwt({userId: uuid.v4(), email: faker.internet.email()});
+        dummyAuthorization = signAccessJwt({userId: dummy.id, email: dummy.email});
+        randomAuthorization = signAccessJwt({userId: uuid.v4(), email: faker.internet.email()});
         updateUser = updateDummy()
     })
 

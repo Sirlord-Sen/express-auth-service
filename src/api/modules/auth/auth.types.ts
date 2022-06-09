@@ -23,8 +23,8 @@ export type TokensRequest = Pick<FullUser, 'email' | 'id'>
 export type TokensResponse =  Token & AccessTokenResponse & RefreshTokenResponse
 
 export type LoginRequest = Required<Pick<FullUser, 'email' | 'password'>>;
-
-export type LogoutRequest = Required<Pick<IRefreshToken, 'userId'>>
+;
+export type LogoutRequest = RefreshTokenResponse
 
 export type ForgotPasswordRequest = Required<Pick<FullUser, 'email'>>;
 

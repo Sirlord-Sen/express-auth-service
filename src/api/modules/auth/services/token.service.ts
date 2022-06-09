@@ -67,9 +67,8 @@ export class TokenService implements ITokenService{
         const expiresAt = DateHelper.addMillisecondToDate(new Date(), ms);
 
         // Only Allowing User to Login again after logout with same broswer and OS
-        if ((await this.refreshTokenRepository.findOne({...ctx, ...body , isRevoked: false}))) {
+        if ((await this.refreshTokenRepository.findOne({...ctx, ...body , isRevoked: false})))
             Logger.warn("Attempting to Signin again from same device");
-        }
 
         const savedRefreshToken = await this.refreshTokenRepository.createRefreshToken({ ...body, ...ctx ,jti, expiresAt });
 
@@ -115,8 +114,8 @@ export class TokenService implements ITokenService{
         return user;
     }
 
-    private async decodeRefreshToken(token: string){
-        const payload = this.jwtService.verify<TokenPayload>(
+    public async decodeRefreshToken(token: string){
+        const payload = await this.jwtService.verifyAsync<TokenPayload>(
                 token,
                 JwtConfig.refreshTokenSecret,
             );

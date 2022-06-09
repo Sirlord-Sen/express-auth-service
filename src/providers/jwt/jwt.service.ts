@@ -37,7 +37,7 @@ export default class JWTService {
         return jwt.verify(token, secret) as T;
     }
 
-    async verifyAsync<T>(token: string, key: Secret, opts: VerifyOptions): Promise<T> {
+    async verifyAsync<T>(token: string, key: Secret, opts?: VerifyOptions): Promise<T> {
         return new Promise((resolve, reject) => {
             jwt.verify(token, key, opts, (error: VerifyErrors | null, decoded) => {
                 if (error && error.name === 'TokenExpiredError')

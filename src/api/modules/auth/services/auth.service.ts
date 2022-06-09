@@ -38,9 +38,10 @@ export class AuthService implements IAuthService{
     }
 
     async logout(body: LogoutRequest, ctx: Context) {
-        const { userId } = body
-        await this.userService.update({id: userId}, {isActive: false});
-        await this.tokenService.update({ userId, ...ctx, isRevoked: false } , {isRevoked: true });
+        const { refreshToken } = body
+        const { jti, sub } = await this.tokenService.decodeRefreshToken(refreshToken)
+        await this.tokenService.update({ jti, isRevoked: false } , {isRevoked: true });
+        await this.userService.update({id: sub}, {isActive: false});
     }
 
     async refreshToken(refreshToken: string, ctx: Context) {

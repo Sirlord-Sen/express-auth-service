@@ -1,10 +1,9 @@
 import { Service } from 'typedi'
-import { EntityRepository, Repository } from 'typeorm';
+import { EntityNotFoundError, EntityRepository, Repository } from 'typeorm';
 
-import { Logger } from '@utils/logger.util';
 import { RefreshTokenEntity }  from '../entity';
 import { FullRefreshToken } from '../auth.types';
-import { InternalServerError, NotFoundError } from '@exceptions//';
+import { InternalServerError, NotFoundError, UnauthorizedError } from '@exceptions//';
 import { IRefreshToken } from '../interfaces/refresh-token.interface';
 
 @Service()
@@ -27,10 +26,12 @@ export class RefreshTokenRepository extends Repository<RefreshTokenEntity> {
     async updateRefreshToken( query: Partial<FullRefreshToken>, body: Partial<IRefreshToken> ): Promise<void> {
         try{ 
             const refreshToken = await this.findOneOrFail({where: query})
-            if (refreshToken.isRevoked) Logger.warn("POTENTIAL THREAT: User in posession of Revoked RefreshToken")
             this.merge(refreshToken, body)
             await this.save(refreshToken) 
         }
-        catch(err){ throw new InternalServerError('Could not update refresh token') }
+        catch(err){ 
+            if(err instanceof EntityNotFoundError) throw new NotFoundError('Refresh Token not found')
+            throw new InternalServerError('Could not update refresh token') 
+        }
     }
 }
