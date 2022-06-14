@@ -30,6 +30,7 @@ describe('/api/v1/users', () => {
     // -------------------------------------------------------------------------
 
     beforeAll(async()=> {
+        jest.setTimeout(10000)
         settings = await prepareServer();
         app = settings.app
         dummy = await runSeeder(CreateDummyUser);
@@ -75,7 +76,7 @@ describe('/api/v1/users', () => {
         expect(res.status).toBe(409)
         expect(res.body.success).toBe(false)
         expect(res.body.error).toBe(ErrorType.CONFLICT)
-        expect(res.body.message).toBe("Username or Email already exist")
+        expect(res.body.message).toBe("user already exists")
        
     })
 

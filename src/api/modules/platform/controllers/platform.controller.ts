@@ -9,7 +9,7 @@ import { SuccessResponse } from "@utils/response.util";
 import { FacebookGuard } from '@providers/social/facebook';
 import { PlatformService } from "../services/platform.service";
 import { TokenService } from '@auth-module/services/token.service';
-import { BasePayload, DataLogin, LoginResponse } from "@utils/utility-types";
+import { BasePayload, DataLogin, LoginResponse } from "@utils/response.types";
 
 @Service()
 @Controller("/api/v1/platforms")

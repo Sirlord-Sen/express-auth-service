@@ -22,6 +22,7 @@ import {
     RefreshToken,
     TokenPayload
 } from "../auth.types";
+import { IRefreshToken } from '../interfaces';
 
 @Service()
 export class TokenService implements ITokenService{
@@ -70,7 +71,7 @@ export class TokenService implements ITokenService{
         if ((await this.refreshTokenRepository.findOne({...ctx, ...body , isRevoked: false})))
             Logger.warn("Attempting to Signin again from same device");
 
-        const savedRefreshToken = await this.refreshTokenRepository.createRefreshToken({ ...body, ...ctx ,jti, expiresAt });
+        const savedRefreshToken = await this.refreshTokenRepository.createEntity({ ...body, ...ctx ,jti, expiresAt });
 
         const opts: SignOptions = {
             expiresIn: JwtConfig.refreshTokenExpiration,
@@ -97,8 +98,13 @@ export class TokenService implements ITokenService{
         return { tokenType: TokenType.BEARER ,expiresAt , accessToken, refreshToken };
     }
 
+    async findOneOrFail( query: Partial<IRefreshToken> ): Promise<IRefreshToken> {
+        try{ return await this.refreshTokenRepository.findOneOrFail({ where: query }); }
+        catch(err){ throw new NotFoundError("Refresh Token not found") }
+    }
+
     async update(query: Partial<FullRefreshToken>, body: Partial<RefreshToken>) {
-        await this.refreshTokenRepository.updateRefreshToken(query, body)
+        await this.refreshTokenRepository.updateEntity(query, body)
     }
 
     async resolveRefreshToken(token:string) {
@@ -126,7 +132,7 @@ export class TokenService implements ITokenService{
     
     private async getRefreshTokenFromPayload(payload: TokenPayload) {
         const { jti, sub } = payload;
-        return await this.refreshTokenRepository.findOneToken({ userId: sub, jti });
+        return await this.findOneOrFail({ userId: sub, jti });
     }
     
     private async getUserFromRefreshTokenPayload(payload: TokenPayload){  

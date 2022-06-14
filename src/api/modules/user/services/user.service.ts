@@ -21,7 +21,7 @@ export class UserService implements IUserService{
     ){}
 
     async register(data: User){
-        const user = await this.userRepository.createUser(data)
+        const user = await this.userRepository.createEntity(data)
         const { id, email } = user
         const accountActivationToken = nanoid();
         const {accessToken, expiresAt} = await this.tokenService.generateAccessToken({userId: id, email}, accountActivationToken)
@@ -45,7 +45,7 @@ export class UserService implements IUserService{
     }
 
     async update(query: FilterUser, body: UpdateUser){
-        const user = await this.userRepository.updateUser(query, body)
+        const user = await this.userRepository.updateEntity(query, body)
         return pick(user, ["id", "username", "email", "profile"])
     }
 

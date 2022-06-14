@@ -4,7 +4,7 @@ import { Controller, Body, Post, Get, Put, Authorized, CurrentUser } from 'routi
 
 import { SuccessResponse } from '@utils/response.util';
 import { UserService }  from '../services/user.service'
-import { BasePayload, DataUser, UserResponse } from '@utils/utility-types';
+import { BasePayload, DataUser, UserResponse } from '@utils/response.types';
 import { ChangePasswordDto, SignUpDto, UpdateUserDto } from '../dto/user.dto';
 
 @Service()

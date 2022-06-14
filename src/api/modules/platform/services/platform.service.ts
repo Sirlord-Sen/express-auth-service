@@ -19,8 +19,8 @@ export class PlatformService implements IPlatformService{
     async create(body: User){
         const foundUser = await this.userRepository.findOne({email: body.email})
         if(foundUser) return pick(foundUser, ['id', 'email', 'username'])
-        const user = await this.userRepository.createUser({...body, isActive: true, isAccountActivated: true})
-        await this.platformRepository.createPlatform({...body.platform!, userId: user.id})
+        const user = await this.userRepository.createEntity({...body, isActive: true, isAccountActivated: true})
+        await this.platformRepository.createEntity({...body.platform!, userId: user.id})
         return pick(user, ['id', 'email', 'username'])
     }
 }

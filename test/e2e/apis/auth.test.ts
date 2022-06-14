@@ -36,6 +36,7 @@ describe('POST /api/v1/auth', () => {
     // -------------------------------------------------------------------------
 
     beforeAll(async()=> {
+        jest.setTimeout(10000)
         settings = await prepareServer();
         app = settings.app;
         dummy = await runSeeder(CreateDummyUser);
@@ -203,7 +204,7 @@ describe('POST /api/v1/auth', () => {
 
         expect(res.body.success).toBe(false);
         expect(res.body.error).toBe(ErrorType.NOTFOUND);
-        expect(res.body.message).toBe('Refresh Token not found')
+        expect(res.body.message).toBe('RefreshToken not found')
     })
 
 

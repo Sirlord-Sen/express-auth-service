@@ -1,5 +1,6 @@
 import { response, Response } from 'express';
-import { DataResponses, ErrorType } from './utility-types';
+import { DataResponses } from './response.types';
+import { ErrorType } from './utility-types';
 
 const Success = {
     SUCCESS : true,

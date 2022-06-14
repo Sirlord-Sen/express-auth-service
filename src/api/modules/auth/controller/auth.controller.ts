@@ -22,7 +22,7 @@ import {
     LoginResponse, 
     TokensResponse, 
     UserResponse
-} from '@utils/utility-types';
+} from '@utils/response.types';
 
 @Service()
 @Controller('/api/v1/auth')
