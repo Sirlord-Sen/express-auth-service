@@ -4,7 +4,7 @@ import { Logger } from "@utils/logger.util";
 import { RedisApplication } from "@loaders/redis.loader";
 
 @Service()
-class TokensCache extends RedisApplication{  
+export class TokensCache extends RedisApplication{  
     private static _instance: TokensCache
     
     public static getInstance(): TokensCache {
