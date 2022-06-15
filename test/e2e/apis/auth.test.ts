@@ -17,53 +17,53 @@ import { ErrorType } from '@utils/utility-types';
 import { RefreshTokenEntity } from '@modules/auth/entity';
 
 
-describe('POST /api/v1/auth', () => {
+let newDummy: IDummyUser;
+let settings: BootstrapSettings;
+let app: Application;
+let dummy: UserEntity;
+let dummyTwo: UserEntity;
+let dummyRefreshToken: RefreshTokenEntity;
+let randomAuthorization: string;
+let confirmAccounttoken: string;
+let forgotPasswordToken: string;
+let refreshTokenToBeRevoked: string;
+let refreshToken: string;
 
-    let newDummy: IDummyUser;
-    let settings: BootstrapSettings;
-    let app: Application;
-    let dummy: UserEntity;
-    let dummyTwo: UserEntity;
-    let dummyRefreshToken: RefreshTokenEntity;
-    let randomAuthorization: string;
-    let confirmAccounttoken: string;
-    let forgotPasswordToken: string;
-    let refreshTokenToBeRevoked: string;
-    let refreshToken: string;
+// -------------------------------------------------------------------------
+// Setup up
+// -------------------------------------------------------------------------
 
-    // -------------------------------------------------------------------------
-    // Setup up
-    // -------------------------------------------------------------------------
-
-    beforeAll(async()=> {
-        jest.setTimeout(10000)
-        settings = await prepareServer();
-        app = settings.app;
-        dummy = await runSeeder(CreateDummyUser);
-        dummyTwo = await runSeeder(CreateDummyUser);
-        CreateDummyRefreshToken.userId = dummy.id
-        dummyRefreshToken = await runSeeder(CreateDummyRefreshToken);
-        newDummy = NewDummyUser();
-        refreshToken = signRefreshJwt({userId: dummyRefreshToken.userId, jti: dummyRefreshToken.jti})
-        confirmAccounttoken = signAccessJwt({userId: dummy.id, email: dummy.email, token: dummy.accountActivationToken});
-        forgotPasswordToken = signAccessJwt({userId: dummyTwo.id, email: dummyTwo.email, token: dummyTwo.passwordResetToken})
-        randomAuthorization = signAccessJwt({userId: uuid.v4(), email: faker.internet.email()});
-    })
+beforeAll(async()=> {
+    jest.setTimeout(10000)
+    settings = await prepareServer();
+    app = settings.app;
+    dummy = await runSeeder(CreateDummyUser);
+    dummyTwo = await runSeeder(CreateDummyUser);
+    CreateDummyRefreshToken.userId = dummy.id
+    dummyRefreshToken = await runSeeder(CreateDummyRefreshToken);
+    newDummy = NewDummyUser();
+    refreshToken = signRefreshJwt({userId: dummyRefreshToken.userId, jti: dummyRefreshToken.jti})
+    confirmAccounttoken = signAccessJwt({userId: dummy.id, email: dummy.email, token: dummy.accountActivationToken});
+    forgotPasswordToken = signAccessJwt({userId: dummyTwo.id, email: dummyTwo.email, token: dummyTwo.passwordResetToken})
+    randomAuthorization = signAccessJwt({userId: uuid.v4(), email: faker.internet.email()});
+})
 
 
-    // -------------------------------------------------------------------------
-    // Tear down
-    // -------------------------------------------------------------------------
-    
-    afterAll(async () => {
-        await closeDatabase(settings.connection);
-        await closeRedis(settings.redis)
-        nock.cleanAll();
-    })
+// -------------------------------------------------------------------------
+// Tear down
+// -------------------------------------------------------------------------
 
-    // -------------------------------------------------------------------------
-    // Confirm Account User
-    // -------------------------------------------------------------------------
+afterAll(async () => {
+    await closeDatabase(settings.connection);
+    await closeRedis(settings.redis)
+    nock.cleanAll();
+})
+
+// -------------------------------------------------------------------------
+// Confirm Account User
+// -------------------------------------------------------------------------
+
+describe('Confirm User Account Route', () => {
 
     it('POST: /confirm-account should return 200 & valid response for confirm account', async() => {
         const res = await request(app)
@@ -94,12 +94,13 @@ describe('POST /api/v1/auth', () => {
         expect(res.body.message).toBe("User not found");
         expect(res.body.error).toBe(ErrorType.NOTFOUND)
     })
+})
 
+// -------------------------------------------------------------------------
+// Login User
+// -------------------------------------------------------------------------
 
-    // -------------------------------------------------------------------------
-    // Login User
-    // -------------------------------------------------------------------------
-
+describe("Login", ()=> {
 
     it('POST: /login should return 200 & valid response user login', async() => {
         const res = await request(app)
@@ -159,11 +160,13 @@ describe('POST /api/v1/auth', () => {
         expect(res.body.success).toBe(false);
         expect(res.body.error).toBe(ErrorType.BADREQUEST);
     })
+})
 
 
-    // -------------------------------------------------------------------------
-    // Logout User
-    // -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+// Logout User
+// -------------------------------------------------------------------------
+describe("Logout", ()=> {
 
     it('POST: /logout should return 200 & valid response user logout', async() => {
         const res = await request(app)
@@ -206,13 +209,13 @@ describe('POST /api/v1/auth', () => {
         expect(res.body.error).toBe(ErrorType.NOTFOUND);
         expect(res.body.message).toBe('RefreshToken not found')
     })
+})
 
 
-
-
-    // -------------------------------------------------------------------------
-    // Refresh Token
-    // -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+// Refresh Token
+// -------------------------------------------------------------------------
+describe("Refresh Token", ()=> {
 
     it('POST: /refresh-token should return 200 & valid response refresh token', async() => {
         const res = await request(app)
@@ -261,11 +264,13 @@ describe('POST /api/v1/auth', () => {
         expect(res.body.error).toBe(ErrorType.UNAUTHORIZED);
         expect(res.body.message).toBe('Please log in');
     })
+})
+    
 
-
-    // -------------------------------------------------------------------------
-    // Forgot Password
-    // -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+// Forgot Password
+// -------------------------------------------------------------------------
+describe("Forgot Password", ()=> {
 
     it('POST: /forgot-password should return 200 & valid response for forgot password route', async() => {
         const res = await request(app)
@@ -289,11 +294,15 @@ describe('POST /api/v1/auth', () => {
         expect(res.body.message).toBe('User not found');
     })
 
+})
 
-    // -------------------------------------------------------------------------
-    // Reset Password
-    // -------------------------------------------------------------------------
 
+// -------------------------------------------------------------------------
+// Reset Password
+// -------------------------------------------------------------------------
+    
+describe("Reset Password", ()=> {
+    
     it('POST: /reset-password should return 200 & valid response for reset password route', async() => {
         const res = await request(app)
                     .post('/api/v1/auth/reset-password')
@@ -331,6 +340,4 @@ describe('POST /api/v1/auth', () => {
         expect(res.body.error).toBe(ErrorType.NOTFOUND)
         expect(res.body.message).toBe('User not found');
     })
-
-
 })

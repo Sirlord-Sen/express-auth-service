@@ -15,45 +15,45 @@ import { ErrorType } from '../../../src/api/utils/utility-types'
 import { signAccessJwt } from '../utils/jwt';
 
 
-describe('/api/v1/users', () => {
+let newDummy: IDummyUser;
+let settings: BootstrapSettings;
+let app: Application;
+let dummy: UserEntity;
+let dummyAuthorization: string;
+let randomAuthorization: string;
+let updateUser: IUpdateDummy ;
 
-    let newDummy: IDummyUser;
-    let settings: BootstrapSettings;
-    let app: Application;
-    let dummy: UserEntity;
-    let dummyAuthorization: string;
-    let randomAuthorization: string;
-    let updateUser: IUpdateDummy ;
+// -------------------------------------------------------------------------
+// Setup up
+// -------------------------------------------------------------------------
 
-    // -------------------------------------------------------------------------
-    // Setup up
-    // -------------------------------------------------------------------------
-
-    beforeAll(async()=> {
-        jest.setTimeout(10000)
-        settings = await prepareServer();
-        app = settings.app
-        dummy = await runSeeder(CreateDummyUser);
-        newDummy = NewDummyUser()
-        dummyAuthorization = signAccessJwt({userId: dummy.id, email: dummy.email});
-        randomAuthorization = signAccessJwt({userId: uuid.v4(), email: faker.internet.email()});
-        updateUser = updateDummy()
-    })
+beforeAll(async()=> {
+    jest.setTimeout(10000)
+    settings = await prepareServer();
+    app = settings.app
+    dummy = await runSeeder(CreateDummyUser);
+    newDummy = NewDummyUser()
+    dummyAuthorization = signAccessJwt({userId: dummy.id, email: dummy.email});
+    randomAuthorization = signAccessJwt({userId: uuid.v4(), email: faker.internet.email()});
+    updateUser = updateDummy()
+})
 
 
-    // -------------------------------------------------------------------------
-    // Tear down
-    // -------------------------------------------------------------------------
-    
-    afterAll(async () => {
-        await closeDatabase(settings.connection);
-        await closeRedis(settings.redis)
-        nock.cleanAll();
-    })
+// -------------------------------------------------------------------------
+// Tear down
+// -------------------------------------------------------------------------
 
-    // -------------------------------------------------------------------------
-    // Signup User
-    // -------------------------------------------------------------------------
+afterAll(async () => {
+    await closeDatabase(settings.connection);
+    await closeRedis(settings.redis)
+    nock.cleanAll();
+})
+
+// -------------------------------------------------------------------------
+// Signup User
+// -------------------------------------------------------------------------
+
+describe('Signup User', () => {
 
     it('POST: / should return 200 & valid response for a valid signup request', async()=> {
         const res = await request(app)
@@ -91,10 +91,12 @@ describe('/api/v1/users', () => {
         expect(res.body.success).toBe(false)
         expect(res.body.error).toBe(ErrorType.BADREQUEST)
     })
+})
 
-    // -------------------------------------------------------------------------
-    // Get Current User
-    // -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+// Get Current User
+// -------------------------------------------------------------------------
+describe('Get Current User', () => {
 
     it('GET: /:id should return 200 & valid response for Get current user route', async()=> {
         const res = await request(app)
@@ -134,10 +136,13 @@ describe('/api/v1/users', () => {
         expect(res.body.message).toBe('User not found')
         expect(res.body.error).toBe(ErrorType.NOTFOUND)
     })
+})
 
-    // -------------------------------------------------------------------------
-    // Update User
-    // -------------------------------------------------------------------------
+
+// -------------------------------------------------------------------------
+// Update User
+// -------------------------------------------------------------------------
+describe('Update User', () => {
 
     // This test has to come before actually updating a user.. Else, the user details will be updated
     it('PUT: /:id should return 200 & valid response for empty updating', async()=> {
@@ -201,11 +206,13 @@ describe('/api/v1/users', () => {
         expect(res.body.message).toBe('Unauthorized User')
         expect(res.body.error).toBe(ErrorType.UNAUTHORIZED)
     })
+})
 
 
-    // -------------------------------------------------------------------------
-    // Change Password
-    // -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+// Change Password
+// -------------------------------------------------------------------------
+describe('Change Password', () => {
 
     it('POST: /change-password should return 200 & valid response for updating pasword', async()=> {
         const updatePassword = {
@@ -293,5 +300,4 @@ describe('/api/v1/users', () => {
         expect(res.body.success).toBe(false);
         expect(res.body.error).toBe(ErrorType.BADREQUEST)
     })
-
 })
