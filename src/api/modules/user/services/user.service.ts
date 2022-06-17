@@ -52,8 +52,8 @@ export class UserService implements IUserService{
     async updatePassword(query: Partial<FullUser>, body: Password){
         const { oldPassword, newPassword } = body
         const user = await this.findOneOrFail(query)
-        if(!await ValidateHelper.credentials(user.password, oldPassword)) throw new UnauthorizedError("Wrong Password")
-        if(await ValidateHelper.credentials(user.password, newPassword)) throw new ConflictError("Same Password")
+        if(!await ValidateHelper.verifyPassword(user.password, oldPassword)) throw new UnauthorizedError("Wrong Password")
+        if(await ValidateHelper.verifyPassword(user.password, newPassword)) throw new ConflictError("Same Password")
         return await this.update(query, {password: newPassword})
     }
 }

@@ -32,7 +32,7 @@ export class AuthService implements IAuthService{
     async login(body: LoginRequest) {
         const { email, password } = body
         const user = await this.userService.findOneOrFail({email})
-        const validate = await ValidateHelper.credentials(user.password, password)
+        const validate = await ValidateHelper.verifyPassword(user.password, password)
         if(!validate) throw new UnauthorizedError("Invalid Login Credentials")
         return pick(user, ["id", "username", "email"])      
     }
@@ -69,7 +69,7 @@ export class AuthService implements IAuthService{
         const { password, token } = body
         const { jti, email } = await this.tokenService.decodeConfirmationToken(token)
         const user = await this.userService.findOneOrFail({email, passwordResetToken: jti})
-        const validate = await ValidateHelper.credentials(user.password, password)
+        const validate = await ValidateHelper.verifyPassword(user.password, password)
         if(validate) throw new ConflictError("Same password")
         const updatedUser = await this.userService.update({email, passwordResetToken: jti}, {password: password})
         new EmailResetPassword({email})
