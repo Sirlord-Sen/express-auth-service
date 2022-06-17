@@ -11,7 +11,7 @@ import { runSeeder } from 'typeorm-seeding';
 import { closeDatabase } from '../../utils/database';
 import { closeRedis } from '../../utils/cache';
 import { Application } from 'express';
-import { IDummyUser, NewDummyUser } from '../utils/dummy';
+import { IDummyUser, NewDummyUser } from '../../utils/dummy';
 import { signAccessJwt, signRefreshJwt } from '../utils/jwt';
 import { ErrorType } from '@utils/utility-types';
 import { RefreshTokenEntity } from '@modules/auth/entity';

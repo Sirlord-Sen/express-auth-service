@@ -17,7 +17,7 @@ export abstract class EmailHandler{
   
     protected async handler(email: EmailHandler){
         const { name ,request, deploy } = email
-        return await this.emailQueue.addEmailToQueue({ name ,request, deploy})
+        return await this.emailQueue.addEmailToQueue({ name, request, deploy })
     }
 }
   

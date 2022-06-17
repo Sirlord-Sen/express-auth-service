@@ -10,7 +10,7 @@ import { runSeeder } from 'typeorm-seeding';
 import { closeDatabase } from '../../utils/database';
 import { closeRedis } from '../../utils/cache';
 import { Application } from 'express';
-import { IDummyUser, IUpdateDummy, NewDummyUser, updateDummy } from '../utils/dummy';
+import { IDummyUser, IUpdateDummy, NewDummyUser, updateDummy } from '../../utils/dummy';
 import { ErrorType } from '../../../src/api/utils/utility-types'
 import { signAccessJwt } from '../utils/jwt';
 
