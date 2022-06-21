@@ -3,7 +3,7 @@ import { Service } from 'typedi';
 import { EventEmitter } from 'events';
 import Bull, {QueueOptions, Queue} from 'bull';
 
-import { Logger } from '@utils/logger.util';
+import { Logger, LoggerInterface } from '@decorators/logger';
 import { RedisConfig } from '@config//';
 import { CodeError } from '@utils/utility-types' 
 
@@ -15,6 +15,7 @@ export default class BullQueue{
     MAX_CACHE_RETRY_ATTEMPTS: number
 
     constructor(
+        @Logger(__dirname) public log: LoggerInterface,
         name: string,
         opts?: Pick<QueueOptions, 'limiter' | 'defaultJobOptions'>,
     ){
@@ -47,26 +48,26 @@ export default class BullQueue{
             const { name, id, data, attemptsMade, finishedOn, failedReason } = job
             const { message } = error
             const logMessage = `
-            ------------
-            JOB FAILED
-            name: ${name}
-            id: ${id}
-            data: ${JSON.stringify(data)}
-            attemptsMade: ${attemptsMade}
-            failedReason: ${failedReason}
-            Error: ${message}
-            finishedOn: ${finishedOn}
-            -------------
-          `
-          Logger.warn(logMessage)
+                ------------
+                JOB FAILED
+                name: ${name}
+                id: ${id}
+                data: ${JSON.stringify(data)}
+                attemptsMade: ${attemptsMade}
+                failedReason: ${failedReason}
+                Error: ${message}
+                finishedOn: ${finishedOn}
+                -------------
+            `
+            this.log.warn(logMessage)
         })
 
         this.queue.on('completed', async (job, result) => {
-            Logger.info(`Job ${job.id} has ${ result.status }`)
+            this.log.info(`Job ${job.id} has ${ result.status }`)
         })
 
         this.queue.on('error', async(error: CodeError) => {
-            Logger.error(`Bull Error: ${error}`)
+            this.log.error(`Bull Error: ${error}`)
         })
 
     }

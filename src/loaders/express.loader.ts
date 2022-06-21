@@ -10,7 +10,6 @@ import { MicroframeworkLoader, MicroframeworkSettings } from 'microframework-w3t
 
 import passport from "@providers/social/passport"
 import { AppConfig } from '@config//'
-import { Logger } from '@utils/logger.util'
 import { authorizationChecker } from '@auth/authorizationChecker'
 import { currentUserChecker } from '@auth/currentUserChecker';
 
@@ -50,11 +49,7 @@ class ExpressServer {
         });
     }
 
-    async start(){
-        this.app.listen(AppConfig.port, () => {
-          Logger.info(`Server Started! Http: http://localhost:${AppConfig.port}`);
-        });
-    }
+    async start(){ this.app.listen(AppConfig.port) }
 }
 
 

@@ -3,12 +3,14 @@ import { ValidationError } from 'class-validator'
 import { Request, Response, NextFunction } from 'express'
 import { Middleware, ExpressErrorMiddlewareInterface } from 'routing-controllers';
 
-import { Logger } from '@utils/logger.util';
+import { Logger } from '@lib/logger';
 import { BadRequestError, UnauthorizedError } from '@exceptions//'
 
 @Service()
 @Middleware({ type: 'after' })
 export class CustomErrorHandler implements ExpressErrorMiddlewareInterface {
+    private log = new Logger(__dirname);
+
     async error(error: any, request: Request, response: Response, next:NextFunction) {
         if(error.errors && error.errors[0] instanceof ValidationError){
             let message = ''
@@ -23,7 +25,7 @@ export class CustomErrorHandler implements ExpressErrorMiddlewareInterface {
             response.json(error)
             return next()
         }
-        Logger.error(error)
+        this.log.error(error)
         response.json(new UnauthorizedError()) 
         
         return next();

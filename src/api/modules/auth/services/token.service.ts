@@ -6,10 +6,10 @@ import { SignOptions, JwtPayload, Secret, VerifyOptions } from 'jsonwebtoken'
 
 import { JwtConfig } from '@config//';
 import { DateHelper } from "@helpers//";
-import { Logger } from '@utils/logger.util';
 import { JWTService } from "@providers/jwt";
 import { TokensCache } from '@providers/cache';
 import { TokenType } from "@utils/utility-types";
+import { Logger, LoggerInterface } from '@decorators/logger';
 import { ITokenService } from '../interfaces/service.interface';
 import { NotFoundError, UnauthorizedError } from '@exceptions//';
 import { RefreshTokenRepository } from "../repository/refreshToken.repository";
@@ -32,6 +32,7 @@ export class TokenService implements ITokenService{
         @InjectRepository()
         private readonly userRepository: UserRepository,
         private readonly jwtService: JWTService,
+        @Logger(__filename) private log: LoggerInterface,
         // private readonly userService: UserService
     ){}
 
@@ -69,7 +70,7 @@ export class TokenService implements ITokenService{
 
         // Only Allowing User to Login again after logout with same broswer and OS
         if ((await this.refreshTokenRepository.findOne({...ctx, ...body , isRevoked: false})))
-            Logger.warn("Attempting to Signin again from same device");
+            this.log.warn("Attempting to Signin again from same device");
 
         const savedRefreshToken = await this.refreshTokenRepository.createEntity({ ...body, ...ctx ,jti, expiresAt });
 

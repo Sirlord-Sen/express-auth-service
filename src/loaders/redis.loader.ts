@@ -3,16 +3,18 @@ import { Redis } from 'ioredis'
 import { MicroframeworkLoader, MicroframeworkSettings } from 'microframework-w3tec';
 
 import { AppConfig, RedisConfig } from '@config//'
-import { Logger } from '@utils/logger.util'
+import { Logger } from '@lib/logger'
 
 
 const redis : typeof r = RedisConfig.url === 'redis-mock' ? require('ioredis-mock') : require('ioredis')
 
 export class RedisApplication{
+    public log: Logger
     public client: Redis
     initialConnection: boolean
 
-    constructor(){
+    constructor(scope: string){
+        this.log = new Logger(scope)
         this.initialConnection = true  
         this.client =  this.createClient()
     }
@@ -39,26 +41,26 @@ export class RedisApplication{
     public async start(): Promise<void>{
         return new Promise((resolve, reject) => {
             this.client.on('connect', () => {
-                Logger.info('Redis: connected')
+                this.log.info('Redis: connected')
             })
             this.client.on('ready', () => {
                 if(this.initialConnection){
                     this.initialConnection = false
                     resolve()
                 }
-                Logger.info('Redis: ready')
+                this.log.info('Redis: ready')
             })
             this.client.on('reconnecting', () => {
-                Logger.info('Redis: reconnecting')
+                this.log.info('Redis: reconnecting')
             })
             this.client.on('end', () => {
-                Logger.info('Redis: end')
+                this.log.info('Redis: end')
             })
             this.client.on('disconnected', () => {
-                Logger.error('Redis: disconnected')
+                this.log.error('Redis: disconnected')
             })
             this.client.on('error', (err) => {
-                Logger.error(`Redis: ${err}`)
+                this.log.error(`Redis: ${err}`)
             })
 
         })
@@ -74,7 +76,7 @@ export class RedisApplication{
 export const redisLoader: MicroframeworkLoader = (settings: MicroframeworkSettings | undefined) => {
     if (settings) {
 
-        const redisApp: RedisApplication = new RedisApplication()
+        const redisApp: RedisApplication = new RedisApplication(__filename)
 
         // Run application to listen on given port
         if (AppConfig.env !== 'test') {

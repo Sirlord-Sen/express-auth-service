@@ -7,13 +7,13 @@ import { EmailService } from './';
 import { EmailJob } from './email.types';
 import { EmailConfig } from '@config//';
 import { BullQueue } from '@lib/queue';
-import { Logger } from '@utils/logger.util';
 import { InternalServerError } from '@exceptions//';
+import { Logger } from '@lib/logger';
 
 @Service()
 export default class EmailQueue extends BullQueue{  
-    constructor() {
-        super('EMAIL_QUEUQ', {
+    constructor(){
+        super(new Logger(__dirname),'EMAIL_QUEUQ', {
             defaultJobOptions: {
                 attempts: 30,
                 backoff: {
@@ -30,11 +30,11 @@ export default class EmailQueue extends BullQueue{
         return new Promise((resolve, reject) => {
             this.queue.add(data.name, data, opt)
                 .then(job => {
-                    Logger.info(`Job added for ${job.id}`)
+                    this.log.info(`Job added for ${job.id}`)
                     resolve()
                 })
                 .catch(err => {
-                    Logger.warn(`EMAIL_QUEUQ ${data.name}: ${err.message} for ${data.request.email}`)
+                    this.log.warn(`EMAIL_QUEUQ ${data.name}: ${err.message} for ${data.request.email}`)
                     reject(new InternalServerError(err.message))
                 })
 
@@ -60,7 +60,7 @@ export default class EmailQueue extends BullQueue{
                     return {status: 'completed'}
                 }
                 catch (err:any) {
-                    Logger.error(`EMAIL_QUEUQ ${job.data.name} ${err.message} at ${err.response.config.url}`)
+                    this.log.error(`EMAIL_QUEUQ ${job.data.name} ${err.message} at ${err.response.config.url}`)
                     return Promise.reject(err);
                 }
             })

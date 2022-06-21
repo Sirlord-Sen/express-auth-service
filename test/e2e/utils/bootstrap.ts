@@ -8,6 +8,8 @@ import { redisLoader } from '../utils/redis.loader';
 import { iocLoader } from '../../../src/loaders/ioc.loader';
 import { typeormLoader } from '../utils/typeorm.loader';
 import { Redis } from 'ioredis-mock';
+import { winstonLoader } from './winston.loader';
+
 
 export interface BootstrapSettings {
     app: Application;
@@ -19,6 +21,7 @@ export interface BootstrapSettings {
 export const bootstrapApp = async (): Promise<BootstrapSettings> => {
     const framework = await bootstrapMicroframework({
         loaders: [
+            winstonLoader,
             iocLoader,
             typeormLoader,
             expressLoader,

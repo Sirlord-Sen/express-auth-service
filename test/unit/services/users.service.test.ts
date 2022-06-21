@@ -8,8 +8,10 @@ import { JWTService } from '@providers/jwt';
 import { closeRedis, createRedisConnection } from 'test/utils/cache';
 import { Redis } from 'ioredis-mock';
 import { RefreshTokenEntity } from '@modules/auth/entity';
+import { LogMock } from '../utils/logger.mock';
 
 describe('UserService', () => {
+    let log: LogMock;
     let redis: Redis;
     let user: UserEntity;
     let userService: UserService;
@@ -17,12 +19,13 @@ describe('UserService', () => {
     let refreshRepo: RepositoryMock<RefreshTokenEntity>
 
     beforeAll(async() => {
+        log = new LogMock()
         redis = await createRedisConnection()
         user = new UserEntity();
         userRepo = new RepositoryMock<UserEntity>();
         refreshRepo = new RepositoryMock<RefreshTokenEntity>()
-        const jwtService = new JWTService()
-        const tokenService = new TokenService(refreshRepo as any, userRepo as any, jwtService)
+        const jwtService = new JWTService(log)
+        const tokenService = new TokenService(refreshRepo as any, userRepo as any, jwtService, log)
         userService = new UserService(userRepo as any, tokenService);
     });
 

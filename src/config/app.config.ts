@@ -1,6 +1,7 @@
 import { parsedEnv } from ".";
 import { ParsedVariables } from 'dotenv-parse-variables'
 import * as pkg from '../../package.json';
+
 class AppConfig{
     readonly port: number;
     readonly env: string;
@@ -9,7 +10,8 @@ class AppConfig{
     readonly description: string;
     readonly schema: string;
     readonly host: string;
-    readonly routePrefix: string
+    readonly routePrefix: string;
+    readonly banner: boolean;
   
     constructor(parsedEnv: ParsedVariables) {
       this.port = Number(parsedEnv.APP_PORT);
@@ -19,7 +21,8 @@ class AppConfig{
       this.name = String(parsedEnv.APP_NAME)
       this.schema = String(parsedEnv.APP_SCHEMA);
       this.host = String(parsedEnv.APP_HOST);
-      this.routePrefix = String(parsedEnv.APP_ROUTE_PREFIX)
+      this.routePrefix = String(parsedEnv.APP_ROUTE_PREFIX);
+      this.banner = Boolean(parsedEnv.APP_BANNER)
     }
   }
   

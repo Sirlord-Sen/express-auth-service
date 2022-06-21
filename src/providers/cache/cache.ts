@@ -1,6 +1,5 @@
 import { Service } from 'typedi'
 
-import { Logger } from "@utils/logger.util";
 import { RedisApplication } from "@loaders/redis.loader";
 
 @Service()
@@ -9,7 +8,7 @@ export class TokensCache extends RedisApplication{
     
     public static getInstance(): TokensCache {
         if (!TokensCache._instance) {
-          TokensCache._instance = new TokensCache()
+          TokensCache._instance = new TokensCache(__filename)
         }
         return TokensCache._instance
     }
@@ -19,10 +18,10 @@ export class TokensCache extends RedisApplication{
         return new Promise((resolve, reject) => {
             this.client!.setex(key, expireAfter, value, (error, res) => {
                 if (error) {
-                    Logger.warn(`${error.name}:: ${error.message}`)
+                    this.log.warn(`${error.name}:: ${error.message}`)
                     return resolve()
                 }
-                Logger.info(`Token Cache added for User: ${value}`)
+                this.log.info(`Token Cache added for User: ${value}`)
                 return resolve()
             })
         })
@@ -33,7 +32,7 @@ export class TokensCache extends RedisApplication{
         return new Promise((resolve, reject) => {
             this.client!.get(key, (error, result) => {
                 if (error){
-                    Logger.warn(`${error.name}:: ${error.message}`)
+                    this.log.warn(`${error.name}:: ${error.message}`)
                 }
                 return resolve(result ? result : undefined)
             })

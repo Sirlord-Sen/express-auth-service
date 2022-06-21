@@ -9,6 +9,7 @@ import {
     ForbiddenResponse,
     ConflictErrorResponse
 } from '../utils/response.util'
+import { AppConfig } from '@config//';
 
 /**
 * @class @abstract 
@@ -43,7 +44,7 @@ export default abstract class ExceptionCore extends Error {
             default: {
                 let message = err.message;
                 // Do not send failure message in production as it may send sensitive data
-                if (process.env.NODE_ENV === 'production') message = 'Something wrong happened.';
+                if (AppConfig.env === 'production') message = 'Something wrong happened.';
                 return new InternalServerErrorResponse(message).send(res);
             }
         }

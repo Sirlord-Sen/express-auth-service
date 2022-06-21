@@ -4,6 +4,7 @@ import { JWTService } from '@providers/jwt';
 import { nanoid } from 'nanoid';
 import { JwtConfig } from '@config//';
 import { SignOptions } from 'jsonwebtoken';
+import { LogMock } from '../utils/logger.mock';
 
 type JWT = {
     email?: string;
@@ -14,13 +15,15 @@ type JWT = {
 };
 
 describe('JWTService', () => {
+    let log: LogMock
     let token:string;
     let payload: Partial<JWT>
     let tokenData: {payload: JWT, secret: string, opts?: SignOptions};
     let jwtService: JWTService;
 
     beforeAll(async () => {
-        jwtService = new JWTService()
+        log = new LogMock();
+        jwtService = new JWTService(log)
         payload = {
             jti: nanoid(),
             userId: uuid.v4(),

@@ -6,17 +6,20 @@ import { NewDummyUser } from 'test/utils/dummy';
 import { TokenService } from '@modules/auth/services/token.service';
 import { RefreshTokenEntity } from '@modules/auth/entity';
 import { JWTService } from '@providers/jwt';
+import { LogMock } from '../utils/logger.mock';
 
 describe('TokenService', () => {
+    let log : LogMock;
     let tokenService: TokenService;
     let userRepo: RepositoryMock<UserEntity>
     let refreshRepo: RepositoryMock<RefreshTokenEntity>
 
     beforeAll(async() => {
+        log = new LogMock();
         userRepo = new RepositoryMock<UserEntity>();
         refreshRepo = new RepositoryMock<RefreshTokenEntity>()
-        const jwtService = new JWTService()
-        tokenService = new TokenService(refreshRepo as any, userRepo as any, jwtService);
+        const jwtService = new JWTService(log)
+        tokenService = new TokenService(refreshRepo as any, userRepo as any, jwtService, log);
     });
 
     afterAll(async () => {

@@ -1,7 +1,7 @@
 import { OAuth2Strategy, Profile } from 'passport-google-oauth'
 
 import { OAuthConfig } from '@config//';
-import { Logger } from '@utils/logger.util';
+import { Logger } from '@lib/logger';
 import { IUser } from '@user-module/interfaces';
 import { InternalServerError } from '@exceptions//';
 import { PlatformNetwork } from '@platform-module/platform.types';
@@ -13,6 +13,7 @@ export const GoogleStrategy = new OAuth2Strategy(
         callbackURL: OAuthConfig.googleRedirectUrl
     },
     async( accessToken: string, refreshToken: string, profile: Profile, done) => {
+        const log = new Logger(__filename)
         try{
             const { id, name, emails, photos } = profile
             
@@ -33,7 +34,7 @@ export const GoogleStrategy = new OAuth2Strategy(
             return done(null, user);
         }
         catch(e: any){
-            Logger.error(e.message)
+            log.error(e.message)
             throw new InternalServerError(e.message)
         }
     })

@@ -1,7 +1,7 @@
 import {Strategy, Profile} from "passport-facebook"
 
 import { OAuthConfig } from '@config//';
-import { Logger } from '@utils/logger.util';
+import { Logger } from '@lib/logger';
 import { IUser } from '@user-module/interfaces';
 import { InternalServerError } from '@exceptions//';
 import { PlatformNetwork } from '@platform-module/platform.types';
@@ -14,6 +14,7 @@ export const FacebookStrategy =  new Strategy(
         profileFields: ['emails', 'name', 'picture'],
     },
     async(accessToken, refreshToken, profile: Profile, done) => {
+        const log = new Logger(__filename);
         try{
             const { id, name, emails, photos } = profile
             
@@ -35,7 +36,7 @@ export const FacebookStrategy =  new Strategy(
             return done(null, user);
         }   
         catch(e:any){
-            Logger.error(e.message)
+            log.error(e.message)
             throw new InternalServerError(e.message)
         } 
     })

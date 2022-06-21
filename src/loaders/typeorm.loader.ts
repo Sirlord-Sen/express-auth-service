@@ -3,7 +3,6 @@ import { createConnection, getConnectionOptions } from 'typeorm';
 import { MicroframeworkLoader, MicroframeworkSettings } from 'microframework-w3tec';
 
 import { DBConfig } from '@config//'
-import { Logger } from '@utils/logger.util';
 
 export const typeormLoader: MicroframeworkLoader = async (settings: MicroframeworkSettings | undefined) => {
 
@@ -27,7 +26,6 @@ export const typeormLoader: MicroframeworkLoader = async (settings: Microframewo
     });
 
     const connection = await createConnection(connectionOptions);
-    Logger.info("Database Connected")
 
     if (settings) {
         settings.setData('connection', connection);
