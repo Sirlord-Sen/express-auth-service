@@ -2,11 +2,11 @@ import { pick } from "lodash";
 import { nanoid } from "nanoid";
 import { Service } from 'typedi'
 
-import { ValidateHelper } from "@helpers//";
+import { ValidateHelper } from "@helpers/";
 import { TokenService } from "./token.service";
 import { IAuthService } from "../interfaces/service.interface";
 import { UserService } from "@user-module/services/user.service";
-import { ConflictError, UnauthorizedError } from "@exceptions//";
+import { ConflictError, UnauthorizedError } from "@exceptions/";
 import { EmailConfirmAccount, EmailResetPassword } from "@providers/mailer/email.util";
 import {
     ForgotPasswordRequest, 

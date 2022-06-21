@@ -2,8 +2,7 @@ import { Service } from 'typedi'
 import { google } from 'googleapis'
 import { createTransport } from 'nodemailer';
 
-import { EmailConfig } from '@config//';
-import { OAuthConfig } from '@config//'
+import { EmailConfig, OAuthConfig} from '@config/';
 import { SendEmail } from './email.types';
 
 

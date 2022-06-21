@@ -1,6 +1,6 @@
 import { Entity, Column, JoinColumn, OneToOne, Unique, Index } from 'typeorm';
 
-import { EntityCore } from '@core//';
+import { EntityCore } from '@core/';
 import { IPlatform } from '../interfaces';
 import { PlatformNetwork } from '../platform.types';
 import { UserEntity } from '@user-module/entity'

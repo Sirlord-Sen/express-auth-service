@@ -9,7 +9,7 @@ import { useExpressServer } from 'routing-controllers'
 import { MicroframeworkLoader, MicroframeworkSettings } from 'microframework-w3tec';
 
 import passport from "@providers/social/passport"
-import { AppConfig } from '@config//'
+import { AppConfig } from '@config/'
 import { authorizationChecker } from '@auth/authorizationChecker'
 import { currentUserChecker } from '@auth/currentUserChecker';
 

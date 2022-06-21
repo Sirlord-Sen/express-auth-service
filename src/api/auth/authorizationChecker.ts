@@ -3,12 +3,12 @@ import { Connection } from 'typeorm';
 import { Action } from 'routing-controllers';
 import { VerifyOptions, JwtPayload } from 'jsonwebtoken';
 
-import { JwtConfig } from '@config//';
-import { TokenHelper } from '@helpers//';
+import { JwtConfig } from '@config/';
+import { TokenHelper } from '@helpers/';
 import { JWTService } from '@providers/jwt';
 import { Logger } from '@lib/logger';
 import { TokensCache } from '@providers/cache';
-import { UnauthorizedError } from '@exceptions//';
+import { UnauthorizedError } from '@exceptions/';
 
 
 export function authorizationChecker(connection: Connection): (action: Action, roles: any[]) => Promise<boolean> | boolean {

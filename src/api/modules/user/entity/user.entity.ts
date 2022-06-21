@@ -1,7 +1,7 @@
 import { Entity, Column, Unique, OneToOne } from 'typeorm'
 
 import { ProfileEntity } from './'
-import { EntityCore } from '@core//'
+import { EntityCore } from '@core/'
 import { IUser } from '../interfaces/user.interface'
 
 @Entity({name: "users"})

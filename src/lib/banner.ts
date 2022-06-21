@@ -1,4 +1,4 @@
-import { AppConfig, SwaggerConfig } from '@config//';
+import { AppConfig, SwaggerConfig } from '@config/';
 import { Logger } from './logger';
 
 export function banner(log: Logger): void {

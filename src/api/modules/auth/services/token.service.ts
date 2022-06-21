@@ -4,14 +4,14 @@ import { Service } from 'typedi'
 import { InjectRepository } from 'typeorm-typedi-extensions';
 import { SignOptions, JwtPayload, Secret, VerifyOptions } from 'jsonwebtoken'
 
-import { JwtConfig } from '@config//';
-import { DateHelper } from "@helpers//";
+import { JwtConfig } from '@config/';
+import { DateHelper } from "@helpers/";
 import { JWTService } from "@providers/jwt";
 import { TokensCache } from '@providers/cache';
 import { TokenType } from "@utils/utility-types";
 import { Logger, LoggerInterface } from '@decorators/logger';
 import { ITokenService } from '../interfaces/service.interface';
-import { NotFoundError, UnauthorizedError } from '@exceptions//';
+import { NotFoundError, UnauthorizedError } from '@exceptions/';
 import { RefreshTokenRepository } from "../repository/refreshToken.repository";
 import { UserRepository } from "@user-module/repository/user.repository";
 import { 

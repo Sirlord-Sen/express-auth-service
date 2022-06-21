@@ -2,7 +2,7 @@ import * as uuid from 'uuid';
 import * as nock from 'nock';
 import { JWTService } from '@providers/jwt';
 import { nanoid } from 'nanoid';
-import { JwtConfig } from '@config//';
+import { JwtConfig } from '@config/';
 import { SignOptions } from 'jsonwebtoken';
 import { LogMock } from '../utils/logger.mock';
 

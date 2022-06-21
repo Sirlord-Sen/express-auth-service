@@ -1,6 +1,6 @@
 import { response } from 'express';
 
-import { ExceptionCore } from "@core//";
+import { ExceptionCore } from "@core/";
 import { ErrorType } from "@utils/utility-types";
 
 // Custom Error for resource not found

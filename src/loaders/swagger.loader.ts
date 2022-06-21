@@ -1,4 +1,4 @@
-import { AppConfig, SwaggerConfig } from '@config//';
+import { AppConfig, SwaggerConfig } from '@config/';
 import { defaultMetadataStorage as classTransformerMetadataStorage } from 'class-transformer/cjs/storage';
 import { validationMetadatasToSchemas } from 'class-validator-jsonschema';
 import { NextFunction, Request, Response } from 'express';

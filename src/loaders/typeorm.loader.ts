@@ -2,7 +2,7 @@ import { resolve } from 'path'
 import { createConnection, getConnectionOptions } from 'typeorm';
 import { MicroframeworkLoader, MicroframeworkSettings } from 'microframework-w3tec';
 
-import { DBConfig } from '@config//'
+import { DBConfig } from '@config/'
 
 export const typeormLoader: MicroframeworkLoader = async (settings: MicroframeworkSettings | undefined) => {
 

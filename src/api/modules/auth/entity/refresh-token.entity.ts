@@ -1,6 +1,6 @@
 import { Column, Entity, Index, ManyToOne, JoinColumn } from 'typeorm'
 
-import { EntityCore } from '@core//';
+import { EntityCore } from '@core/';
 import { UserEntity } from '@user-module/entity';
 import { IRefreshToken } from '../interfaces';
 

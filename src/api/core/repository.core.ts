@@ -1,4 +1,4 @@
-import { ConflictError, InternalServerError, NotFoundError} from '@exceptions//';
+import { ConflictError, InternalServerError, NotFoundError} from '@exceptions/';
 import { DatabaseError } from 'pg'
 import { DeepPartial, EntityNotFoundError, ObjectLiteral, QueryFailedError, Repository } from 'typeorm';
 

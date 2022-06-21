@@ -1,5 +1,5 @@
 import { hash } from 'argon2'
-import { ValidateHelper } from "@helpers//"
+import { ValidateHelper } from "@helpers/"
 
 describe("Validator Helper", ()=> {
     let hashed: string

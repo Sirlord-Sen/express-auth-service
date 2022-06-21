@@ -1,9 +1,9 @@
 import { OAuth2Strategy, Profile } from 'passport-google-oauth'
 
-import { OAuthConfig } from '@config//';
+import { OAuthConfig } from '@config/';
 import { Logger } from '@lib/logger';
 import { IUser } from '@user-module/interfaces';
-import { InternalServerError } from '@exceptions//';
+import { InternalServerError } from '@exceptions/';
 import { PlatformNetwork } from '@platform-module/platform.types';
 
 export const GoogleStrategy = new OAuth2Strategy(

@@ -1,5 +1,5 @@
-import { JwtConfig } from "@config//";
-import { DateHelper } from "@helpers//";
+import { JwtConfig } from "@config/";
+import { DateHelper } from "@helpers/";
 import { TokenType } from "@utils/utility-types";
 import jwt, { Secret, SignOptions, JwtPayload } from "jsonwebtoken";
 import { nanoid } from "nanoid";

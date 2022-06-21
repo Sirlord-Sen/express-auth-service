@@ -2,8 +2,8 @@ import { Connection } from 'typeorm';
 import { Factory, Seeder } from 'typeorm-seeding';
 
 import { RefreshTokenEntity } from '@auth-module/entity';
-import { DateHelper } from '@helpers//';
-import { JwtConfig } from '@config//';
+import { DateHelper } from '@helpers/';
+import { JwtConfig } from '@config/';
 import { nanoid } from 'nanoid';
 
 export class CreateDummyRefreshToken implements Seeder {

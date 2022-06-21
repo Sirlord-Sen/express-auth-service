@@ -4,7 +4,7 @@ import { EventEmitter } from 'events';
 import Bull, {QueueOptions, Queue} from 'bull';
 
 import { Logger, LoggerInterface } from '@decorators/logger';
-import { RedisConfig } from '@config//';
+import { RedisConfig } from '@config/';
 import { CodeError } from '@utils/utility-types' 
 
 @Service()

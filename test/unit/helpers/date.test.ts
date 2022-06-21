@@ -1,4 +1,4 @@
-import { DateHelper } from "@helpers//"
+import { DateHelper } from "@helpers/"
 
 describe("Date Helper", ()=> {
     it("isSameDay return true for two same dates of different formats", ()=>{

@@ -4,7 +4,7 @@ import { Request, Response, NextFunction } from 'express'
 import { Middleware, ExpressErrorMiddlewareInterface } from 'routing-controllers';
 
 import { Logger } from '@lib/logger';
-import { BadRequestError, UnauthorizedError } from '@exceptions//'
+import { BadRequestError, UnauthorizedError } from '@exceptions/'
 
 @Service()
 @Middleware({ type: 'after' })

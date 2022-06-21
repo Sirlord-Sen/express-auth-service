@@ -1,9 +1,9 @@
 import { Request } from 'express'
 import { Service } from 'typedi'
 import { ResponseSchema } from 'routing-controllers-openapi';
-import { Controller, Req, Body, Post, Authorized, CurrentUser } from 'routing-controllers';
+import { Controller, Req, Body, Post } from 'routing-controllers';
 
-import { TokenHelper } from '@helpers//';
+import { TokenHelper } from '@helpers/';
 import { SuccessResponse } from '@utils/response.util';
 import { AuthService } from '../services/auth.service';
 import { TokenService } from '../services/token.service';

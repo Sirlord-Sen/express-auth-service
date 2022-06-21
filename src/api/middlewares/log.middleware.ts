@@ -3,7 +3,7 @@ import { Service } from 'typedi';
 import { NextFunction, Request, Response } from "express";
 import { ExpressMiddlewareInterface, Middleware } from "routing-controllers";
 import { Logger } from '@lib/logger';
-import { AppConfig } from '@config//';
+import { AppConfig } from '@config/';
 
 
 

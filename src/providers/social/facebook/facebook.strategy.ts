@@ -1,9 +1,9 @@
 import {Strategy, Profile} from "passport-facebook"
 
-import { OAuthConfig } from '@config//';
+import { OAuthConfig } from '@config/';
 import { Logger } from '@lib/logger';
 import { IUser } from '@user-module/interfaces';
-import { InternalServerError } from '@exceptions//';
+import { InternalServerError } from '@exceptions/';
 import { PlatformNetwork } from '@platform-module/platform.types';
 
 export const FacebookStrategy =  new Strategy(

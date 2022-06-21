@@ -9,7 +9,7 @@ import {
     ForbiddenResponse,
     ConflictErrorResponse
 } from '../utils/response.util'
-import { AppConfig } from '@config//';
+import { AppConfig } from '@config/';
 
 /**
 * @class @abstract 

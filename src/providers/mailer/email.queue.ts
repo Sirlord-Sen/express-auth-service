@@ -5,9 +5,9 @@ import { EventEmitter } from 'events';
 
 import { EmailService } from './';
 import { EmailJob } from './email.types';
-import { EmailConfig } from '@config//';
+import { EmailConfig } from '@config/';
 import { BullQueue } from '@lib/queue';
-import { InternalServerError } from '@exceptions//';
+import { InternalServerError } from '@exceptions/';
 import { Logger } from '@lib/logger';
 
 @Service()

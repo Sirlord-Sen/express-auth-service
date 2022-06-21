@@ -2,7 +2,7 @@ import r from 'ioredis'
 import { Redis } from 'ioredis'
 import { MicroframeworkLoader, MicroframeworkSettings } from 'microframework-w3tec';
 
-import { AppConfig, RedisConfig } from '@config//'
+import { AppConfig, RedisConfig } from '@config/'
 import { Logger } from '@lib/logger'
 
 

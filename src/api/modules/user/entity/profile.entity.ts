@@ -1,7 +1,7 @@
 import { Entity, Column, OneToOne, JoinColumn } from 'typeorm';
 
 import { UserEntity } from './';
-import { EntityCore } from '@core//';
+import { EntityCore } from '@core/';
 import { IProfile } from '../interfaces';
 import { Gender } from '@utils/utility-types';
 

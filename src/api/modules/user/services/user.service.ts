@@ -3,14 +3,14 @@ import { nanoid } from 'nanoid'
 import { Service } from 'typedi'
 import { InjectRepository } from 'typeorm-typedi-extensions'
 
-import { ValidateHelper } from '@helpers//'
+import { ValidateHelper } from '@helpers/'
 import { FullUser, Password } from '../user.types'
 import { FilterUser, UpdateUser, User } from '../user.types'
 import { UserRepository } from '../repository/user.repository'
 import { IUserService } from '../interfaces/service.interface'
 import { TokenService } from '@auth-module/services/token.service'
 import { EmailConfirmAccount } from '@providers/mailer/email.util'
-import { ConflictError, NotFoundError, UnauthorizedError } from '@exceptions//'
+import { ConflictError, NotFoundError, UnauthorizedError } from '@exceptions/'
 
 @Service()
 export class UserService implements IUserService{
