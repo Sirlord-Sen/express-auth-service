@@ -6,9 +6,8 @@ import { DeployEmail, EmailRequest, QueueName } from "./email.types"
     
 @Service()  
 export abstract class EmailHandler{
-    private emailQueue: EmailQueue
+    public emailQueue: EmailQueue
     constructor(
-        public name: QueueName,
         public request: EmailRequest,
         public deploy: DeployEmail
     ){
@@ -16,21 +15,23 @@ export abstract class EmailHandler{
     }
   
     protected async handler(email: EmailHandler){
-        const { name ,request, deploy } = email
-        return await this.emailQueue.addEmailToQueue({ name, request, deploy })
+        const { request, deploy } = email
+        return await this.emailQueue.addEmailToQueue({ request, deploy })
     }
 }
   
 export class EmailConfirmAccount extends EmailHandler{
     constructor(request: EmailRequest){
-      super(QueueName.CONFIRMACCOUNT, request, EmailHelper.confirmAccount(request))
-      super.handler(this)
+        EmailQueue.queue_name = QueueName.CONFIRMACCOUNT
+        super(request, EmailHelper.confirmAccount(request))
+        super.handler(this)
     }
 }
 
 export class EmailResetPassword extends EmailHandler{
     constructor(request: EmailRequest){
-      super(QueueName.RESETPASSWORD ,request, EmailHelper.confirmResetPassword(request))
-      super.handler(this)
+        EmailQueue.queue_name = QueueName.RESETPASSWORD
+        super(request, EmailHelper.confirmResetPassword(request))
+        super.handler(this)
     }
 }

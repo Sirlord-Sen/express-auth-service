@@ -18,7 +18,6 @@ export type EmailRequest = {
 };
 
 export type EmailJob = {
-  name: QueueName;
   request: EmailRequest;
   deploy: DeployEmail;
 }
