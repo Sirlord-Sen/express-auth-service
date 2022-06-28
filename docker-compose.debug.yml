@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  authentication:
+    image: authentication
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: development
+    ports:
+      - 4000:4000
+      - 6379:6379
+      - 5432:5432
+      - 9229:9229
+    command: ["node", "--inspect=0.0.0.0:9229", "main.js"]

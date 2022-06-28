@@ -11,7 +11,7 @@ export const typeormLoader: MicroframeworkLoader = async (settings: Microframewo
 
     const connectionOptions = Object.assign(loadedConnectionOptions, {
         type,
-        host,
+        host: process.env.DB_HOST || host,
         port,
         username,
         password,

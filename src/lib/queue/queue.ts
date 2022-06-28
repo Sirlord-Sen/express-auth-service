@@ -20,6 +20,10 @@ export default class BullQueue{
         opts?: Pick<QueueOptions, 'limiter' | 'defaultJobOptions'>,
     ){
         this.queue = new Bull(name, {
+            redis: {
+                host: process.env.REDIS_HOST || RedisConfig.host,
+                port: RedisConfig.port,
+            },
             prefix: RedisConfig.queuePrefix,
             ...this.queueOptions,
             ...opts,

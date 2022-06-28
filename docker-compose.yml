@@ -1,0 +1,42 @@
+version: '3'
+services:
+  redis:
+    image: redis
+    networks:
+      - webnet
+  db:
+    image: postgres
+    networks:
+      - webnet
+    # container_name: postgres
+    # ports:
+    #   - '6500:5432'
+    # volumes:
+    #   - progresDB:/data/postgres
+    env_file:
+      - ./config/.env.dev
+    environment:
+      POSTGRES_PASSWORD: "I love God."
+      POSTGRES_USER: postgres
+      POSTGRES_DB: authentication
+  web:
+    image: studaid/auth-service
+    ports:
+      - 4000:4000
+    networks:
+      - webnet
+    environment:
+      DB_HOST: db
+      REDIS_HOST: redis
+      
+    command: ["./wait-for-it.sh", "db:5432", "redis:5432", "--", "npm", "run", "start:dev"]
+    # build:
+    #   context: .
+    #   dockerfile: ./Dockerfile
+    # depends_on:
+    #   - postgres
+    #   - redis
+
+networks:
+  webnet:
+

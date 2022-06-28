@@ -32,7 +32,7 @@ export class RedisApplication{
 
     public createClient(){
         return this.client = new redis({
-            host: RedisConfig.host,
+            host: process.env.REDIS_HOST || RedisConfig.host,
             port: RedisConfig.port,
             ...this.defaultOptions,
         })
