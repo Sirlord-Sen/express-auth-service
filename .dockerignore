@@ -1,8 +1,8 @@
 **/.classpath
 **/.dockerignore
 **/.env
-**/config/jwt/*
-**/config/.env.dev
+# **/config/jwt/*
+# **/config/.env.dev
 **/config/.env.prod
 **/config/.env.test
 **/.git
