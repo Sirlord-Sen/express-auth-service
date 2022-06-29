@@ -1,4 +1,5 @@
 import cors from 'cors'
+import helmet from 'helmet'
 import { resolve } from 'path'
 import { Connection } from 'typeorm';
 import useragent from 'express-useragent'
@@ -27,6 +28,7 @@ class ExpressServer {
         this.app.use(useragent.express())
         this.app.use(bodyParser.json());
         this.app.use(cookieParser())
+        this.app.use(helmet())
         this.app.use(bodyParser.urlencoded({ extended: true }));
         this.app.use(passport.initialize())
     }
