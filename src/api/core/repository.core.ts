@@ -14,9 +14,9 @@ export default class RepositoryCore<Entity extends ObjectLiteral> extends Reposi
 
     async updateEntity( query: DeepPartial<Entity>, body: DeepPartial<Entity> ): Promise<Entity> {
         try{ 
-            const refreshToken = await this.findOneOrFail({where: query})
-            this.merge(refreshToken, body)
-            return await this.save(refreshToken) 
+            const entity = await this.findOneOrFail({where: query})
+            this.merge(entity, body)
+            return await this.save(entity) 
         }
         catch(err){ throw this.errorHandler(err) }
     }
