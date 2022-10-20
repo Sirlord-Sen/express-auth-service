@@ -5,7 +5,6 @@ import Bull, {QueueOptions, Queue} from 'bull';
 
 import { Logger, LoggerInterface } from '@decorators/logger';
 import { RedisConfig } from '@config/';
-import { CodeError } from '@utils/utility-types' 
 
 @Service()
 export default class BullQueue{
@@ -70,7 +69,7 @@ export default class BullQueue{
             this.log.info(`Job ${job.id} has ${ result.status }`)
         })
 
-        this.queue.on('error', async(error: CodeError) => {
+        this.queue.on('error', async(error: ErrorEvent) => {
             this.log.error(`Bull Error: ${error}`)
         })
 
